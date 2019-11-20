@@ -1,9 +1,9 @@
 package com.example.Castlerole.controller;
 import com.example.Castlerole.config.JwtTokenUtil;
-import com.example.Castlerole.model.JwtRequest;
-import com.example.Castlerole.model.JwtResponse;
-import com.example.Castlerole.model.UserDTO;
-import com.example.Castlerole.service.JwtUserDetailsService;
+import com.example.Castlerole.model.request.JwtRequest;
+import com.example.Castlerole.model.response.JwtResponse;
+import com.example.Castlerole.model.dto.UserDTO;
+import com.example.Castlerole.service.JwtUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,15 +11,12 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 @CrossOrigin
+//maybe move injected classed to a service later and make controller cleaner.
 public class JwtAuthenticationController {
 
     @Autowired
@@ -29,23 +26,24 @@ public class JwtAuthenticationController {
     private JwtTokenUtil jwtTokenUtil;
 
     @Autowired
-    private JwtUserDetailsService userDetailsService;
+    private JwtUserService userDetailsService;
 
-    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
-
+    @PostMapping(value = "/login")
+    public ResponseEntity<?> login(@RequestBody JwtRequest authenticationRequest) throws Exception {
+        //check if user is disabled or if credentials are invalid. if true => return error. break function when returned.
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-
+        //get user from database, if user not found throw exception and break function when returned.
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-
+        //generate token based on user claims.
         final String token = jwtTokenUtil.generateToken(userDetails);
-
+        //return token.
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
-        return ResponseEntity.ok(userDetailsService.save(user));
+    @PostMapping(value = "/register")
+    public ResponseEntity<?> register(@RequestBody UserDTO user) throws Exception {
+        //save user => note no error handeling added, add error handeling against already existing user information later.
+        return ResponseEntity.ok(userDetailsService.registerNewUser(user));
     }
 
     private void authenticate(String username, String password) throws Exception {

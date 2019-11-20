@@ -1,4 +1,4 @@
-package com.example.Castlerole.model;
+package com.example.Castlerole.model.response;
 
 import java.io.Serializable;
 

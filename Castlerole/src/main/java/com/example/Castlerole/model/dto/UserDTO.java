@@ -1,4 +1,4 @@
-package com.example.Castlerole.model;
+package com.example.Castlerole.model.dto;
 
 public class UserDTO {
     private String username;
