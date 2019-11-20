@@ -4,8 +4,7 @@ USE `castleroledb`;
 
 
 CREATE TABLE `user` (
-		`id` int not null,
+		`id` int not null AUTO_INCREMENT PRIMARY KEY,
         `username` varchar(50) not null,
-        `password` varchar(50) not null,
-        PRIMARY KEY (`id`)
-        )
+        `password` varchar(128) not null
+        );

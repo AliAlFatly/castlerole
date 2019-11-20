@@ -4,6 +4,7 @@ import com.example.Castlerole.model.request.JwtRequest;
 import com.example.Castlerole.model.response.JwtResponse;
 import com.example.Castlerole.model.dto.UserDTO;
 import com.example.Castlerole.service.JwtUserService;
+import com.example.Castlerole.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,6 +29,9 @@ public class JwtAuthenticationController {
     @Autowired
     private JwtUserService userDetailsService;
 
+    @Autowired
+    private UserService userService;
+
     @PostMapping(value = "/login")
     public ResponseEntity<?> login(@RequestBody JwtRequest authenticationRequest) throws Exception {
         //check if user is disabled or if credentials are invalid. if true => return error. break function when returned.
@@ -42,7 +46,11 @@ public class JwtAuthenticationController {
 
     @PostMapping(value = "/register")
     public ResponseEntity<?> register(@RequestBody UserDTO user) throws Exception {
-        //save user => note no error handeling added, add error handeling against already existing user information later.
+        //if user exist throw exception
+        boolean exist = userService.UserExist(user.getUsername());
+        if (exist){
+            throw new Exception("User with the username {" + user.getUsername() + "} already exists");
+        }
         return ResponseEntity.ok(userDetailsService.registerNewUser(user));
     }
 
