@@ -6,6 +6,7 @@ import com.example.Castlerole.model.User;
 import com.example.Castlerole.model.dto.UserDTO;
 import com.example.Castlerole.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@Primary
 public class JwtUserService implements UserDetailsService {
 
     @Autowired

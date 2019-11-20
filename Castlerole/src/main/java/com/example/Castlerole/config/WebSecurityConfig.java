@@ -57,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //autherize antmatchers any request with /api/ will be authenticated. and else exceptionhandling
                 .authorizeRequests().antMatchers("**/api/").authenticated()
                 .and()
-                //if not autherized -> call jwtAtuhenticationEntryPoint.
+                //if not autherized -> call jwtEntryPoint.
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
                 .and()
                 //make session stateless -> sessionmanage policy => stateless, why find out later....
@@ -65,7 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         //Add a filter to validate the tokens with every request
         //In spring boot UsernamePasswordAuthenticationFilter is a default class.
-        //filter validates based on jwtRequestFilter class and UsernamePasswordAuthenticationFilter class.
+        //filter validates based on jwtFilter class and UsernamePasswordAuthenticationFilter class.
         httpSecurity.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         //adds default headers for the request.
