@@ -1,14 +1,14 @@
 package com.example.Castlerole.repository;
 
-import com.example.Castlerole.model.DAOUser;
+import com.example.Castlerole.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 
 
 @Repository
-public interface UserDao extends CrudRepository<DAOUser, Integer> {
+public interface UserRepository extends CrudRepository<User, Integer> {
 	
-	DAOUser findByUsername(String username);
+	User findByUsername(String username);
 	
 }

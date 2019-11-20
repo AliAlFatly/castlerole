@@ -3,7 +3,6 @@ package com.example.Castlerole.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -18,17 +17,18 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+//when prepost set to true, method lvl annotation is set.
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    private JwtEntryPoint jwtEntryPoint;
 
     @Autowired
     private UserDetailsService jwtUserDetailsService;
 
     @Autowired
-    private JwtRequestFilter jwtRequestFilter;
+    private JwtFilter jwtFilter;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -52,19 +52,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         // We don't need CSRF for this example
+        //csrf crossite, csrf().disable => disable crosssite origin? -> cant call from angular since different port origins.
         httpSecurity.csrf().disable()
-                // dont authenticate this particular request
-                .authorizeRequests().antMatchers("/authenticate").
-                permitAll().antMatchers(HttpMethod.OPTIONS, "/**")
-                .permitAll().
-                // all other requests need to be authenticated
-                        anyRequest().authenticated().and().
-                // make sure we use stateless session; session won't be used to
-                // store user's state.
-                        exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                //autherize antmatchers any request with /api/ will be authenticated. and else exceptionhandling
+                .authorizeRequests().antMatchers("**/api/").authenticated()
+                .and()
+                //if not autherized -> call jwtAtuhenticationEntryPoint.
+                .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
+                .and()
+                //make session stateless -> sessionmanage policy => stateless, why find out later....
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-        // Add a filter to validate the tokens with every request
-        httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+        //Add a filter to validate the tokens with every request
+        //In spring boot UsernamePasswordAuthenticationFilter is a default class.
+        //filter validates based on jwtRequestFilter class and UsernamePasswordAuthenticationFilter class.
+        httpSecurity.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+
+        //adds default headers for the request.
+        httpSecurity.headers().cacheControl();
     }
 }
