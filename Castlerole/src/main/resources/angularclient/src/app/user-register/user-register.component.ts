@@ -19,8 +19,13 @@ export class UserRegisterComponent implements OnInit {
   ) { this.user = new User(); }
 
   onSubmit() {
-    this.userService.authenticate(this.user);
+    this.userService.save(this.user).subscribe(result => this.gotoUserLogin());
   }
+
+  gotoUserLogin() {
+    this.router.navigate(['/login']);
+  }
+
   ngOnInit() {
   }
 
