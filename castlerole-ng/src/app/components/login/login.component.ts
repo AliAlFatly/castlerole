@@ -21,6 +21,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  toRegister(){
+    this.router.navigate(['register']);
+  }
+
   get form() { return this.loginForm.controls; }
 
   login() {
@@ -32,7 +36,7 @@ export class LoginComponent implements OnInit {
     )
       .subscribe(success => {
         if (success) {
-          this.router.navigate(['']);
+          this.router.navigate(['/game']);
         }
       });
   }
