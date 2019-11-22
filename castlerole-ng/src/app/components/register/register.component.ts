@@ -38,6 +38,9 @@ export class RegisterComponent implements OnInit {
       });
   }
 
+  toLogin(){
+    this.router.navigate(['login']);
+  }
   // onSumbit(){
   //   console.log(this.form);
   //   this.signupInfo = new SignupInfoService(

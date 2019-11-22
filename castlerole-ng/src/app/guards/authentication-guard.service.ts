@@ -16,7 +16,7 @@ export class AuthenticationGuardService implements CanActivate {
   canActivate() {
     //if user is logged navigate to /foo
     if (this.authenticationService.isLoggedIn()) {
-      this.router.navigate(['']);
+      this.router.navigate(['/game']);
     }
     //else return true => true means route of login can be activated, if false is returned then route component is empty? or unactivable???
     return !this.authenticationService.isLoggedIn();

@@ -37,7 +37,7 @@ export class AuthenticationService {
         //so: try{return observable<true>} catch { alert(error) return false}
         mapTo(true),
         catchError(error => {
-          alert(error.error);
+          alert(error.message);
           return of(false);
         }));
   }
@@ -58,7 +58,7 @@ export class AuthenticationService {
         //so: try{return observable<true>} catch { alert(error) return false}
         mapTo(true),
         catchError(error => {
-          alert(error.error);
+          alert(error.message);
           return of(false);
         }));
   }
@@ -115,7 +115,7 @@ export class AuthenticationService {
   }
 
   private storeTokens(tokens: Tokens) {
-    localStorage.setItem(this.JWT_TOKEN, tokens.jwt);
+    localStorage.setItem(this.JWT_TOKEN, tokens.token);
     //localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
   }
 

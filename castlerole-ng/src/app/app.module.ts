@@ -9,14 +9,18 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AfterLoginComponent } from './components/after-login/after-login.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    RegisterComponent,
     LogoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    AfterLoginComponent
   ],
   imports: [
     BrowserModule,
