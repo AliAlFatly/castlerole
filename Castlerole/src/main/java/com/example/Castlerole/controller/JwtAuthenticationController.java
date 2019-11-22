@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "https://localhost:4200")
 //maybe move injected classed to a service later and make controller cleaner.
 public class JwtAuthenticationController {
 
@@ -51,7 +51,14 @@ public class JwtAuthenticationController {
         if (exist){
             throw new Exception("User with the username {" + user.getUsername() + "} already exists");
         }
-        return ResponseEntity.ok(userDetailsService.registerNewUser(user));
+        //after registration save new user
+        var newUser = userDetailsService.registerNewUser(user);
+        //get userDetails
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(newUser.getUsername());
+        //generate token
+        final String token = jwtTokenUtil.generateToken(userDetails);
+        //return token
+        return ResponseEntity.ok(new JwtResponse(token));
     }
 
     private void authenticate(String username, String password) throws Exception {
