@@ -3,9 +3,11 @@ import com.example.Castlerole.config.JwtTokenUtil;
 import com.example.Castlerole.model.request.JwtRequest;
 import com.example.Castlerole.model.response.JwtResponse;
 import com.example.Castlerole.model.dto.UserDTO;
+import com.example.Castlerole.service.JwtAuthenticationService;
 import com.example.Castlerole.service.JwtUserService;
 import com.example.Castlerole.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -21,53 +23,18 @@ import org.springframework.web.bind.annotation.*;
 public class JwtAuthenticationController {
 
     @Autowired
-    private AuthenticationManager authenticationManager;
+    public JwtAuthenticationService jwtAuthenticationService;
 
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
-
-    @Autowired
-    private JwtUserService userDetailsService;
-
-    @Autowired
-    private UserService userService;
-
-    @PostMapping(value = "/login")
+    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> login(@RequestBody JwtRequest authenticationRequest) throws Exception {
-        //check if user is disabled or if credentials are invalid. if true => return error. break function when returned.
-        authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-        //get user from database, if user not found throw exception and break function when returned.
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-        //generate token based on user claims.
-        final String token = jwtTokenUtil.generateToken(userDetails);
-        //return token.
+        final String token = jwtAuthenticationService.login(authenticationRequest);
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @PostMapping(value = "/register")
+    @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> register(@RequestBody UserDTO user) throws Exception {
-        //if user exist throw exception
-        boolean exist = userService.UserExist(user.getUsername());
-        if (exist){
-            throw new Exception("User with the username {" + user.getUsername() + "} already exists");
-        }
-        //after registration save new user
-        var newUser = userDetailsService.registerNewUser(user);
-        //get userDetails
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(newUser.getUsername());
-        //generate token
-        final String token = jwtTokenUtil.generateToken(userDetails);
-        //return token
+        final String token = jwtAuthenticationService.register(user);
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    private void authenticate(String username, String password) throws Exception {
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-        } catch (DisabledException e) {
-            throw new Exception("USER_DISABLED", e);
-        } catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
-        }
-    }
 }
