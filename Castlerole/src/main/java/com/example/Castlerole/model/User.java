@@ -20,9 +20,11 @@ public class User {
 	@Column
 	private Date joinDate;
 	@Column
-	private int xCoordinate;
+	private int coordinateX;
 	@Column
-	private int yCoordinate;
+	private int coordinateY;
+	@Column
+	private String pictureReference;
 	@Column
 	private int wood;
 	@Column
@@ -34,8 +36,20 @@ public class User {
 	@Column
 	private int troops;
 
+	public User() {
+	}
+
 	public void setId(long id) {
 		this.id = id;
+	}
+
+
+	public void setPictureReference(String pictureReference) {
+		this.pictureReference = pictureReference;
+	}
+
+	public String getPictureReference() {
+		return pictureReference;
 	}
 
 	public void setJoinDate(Date joinDate) {
@@ -43,11 +57,11 @@ public class User {
 	}
 
 	public void setXCoordinate(int xCoordinate) {
-		this.xCoordinate = xCoordinate;
+		this.coordinateX = xCoordinate;
 	}
 
 	public void setYCoordinate(int yCoordinate) {
-		this.yCoordinate = yCoordinate;
+		this.coordinateY = yCoordinate;
 	}
 
 	public void setWood(int wood) {
@@ -79,11 +93,11 @@ public class User {
 	}
 
 	public int getxCoordinate() {
-		return xCoordinate;
+		return coordinateX;
 	}
 
 	public int getyCoordinate() {
-		return yCoordinate;
+		return coordinateY;
 	}
 
 	public int getWood() {
