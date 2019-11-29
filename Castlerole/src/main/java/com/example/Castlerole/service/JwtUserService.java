@@ -1,17 +1,16 @@
 package com.example.Castlerole.service;
 
-import java.sql.Array;
 import java.sql.Date;
 import java.util.*;
 
 import com.example.Castlerole.model.User;
 import com.example.Castlerole.model.dto.UserDTO;
+import com.example.Castlerole.model.helpertypes.IntVector;
 import com.example.Castlerole.repository.NodeRepository;
 import com.example.Castlerole.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -30,7 +29,7 @@ public class JwtUserService implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder bcryptEncoder;
-    
+
 
     @Value("${gridSize}")
     private int gridSize;
@@ -49,8 +48,33 @@ public class JwtUserService implements UserDetailsService {
         //get UserDTO
         //initialize new empty user(to save in the database)
 
-        int finalXCoordinate;
-        int finalYCoordinate;
+        IntVector initialCoordinates = this.getXY();
+
+        User newUser = new User(
+                user.getUsername(),
+                //NOTE => when using password encryption set password length way more in database since encrypting increases the size of the string.
+                //https://stackoverflow.com/questions/98768/should-i-impose-a-maximum-length-on-passwords
+                //set to max 128 or no max.
+                //encrypt password and set it.
+                bcryptEncoder.encode(user.getPassword()),
+                new Date(System.currentTimeMillis()),
+                initialCoordinates.getFirst(),
+                initialCoordinates.getSecond(),
+                "player",
+                300,
+                300,
+                300,
+                300,
+                300
+        );
+
+        return userRepository.save(newUser);
+    }
+
+    public IntVector getXY() throws Exception {
+
+        Integer finalXCoordinate;
+        Integer finalYCoordinate;
 
         ArrayList<Integer> xList = new ArrayList<Integer>();
         ArrayList<Integer> yList = new ArrayList<Integer>();
@@ -113,26 +137,10 @@ public class JwtUserService implements UserDetailsService {
             throw new Exception("No more grid spots left for a new castle");
         }
 
-        User newUser = new User(
-                user.getUsername(),
-                //NOTE => when using password encryption set password length way more in database since encrypting increases the size of the string.
-                //https://stackoverflow.com/questions/98768/should-i-impose-a-maximum-length-on-passwords
-                //set to max 128 or no max.
-                //encrypt password and set it.
-                bcryptEncoder.encode(user.getPassword()),
-                new Date(System.currentTimeMillis()),
-                finalXCoordinate,
-                finalYCoordinate,
-                "player",
-                0,
-                0,
-                0,
-                0,
-                0
-        );
-
-        return userRepository.save(newUser);
+        return new IntVector(finalXCoordinate, finalYCoordinate);
     }
+
+
 
     public static void InsertionSorting(ArrayList<Integer> arrayList) {
         for (int i = 0; i < arrayList.size(); i++){
