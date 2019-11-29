@@ -20,9 +20,11 @@ public class User {
 	@Column
 	private Date joinDate;
 	@Column
-	private int xCoordinate;
+	private int coordinateX;
 	@Column
-	private int yCoordinate;
+	private int coordinateY;
+	@Column
+	private String pictureReference;
 	@Column
 	private int wood;
 	@Column
@@ -34,8 +36,39 @@ public class User {
 	@Column
 	private int troops;
 
+	public User() {
+	}
+
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
+	public User(String username, String password, Date joinDate, int coordinateX, int coordinateY, String pictureReference, int wood, int iron, int stone, int food, int troops) {
+		this.username = username;
+		this.password = password;
+		this.joinDate = joinDate;
+		this.coordinateX = coordinateX;
+		this.coordinateY = coordinateY;
+		this.pictureReference = pictureReference;
+		this.wood = wood;
+		this.iron = iron;
+		this.stone = stone;
+		this.food = food;
+		this.troops = troops;
+	}
+
 	public void setId(long id) {
 		this.id = id;
+	}
+
+
+	public void setPictureReference(String pictureReference) {
+		this.pictureReference = pictureReference;
+	}
+
+	public String getPictureReference() {
+		return pictureReference;
 	}
 
 	public void setJoinDate(Date joinDate) {
@@ -43,11 +76,11 @@ public class User {
 	}
 
 	public void setXCoordinate(int xCoordinate) {
-		this.xCoordinate = xCoordinate;
+		this.coordinateX = xCoordinate;
 	}
 
 	public void setYCoordinate(int yCoordinate) {
-		this.yCoordinate = yCoordinate;
+		this.coordinateY = yCoordinate;
 	}
 
 	public void setWood(int wood) {
@@ -79,11 +112,11 @@ public class User {
 	}
 
 	public int getxCoordinate() {
-		return xCoordinate;
+		return coordinateX;
 	}
 
 	public int getyCoordinate() {
-		return yCoordinate;
+		return coordinateY;
 	}
 
 	public int getWood() {

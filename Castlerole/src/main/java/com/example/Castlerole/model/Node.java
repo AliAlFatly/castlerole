@@ -14,7 +14,7 @@ public class Node {
     @Column
     private String type;
     @Column
-    private String pictureName;
+    private String pictureReference;
     @Column
     private int ownerId;
     @Column
@@ -24,9 +24,9 @@ public class Node {
     @Column
     private String yieldType;
     @Column
-    private int xCoordinate;
+    private int coordinateX;
     @Column
-    private int yCoordinate;
+    private int coordinateY;
 
     public Node() {
     }
@@ -42,8 +42,8 @@ public class Node {
         this.type = type;
     }
 
-    public void setPictureName(String pictureName) {
-        this.pictureName = pictureName;
+    public void setPictureReference(String pictureName) {
+        this.pictureReference = pictureName;
     }
 
     public void setOwnerId(int ownerId) {
@@ -67,11 +67,11 @@ public class Node {
     }
 
     public void setXCoordinate(int xCoordinate) {
-        this.xCoordinate = xCoordinate;
+        this.coordinateX = xCoordinate;
     }
 
     public void setYCoordinate(int yCoordinate) {
-        this.yCoordinate = yCoordinate;
+        this.coordinateY = yCoordinate;
     }
 
     public long getId() {
@@ -82,8 +82,8 @@ public class Node {
         return type;
     }
 
-    public String getPictureName() {
-        return pictureName;
+    public String getPictureReference() {
+        return pictureReference;
     }
 
     public int getOwnerId() {
@@ -107,11 +107,11 @@ public class Node {
     }
 
     public int getxCoordinate() {
-        return xCoordinate;
+        return coordinateX;
     }
 
     public int getyCoordinate() {
-        return yCoordinate;
+        return coordinateY;
     }
 
 
