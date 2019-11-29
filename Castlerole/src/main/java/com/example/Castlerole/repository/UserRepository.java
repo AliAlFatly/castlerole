@@ -14,5 +14,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
 	Optional<String> findPictureReferenceByCoordinateXAndCoordinateY(int coordinateX, int coordinateY);
 
+	Optional<User> findByCoordinateXAndCoordinateY(int coordinateX, int coordinateY);
 	
 }

@@ -1,15 +1,15 @@
-package com.example.Castlerole.model.request;
+package com.example.Castlerole.model.helpertypes;
 
-public class VectorRequest {
+public class Vector {
     private int x;
     private int y;
 
-    public VectorRequest(int x, int y) {
+    public Vector(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public VectorRequest() {
+    public Vector() {
     }
 
     public int getX() {

@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface NodeRepository extends CrudRepository<Node, Integer> {
 
     Optional<String> findPictureReferenceByCoordinateXAndCoordinateY(int coordinateX, int coordinateY);
+
+    Optional<Node> findByCoordinateXAndCoordinateY(int coordinateX, int coordinateY);
 }
