@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class GridService {
@@ -36,13 +37,13 @@ public class GridService {
             for (int xAxis = left(x); xAxis <= right(x); xAxis++){
                 // select picture from
                 String picture = "Empty";
-                String userPicture = userRepository.findByCoordinateXAndCoordinateY(xAxis,yAxis).getPictureReference();
-                if (userPicture != null){
-                    picture = userPicture;
+                Optional<String> userPicture = userRepository.findPictureReferenceByCoordinateXAndCoordinateY(xAxis,yAxis);
+                if (!userPicture.isEmpty()){
+                    picture = userPicture.toString();
                 }
-                String nodePicture = nodeRepository.findByCoordinateXAndCoordinateY(xAxis,yAxis).getPictureReference();
-                if (nodePicture != null){
-                    picture = nodePicture;
+                Optional<String> nodePicture = nodeRepository.findPictureReferenceByCoordinateXAndCoordinateY(xAxis,yAxis);
+                if (!nodePicture.isEmpty()){
+                    picture = nodePicture.toString();
                 }
                 GridResponse currentCoordinatesData = new GridResponse(xAxis, yAxis, picture);
                 response.add(currentCoordinatesData);
