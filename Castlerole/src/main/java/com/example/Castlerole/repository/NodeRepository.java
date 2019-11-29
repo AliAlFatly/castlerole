@@ -5,8 +5,10 @@ import com.example.Castlerole.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface NodeRepository extends CrudRepository<Node, Integer> {
 
-    Node findByCoordinateXAndCoordinateY(int coordinateX, int coordinateY);
+    Optional<String> findPictureReferenceByCoordinateXAndCoordinateY(int coordinateX, int coordinateY);
 }
