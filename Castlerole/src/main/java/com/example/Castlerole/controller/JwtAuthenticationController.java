@@ -25,13 +25,13 @@ public class JwtAuthenticationController {
     @Autowired
     public JwtAuthenticationService jwtAuthenticationService;
 
-    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/login")
     public ResponseEntity<?> login(@RequestBody JwtRequest authenticationRequest) throws Exception {
         final String token = jwtAuthenticationService.login(authenticationRequest);
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/register")
     public ResponseEntity<?> register(@RequestBody UserDTO user) throws Exception {
         final String token = jwtAuthenticationService.register(user);
         return ResponseEntity.ok(new JwtResponse(token));

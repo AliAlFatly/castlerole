@@ -39,6 +39,25 @@ public class User {
 	public User() {
 	}
 
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
+	public User(String username, String password, Date joinDate, int coordinateX, int coordinateY, String pictureReference, int wood, int iron, int stone, int food, int troops) {
+		this.username = username;
+		this.password = password;
+		this.joinDate = joinDate;
+		this.coordinateX = coordinateX;
+		this.coordinateY = coordinateY;
+		this.pictureReference = pictureReference;
+		this.wood = wood;
+		this.iron = iron;
+		this.stone = stone;
+		this.food = food;
+		this.troops = troops;
+	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
