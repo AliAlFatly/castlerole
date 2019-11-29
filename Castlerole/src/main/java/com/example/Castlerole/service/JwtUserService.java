@@ -30,9 +30,7 @@ public class JwtUserService implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder bcryptEncoder;
-
-    @Autowired
-    JdbcTemplate jdbcTemplate;
+    
 
     @Value("${gridSize}")
     private int gridSize;
@@ -46,8 +44,6 @@ public class JwtUserService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
                 new ArrayList<>());
     }
-
-
 
     public User registerNewUser(UserDTO user) throws Exception {
         //get UserDTO
@@ -98,7 +94,7 @@ public class JwtUserService implements UserDetailsService {
 
         Random r = new Random();
 
-        if (targetXList != null){
+        if (!targetXList.isEmpty()){
             Integer xMin = Collections.min(targetXList);
             Integer xMax = Collections.max(targetXList);
             Integer xCoordinates = (r.nextInt(xMax - xMin) + xMin);
@@ -107,7 +103,7 @@ public class JwtUserService implements UserDetailsService {
         else {
             throw new Exception("No more grid spots left for a new castle");
         }
-        if (targetYList != null){
+        if (!targetYList.isEmpty()){
             Integer yMin = Collections.min(targetYList);
             Integer yMax = Collections.max(targetYList);
             Integer yCoordinates = (r.nextInt(yMax - yMin) + yMin);
@@ -117,22 +113,24 @@ public class JwtUserService implements UserDetailsService {
             throw new Exception("No more grid spots left for a new castle");
         }
 
-        User newUser = new User();
-        //set username as given in dto
-        newUser.setUsername(user.getUsername());
-        //NOTE => when using password encryption set password length way more in database since encrypting increases the size of the string.
-        //https://stackoverflow.com/questions/98768/should-i-impose-a-maximum-length-on-passwords
-        //set to max 128 or no max.
-        //encrypt password and set it.
-        newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
-        newUser.setJoinDate(new Date(System.currentTimeMillis()));
-        newUser.setXCoordinate(finalXCoordinate);
-        newUser.setYCoordinate(finalYCoordinate);
-        newUser.setWood(0);
-        newUser.setIron(0);
-        newUser.setStone(0);
-        newUser.setFood(0);
-        newUser.setTroops(0);
+        User newUser = new User(
+                user.getUsername(),
+                //NOTE => when using password encryption set password length way more in database since encrypting increases the size of the string.
+                //https://stackoverflow.com/questions/98768/should-i-impose-a-maximum-length-on-passwords
+                //set to max 128 or no max.
+                //encrypt password and set it.
+                bcryptEncoder.encode(user.getPassword()),
+                new Date(System.currentTimeMillis()),
+                finalXCoordinate,
+                finalYCoordinate,
+                "player",
+                0,
+                0,
+                0,
+                0,
+                0
+        );
+
         return userRepository.save(newUser);
     }
 

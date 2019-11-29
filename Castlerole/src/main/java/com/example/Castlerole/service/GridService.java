@@ -25,9 +25,6 @@ public class GridService {
     @Autowired
     private UserRepository userRepository;
 
-
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
     public ArrayList<GridResponse> getGrid(int x, int y){
         x = setX(x);
         y = setY(y);
