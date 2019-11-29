@@ -1,0 +1,24 @@
+package com.example.Castlerole.controller;
+
+import com.example.Castlerole.model.response.GridResponse;
+import com.example.Castlerole.service.GridService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+
+@RestController("/game")
+@CrossOrigin
+public class GameController {
+
+    @Autowired
+    public GridService gridService;
+
+    public ArrayList<GridResponse> GetGrid(int x, int y){
+        return gridService.getGrid(x, y);
+    }
+
+}
