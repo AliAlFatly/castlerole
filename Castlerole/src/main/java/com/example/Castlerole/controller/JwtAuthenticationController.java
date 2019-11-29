@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin()
+//maybe move injected classed to a service later and make controller cleaner.
 public class JwtAuthenticationController {
 
     @Autowired
