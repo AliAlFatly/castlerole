@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {AuthenticationService} from "../../services/authentication/authentication.service";
 
 @Component({
   selector: 'app-after-login',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AfterLoginComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('canvas', {static: true})
+        canvas: ElementRef<HTMLCanvasElement>;
+
+  constructor(
+    private authentocationService: AuthenticationService,
+    private router: Router,
+    private ctx: CanvasRenderingContext2D) { }
 
   ngOnInit() {
+    this.ctx = this.canvas.nativeElement.getContext("2d");
+  }
+
+  logout(){
+    this.authentocationService.logout();
+    this.router.navigate(["login"]);
   }
 
 }
