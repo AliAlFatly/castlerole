@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {AuthenticationService} from "../../services/authentication/authentication.service";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-after-login',
@@ -9,21 +10,18 @@ import {AuthenticationService} from "../../services/authentication/authenticatio
 })
 export class AfterLoginComponent implements OnInit {
 
-  @ViewChild('canvas', {static: true})
-        canvas: ElementRef<HTMLCanvasElement>;
+  private canvas: ElementRef;
+  private ctx: any;
 
   constructor(
-    private authentocationService: AuthenticationService,
-    private router: Router,
-    private ctx: CanvasRenderingContext2D) { }
+  http: HttpClient
+    ) { }
 
   ngOnInit() {
+
+  }
+
+  ngAfterViewInit() {
     this.ctx = this.canvas.nativeElement.getContext("2d");
   }
-
-  logout(){
-    this.authentocationService.logout();
-    this.router.navigate(["login"]);
-  }
-
 }
