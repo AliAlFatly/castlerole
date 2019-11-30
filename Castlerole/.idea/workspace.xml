@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05cbcf3e-83df-4bce-ba2e-78b2143e1702" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/model/helpertypes/IntVector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/model/response/AttackResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/model/response/PointDataResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/model/response/UserDataResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/CombatService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/PointService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/model/request/VectorRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/model/helpertypes/Vector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/repository/NodeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/repository/NodeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/model/response/AttackResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/model/response/AttackResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/JwtUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/JwtUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/CombatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/CombatService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/GridService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/GridService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -174,6 +167,7 @@
       <workItem from="1574434281388" duration="5691000" />
       <workItem from="1574958386238" duration="6733000" />
       <workItem from="1575015390059" duration="26694000" />
+      <workItem from="1575132404758" duration="4146000" />
     </task>
     <servers />
   </component>
