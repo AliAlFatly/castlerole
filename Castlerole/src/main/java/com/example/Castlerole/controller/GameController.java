@@ -35,11 +35,6 @@ public class GameController {
         return gridService.getGrid(vector.getX(), vector.getY());
     }
 
-    @PostMapping("/addNodes")
-    public String addNodes(@RequestBody int amount){
-        return "";
-    }
-
     @GetMapping("/pointData")
     public PointDataResponse getPointData(@RequestBody Vector vector) throws Exception {
         try{

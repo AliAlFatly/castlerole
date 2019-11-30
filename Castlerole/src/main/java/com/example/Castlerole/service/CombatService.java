@@ -76,19 +76,19 @@ public class CombatService {
             attackResponse.setEnemyTroopCount(targetIsNode.getTroops());
             attackResponse.setWon(true);
 
-            //check what type of node (forest/mine/lake/mountain)
+            //check what type of node (forest/mine/lake/mountain), not if yieldType was asked then wood,iron,food,stone instead of forest, mine, lake, mountain
             switch (targetIsNode.getType()){
-                case "wood":
+                case "forest":
                     //get random number between min and max yield.
                     woodWon = r.nextInt((targetIsNode.getYieldMax() - targetIsNode.getYieldMin()) + targetIsNode.getYieldMin());
                     break;
-                case "iron":
+                case "mine":
                     ironWon = r.nextInt((targetIsNode.getYieldMax() - targetIsNode.getYieldMin()) + targetIsNode.getYieldMin());
                     break;
-                case "food":
+                case "lake":
                     foodWon = r.nextInt((targetIsNode.getYieldMax() - targetIsNode.getYieldMin()) + targetIsNode.getYieldMin());
                     break;
-                case "stone":
+                case "mountain":
                     stoneWon = r.nextInt((targetIsNode.getYieldMax() - targetIsNode.getYieldMin()) + targetIsNode.getYieldMin());
                     break;
             }

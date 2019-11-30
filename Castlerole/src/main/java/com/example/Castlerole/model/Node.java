@@ -31,6 +31,18 @@ public class Node {
     public Node() {
     }
 
+    public Node(String type, String pictureReference, int troops, int yieldMax, int yieldMin, String yieldType, int coordinateX, int coordinateY) {
+        this.type = type;
+        this.pictureReference = pictureReference;
+        this.ownerId = ownerId;
+        this.troops = troops;
+        this.yieldMax = yieldMax;
+        this.yieldType = yieldType;
+        this.coordinateX = coordinateX;
+        this.coordinateY = coordinateY;
+        this.yieldMin = yieldMin;
+    }
+
     @Column
     private int yieldMin;
 
