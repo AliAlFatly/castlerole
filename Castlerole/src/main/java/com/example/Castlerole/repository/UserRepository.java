@@ -20,18 +20,18 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 	Optional<User> findByCoordinateXAndCoordinateY(int coordinateX, int coordinateY);
 
 	@Modifying
-	@Query("UPDATE user u SET u.wood = :amount WHERE u.username = :username")
-	int updateWood(@Param("companyId") int amount, @Param("address") String username);
+	@Query("UPDATE User u SET u.wood = :amount WHERE u.username = :username")
+	User updateWood(@Param("amount") int amount, @Param("username") String username);
 
 	@Modifying
-	@Query("UPDATE user u SET u.iron = :amount WHERE u.username = :username")
-	int updateIron(@Param("companyId") int amount, @Param("address") String username);
+	@Query("UPDATE User u SET u.iron = :amount WHERE u.username = :username")
+	User updateIron(@Param("amount") int amount, @Param("username") String username);
 
 	@Modifying
-	@Query("UPDATE user u SET u.stone = :amount WHERE u.username = :username")
-	int updateStone(@Param("companyId") int amount, @Param("address") String username);
+	@Query("UPDATE User u SET u.stone = :amount WHERE u.username = :username")
+	User updateStone(@Param("amount") int amount, @Param("username") String username);
 
 	@Modifying
-	@Query("UPDATE user u SET u.food = :amount WHERE u.username = :username")
-	int updateFood(@Param("companyId") int amount, @Param("address") String username);
+	@Query("UPDATE User u SET u.food = :amount WHERE u.username = :username")
+	User updateFood(@Param("amount") int amount, @Param("username") String username);
 }
