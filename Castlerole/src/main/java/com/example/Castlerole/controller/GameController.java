@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController()
-@CrossOrigin
+@CrossOrigin()
 public class GameController {
 
     @Autowired
@@ -30,12 +30,12 @@ public class GameController {
     @Autowired
     public CombatService combatService;
 
-    @GetMapping("/grid")
+    @PostMapping("/grid")
     public ArrayList<GridResponse> GetGrid(@RequestBody Vector vector){
         return gridService.getGrid(vector.getX(), vector.getY());
     }
 
-    @GetMapping("/pointData")
+    @PostMapping("/pointData")
     public PointDataResponse getPointData(@RequestBody Vector vector) throws Exception {
         try{
             return pointService.getPointData(vector.getX(), vector.getY());
@@ -45,18 +45,18 @@ public class GameController {
         }
     }
 
-    @GetMapping("/userCoordinates")
-    public Vector getUserCoordinates(String jwtToken) throws Exception {
+    @PostMapping("/userCoordinates")
+    public Vector getUserCoordinates(@RequestBody String jwtToken) throws Exception {
         return userService.getUserCoordinates(jwtToken);
     }
 
-    @GetMapping("userData")
-    public UserDataResponse getUserData(String jwtToken) throws Exception {
+    @PostMapping("userData")
+    public UserDataResponse getUserData(@RequestBody String jwtToken) throws Exception {
         return userService.getUserData(jwtToken);
     }
 
     @PutMapping("Attack")
-    public AttackResponse attackPoint(String jwtToken, Vector attackedPoint){
+    public AttackResponse attackPoint(@RequestBody String jwtToken, @RequestBody Vector attackedPoint){
         return combatService.attack(jwtToken, attackedPoint);
     }
 }

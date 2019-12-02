@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05cbcf3e-83df-4bce-ba2e-78b2143e1702" name="Default Changelist" comment="" />
+    <list default="true" id="05cbcf3e-83df-4bce-ba2e-78b2143e1702" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/controller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/model/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/model/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/CombatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/CombatService.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,8 +86,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CastleroleApplication">
-    <configuration name="CastleroleApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.CastleroleApplication">
+    <configuration name="CastleroleApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.Castlerole.CastleroleApplication" />
       <module name="Castlerole" />
       <extension name="coverage">
         <pattern>
@@ -88,9 +96,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.Castlerole" />
-      <option name="MAIN_CLASS_NAME" value="com.example.Castlerole.CastleroleApplicationTests" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -151,8 +156,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.JwtAuthenticationControllerTest" />
-        <item itemvalue="JUnit.CastleroleApplicationTests" />
+        <item itemvalue="Application.CastleroleApplication" />
         <item itemvalue="JUnit.JwtAuthenticationControllerTest.register" />
         <item itemvalue="JUnit.JwtAuthenticationControllerTest.login" />
       </list>
@@ -177,7 +181,7 @@
       <workItem from="1574434281388" duration="5691000" />
       <workItem from="1574958386238" duration="6733000" />
       <workItem from="1575015390059" duration="26694000" />
-      <workItem from="1575062826790" duration="173000" />
+      <workItem from="1575132404758" duration="5484000" />
     </task>
     <servers />
   </component>

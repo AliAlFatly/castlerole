@@ -20,7 +20,7 @@ import { AfterLoginComponent } from './components/after-login/after-login.compon
     RegisterComponent,
     LogoutComponent,
     RegisterComponent,
-    AfterLoginComponent
+    AfterLoginComponent,
   ],
   imports: [
     BrowserModule,
