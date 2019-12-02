@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //csrf crossite, csrf().disable => disable crosssite origin? -> cant call from angular since different port origins.
         httpSecurity.csrf().disable()
                 //autherize antmatchers any request with /api/ will be authenticated. and else exceptionhandling
-                .authorizeRequests().antMatchers("**/api/").authenticated()
+                .authorizeRequests().antMatchers("**/game/").authenticated()
                 .and()
                 //if not autherized -> call jwtEntryPoint.
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
