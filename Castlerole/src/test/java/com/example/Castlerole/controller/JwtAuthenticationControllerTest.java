@@ -2,31 +2,34 @@ package com.example.Castlerole.controller;
 
 import com.example.Castlerole.AbstractClass.AbstractTest;
 import com.example.Castlerole.model.dto.UserDTO;
+import com.example.Castlerole.model.response.JwtResponse;
+import com.example.Castlerole.repository.UserRepository;
+import com.example.Castlerole.service.JwtAuthenticationService;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+
+import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 public class JwtAuthenticationControllerTest extends AbstractTest {
 
+    @Autowired
+    JwtAuthenticationService jwtAuthenticationService;
 
     @Override
     @Before
-    public void setUp() {
-        super.setUp();
+    public void setUpJwtAuth() {
+        super.setUpJwtAuth();
 
     }
-
-
-
-
-
-
 
     public static UserDTO createDTO( String username, String password) {
         UserDTO dto = new UserDTO();
@@ -37,26 +40,55 @@ public class JwtAuthenticationControllerTest extends AbstractTest {
         return dto;
     }
 
-
     @Test
-    public void login() {
+    public void login() throws Exception {
+
+        String uri = "/login";
+        UserDTO userRight = createDTO("admin1234133","password");
+        UserDTO userWrong = createDTO("admin12342133","password");
+
+
+        jwtAuthenticationService.register(userRight);
+
+        String inputJsonWrong = super.mapToJson(userWrong);
+        String inputJsonRight = super.mapToJson(userRight);
+
+        MvcResult mvcResultRight = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(inputJsonRight)
+                .characterEncoding("utf-8")
+                .header("Cache-Control","no-cache, no-store")
+                .accept(MediaType.APPLICATION_JSON)
+        )
+                .andDo(print())
+                .andDo(MockMvcResultHandlers.log())
+                .andExpect(status().isOk())
+                .andReturn();
+
+        MvcResult mvcResultWrong = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(inputJsonWrong)
+                .characterEncoding("utf-8")
+                .header("Cache-Control","no-cache, no-store")
+                .accept(MediaType.APPLICATION_JSON)
+        )
+//                .andDo(print())
+//                .andDo(MockMvcResultHandlers.log())
+                .andExpect(status().isInternalServerError())
+                .andReturn();
+
     }
-
-
 
     //@WithMockUser(value = "User",username = "Admin12312", password = "passwor")
     @Test
     public void register() throws Exception {
         String uri = "/register";
-        final String token = "akfkldakkadjfiafkakflkd";
+        final String token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEyMzQxMzMiLCJleHAiOjE1NzUzMzkxNTEsImlhdCI6MTU3NTMyMTE1MX0.WFjAQ_MekvY6u-loMTjKPe2IGTqeUp3MMKNpI5ZdcEgIsN1BgfNrv0xcxG8Q1uV1fp40pgpGLrqgJLqfND1HDg";
 
         UserDTO user = createDTO("admin1234133","password");
 
 
         String inputJson = super.mapToJson(user);
-
-
-
 
         //Mockito.when(userRepository.save(user)).thenReturn(Mono.just(employee));
 
@@ -65,25 +97,17 @@ public class JwtAuthenticationControllerTest extends AbstractTest {
                 .content(inputJson)
                 .characterEncoding("utf-8")
                 .header("Cache-Control","no-cache, no-store")
+                .accept(MediaType.APPLICATION_JSON)
         )
                 .andDo(print())
                 .andDo(MockMvcResultHandlers.log())
                 .andExpect(status().isOk())
+
                 .andReturn();
-        var status2 = mvcResult.getResponse();
-        System.out.println(status2.getContentType());
 
-        int status = mvcResult.getResponse().getStatus();
-
-        System.out.println(mvcResult.getModelAndView());
-        System.out.println(inputJson);
-        //assertEquals(201,status);
-
-        String content = mvcResult.getResponse().getContentType();
-        //assertEquals(content, "user created");
-
-//        HashMap<String, String> map = new HashMap<>();
-//        map.put("greeting","Hello, world!");
+        String[] content = mvcResult.getResponse().getContentAsString().substring(1).split(":");
+        String contenttoken = content[1].replace("\"","");
+        assertEquals(contenttoken, token);
 
     }
 }
