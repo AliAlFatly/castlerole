@@ -13,8 +13,11 @@ import { Vector } from "../../models/generic/Vector";
 })
 export class AfterLoginComponent implements OnInit {
 
+  @ViewChild("canvas", {static: false})
   private canvas: ElementRef;
+
   private ctx: any;
+
   private grid: Array<gridResponse>;
   private initialCoordinate: Vector;
 
@@ -25,10 +28,12 @@ export class AfterLoginComponent implements OnInit {
 
   ngOnInit() {
     this.gameService.getUserCoordinates().subscribe(vector => {
-    alert(vector.x);
+    //alert(vector.x);
+    //alert(vector.y);
     this.initialCoordinate.x = vector.x;
-    alert(this.initialCoordinate);
+    this.initialCoordinate.y = vector.y;
     alert(this.initialCoordinate.x);
+    alert(this.initialCoordinate.y);
     });
 
 
@@ -41,6 +46,12 @@ export class AfterLoginComponent implements OnInit {
   //ngAfterViewInit() allows us to bring dynamic changes into the canvas. As such, we can render updates to the
   //canvas here, like when a new player joins, etc.
   ngAfterViewInit() {
+  this.gameService.getUserCoordinates().subscribe(vector => {
+  //TODO: Dirty fix for now, can be better.
+  //Look into improving and optimalizing this code.
+  this.ctx = (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
+  this.ctx.fillRect(vector.x, vector.y, 20, 20);});
+
     //this.ctx = this.canvas.nativeElement.getContext("2d");
   }
 }
