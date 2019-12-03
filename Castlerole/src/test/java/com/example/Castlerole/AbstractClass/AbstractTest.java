@@ -3,6 +3,7 @@ package com.example.Castlerole.AbstractClass;
 import com.example.Castlerole.Config.JpaConfig;
 import com.example.Castlerole.config.JwtFilter;
 import com.example.Castlerole.config.JwtTokenUtil;
+import com.example.Castlerole.controller.GameController;
 import com.example.Castlerole.controller.JwtAuthenticationController;
 import com.example.Castlerole.repository.NodeRepository;
 import com.example.Castlerole.repository.UserRepository;
@@ -39,52 +40,33 @@ import java.io.IOException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@AutoConfigureMockMvc
-
-//@MockBeans(value = {
-//
-////        @MockBean(JwtAuthenticationService.class),
-////        @MockBean(JwtTokenUtil.class),
-//        @MockBean(UserRepository.class),
-//        @MockBean(AuthenticationManager.class),
-//        @MockBean(NodeRepository.class),
-//        @MockBean(PasswordEncoder.class)
-////        @MockBean(JwtUserService.class),
-////        @MockBean(UserService.class),
-//
-//} )
-
-@ActiveProfiles("test")
+//@AutoConfigureMockMvc
+//@ActiveProfiles("test")
 public class AbstractTest {
 
     protected MockMvc mvc;
 
+    @Autowired
+    private GameController gameController;
 
     @Autowired
     private JwtAuthenticationController jwtAuthenticationController;
 
 
-    @Autowired
-    private WebApplicationContext wrc;
-//    @Autowired
-//    private UserService userService;
-//
-//    @Autowired
-//    @MockBean
-//    private JwtFilter jwtFilter;
 
-
-
-    protected void setUp() {
+    protected void setUpJwtAuth() {
         MockitoAnnotations.initMocks(this);
 
-
-        //ReflectionTestUtils.setField(jwtUserService, "userRepository", userRepository);
-        this.mvc = MockMvcBuilders.standaloneSetup(jwtAuthenticationController)
-
-                //.apply(springSecurity(jwtFilter))
+        this.mvc = MockMvcBuilders
+                .standaloneSetup(jwtAuthenticationController)
                 .build();
 
+    }
+    protected void setUpGameControl() {
+        MockitoAnnotations.initMocks(this);
+
+        this.mvc = MockMvcBuilders.standaloneSetup(gameController)
+                .build();
     }
 
 
