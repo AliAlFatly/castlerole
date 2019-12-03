@@ -51,7 +51,7 @@ public class GameController {
     }
 
     @GetMapping("userData")
-    public UserDataResponse getUserData(String jwtToken) throws Exception {
+    public UserDataResponse getUserData(@RequestBody String jwtToken) throws Exception {
         return userService.getUserData(jwtToken);
     }
 

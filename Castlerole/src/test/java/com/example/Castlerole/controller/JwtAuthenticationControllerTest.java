@@ -2,15 +2,12 @@ package com.example.Castlerole.controller;
 
 import com.example.Castlerole.AbstractClass.AbstractTest;
 import com.example.Castlerole.model.dto.UserDTO;
-import com.example.Castlerole.model.response.JwtResponse;
-import com.example.Castlerole.repository.UserRepository;
 import com.example.Castlerole.service.JwtAuthenticationService;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
@@ -31,21 +28,13 @@ public class JwtAuthenticationControllerTest extends AbstractTest {
 
     }
 
-    public static UserDTO createDTO( String username, String password) {
-        UserDTO dto = new UserDTO();
-
-        dto.setUsername(username);
-        dto.setPassword(password);
-
-        return dto;
-    }
 
     @Test
     public void login() throws Exception {
 
         String uri = "/login";
-        UserDTO userRight = createDTO("admin1234133","password");
-        UserDTO userWrong = createDTO("admin12342133","password");
+        UserDTO userRight = super.createDTO("admin1234133","password");
+        UserDTO userWrong = super.createDTO("admin12342133","password");
 
 
         jwtAuthenticationService.register(userRight);
@@ -74,7 +63,7 @@ public class JwtAuthenticationControllerTest extends AbstractTest {
         )
 //                .andDo(print())
 //                .andDo(MockMvcResultHandlers.log())
-                .andExpect(status().isInternalServerError())
+                .andExpect(status().is4xxClientError())
                 .andReturn();
 
     }
@@ -85,12 +74,13 @@ public class JwtAuthenticationControllerTest extends AbstractTest {
         String uri = "/register";
         final String token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEyMzQxMzMiLCJleHAiOjE1NzUzMzkxNTEsImlhdCI6MTU3NTMyMTE1MX0.WFjAQ_MekvY6u-loMTjKPe2IGTqeUp3MMKNpI5ZdcEgIsN1BgfNrv0xcxG8Q1uV1fp40pgpGLrqgJLqfND1HDg";
 
-        UserDTO user = createDTO("admin1234133","password");
+        UserDTO user = super.createDTO("admin1234133","password");
 
+        UserDTO userEXISTS = super.createDTO("admin12345133","password");
+        jwtAuthenticationService.register(userEXISTS);
 
         String inputJson = super.mapToJson(user);
-
-        //Mockito.when(userRepository.save(user)).thenReturn(Mono.just(employee));
+        String inputJsonExists = super.mapToJson(userEXISTS);
 
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -102,12 +92,23 @@ public class JwtAuthenticationControllerTest extends AbstractTest {
                 .andDo(print())
                 .andDo(MockMvcResultHandlers.log())
                 .andExpect(status().isOk())
+                .andReturn();
 
+        MvcResult mvcResult_User_Exists = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(inputJsonExists)
+                .characterEncoding("utf-8")
+                .header("Cache-Control","no-cache, no-store")
+                .accept(MediaType.APPLICATION_JSON)
+        )
+                .andDo(print())
+                .andDo(MockMvcResultHandlers.log())
+                .andExpect(status().isOk())
                 .andReturn();
 
         String[] content = mvcResult.getResponse().getContentAsString().substring(1).split(":");
         String contenttoken = content[1].replace("\"","");
-        assertEquals(contenttoken, token);
+        assertNotEquals(contenttoken, token);
 
     }
 }
