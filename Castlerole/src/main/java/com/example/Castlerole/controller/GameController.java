@@ -45,6 +45,7 @@ public class GameController {
         }
     }
 
+    //todo: get token from context
     @PostMapping("/userCoordinates")
     public Vector getUserCoordinates(@RequestBody String jwtToken) throws Exception {
         return userService.getUserCoordinates(jwtToken);

@@ -71,6 +71,8 @@ public class JwtUserService implements UserDetailsService {
         return userRepository.save(newUser);
     }
 
+    //todo add comments
+    //todo check if the function works correctly
     public IntVector getXY() throws Exception {
 
         Integer finalXCoordinate;
@@ -89,7 +91,7 @@ public class JwtUserService implements UserDetailsService {
         nodeRepository.findAll().forEach(y -> yList.add(y.getyCoordinate()));
         InsertionSorting(yList);
 
-
+        //filter de coordinaten die al bezit zijn
         for (int i = 0; i < gridSize; i++){
             if (!xList.isEmpty()){
                 if (xList.get(0) == i){

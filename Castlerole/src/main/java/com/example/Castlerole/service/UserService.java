@@ -43,6 +43,7 @@ public class UserService {
         String username = jwtTokenUtil.getUsernameFromToken(jwtToken);
         //later make findByUsername return optional<user>, to combat fabricated jwtToken errors.
         User user;
+        //todo change try catch to beter error handling
         try{
             user = userRepository.findByUsername(username);
         }
@@ -51,6 +52,7 @@ public class UserService {
             throw new Exception("Something went wrong, this has been logged");
         }
         //fill in what must be filled
+        //todo add transformer for this functionality
         return new UserDataResponse(
                 user.getUsername(),
                 user.getxCoordinate(),
