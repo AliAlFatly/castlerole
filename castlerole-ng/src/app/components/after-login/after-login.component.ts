@@ -24,11 +24,14 @@ export class AfterLoginComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.gameService.getUserCoordinates().subscribe(vector =>{
-    this.initialCoordinate = vector;
-    });
+    this.gameService.getUserCoordinates().subscribe(vector => {
+    alert(vector.x);
+    this.initialCoordinate.x = vector.x;
     alert(this.initialCoordinate);
-    //alert(this.initialCoordinate.x);
+    alert(this.initialCoordinate.x);
+    });
+
+
     //alert(this.initialCoordinate.y);
     this.gameService.getGrid(this.initialCoordinate).subscribe(gridData =>{
     this.grid = gridData;});
