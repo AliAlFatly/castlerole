@@ -75,11 +75,11 @@ public class User {
 		this.joinDate = joinDate;
 	}
 
-	public void setXCoordinate(int xCoordinate) {
+	public void setCoordinateX(int xCoordinate) {
 		this.coordinateX = xCoordinate;
 	}
 
-	public void setYCoordinate(int yCoordinate) {
+	public void setCoordinateY(int yCoordinate) {
 		this.coordinateY = yCoordinate;
 	}
 
