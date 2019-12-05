@@ -20,7 +20,8 @@ export class GameServiceService {
     return this.http.post(`${config.apiUrl}/pointData`, vector)};
 
   getUserCoordinates(): Observable<any>{
-      return this.http.post(`${config.apiUrl}/userCoordinates`, localStorage.getItem('JWT_TOKEN'))};
+      return this.http.post<Vector>(`${config.apiUrl}/userCoordinates`, localStorage.getItem('JWT_TOKEN'));
+  }
 
   getUserData(): Observable<any>{
       return this.http.post(`${config.apiUrl}/userData`, localStorage.getItem('JWT_TOKEN'))};
