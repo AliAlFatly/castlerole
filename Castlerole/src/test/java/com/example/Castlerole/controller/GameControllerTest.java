@@ -20,13 +20,9 @@ import java.sql.Date;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 public class GameControllerTest extends AbstractTest {
-
-
-
-    protected User newRegistredUser;
-
 
     @Autowired
     JwtAuthenticationService jwtAuthenticationService;
@@ -114,6 +110,7 @@ public class GameControllerTest extends AbstractTest {
         )
                 .andDo(print())
                 .andDo(MockMvcResultHandlers.log())
+
                 .andExpect(status().isOk())
                 .andReturn();
 
