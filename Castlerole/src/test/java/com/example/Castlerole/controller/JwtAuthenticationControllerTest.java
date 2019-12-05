@@ -3,9 +3,10 @@ package com.example.Castlerole.controller;
 import com.example.Castlerole.AbstractClass.AbstractTest;
 import com.example.Castlerole.model.dto.UserDTO;
 import com.example.Castlerole.service.JwtAuthenticationService;
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -16,7 +17,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-public class JwtAuthenticationControllerTest extends AbstractTest {
+//@RunWith(SpringRunner.class)
+@SpringBootTest
+class JwtAuthenticationControllerTest {
 
     @Autowired
     JwtAuthenticationService jwtAuthenticationService;

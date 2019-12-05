@@ -29,7 +29,10 @@ public class PointService {
     @Autowired
     private UserRepository userRepository;
 
+    //todo: remove and replace into clientside, list of type that are attackable.
     public PointDataResponse getPointData(int x, int y){
+
+        //TODO:add x y point validation
         PointDataResponse point = new PointDataResponse();
 
         point.setCoordinateX(x);
