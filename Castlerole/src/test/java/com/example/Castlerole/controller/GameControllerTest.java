@@ -46,7 +46,7 @@ public class GameControllerTest extends AbstractTest {
 
         String token = jwtAuthenticationService.login(new JwtRequest("Admin1234", "password"));
 
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(token)
                 .characterEncoding("utf-8")
@@ -75,7 +75,7 @@ public class GameControllerTest extends AbstractTest {
 
 
 
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(token)
                 .characterEncoding("utf-8")
@@ -101,7 +101,7 @@ public class GameControllerTest extends AbstractTest {
 
         String VectorData = super.mapToJson(newVector);
 
-        MvcResult mvcResultGrid = mvc.perform(MockMvcRequestBuilders.get(uriData)
+        MvcResult mvcResultGrid = mvc.perform(MockMvcRequestBuilders.post(uriData)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(VectorData)
                 .characterEncoding("utf-8")
