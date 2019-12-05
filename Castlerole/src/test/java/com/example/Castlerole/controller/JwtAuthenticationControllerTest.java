@@ -68,7 +68,6 @@ public class JwtAuthenticationControllerTest extends AbstractTest {
 
     }
 
-    //@WithMockUser(value = "User",username = "Admin12312", password = "passwor")
     @Test
     public void register() throws Exception {
         String uri = "/register";
