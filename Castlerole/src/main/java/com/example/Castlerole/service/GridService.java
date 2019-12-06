@@ -1,5 +1,7 @@
 package com.example.Castlerole.service;
 
+import com.example.Castlerole.model.Node;
+import com.example.Castlerole.model.User;
 import com.example.Castlerole.model.response.GridResponse;
 import com.example.Castlerole.repository.NodeRepository;
 import com.example.Castlerole.repository.UserRepository;
@@ -35,13 +37,13 @@ public class GridService {
             for (int xAxis = left(x); xAxis <= right(x); xAxis++){
                 // select picture from
                 String picture = "Empty";
-                Optional<String> userPicture = userRepository.findPictureReferenceByCoordinateXAndCoordinateY(xAxis,yAxis);
-                if (!userPicture.isEmpty()){
-                    picture = userPicture.toString();
+                Optional<User> user = userRepository.findByCoordinateXAndCoordinateY(xAxis,yAxis);
+                if (!user.isEmpty()){
+                    picture = user.get().getPictureReference();
                 }
-                Optional<String> nodePicture = nodeRepository.findPictureReferenceByCoordinateXAndCoordinateY(xAxis,yAxis);
-                if (!nodePicture.isEmpty()){
-                    picture = nodePicture.toString();
+                Optional<Node> node = nodeRepository.findByCoordinateXAndCoordinateY(xAxis,yAxis);
+                if (!node.isEmpty()){
+                    picture = node.get().getPictureReference();
                 }
                 GridResponse currentCoordinatesData = new GridResponse(xAxis, yAxis, picture);
                 response.add(currentCoordinatesData);
@@ -49,6 +51,7 @@ public class GridService {
         }
         return response;
     }
+
 
     public int left(int x){
         return x - this.halfScreen();

@@ -3,25 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="05cbcf3e-83df-4bce-ba2e-78b2143e1702" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/config/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/config/JwtFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/CombatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/CombatService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/after-login/after-login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/models/generic/Square.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/after-login/after-login.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/after-login/after-login.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/after-login/after-login.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/after-login/square.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/components/register/register.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/models/generic/Vector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/models/generic/Vector.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/services/authentication/authentication.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/services/authentication/authentication.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/services/authentication/token-interceptor.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/services/authentication/token-interceptor.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/services/game/game-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/services/game/game-service.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/GridService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/GridService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/grid/grid.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/components/grid/grid.component.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -200,7 +183,7 @@
       <workItem from="1575015390059" duration="26694000" />
       <workItem from="1575132404758" duration="5484000" />
       <workItem from="1575285484078" duration="4396000" />
-      <workItem from="1575638917843" duration="4034000" />
+      <workItem from="1575638917843" duration="5296000" />
     </task>
     <servers />
   </component>
