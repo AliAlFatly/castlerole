@@ -54,7 +54,7 @@ public class AbstractTest {
 
         this.mvc = MockMvcBuilders
                 .standaloneSetup(gameController)
-                .addFilter(jwtFilter)
+                //.addFilter(jwtFilter)
                 .build();
     }
 
