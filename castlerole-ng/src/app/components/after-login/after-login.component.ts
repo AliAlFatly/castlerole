@@ -5,6 +5,7 @@ import {GameServiceService} from "../../services/game/game-service.service";
 import { HttpClient } from "@angular/common/http";
 import { gridResponse } from "../../models/response/gridResponse";
 import { Vector } from "../../models/generic/Vector";
+import { userDataResponse } from "../../models/response/userDataResponse";
 
 @Component({
   selector: 'app-after-login',
@@ -20,11 +21,22 @@ export class AfterLoginComponent implements OnInit {
 
   private grid: Array<gridResponse>;
   private initialCoordinate: Vector;
+  private userData: Array<userDataResponse>
+  userName: string;
+  userWood: number;
+  userStone: number;
+  userIron: number;
+  userFood: number;
+  userTroops: number;
+
+
 
   constructor(
   private http: HttpClient,
   private gameService: GameServiceService
     ) { }
+
+
 
   ngOnInit() {
     this.gameService.getUserCoordinates().subscribe(vector => {
@@ -36,6 +48,16 @@ export class AfterLoginComponent implements OnInit {
     alert(this.initialCoordinate.y);
     });
 
+    this.gameService.getUserData().subscribe(userD => {
+        this.userData = userD;
+        this.userName = userD.username;
+        this.userWood = userD.wood;
+        this.userStone = userD.stone;
+        this.userIron = userD.iron;
+        this.userFood = userD.food;
+        this.userTroops = userD.troops;
+
+      });
 
     //alert(this.initialCoordinate.y);
     this.gameService.getGrid(this.initialCoordinate).subscribe(gridData =>{
