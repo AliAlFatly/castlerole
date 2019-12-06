@@ -79,7 +79,7 @@ public class GameControllerTest extends AbstractTest {
     public void getGrid() throws Exception {
 
         String uri = "/userData";
-        String uriData = "/grid/{x}/{y}";
+        String uriData = "/grid/";
 
         UserDTO newUser = super.createDTO("Admin1234", "password");
 
@@ -124,9 +124,9 @@ public class GameControllerTest extends AbstractTest {
 
         String VectorData = super.mapToJson(newVector);
 
-        MvcResult mvcResultGrid = mvc.perform(MockMvcRequestBuilders.get(uriData)
+        MvcResult mvcResultGrid = mvc.perform(MockMvcRequestBuilders.get(uriData + x +"/"+ y)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(VectorData)
+
                 .characterEncoding("utf-8")
                 .header("Cache-Control","no-cache, no-store")
                 .accept(MediaType.APPLICATION_JSON)
