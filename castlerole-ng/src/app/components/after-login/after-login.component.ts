@@ -22,12 +22,12 @@ export class AfterLoginComponent implements OnInit {
   private grid: Array<gridResponse>;
   private initialCoordinate: Vector;
   private userData: Array<userDataResponse>
-  userName: string;
-  userWood: number;
-  userStone: number;
-  userIron: number;
-  userFood: number;
-  userTroops: number;
+  private userName: string;
+  private userWood: number;
+  private userStone: number;
+  private userIron: number;
+  private userFood: number;
+  private userTroops: number;
 
 
 
@@ -43,9 +43,9 @@ export class AfterLoginComponent implements OnInit {
     //alert(vector.x);
     //alert(vector.y);
     this.initialCoordinate.x = vector.x;
-    this.initialCoordinate.y = vector.y;
+    //this.initialCoordinate = vector.y;
     alert(this.initialCoordinate.x);
-    alert(this.initialCoordinate.y);
+    alert(this.initialCoordinate);
     });
 
     this.gameService.getUserData().subscribe(userD => {
