@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="05cbcf3e-83df-4bce-ba2e-78b2143e1702" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Castlerole.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Castlerole.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,12 +55,10 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="SQL Dialects" />
   </component>
   <component name="RecentsManager">
@@ -156,6 +154,7 @@
         <item itemvalue="Application.CastleroleApplication" />
         <item itemvalue="JUnit.JwtAuthenticationControllerTest.register" />
         <item itemvalue="JUnit.JwtAuthenticationControllerTest.login" />
+        <item itemvalue="JUnit.JwtAuthenticationControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -178,8 +177,9 @@
       <workItem from="1574434281388" duration="5691000" />
       <workItem from="1574958386238" duration="6733000" />
       <workItem from="1575015390059" duration="26694000" />
-      <workItem from="1575123587953" duration="803000" />
-      <workItem from="1575560624120" duration="966000" />
+      <workItem from="1575132404758" duration="5484000" />
+      <workItem from="1575285484078" duration="4396000" />
+      <workItem from="1575565496947" duration="1855000" />
     </task>
     <servers />
   </component>
