@@ -28,24 +28,28 @@ export class GridComponent implements OnInit {
     private gameService: GameServiceService
   ) {}
 
-  ngOnInit() {
-    this.gameService.getUserCoordinates().subscribe(vector => {
-      // alert(vector.x);
-      // alert(vector.y);
-      this.initialCoordinate.x = vector.x;
-      this.initialCoordinate.y = vector.y;
-    });//
+  async ngOnInit() {
+    let response = await this.gameService.getUserCoordinates().toPromise();
 
+    this.initialCoordinate.x = response.x;
+    this.initialCoordinate.y = response.y;
 
-    // alert(this.initialCoordinate.y);
-    this.gameService.getGrid(this.initialCoordinate).subscribe(gridData => {
-      this.grid = gridData;
-    });
+    let gridData = await this.gameService.getGrid(this.initialCoordinate).toPromise();
+
+    this.grid = gridData;
+
+    alert(this.grid[0].picture)
+    alert(this.initialCoordinate.x)
   }
+
 
   // ngAfterViewInit() allows us to bring dynamic changes into the canvas. As such, we can render updates to the
   // canvas here, like when a new player joins, etc.
   ngAfterViewInit() {
+    // alert(this.grid[0])
+    // alert(this.initialCoordinate.x)
+    // alert(this.initialCoordinate.y)
+    // alert(this.grid[0].picture)
     this.gameService.getUserCoordinates().subscribe(vector => {
       // TODO: Dirty fix for now, can be better.
       // Look into improving and optimalizing this code.
