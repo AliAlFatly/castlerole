@@ -51,7 +51,7 @@ public class GameController {
         return userService.getUserCoordinates(jwtToken);
     }
 
-    @PostMapping("userData")
+    @PostMapping("/userData")
     public UserDataResponse getUserData(@RequestBody String jwtToken) throws Exception {
         return userService.getUserData(jwtToken);
     }
