@@ -93,7 +93,8 @@ export class AuthenticationService {
   // }
 
   getJwtToken() {
-    return localStorage.getItem(this.JWT_TOKEN);
+    //return localStorage.getItem(this.JWT_TOKEN);
+    return localStorage.getItem('JWT_TOKEN');
   }
 
   private doLoginUser(username: string, tokens: Tokens) {

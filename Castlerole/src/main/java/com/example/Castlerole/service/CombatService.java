@@ -26,9 +26,9 @@ public class CombatService {
     //add logic against attacking a point outside of grid
     //add superclass for node/user later to lesser if statements
     //kan nog niet handmatig getest worden
-    public AttackResponse attack(String jwtToken, Vector attackedPoint){
+    public AttackResponse attack(String username, Vector attackedPoint){
         //note if the client sends an unauthorized token he shouldn't be able to call this service (webSecurityConfig should block) so no need to set findUser as optional.orElse(null)
-        var attacker = userRepository.findByUsername(jwtTokenUtil.getUsernameFromToken(jwtToken));
+        var attacker = userRepository.findByUsername(username);
         var targetIsUser = userRepository.findByCoordinateXAndCoordinateY(attackedPoint.getX(), attackedPoint.getY()).orElse(null);
         var targetIsNode = nodeRepository.findByCoordinateXAndCoordinateY(attackedPoint.getX(), attackedPoint.getY()).orElse(null);
         Random r = new Random();
