@@ -25,8 +25,8 @@ public class UserService {
         return false;
     }
 
-    public Vector getUserCoordinates(String jwtToken) throws Exception {
-        String username = jwtTokenUtil.getUsernameFromToken(jwtToken);
+    public Vector getUserCoordinates(String username) throws Exception {
+        //String username = jwtTokenUtil.getUsernameFromToken(jwtToken);
         //later make findByUsername return optional<user>, to combat fabricated jwtToken errors.
         User user;
         try{
@@ -39,8 +39,8 @@ public class UserService {
         return new Vector(user.getxCoordinate(), user.getyCoordinate());
     }
 
-    public UserDataResponse getUserData(String jwtToken) throws Exception {
-        String username = jwtTokenUtil.getUsernameFromToken(jwtToken);
+    public UserDataResponse getUserData(String username) throws Exception {
+        //String username = jwtTokenUtil.getUsernameFromToken(jwtToken);
         //later make findByUsername return optional<user>, to combat fabricated jwtToken errors.
         User user;
         //todo change try catch to beter error handling

@@ -14,15 +14,19 @@ export class GameServiceService {
   constructor(private http: HttpClient) { }
 
   getGrid(vector: Vector): Observable<any>{
-  return this.http.post(`${config.apiUrl}/grid`, vector)};
+  return this.http.get(`${config.apiUrl}/grid/${vector.x}/${vector.y}`)
+  };
 
   getPointData(vector: Vector): Observable<any>{
-    return this.http.post(`${config.apiUrl}/pointData`, vector)};
+    return this.http.get(`${config.apiUrl}/pointData/${vector.x}/${vector.y}`)
+  };
 
   getUserCoordinates(): Observable<any>{
-      return this.http.post<Vector>(`${config.apiUrl}/userCoordinates`, localStorage.getItem('JWT_TOKEN'));
+      return this.http.get<Vector>(`${config.apiUrl}/userCoordinates`);
   }
 
   getUserData(): Observable<any>{
-      return this.http.post(`${config.apiUrl}/userData`, localStorage.getItem('JWT_TOKEN'))};
+      return this.http.get(`${config.apiUrl}/userData`)
+  };
 }
+

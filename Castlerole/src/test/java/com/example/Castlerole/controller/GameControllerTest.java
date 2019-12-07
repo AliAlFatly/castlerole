@@ -6,11 +6,16 @@ import com.example.Castlerole.model.dto.UserDTO;
 import com.example.Castlerole.model.helpertypes.Vector;
 import com.example.Castlerole.model.request.JwtRequest;
 import com.example.Castlerole.service.JwtAuthenticationService;
+import com.example.Castlerole.service.JwtUserService;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
@@ -19,13 +24,15 @@ import javax.persistence.Column;
 import java.sql.Date;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 public class GameControllerTest extends AbstractTest {
 
     @Autowired
     JwtAuthenticationService jwtAuthenticationService;
+
+    @Autowired
+    JwtUserService jwtUserService;
 
     @Override
     @Before
@@ -41,14 +48,21 @@ public class GameControllerTest extends AbstractTest {
         String uri = "/userData";
 
         UserDTO newUser = super.createDTO("Admin1234", "password");
-
+        //SecurityContextHolder.getContext().getAuthentication().getName();
         jwtAuthenticationService.register(newUser);
 
         String token = jwtAuthenticationService.login(new JwtRequest("Admin1234", "password"));
+        UserDetails userDetails = jwtUserService.loadUserByUsername(newUser.getUsername());
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
+                userDetails, null, userDetails.getAuthorities());
+//        usernamePasswordAuthenticationToken
+//                .setDetails(new WebAuthenticationDetailsSource().buildDetails());
 
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+
+        SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(token)
+
                 .characterEncoding("utf-8")
                 .header("Cache-Control","no-cache, no-store")
                 .accept(MediaType.APPLICATION_JSON)
@@ -65,7 +79,7 @@ public class GameControllerTest extends AbstractTest {
     public void getGrid() throws Exception {
 
         String uri = "/userData";
-        String uriData = "/grid";
+        String uriData = "/grid/";
 
         UserDTO newUser = super.createDTO("Admin1234", "password");
 
@@ -73,11 +87,20 @@ public class GameControllerTest extends AbstractTest {
 
         String token = jwtAuthenticationService.login(new JwtRequest("Admin1234", "password"));
 
+        UserDetails userDetails = jwtUserService.loadUserByUsername(newUser.getUsername());
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
+                userDetails, null, userDetails.getAuthorities());
+//        usernamePasswordAuthenticationToken
+//                .setDetails(new WebAuthenticationDetailsSource().buildDetails());
 
 
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+        SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+
+
+
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(token)
+
                 .characterEncoding("utf-8")
                 .header("Cache-Control","no-cache, no-store")
                 .accept(MediaType.APPLICATION_JSON)
@@ -101,9 +124,9 @@ public class GameControllerTest extends AbstractTest {
 
         String VectorData = super.mapToJson(newVector);
 
-        MvcResult mvcResultGrid = mvc.perform(MockMvcRequestBuilders.post(uriData)
+        MvcResult mvcResultGrid = mvc.perform(MockMvcRequestBuilders.get(uriData + x +"/"+ y)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(VectorData)
+
                 .characterEncoding("utf-8")
                 .header("Cache-Control","no-cache, no-store")
                 .accept(MediaType.APPLICATION_JSON)
