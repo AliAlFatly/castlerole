@@ -36,7 +36,7 @@ public class GridService {
             //from left to right:
             for (int xAxis = left(x); xAxis <= right(x); xAxis++){
                 // select picture from
-                String picture = "Empty";
+                String picture = "empty";
                 Optional<User> user = userRepository.findByCoordinateXAndCoordinateY(xAxis,yAxis);
                 if (!user.isEmpty()){
                     picture = user.get().getPictureReference();

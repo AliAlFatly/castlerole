@@ -21,14 +21,20 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler) //: Observable<HttpEvent<any>>
   {
-    let tokenizedReq = request.clone({
-      setHeaders: { 'Authorization': `Bearer ${this.authService.getJwtToken()}` }
-    });
+    if(this.authService.getJwtToken() != null){
+      let tokenizedReq = request.clone({
+        setHeaders: { 'Authorization': `Bearer ${this.authService.getJwtToken()}` }
+      });
+      return next.handle(tokenizedReq);
+    }
+    else {
+      return next.handle(request.clone());
+    }
     //if token is not null, add token to request.
 
 
     //if no token, return a error handler for handling unauthorized response
-    return next.handle(tokenizedReq)
+
     //   .pipe(catchError(error => {
     //   //pipe error
     //   //if error is a response and is 401

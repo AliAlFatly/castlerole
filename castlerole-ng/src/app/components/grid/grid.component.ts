@@ -38,24 +38,34 @@ export class GridComponent implements OnInit {
 
     this.grid = gridData;
 
-    alert(this.grid[0].picture)
-    alert(this.initialCoordinate.x)
+    //canvas
+    this.ctx = (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
+    for (let i = 0; i < this.grid.length; i++) {
+      let img = new Image();
+      img.src = `assets/${this.grid[i].picture}.png`;
+      img.onload = () => {
+        this.ctx.drawImage(img, (this.grid[i].x - this.grid[0].x)*100, (this.grid[i].y - this.grid[0].y)*100, 100, 100);
+      }
+    }
   }
 
 
   // ngAfterViewInit() allows us to bring dynamic changes into the canvas. As such, we can render updates to the
   // canvas here, like when a new player joins, etc.
-  ngAfterViewInit() {
-    // alert(this.grid[0])
-    // alert(this.initialCoordinate.x)
-    // alert(this.initialCoordinate.y)
-    // alert(this.grid[0].picture)
-    this.gameService.getUserCoordinates().subscribe(vector => {
-      // TODO: Dirty fix for now, can be better.
-      // Look into improving and optimalizing this code.
-      this.ctx = (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
-      this.ctx.fillRect(vector.x, vector.y, 20, 20);});
 
-    // this.ctx = this.canvas.nativeElement.getContext("2d");
+  ngAfterViewInit() {
+      // this.ctx = this.canvas.nativeElement.getContext("2d");
+      //this.ctx = (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
+
+    // this.gameService.getUserCoordinates().subscribe(vector => {
+    //   // TODO: Dirty fix for now, can be better.
+    //   // Look into improving and optimalizing this code.
+    //   this.ctx = (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
+    //   //this.ctx.fillRect(vector.x, vector.y, 20, 20);
+    //
+    //
+    // });
+
   }
+
 }
