@@ -15,8 +15,8 @@ public class Node {
     private String type;
     @Column
     private String pictureReference;
-    @Column
-    private int ownerId;
+//    @Column
+//    private int ownerId;
     @Column
     private int troops;
     @Column
@@ -34,7 +34,7 @@ public class Node {
     public Node(String type, String pictureReference, int troops, int yieldMax, int yieldMin, String yieldType, int coordinateX, int coordinateY) {
         this.type = type;
         this.pictureReference = pictureReference;
-        this.ownerId = ownerId;
+        //this.ownerId = ownerId;
         this.troops = troops;
         this.yieldMax = yieldMax;
         this.yieldType = yieldType;
@@ -58,9 +58,9 @@ public class Node {
         this.pictureReference = pictureName;
     }
 
-    public void setOwnerId(int ownerId) {
-        this.ownerId = ownerId;
-    }
+//    public void setOwnerId(int ownerId) {
+//         this.ownerId = ownerId;
+//    }
 
     public void setTroops(int troops) {
         this.troops = troops;
@@ -98,9 +98,9 @@ public class Node {
         return pictureReference;
     }
 
-    public int getOwnerId() {
-        return ownerId;
-    }
+//    public int getOwnerId() {
+//        return ownerId;
+//    }
 
     public int getTroops() {
         return troops;

@@ -50,7 +50,7 @@ public class AdminService {
             );
             nodeRepository.save(tempNode);
         }
-        return "success";
+        return "done";
     }
 
 }

@@ -22,12 +22,10 @@ CREATE TABLE `node` (
 		`id` int not null AUTO_INCREMENT PRIMARY KEY,
         `type` varchar(50) not null,
         `pictureReference` varchar(50),
-        `ownerId` int,
-        `troops` date,
+        `troops` int,
         `yieldMin` int,
         `yieldMax` int,
         `yieldType` varchar(50),
 		`coordinateX` int,
-        `coordinateY` int,
-        FOREIGN KEY (`ownerId`) REFERENCES user(`id`)
+        `coordinateY` int
         );
