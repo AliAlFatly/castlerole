@@ -38,17 +38,28 @@ export class GridComponent implements OnInit {
 
     this.grid = gridData;
 
-    //canvas
+    this.drawCanvas();
+  }
+
+  drawCanvas = async () =>{
     this.ctx = (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
+
     for (let i = 0; i < this.grid.length; i++) {
       let img = new Image();
       img.src = `assets/${this.grid[i].picture}.png`;
       img.onload = () => {
         this.ctx.drawImage(img, (this.grid[i].x - this.grid[0].x)*100, (this.grid[i].y - this.grid[0].y)*100, 100, 100);
+        // this.ctx.fillStyle="Black";
+        // this.ctx.font = "12px Arial";
+        // this.ctx.fillText(`${this.grid[i].x}, ${this.grid[i].y}`,(this.grid[i].x - this.grid[0].x) * (100-10),(this.grid[i].y - this.grid[0].y) * (100-10));
       }
     }
-  }
 
+    // this.ctx.fillStyle="Black";
+    // this.ctx.font = "36px Arial";
+    // this.ctx.fillText(`${this.initialCoordinate.x}, ${this.initialCoordinate.y}`,0.84 * 1000,0.05 * 1000);
+
+  }
 
   // ngAfterViewInit() allows us to bring dynamic changes into the canvas. As such, we can render updates to the
   // canvas here, like when a new player joins, etc.
