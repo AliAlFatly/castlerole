@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -8,6 +11,10 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule,
+        FormsModule,
+        HttpClientTestingModule,
+        RouterTestingModule],
       declarations: [ LoginComponent ]
     })
     .compileComponents();
@@ -21,5 +28,15 @@ describe('LoginComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('form invalid when empty', () => {
+    expect(component.form.valid).toBeFalsy();
+  });
+  it('username field validity', () => {
+    const username = component.form.controls['username'];
+    expect(username.valid).toBeFalsy();
+
+    let errors = {};
+    errors = username.errors || {};
   });
 });
