@@ -1,0 +1,10 @@
+<div [formGroup]="coordinateForm" (ngSubmit)="navigate()" class="border border-dark p-2">
+  <label for="x">X:</label>
+  <input type="number" id="x" placeholder="" formControlName="x" min="0" max="500">
+  <label class="ml-2" for="y">Y:</label>
+  <input type="number" id="y" placeholder="" formControlName="y" min="0" max="500">
+
+  <div class="actions d-inline-block">
+    <button class="ml-2 btn btn-sm btn-primary" type="submit">Navigate</button>
+  </div>
+</div>

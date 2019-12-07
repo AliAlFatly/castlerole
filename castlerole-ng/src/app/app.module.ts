@@ -12,7 +12,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { TokenInterceptorService } from './services/authentication/token-interceptor.service';
 import { GameComponent } from './components/game/game.component';
 import { GridComponent } from './components/grid/grid.component';
-import { UserInformationComponent } from './components/user-information/user-information.component'
+import { UserInformationComponent } from './components/user-information/user-information.component';
+import { NavigatorComponent } from './components/navigator/navigator.component'
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { UserInformationComponent } from './components/user-information/user-inf
     GameComponent,
     GridComponent,
     UserInformationComponent,
+    NavigatorComponent,
   ],
   imports: [
     BrowserModule,

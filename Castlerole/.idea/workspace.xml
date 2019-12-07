@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="05cbcf3e-83df-4bce-ba2e-78b2143e1702" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/game/game.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/components/game/game.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/game/game.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/components/game/game.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/grid/grid.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/components/grid/grid.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/components/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/logout/logout.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/components/logout/logout.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/user-information/user-information.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/components/user-information/user-information.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/user-information/user-information.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/components/user-information/user-information.component.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -184,7 +191,7 @@
       <workItem from="1575285484078" duration="4396000" />
       <workItem from="1575638917843" duration="5933000" />
       <workItem from="1575661579686" duration="183000" />
-      <workItem from="1575707824268" duration="8956000" />
+      <workItem from="1575707824268" duration="9988000" />
     </task>
     <servers />
   </component>
