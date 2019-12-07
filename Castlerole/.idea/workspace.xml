@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="05cbcf3e-83df-4bce-ba2e-78b2143e1702" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Castlerole.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Castlerole.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/GridService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/GridService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/grid/grid.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/components/grid/grid.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/grid/grid.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/components/grid/grid.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/services/authentication/token-interceptor.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/services/authentication/token-interceptor.service.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +63,6 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -183,9 +186,9 @@
       <workItem from="1575015390059" duration="26694000" />
       <workItem from="1575132404758" duration="5484000" />
       <workItem from="1575285484078" duration="4396000" />
-      <workItem from="1575638917843" duration="5296000" />
-      <workItem from="1575715898432" duration="259000" />
-      <workItem from="1575716194548" duration="2756000" />
+      <workItem from="1575638917843" duration="5933000" />
+      <workItem from="1575661579686" duration="183000" />
+      <workItem from="1575707824268" duration="3301000" />
     </task>
     <servers />
   </component>
