@@ -53,7 +53,7 @@ public class GameController {
         return userService.getUserCoordinates(username);
     }
 
-    @GetMapping("userData")
+    @GetMapping("/userData")
     public UserDataResponse getUserData() throws Exception {
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
         return userService.getUserData(username);
