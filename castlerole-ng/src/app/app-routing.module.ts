@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from "./components/login/login.component";
 import {AuthenticationGuardService} from "./guards/authentication-guard.service";
 import {RegisterComponent} from "./components/register/register.component";
-import {AfterLoginComponent} from "./components/after-login/after-login.component";
+
+import {GameComponent} from "./components/game/game.component";
 
 
 const routes: Routes = [
@@ -20,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'game',
-    component: AfterLoginComponent
+    component: GameComponent
   }
 ];
 

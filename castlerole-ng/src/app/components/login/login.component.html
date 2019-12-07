@@ -1,41 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-<body>
+<div class="header center">Log In</div>
 
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <h2>Log in</h2>
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" formControlName="username" required>
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" formControlName="password" required>
-    </div>
-    <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Log in</button> &nbsp;
-    <button type="button" (click)="toRegister()" class="btn btn-secondary">Register</button>
-  </form>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <label for="username">username</label>
+  <input type="text" id="username" placeholder="Username" autocomplete="off" formControlName="username" required>
+  <label for="password">password</label>
+  <input type="password" id="password" placeholder="Password" formControlName="password" required>
 
-<!--<div class="header center">Log In</div>-->
+  <div class="actions">
+    <button style="color: blue" type="submit" [disabled]="!loginForm.valid">LOG IN</button>
+  </div>
 
-  <!--<form [formGroup]="loginForm" (ngSubmit)="login()">
-    <label for="username">username</label>
-    <input type="text" id="username" placeholder="Username" autocomplete="off" formControlName="username" required>
-    <label for="password">password</label>
-    <input type="password" id="password" placeholder="Password" formControlName="password" required>
+</form>
 
-    <div class="actions">
-      <button style="color: blue" type="submit" [disabled]="!loginForm.valid">LOG IN</button>
-    </div>
-
-  </form>-->
-
-  <!--<button (click)="toRegister()">or register</button>-->
-
-
-</body>
-</html>
-
+<button (click)="toRegister()">or register</button>
