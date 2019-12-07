@@ -37,10 +37,12 @@ public class AdminService {
                     //null,
                     //troops, between 250-350
                     r.nextInt((350 - 250) + 250),
-                    //max yield between 85-95 ( less then player!)
-                    r.nextInt((95 - 85) + 85),
-                    //min yield
-                    r.nextInt((95 - 85) + 85),
+                    //max yield between 65-95 ( less then player!)
+                    //generate between 0 and (95-65) => 0 - 30 and add 65 to it => 0+65 => 65 min, 30 + 65 => 95 max
+                    (r.nextInt((95 - 65)) + 65),
+                    //min yield 45-64
+                    //generate between 0 and (64-45) => 0 - 19 and add 45 to it => 0+45 => 45 min, 19 + 45 => 64 max
+                    (r.nextInt((64 - 45)) + 45),
                     //yieldType
                     yieldTypes[typeIndex],
                     //x
