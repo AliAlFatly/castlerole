@@ -1,2 +1,13 @@
-<app-grid></app-grid>
-<app-user-information></app-user-information>
+<div>
+  <div class="float-right container-fluid col-md-3 border border-dark h-100 p-0">
+    <app-navigator (coordindatesEmitter)="getCoordinatesFromNavigator($event)"></app-navigator>
+    <app-user-information></app-user-information>
+
+    <app-logout></app-logout>
+<!--    <p>{{message}}</p>-->
+  </div>
+  <app-grid [coordinates]="coordinates"></app-grid>
+
+</div>
+
+

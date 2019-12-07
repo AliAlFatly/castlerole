@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {gridResponse} from '../../models/response/gridResponse';
 import {Vector} from '../../models/generic/Vector';
 import {HttpClient} from '@angular/common/http';
@@ -9,37 +9,36 @@ import {GameServiceService} from '../../services/game/game-service.service';
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.css']
 })
-export class GridComponent implements OnInit {
+export class GridComponent implements OnChanges {
 
   @ViewChild('canvas', {static: false})
   private canvas: ElementRef;
-
+  @Input() coordinates: Vector;
   private ctx: any;
 
   private grid: Array<gridResponse> = new Array<gridResponse>();
-  private initialCoordinate: Vector = new Vector(0,0);
 
 
 
-  private x = 0;
-  private y = 0;
   constructor(
     private http: HttpClient,
     private gameService: GameServiceService
   ) {}
 
-  async ngOnInit() {
-    let response = await this.gameService.getUserCoordinates().toPromise();
-
-    this.initialCoordinate.x = response.x;
-    this.initialCoordinate.y = response.y;
-
-    let gridData = await this.gameService.getGrid(this.initialCoordinate).toPromise();
-
+  async ngOnChanges() {
+    let gridData = await this.gameService.getGrid(this.coordinates).toPromise();
+    //alert(this.coordinates.x)
     this.grid = gridData;
-
+//alert(this.coordinates.x)
+    //alert(this.coordinates.y)
     this.drawCanvas();
   }
+
+  // async ngDoCheck(){
+  //   alert(this.coordinates.x)
+  //   alert(this.coordinates.y)
+  //   this.drawCanvas();
+  // }
 
   drawCanvas = async () =>{
     this.ctx = (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
@@ -65,6 +64,7 @@ export class GridComponent implements OnInit {
   // canvas here, like when a new player joins, etc.
 
   ngAfterViewInit() {
+
       // this.ctx = this.canvas.nativeElement.getContext("2d");
       //this.ctx = (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
 
