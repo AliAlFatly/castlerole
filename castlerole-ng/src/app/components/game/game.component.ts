@@ -13,6 +13,7 @@ export class GameComponent implements OnInit {
 
   coordinates: Vector = new Vector(0,0);
   message = this.coordinates.x.toString();
+
   //private initialCoordinate: Vector = new Vector(0,0);
   constructor(
     private http: HttpClient,
