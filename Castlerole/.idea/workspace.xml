@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="05cbcf3e-83df-4bce-ba2e-78b2143e1702" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init sql script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/init sql script.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/model/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/model/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/AdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/JwtUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/JwtUserService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -188,7 +184,7 @@
       <workItem from="1575285484078" duration="4396000" />
       <workItem from="1575638917843" duration="5933000" />
       <workItem from="1575661579686" duration="183000" />
-      <workItem from="1575707824268" duration="7753000" />
+      <workItem from="1575707824268" duration="8956000" />
     </task>
     <servers />
   </component>
