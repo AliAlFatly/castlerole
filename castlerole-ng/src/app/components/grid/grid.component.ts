@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {gridResponse} from '../../models/response/gridResponse';
 import {Vector} from '../../models/generic/Vector';
 import {HttpClient} from '@angular/common/http';
@@ -25,7 +25,7 @@ export class GridComponent implements OnChanges {
     private gameService: GameServiceService
   ) {}
 
-  async ngOnChanges() {
+  async ngOnChanges(changes: SimpleChanges) {
     let gridData = await this.gameService.getGrid(this.coordinates).toPromise();
     //alert(this.coordinates.x)
     this.grid = gridData;
