@@ -14,31 +14,38 @@ import { catchError, filter, take, switchMap } from 'rxjs/operators';
 //process every outgoing call by httpClient
 export class TokenInterceptorService implements HttpInterceptor {
 
-  private isRefreshing = false;
+
   private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(public authService: AuthenticationService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler) //: Observable<HttpEvent<any>>
   {
-
-    //if token is not null, add token to request.
-    if (this.authService.getJwtToken()) {
-      request = this.addToken(request, this.authService.getJwtToken());
+    if(this.authService.getJwtToken() != null){
+      let tokenizedReq = request.clone({
+        setHeaders: { 'Authorization': `Bearer ${this.authService.getJwtToken()}` }
+      });
+      return next.handle(tokenizedReq);
     }
+    else {
+      return next.handle(request.clone());
+    }
+    //if token is not null, add token to request.
+
 
     //if no token, return a error handler for handling unauthorized response
-    return next.handle(request).pipe(catchError(error => {
-      //pipe error
-      //if error is a response and is 401
-      //if (error instanceof HttpErrorResponse && error.status === 401) {
-        //return handle401Error function and passes the data passed with the error
-      //   return this.handle401Error(request, next);
-      // } else {
-        //else throwError (500??? internal server error????)
-        return throwError(error);
-      //}
-    }));
+
+    //   .pipe(catchError(error => {
+    //   //pipe error
+    //   //if error is a response and is 401
+    //   //if (error instanceof HttpErrorResponse && error.status === 401) {
+    //     //return handle401Error function and passes the data passed with the error
+    //   //   return this.handle401Error(request, next);
+    //   // } else {
+    //     //else throwError (500??? internal server error????)
+    //     return throwError(error);
+    //   //}
+    // }));
   }
 
   //add token method

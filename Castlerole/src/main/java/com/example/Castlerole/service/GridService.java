@@ -1,12 +1,12 @@
 package com.example.Castlerole.service;
 
+import com.example.Castlerole.model.Node;
+import com.example.Castlerole.model.User;
 import com.example.Castlerole.model.response.GridResponse;
 import com.example.Castlerole.repository.NodeRepository;
 import com.example.Castlerole.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.jdbc.core.JdbcOperations;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -36,14 +36,14 @@ public class GridService {
             //from left to right:
             for (int xAxis = left(x); xAxis <= right(x); xAxis++){
                 // select picture from
-                String picture = "Empty";
-                Optional<String> userPicture = userRepository.findPictureReferenceByCoordinateXAndCoordinateY(xAxis,yAxis);
-                if (!userPicture.isEmpty()){
-                    picture = userPicture.toString();
+                String picture = "empty";
+                Optional<User> user = userRepository.findByCoordinateXAndCoordinateY(xAxis,yAxis);
+                if (!user.isEmpty()){
+                    picture = user.get().getPictureReference();
                 }
-                Optional<String> nodePicture = nodeRepository.findPictureReferenceByCoordinateXAndCoordinateY(xAxis,yAxis);
-                if (!nodePicture.isEmpty()){
-                    picture = nodePicture.toString();
+                Optional<Node> node = nodeRepository.findByCoordinateXAndCoordinateY(xAxis,yAxis);
+                if (!node.isEmpty()){
+                    picture = node.get().getPictureReference();
                 }
                 GridResponse currentCoordinatesData = new GridResponse(xAxis, yAxis, picture);
                 response.add(currentCoordinatesData);
@@ -51,6 +51,7 @@ public class GridService {
         }
         return response;
     }
+
 
     public int left(int x){
         return x - this.halfScreen();
