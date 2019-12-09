@@ -30,6 +30,7 @@ export class GameComponent implements OnInit {
 
   getCoordinatesFromNavigator($event){
     this.coordinates = $event;
+    //todo check if needed on change
     //this.message = this.coordinates.x.toString()
   }
 }

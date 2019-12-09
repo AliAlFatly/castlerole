@@ -41,7 +41,7 @@ export class NavigatorComponent implements OnInit {
     this.coordinates.x = await this.form.x.value;
     this.coordinates.y = await this.form.y.value;
     //alert(this.coordinates.x)
-    await this.coordindatesEmitter.emit(this.coordinates)
+    await this.coordindatesEmitter.emit(JSON.parse(JSON.stringify(this.coordinates)))
   }
 
 }
