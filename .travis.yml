@@ -12,23 +12,12 @@ cache: npm
 
 # before_script: 
 
-script: ./mvnw clean install
+script: ./Castlerole/mvnw clean install test
 
-jobs:
-  include:
-    -stage: Test
-    name: "AbstractTest"
-    script: ./src/test/java/com/example/Castlerole/AbstractClass/AbstractTest.java clean test
-    name: "JpaConfig"
-    script: ./src/test/java/com/example/Castlerole/Config/JpaConfig.java clean test
-    name: "GameControllerTest"
-    script: ./src/test/java/com/example/Castlerole/controller/GameControllerTest.java clean test
-    name: "JwtAuthenticationControllerTest"
-    script: ./src/test/java/com/example/Castlerole/controller/JwtAuthenticationControllerTest.java clean test
-    name: "ReposTest"
-    script: ./src/test/java/com/example/Castlerole/RepositoryTest/ReposTest.java clean test
-
-
+# jobs:
+#   include:
+#     -stage: Test
+#     script: ./mvnw clean test
 # after_success:
 
 # after_failure:

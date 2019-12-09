@@ -29,7 +29,7 @@ export class GridComponent implements OnChanges {
     let gridData = await this.gameService.getGrid(this.coordinates).toPromise();
     //alert(this.coordinates.x)
     this.grid = gridData;
-//alert(this.coordinates.x)
+alert(this.coordinates.x)
     //alert(this.coordinates.y)
     this.drawCanvas();
   }
@@ -47,10 +47,10 @@ export class GridComponent implements OnChanges {
       let img = new Image();
       img.src = `assets/${this.grid[i].picture}.png`;
       img.onload = () => {
-        this.ctx.drawImage(img, (this.grid[i].x - this.grid[0].x)*100, (this.grid[i].y - this.grid[0].y)*100, 100, 100);
-        // this.ctx.fillStyle="Black";
-        // this.ctx.font = "12px Arial";
-        // this.ctx.fillText(`${this.grid[i].x}, ${this.grid[i].y}`,(this.grid[i].x - this.grid[0].x) * (100-10),(this.grid[i].y - this.grid[0].y) * (100-10));
+         this.ctx.drawImage(img, (this.grid[i].x - this.grid[0].x)*100, (this.grid[i].y - this.grid[0].y)*100, 100, 100);
+         // this.ctx.fillStyle="Black";
+         // this.ctx.font = "12px Arial";
+         // this.ctx.fillText(`${this.grid[i].x}, ${this.grid[i].y}`,(this.grid[i].x - this.grid[0].x) * (100-10),(this.grid[i].y - this.grid[0].y) * (100-10));
       }
     }
 
