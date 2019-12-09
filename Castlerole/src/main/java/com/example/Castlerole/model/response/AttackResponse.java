@@ -1,29 +1,40 @@
 package com.example.Castlerole.model.response;
 
+//todo: rename to domain model
 public class AttackResponse {
     private int x;
     private int y;
     private boolean isWon;
     private int enemyTroopCount;
     private int attackerTroopCount;
-    private int postAttackAttackerTroopCount;
-    private int troopsLost;
-    private String resourceType;
-    private int resourcesWon;
+    private int ironWon;
+    private int foodWon;
+    private int stoneWon;
+    private int woodWon;
+    private boolean attackable;
 
     public AttackResponse() {
     }
 
-    public AttackResponse(int x, int y, boolean isWon, int enemyTroopCount, int attackerTroopCount, int postAttackAttackerTroopCount, int troopsLost, String resourceType, int resourcesWon) {
+    public AttackResponse(int x, int y, boolean isWon, int enemyTroopCount, int attackerTroopCount, int ironWon, int foodWon, int stoneWon, int woodWon, boolean attackable) {
         this.x = x;
         this.y = y;
         this.isWon = isWon;
         this.enemyTroopCount = enemyTroopCount;
         this.attackerTroopCount = attackerTroopCount;
-        this.postAttackAttackerTroopCount = postAttackAttackerTroopCount;
-        this.troopsLost = troopsLost;
-        this.resourceType = resourceType;
-        this.resourcesWon = resourcesWon;
+        this.ironWon = ironWon;
+        this.foodWon = foodWon;
+        this.stoneWon = stoneWon;
+        this.woodWon = woodWon;
+        this.attackable = attackable;
+    }
+
+    public void setAttackable(boolean attackable) {
+        this.attackable = attackable;
+    }
+
+    public boolean getAttackable() {
+        return attackable;
     }
 
     public int getX() {
@@ -46,22 +57,6 @@ public class AttackResponse {
         return attackerTroopCount;
     }
 
-    public int getPostAttackAttackerTroopCount() {
-        return postAttackAttackerTroopCount;
-    }
-
-    public int getTroopsLost() {
-        return troopsLost;
-    }
-
-    public String getResourceType() {
-        return resourceType;
-    }
-
-    public int getResourcesWon() {
-        return resourcesWon;
-    }
-
     public void setX(int x) {
         this.x = x;
     }
@@ -82,19 +77,39 @@ public class AttackResponse {
         this.attackerTroopCount = attackerTroopCount;
     }
 
-    public void setPostAttackAttackerTroopCount(int postAttackAttackerTroopCount) {
-        this.postAttackAttackerTroopCount = postAttackAttackerTroopCount;
+    public int getIronWon() {
+        return ironWon;
     }
 
-    public void setTroopsLost(int troopsLost) {
-        this.troopsLost = troopsLost;
+    public int getFoodWon() {
+        return foodWon;
     }
 
-    public void setResourceType(String resourceType) {
-        this.resourceType = resourceType;
+    public int getStoneWon() {
+        return stoneWon;
     }
 
-    public void setResourcesWon(int resourcesWon) {
-        this.resourcesWon = resourcesWon;
+    public int getWoodWon() {
+        return woodWon;
+    }
+
+    public boolean isAttackable() {
+        return attackable;
+    }
+
+    public void setIronWon(int ironWon) {
+        this.ironWon = ironWon;
+    }
+
+    public void setFoodWon(int foodWon) {
+        this.foodWon = foodWon;
+    }
+
+    public void setStoneWon(int stoneWon) {
+        this.stoneWon = stoneWon;
+    }
+
+    public void setWoodWon(int woodWon) {
+        this.woodWon = woodWon;
     }
 }

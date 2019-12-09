@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
     )
       .subscribe(success => {
         if (success) {
-          this.router.navigate(['']);
+          this.router.navigate(['/game']);
         }
       });
   }

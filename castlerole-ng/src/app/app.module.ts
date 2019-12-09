@@ -2,15 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { RegisterComponent } from './components/register/register.component';
-import { AfterLoginComponent } from './components/after-login/after-login.component';
-
+import { TokenInterceptorService } from './services/authentication/token-interceptor.service';
+import { GameComponent } from './components/game/game.component';
+import { GridComponent } from './components/grid/grid.component';
+import { UserInformationComponent } from './components/user-information/user-information.component';
+import { NavigatorComponent } from './components/navigator/navigator.component'
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { AfterLoginComponent } from './components/after-login/after-login.compon
     RegisterComponent,
     LogoutComponent,
     RegisterComponent,
-    AfterLoginComponent,
+    GameComponent,
+    GridComponent,
+    UserInformationComponent,
+    NavigatorComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +35,11 @@ import { AfterLoginComponent } from './components/after-login/after-login.compon
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

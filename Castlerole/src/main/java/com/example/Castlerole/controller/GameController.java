@@ -10,12 +10,13 @@ import com.example.Castlerole.service.GridService;
 import com.example.Castlerole.service.PointService;
 import com.example.Castlerole.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
 @RestController()
-@CrossOrigin
+@CrossOrigin()
 public class GameController {
 
     @Autowired
@@ -30,33 +31,38 @@ public class GameController {
     @Autowired
     public CombatService combatService;
 
-    @GetMapping("/grid")
-    public ArrayList<GridResponse> GetGrid(@RequestBody Vector vector){
-        return gridService.getGrid(vector.getX(), vector.getY());
+    @GetMapping("/grid/{x}/{y}")
+    public ArrayList<GridResponse> GetGrid(@PathVariable("x") int x, @PathVariable("y") int y){
+        return gridService.getGrid(x, y);
     }
 
-    @GetMapping("/pointData")
-    public PointDataResponse getPointData(@RequestBody Vector vector) throws Exception {
+    @GetMapping("/pointData{x}/{y}")
+    public PointDataResponse getPointData(@PathVariable("x") int x, @PathVariable("y") int y) throws Exception {
         try{
-            return pointService.getPointData(vector.getX(), vector.getY());
+            return pointService.getPointData(x, y);
         }
         catch (Exception err){
             throw new Exception("Something went wrong");
         }
     }
 
+    //todo: get token from context
     @GetMapping("/userCoordinates")
-    public Vector getUserCoordinates(String jwtToken) throws Exception {
-        return userService.getUserCoordinates(jwtToken);
+    public Vector getUserCoordinates() throws Exception {
+        var username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userService.getUserCoordinates(username);
     }
 
-    @GetMapping("userData")
-    public UserDataResponse getUserData(String jwtToken) throws Exception {
-        return userService.getUserData(jwtToken);
+    @GetMapping("/userData")
+    public UserDataResponse getUserData() throws Exception {
+        var username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userService.getUserData(username);
     }
 
-    @PutMapping("Attack")
-    public AttackResponse attackPoint(String jwtToken, Vector attackedPoint){
-        return combatService.attack(jwtToken, attackedPoint);
+    @GetMapping("Attack{x}/{y}")
+    public AttackResponse attackPoint(@PathVariable("x") int x, @PathVariable("y") int y){
+        var attackedPoint = new Vector(x, y);
+        var username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return combatService.attack(username, attackedPoint);
     }
 }

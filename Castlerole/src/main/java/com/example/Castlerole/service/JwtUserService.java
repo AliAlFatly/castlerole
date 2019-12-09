@@ -3,9 +3,11 @@ package com.example.Castlerole.service;
 import java.sql.Date;
 import java.util.*;
 
+import com.example.Castlerole.model.Node;
 import com.example.Castlerole.model.User;
 import com.example.Castlerole.model.dto.UserDTO;
 import com.example.Castlerole.model.helpertypes.IntVector;
+import com.example.Castlerole.model.helpertypes.Vector;
 import com.example.Castlerole.repository.NodeRepository;
 import com.example.Castlerole.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,77 +73,98 @@ public class JwtUserService implements UserDetailsService {
         return userRepository.save(newUser);
     }
 
+    //todo add comments
+    //todo check if reworked functionality is correct.
     public IntVector getXY() throws Exception {
 
         Integer finalXCoordinate;
         Integer finalYCoordinate;
 
-        ArrayList<Integer> xList = new ArrayList<Integer>();
-        ArrayList<Integer> yList = new ArrayList<Integer>();
-        ArrayList<Integer> targetXList = new ArrayList<Integer>();
-        ArrayList<Integer> targetYList = new ArrayList<Integer>();
 
-        userRepository.findAll().forEach(x -> xList.add(x.getxCoordinate()));
-        nodeRepository.findAll().forEach(x -> xList.add(x.getxCoordinate()));
-        InsertionSorting(xList);
+        //initialize 2 empty vector lists.
+        //save all taken spots in vectorList
+        ArrayList<Vector> vectorArrayList = new ArrayList<>();
+        //save all empty spots in targetList
+        ArrayList<Vector> targetVectorArrayList = new ArrayList<>();
+        var users = userRepository.findAll();
+        var nodes = nodeRepository.findAll();
+        //add user and node spawns to "spot taken arrayList"
+        for (User user: users) {
+            vectorArrayList.add(new Vector(user.getxCoordinate(), user.getyCoordinate()));
+        }
+        for (Node node: nodes) {
+            vectorArrayList.add(new Vector(node.getxCoordinate(), node.getyCoordinate()));
+        }
+        //sort the list => x then y
+        VectorSorting(vectorArrayList);
 
-        userRepository.findAll().forEach(y -> yList.add(y.getyCoordinate()));
-        nodeRepository.findAll().forEach(y -> yList.add(y.getyCoordinate()));
-        InsertionSorting(yList);
-
-
-        for (int i = 0; i < gridSize; i++){
-            if (!xList.isEmpty()){
-                if (xList.get(0) == i){
-                    xList.remove(0);
+        //loop over every possible x/y coordinate
+        for (int x = 0; x < gridSize; x++){
+            for (int y = 0; y < gridSize; y++){
+                //if spot taken list is not empty check condition
+                if (!vectorArrayList.isEmpty()){
+                    //if the current loop coordinate is same as the first coordinate in the sorted spot taken list, remove it from the spot taken list and continue
+                    if (vectorArrayList.get(0).getX() == x && vectorArrayList.get(0).getY() == y ){
+                        vectorArrayList.remove(0);
+                    }
+                    //else add the coordinate(which is not in the takenList) to the targetList)
+                    else {
+                        targetVectorArrayList.add(new Vector(x,y));
+                    }
                 }
+                //since spot taken list is empty can safely add all remaining possible coordinates.
                 else {
-                    targetXList.add(i);
+                    targetVectorArrayList.add(new Vector(x,y));
                 }
-            }
-            else{
-                targetXList.add(i);
-            }
-
-            if (!yList.isEmpty()){
-                if (yList.get(0) == i){
-                    yList.remove(0);
-                }
-                else {
-                    targetYList.add(i);
-                }
-            }
-            else {
-                targetYList.add(i);
             }
         }
-
         Random r = new Random();
-
-        if (!targetXList.isEmpty()){
-            Integer xMin = Collections.min(targetXList);
-            Integer xMax = Collections.max(targetXList);
-            Integer xCoordinates = (r.nextInt(xMax - xMin) + xMin);
-            finalXCoordinate = xCoordinates;
+        //if the targetList is not empty that means there are spots left.
+        if (!targetVectorArrayList.isEmpty()){
+            Integer lastIndex = targetVectorArrayList.size();
+            //chose index randomly between first and last index.
+            //NOTE: r.next returns 0 - (size-1), size returns total number of elements so if array got 10 elements then it returns 10, last index = 9. so r.nextInt returns between 0-(10-1) => between 0-9.
+            Integer chosenIndex = r.nextInt(lastIndex);
+            //assign the values of the randomly chosen index to the return variables
+            finalXCoordinate = targetVectorArrayList.get(chosenIndex).getX();
+            finalYCoordinate = targetVectorArrayList.get(chosenIndex).getY();
         }
         else {
-            throw new Exception("No more grid spots left for a new castle");
+            //if targetList is empty, no more grids
+            throw new Exception("No more grid spots left");
         }
-        if (!targetYList.isEmpty()){
-            Integer yMin = Collections.min(targetYList);
-            Integer yMax = Collections.max(targetYList);
-            Integer yCoordinates = (r.nextInt(yMax - yMin) + yMin);
-            finalYCoordinate = yCoordinates;
-        }
-        else {
-            throw new Exception("No more grid spots left for a new castle");
-        }
-
+        //return chosen index values.
         return new IntVector(finalXCoordinate, finalYCoordinate);
     }
 
 
+    public static void VectorSorting(ArrayList<Vector> arrayList){
+        //sort X
+        for (int i = 0; i < arrayList.size();i++){
+            var key = arrayList.get(i);
+            var j = i - 1;
+            while (j > -1 && arrayList.get(j).getX() > key.getX()){
+                arrayList.set(j+1, arrayList.get(j));
+                j--;
+            }
+            arrayList.set(j+1,key);
+        }
+        //sort Y (in the X sortedList)
+        for (int y = 0; y < arrayList.size(); y++){
+            var key = arrayList.get(y);
+            var j = y - 1;
+            while (j > -1
+                    && arrayList.get(j).getX() == key.getX()
+                    && arrayList.get(j).getY() > key.getY())
+            {
+                arrayList.set(j+1, arrayList.get(j));
+                j--;
+            }
+            arrayList.set(j+1,key);
+        }
+    }
 
+    //todo: remove????
     public static void InsertionSorting(ArrayList<Integer> arrayList) {
         for (int i = 0; i < arrayList.size(); i++){
             var key = arrayList.get(i);
