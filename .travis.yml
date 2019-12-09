@@ -1,0 +1,45 @@
+language: java
+jdk: 
+  openjdk11
+
+
+
+cache: npm
+
+# before_install:
+
+# install: 
+
+# before_script: 
+
+script: ./mvnw clean install
+
+jobs:
+  include:
+    -stage: Test
+    name: "AbstractTest"
+    script: ./src/test/java/com/example/Castlerole/AbstractClass/AbstractTest clean test
+    name: "JpaConfig"
+    script: ./src/test/java/com/example/Castlerole/Config/JpaConfig clean test
+    name: "GameControllerTest"
+    script: ./src/test/java/com/example/Castlerole/controller/GameControllerTest clean test
+    name: "JwtAuthenticationControllerTest"
+    script: ./src/test/java/com/example/Castlerole/controller/JwtAuthenticationControllerTest clean test
+    name: "ReposTest"
+    script: ./src/test/java/com/example/Castlerole/RepositoryTest/ReposTest clean test
+
+
+# after_success:
+
+# after_failure:
+
+# after_script:
+
+# before_deploy:
+
+# deploy:
+
+# after_deploy:
+
+# notifications:
+#   email: xxxxx
