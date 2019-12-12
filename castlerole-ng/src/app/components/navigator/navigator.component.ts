@@ -35,11 +35,12 @@ export class NavigatorComponent implements OnInit {
     this.coordindatesEmitter.emit(this.coordinates)
   }
 
-  get form() { return this.coordinateForm.controls; }
+  //get form() { return this.coordinateForm.controls; }
 
   async navigate(){
-    this.coordinates.x = await this.form.x.value;
-    this.coordinates.y = await this.form.y.value;
+    this.coordinates.x = await this.coordinateForm.controls.x.value;
+    this.coordinates.y = await this.coordinateForm.controls.y.value;
+    //alert(this.coordinates.x)
     //alert(this.coordinates.x)
     await this.coordindatesEmitter.emit(JSON.parse(JSON.stringify(this.coordinates)))
   }
