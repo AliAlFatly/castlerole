@@ -11,7 +11,9 @@ cache: npm
 # install: 
 
 # before_script: 
-
+before_install:
+  - chmod +x build.sh
+  
 script: ./Castlerole/mvnw clean install test
 
 # jobs:

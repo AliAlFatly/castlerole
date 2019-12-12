@@ -18,8 +18,6 @@ export class GridComponent implements OnChanges {
 
   private grid: Array<gridResponse> = new Array<gridResponse>();
 
-
-
   constructor(
     private http: HttpClient,
     private gameService: GameServiceService
@@ -29,7 +27,7 @@ export class GridComponent implements OnChanges {
     let gridData = await this.gameService.getGrid(this.coordinates).toPromise();
     //alert(this.coordinates.x)
     this.grid = gridData;
-alert(this.coordinates.x)
+    //alert(this.coordinates.x)
     //alert(this.coordinates.y)
     this.drawCanvas();
   }
@@ -42,23 +40,28 @@ alert(this.coordinates.x)
 
   drawCanvas = async () =>{
     this.ctx = (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
-
+    //this.ctx.clearRect(0,0,1000,1000)
+    let background = new Image();
+    background.src = `assets/empty.png`;
+    await this.ctx.drawImage(background, 0, 0, 1000, 1000);
     for (let i = 0; i < this.grid.length; i++) {
-      let img = new Image();
-      img.src = `assets/${this.grid[i].picture}.png`;
-      img.onload = () => {
-         this.ctx.drawImage(img, (this.grid[i].x - this.grid[0].x)*100, (this.grid[i].y - this.grid[0].y)*100, 100, 100);
-         // this.ctx.fillStyle="Black";
-         // this.ctx.font = "12px Arial";
-         // this.ctx.fillText(`${this.grid[i].x}, ${this.grid[i].y}`,(this.grid[i].x - this.grid[0].x) * (100-10),(this.grid[i].y - this.grid[0].y) * (100-10));
+      if (this.grid[i].picture !== 'empty') {
+        let img = new Image();
+        img.src = `assets/${this.grid[i].picture}.png`;
+        await this.ctx.drawImage(img, (this.grid[i].x - this.grid[0].x) * 100, (this.grid[i].y - this.grid[0].y) * 100, 100, 100);
       }
     }
+      // let img = new Image();
+      // img.src = `assets/${this.grid[i].picture}.png`;
+      //
+      // img.onload = async () => {
+      //    await this.ctx.drawImage(img, (this.grid[i].x - this.grid[0].x)*100, (this.grid[i].y - this.grid[0].y)*100, 100, 100);
+      //    // this.ctx.fillStyle="Black";
+      //    // this.ctx.font = "12px Arial";
+      //    // await this.ctx.fillText(`${this.grid[i].x}, ${this.grid[i].y}`,(this.grid[i].x - this.grid[0].x) * (100-10),(this.grid[i].y - this.grid[0].y) * (100-10));
+      // }
 
-    // this.ctx.fillStyle="Black";
-    // this.ctx.font = "36px Arial";
-    // this.ctx.fillText(`${this.initialCoordinate.x}, ${this.initialCoordinate.y}`,0.84 * 1000,0.05 * 1000);
-
-  }
+  };
 
   // ngAfterViewInit() allows us to bring dynamic changes into the canvas. As such, we can render updates to the
   // canvas here, like when a new player joins, etc.
