@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="05cbcf3e-83df-4bce-ba2e-78b2143e1702" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/GridService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/GridService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/gameComponents/game-details/game-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/components/gameComponents/game-details/game-details.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/gameComponents/game-details/game-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/components/gameComponents/game-details/game-details.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/gameComponents/user-information/user-information.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/components/gameComponents/user-information/user-information.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/components/gameComponents/user-information/user-information.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/components/gameComponents/user-information/user-information.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/models/response/attackResponse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/models/response/attackResponse.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../castlerole-ng/src/app/models/response/userDataResponse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../castlerole-ng/src/app/models/response/userDataResponse.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
