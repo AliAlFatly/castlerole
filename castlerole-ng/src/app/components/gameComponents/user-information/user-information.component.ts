@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GameServiceService} from "../../../services/game/game-service.service";
-import { userDataResponse } from "../../../models/response/userDataResponse";
+import { UserDataResponse } from "../../../models/response/userDataResponse";
 
 @Component({
   selector: 'app-user-information',
@@ -10,7 +10,7 @@ import { userDataResponse } from "../../../models/response/userDataResponse";
 export class UserInformationComponent implements OnInit {
 
   //Gathers user data
-  private userData: Array<userDataResponse>
+  private userData: Array<UserDataResponse>
   private userName: string;
   private userWood: number;
   private userStone: number;

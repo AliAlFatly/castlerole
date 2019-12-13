@@ -1,4 +1,4 @@
-export class gridResponse{
+export class GridResponse{
   x: number;
   y: number;
   picture: string;

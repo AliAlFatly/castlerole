@@ -9,7 +9,7 @@ import {
   SimpleChanges,
   ViewChild
 } from '@angular/core';
-import {gridResponse} from '../../../models/response/gridResponse';
+import {GridResponse} from '../../../models/response/gridResponse';
 import {Vector} from '../../../models/generic/Vector';
 import {HttpClient} from '@angular/common/http';
 import {GameServiceService} from '../../../services/game/game-service.service';
@@ -32,7 +32,7 @@ export class GridComponent implements OnChanges {
   private zeroY: number;
 
 
-  private grid: Array<gridResponse> = new Array<gridResponse>();
+  private grid: Array<GridResponse> = new Array<GridResponse>();
 
   constructor(
     private http: HttpClient,
