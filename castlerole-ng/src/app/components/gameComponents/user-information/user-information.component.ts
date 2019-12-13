@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GameServiceService} from "../../services/game/game-service.service";
-import { userDataResponse } from "../../models/response/userDataResponse";
+import {GameServiceService} from "../../../services/game/game-service.service";
+import { userDataResponse } from "../../../models/response/userDataResponse";
 
 @Component({
   selector: 'app-user-information',

@@ -1,8 +1,8 @@
 import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
-import {gridResponse} from '../../models/response/gridResponse';
-import {Vector} from '../../models/generic/Vector';
+import {gridResponse} from '../../../models/response/gridResponse';
+import {Vector} from '../../../models/generic/Vector';
 import {HttpClient} from '@angular/common/http';
-import {GameServiceService} from '../../services/game/game-service.service';
+import {GameServiceService} from '../../../services/game/game-service.service';
 
 @Component({
   selector: 'app-grid',
@@ -23,13 +23,38 @@ export class GridComponent implements OnChanges {
     private gameService: GameServiceService
   ) {}
 
+
+  async ngOnInit(){
+    if(this.coordinates.x > -1){
+      let gridData = await this.gameService.getGrid(this.coordinates).toPromise();
+      //alert(this.coordinates.x)
+      this.grid = gridData;
+      //alert(this.coordinates.x)
+      //alert(this.coordinates.y)
+      this.drawCanvas();
+    }
+    else {
+      let response = await this.gameService.getUserCoordinates().toPromise();
+      this.coordinates.x = response.x;
+      this.coordinates.y = response.y;
+      let gridData = await this.gameService.getGrid(this.coordinates).toPromise();
+      //alert(this.coordinates.x)
+      this.grid = gridData;
+      //alert(this.coordinates.x)
+      //alert(this.coordinates.y)
+      this.drawCanvas();
+    }
+  }
+
   async ngOnChanges(changes: SimpleChanges) {
-    let gridData = await this.gameService.getGrid(this.coordinates).toPromise();
-    //alert(this.coordinates.x)
-    this.grid = gridData;
-    //alert(this.coordinates.x)
-    //alert(this.coordinates.y)
-    this.drawCanvas();
+      this.ctx = (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
+      await this.ctx.clearRect(0,0,1000,1000)
+      let gridData = await this.gameService.getGrid(this.coordinates).toPromise();
+      //alert(this.coordinates.x)
+      this.grid = gridData;
+      //alert(this.coordinates.x)
+      //alert(this.coordinates.y)
+      this.drawCanvas();
   }
 
   // async ngDoCheck(){
@@ -40,12 +65,12 @@ export class GridComponent implements OnChanges {
 
   drawCanvas = async () =>{
     this.ctx = (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
-    //this.ctx.clearRect(0,0,1000,1000)
+    //await this.ctx.clearRect(0,0,1000,1000)
     let background = new Image();
     background.src = `assets/empty.png`;
     await this.ctx.drawImage(background, 0, 0, 1000, 1000);
     for (let i = 0; i < this.grid.length; i++) {
-      if (this.grid[i].picture !== 'empty') {
+      if (this.grid[i].picture !== "empty") {
         let img = new Image();
         img.src = `assets/${this.grid[i].picture}.png`;
         await this.ctx.drawImage(img, (this.grid[i].x - this.grid[0].x) * 100, (this.grid[i].y - this.grid[0].y) * 100, 100, 100);

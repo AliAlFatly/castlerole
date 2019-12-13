@@ -1,8 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {Vector} from "../../models/generic/Vector";
+import {Vector} from "../../../models/generic/Vector";
 import {HttpClient} from "@angular/common/http";
-import {GameServiceService} from "../../services/game/game-service.service";
+import {GameServiceService} from "../../../services/game/game-service.service";
 
 @Component({
   selector: 'app-navigator',
