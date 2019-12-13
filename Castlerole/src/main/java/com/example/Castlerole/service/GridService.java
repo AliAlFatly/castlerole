@@ -56,6 +56,7 @@ public class GridService {
     public int left(int x){
         return x - this.halfScreen();
     }
+
     public int right(int x){
         return x + this.halfScreen();
     }

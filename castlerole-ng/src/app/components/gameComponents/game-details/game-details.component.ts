@@ -26,10 +26,13 @@ export class GameDetailsComponent implements OnChanges {
     if (this.targetCoordinates.x > -1){
       this.pointDetails = await this.gameService.getPointData(this.targetCoordinates).toPromise();
     }
+    this.attackResponse.x = -1
   }
 
   attack = async () => {
     this.attackResponse = await this.gameService.attack(this.targetCoordinates).toPromise();
+    //this.pointDetails = new PointDataResponse(-1,-1,"none", false);
   }
+
 
 }

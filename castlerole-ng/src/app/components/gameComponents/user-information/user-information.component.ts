@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {GameServiceService} from "../../../services/game/game-service.service";
 import { UserDataResponse } from "../../../models/response/userDataResponse";
 
@@ -7,34 +7,23 @@ import { UserDataResponse } from "../../../models/response/userDataResponse";
   templateUrl: './user-information.component.html',
   styleUrls: ['./user-information.component.css']
 })
-export class UserInformationComponent implements OnInit {
+export class UserInformationComponent implements OnChanges {
 
-  //Gathers user data
-  private userData: Array<UserDataResponse>
-  private userName: string;
-  private userWood: number;
-  private userStone: number;
-  private userIron: number;
-  private userFood: number;
-  private userTroops: number;
+  private userData = new UserDataResponse("",-1,-1,-1,-1,-1,-1,-1)
 
+  constructor(private gameService: GameServiceService) { }
 
-  constructor(
-  private gameService: GameServiceService) { }
+  async ngOnInit() {
+    await this.updateUserData();
 
-  ngOnInit() {
+  }
 
-      this.gameService.getUserData().subscribe(userD => {
-              this.userData = userD;
-              this.userName = userD.username;
-              this.userWood = userD.wood;
-              this.userStone = userD.stone;
-              this.userIron = userD.iron;
-              this.userFood = userD.food;
-              this.userTroops = userD.troops;
+  async ngOnChanges(changes: SimpleChanges) {
+    await this.updateUserData();
+  }
 
-      });
-
+  updateUserData = async () => {
+    this.userData = await this.gameService.getUserData().toPromise();
   }
 
 }

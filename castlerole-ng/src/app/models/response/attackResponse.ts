@@ -4,7 +4,7 @@ export class AttackResponse {
   constructor(x: number, y: number, isWon: boolean, enemyTroopCount: number, attackerTroopCount: number, ironWon: number, foodWon: number, stoneWon: number, woodWon: number, attackable: boolean) {
     this.x = x;
     this.y = y;
-    this.isWon = isWon;
+    this.won = isWon;
     this.enemyTroopCount = enemyTroopCount;
     this.attackerTroopCount = attackerTroopCount;
     this.ironWon = ironWon;
@@ -16,7 +16,7 @@ export class AttackResponse {
 
   x: number;
   y: number;
-  isWon: boolean;
+  won: boolean;
   enemyTroopCount: number;
   attackerTroopCount: number;
   ironWon: number;
