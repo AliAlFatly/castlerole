@@ -22,6 +22,10 @@ export class UserInformationComponent implements OnChanges {
     await this.updateUserData();
   }
 
+  async ngDoCheck(){
+    await this.updateUserData();
+  }
+
   updateUserData = async () => {
     this.userData = await this.gameService.getUserData().toPromise();
   }
