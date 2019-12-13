@@ -1,4 +1,4 @@
-export class userDataResponse{
+export class UserDataResponse{
     username: string;
     coordinateX: number;
     coordinateY: number;

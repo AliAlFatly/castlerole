@@ -1,3 +1,8 @@
 <div class="border border-dark">
-  {{targetCoordinates.x}}, {{targetCoordinates.y}}
+  <span *ngIf="targetCoordinates.x > -1 && pointDetails.coordinateX > -1">
+    {{pointDetails.coordinateX}}, {{pointDetails.coordinateY}} <br />
+    {{pointDetails.type}} <br />
+    <button *ngIf="pointDetails.attackable" (click)="attack()">Attack</button>
+  </span>
+<!--  {{targetCoordinates.x}}, {{targetCoordinates.y}}-->
 </div>
