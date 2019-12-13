@@ -12,24 +12,20 @@ import {Vector} from "../../../models/generic/Vector";
 export class GameComponent implements OnInit {
 
   coordinates: Vector = new Vector(-1,-1);
-  message = this.coordinates.x.toString();
+  clickTargetCoordinates: Vector = new Vector(-1,-1);
 
-  //private initialCoordinate: Vector = new Vector(0,0);
   constructor(
     private http: HttpClient,
     private gameService: GameServiceService
   ) { }
 
-  async ngOnInit() {
-    // let response = await this.gameService.getUserCoordinates().toPromise();
-    //
-    // this.coordinates.x = response.x;
-    // this.coordinates.y = response.y;
+  async ngOnInit() {}
 
+  async getCoordinatesFromNavigator($event){
+    this.coordinates = await $event;
   }
 
-  getCoordinatesFromNavigator($event){
-    this.coordinates = $event;
-    //this.message = this.coordinates.x.toString()
+  async getTargetFromGridClick($event){
+    this.clickTargetCoordinates = await $event;
   }
 }
