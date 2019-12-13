@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {GameServiceService} from "../../services/game/game-service.service";
+import {GameServiceService} from "../../../services/game/game-service.service";
 import {Router} from "@angular/router";
-import {Vector} from "../../models/generic/Vector";
+import {Vector} from "../../../models/generic/Vector";
 
 @Component({
   selector: 'app-game',
@@ -11,7 +11,7 @@ import {Vector} from "../../models/generic/Vector";
 })
 export class GameComponent implements OnInit {
 
-  coordinates: Vector = new Vector(0,0);
+  coordinates: Vector = new Vector(-1,-1);
   message = this.coordinates.x.toString();
 
   //private initialCoordinate: Vector = new Vector(0,0);
@@ -30,7 +30,6 @@ export class GameComponent implements OnInit {
 
   getCoordinatesFromNavigator($event){
     this.coordinates = $event;
-    //todo check if needed on change
     //this.message = this.coordinates.x.toString()
   }
 }
