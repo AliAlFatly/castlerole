@@ -10,6 +10,9 @@ cache: npm
 
 # install: 
 
+before_install:
+ - chmod +x gradlew
+
 before_script: cd Castlerole && ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 # before_install:
   
