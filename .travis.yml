@@ -11,7 +11,7 @@ cache: npm
 # install: 
 
 before_install:
- - chmod +x gradlew
+ - chmod +x ./Castlerole/mvnw
 
 before_script: cd Castlerole && ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 # before_install:
