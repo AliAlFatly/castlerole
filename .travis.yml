@@ -13,10 +13,10 @@ cache: npm
 before_install:
  - chmod +x ./Castlerole/mvnw
 
-before_script: cd Castlerole && ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+#before_script: cd Castlerole && ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 # before_install:
   
-script: cd Castlerole && ./mvnw test -B # ./mvnw clean install test #./Castlerole/mvnw clean install test
+script: ./Castlerole/mvnw clean install test #cd Castlerole && ./mvnw test -B # ./mvnw clean install test #
 
 
 
