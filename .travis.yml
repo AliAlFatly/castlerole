@@ -14,7 +14,7 @@ cache: npm
 # before_install:
 #   - chmod +x build.sh
   
-script: cd Castlerole && mvnw install test #./Castlerole/mvnw clean install test
+script: cd Castlerole && ./mvnw install test #./Castlerole/mvnw clean install test
 
 
 
