@@ -1,0 +1,30 @@
+<div class="border border-dark">
+  <span *ngIf="targetCoordinates.x > -1 && pointDetails.coordinateX > -1">
+    {{pointDetails.coordinateX}}, {{pointDetails.coordinateY}} <br />
+    {{pointDetails.type}} <br />
+    <button *ngIf="pointDetails.attackable" (click)="attack()">Attack</button>
+  </span>
+  <span *ngIf="attackResponse.x > -1">
+    <h2>Attack result:</h2>
+    Attacked: {{attackResponse.x}}, {{attackResponse.y}} <br />
+    Enemy troops: {{attackResponse.enemyTroopCount}} <br />
+    My troops: {{attackResponse.attackerTroopCount}} <br />
+    <span *ngIf="attackResponse.won">
+          Attack Result: Won
+    </span>
+    <span *ngIf="!attackResponse.won">
+          Attack Result: Lost
+    </span>
+
+    <span *ngIf="attackResponse.won">
+      <h2>Resources won:</h2>
+      Iron: {{attackResponse.ironWon}} <br />
+      Food: {{attackResponse.foodWon}} <br />
+      Stone: {{attackResponse.stoneWon}} <br />
+      Wood: {{attackResponse.woodWon}} <br />
+
+    </span>
+
+  </span>
+<!--  {{targetCoordinates.x}}, {{targetCoordinates.y}}-->
+</div>

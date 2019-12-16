@@ -1,0 +1,11 @@
+<div>
+  <div class="float-right container-fluid col-md-3 border border-dark h-100 p-0">
+    <app-navigator (coordindatesEmitter)="getCoordinatesFromNavigator($event)"></app-navigator>
+    <app-user-information></app-user-information>
+    <app-game-details [targetCoordinates]="clickTargetCoordinates"></app-game-details>
+  </div>
+  <app-grid [coordinates]="coordinates" (clickEmitter)="getTargetFromGridClick($event)"></app-grid>
+
+</div>
+
+
