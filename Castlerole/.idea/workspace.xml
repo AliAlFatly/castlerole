@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05cbcf3e-83df-4bce-ba2e-78b2143e1702" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/Castlerole/service/AdminServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/Castlerole/service/CombatServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/Castlerole/service/GridServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/Castlerole/service/JwtAuthenticationServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/Castlerole/service/JwtUserServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/Castlerole/service/PointServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/Castlerole/service/UserServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/Castlerole/Services/CombatServiceTest.java" beforeDir="false" />
-    </list>
+    <list default="true" id="05cbcf3e-83df-4bce-ba2e-78b2143e1702" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +201,10 @@
       <workItem from="1575707824268" duration="9988000" />
       <workItem from="1575742700446" duration="170000" />
       <workItem from="1575881181626" duration="343000" />
-      <workItem from="1576316282939" duration="1997000" />
+      <workItem from="1575883324879" duration="755000" />
+      <workItem from="1575891683936" duration="2837000" />
+      <workItem from="1576153320813" duration="3795000" />
+      <workItem from="1576227728632" duration="6460000" />
     </task>
     <servers />
   </component>

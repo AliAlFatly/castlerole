@@ -41,6 +41,7 @@ public class JwtAuthenticationService {
         //if user exist throw exception
         boolean exist = userService.UserExist(user.getUsername());
         if (exist){
+            //todo: generic excpetion veranderen naar speciek
             throw new Exception("User with the username {" + user.getUsername() + "} already exists");
         }
         //after registration save new user
