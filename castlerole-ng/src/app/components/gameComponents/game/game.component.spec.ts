@@ -4,7 +4,7 @@ import { GameComponent } from './game.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {GridComponent} from "../grid/grid.component";
 import {UserInformationComponent} from "../user-information/user-information.component";
-import {LogoutComponent} from "../logout/logout.component";
+import {LogoutComponent} from "../../authenticationComponents/logout/logout.component";
 import {RouterTestingModule} from "@angular/router/testing";
 
 describe('GameComponent', () => {

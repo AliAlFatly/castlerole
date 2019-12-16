@@ -14,19 +14,23 @@ export class GameServiceService {
   constructor(private http: HttpClient) { }
 
   getGrid(vector: Vector): Observable<any>{
-  return this.http.get(`${config.apiUrl}/grid/${vector.x}/${vector.y}`)
-  };
+  return this.http.get(`${config.apiUrl}/grid/${vector.x}/${vector.y}`);
+  }
 
   getPointData(vector: Vector): Observable<any>{
-    return this.http.get(`${config.apiUrl}/pointData/${vector.x}/${vector.y}`)
-  };
+    return this.http.get(`${config.apiUrl}/pointData/${vector.x}/${vector.y}`);
+  }
 
   getUserCoordinates(): Observable<any>{
       return this.http.get<Vector>(`${config.apiUrl}/userCoordinates`);
   }
 
   getUserData(): Observable<any>{
-      return this.http.get(`${config.apiUrl}/userData`)
-  };
+      return this.http.get(`${config.apiUrl}/userData`);
+  }
+
+  attack(vector: Vector):Observable<any> {
+    return this.http.get(`${config.apiUrl}/attack/${vector.x}/${vector.y}`);
+  }
 }
 

@@ -36,7 +36,7 @@ public class GameController {
         return gridService.getGrid(x, y);
     }
 
-    @GetMapping("/pointData{x}/{y}")
+    @GetMapping("/pointData/{x}/{y}")
     public PointDataResponse getPointData(@PathVariable("x") int x, @PathVariable("y") int y) throws Exception {
         try{
             return pointService.getPointData(x, y);
@@ -59,7 +59,7 @@ public class GameController {
         return userService.getUserData(username);
     }
 
-    @GetMapping("Attack{x}/{y}")
+    @GetMapping("/attack/{x}/{y}")
     public AttackResponse attackPoint(@PathVariable("x") int x, @PathVariable("y") int y){
         var attackedPoint = new Vector(x, y);
         var username = SecurityContextHolder.getContext().getAuthentication().getName();

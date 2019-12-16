@@ -10,9 +10,20 @@ cache: npm
 
 # install: 
 
-# before_script: 
+before_install:
+ - chmod +x ./Castlerole/mvnw
 
-script: ./Castlerole/mvnw clean install test
+#before_script: cd Castlerole && ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+# before_install:
+  
+script: cd Castlerole && ./mvnw clean install test # ./Castlerole/mvnw clean install test #cd Castlerole && ./mvnw test -B # ./mvnw clean install test #
+
+
+
+# language: java
+# jdk:
+#   - oraclejdk8
+# script: cd common-dto-api && mvn install -Dmaven.compiler.target=8 -Dmaven.compiler.source=8 && cd ../com-turreta-soademo-configserver &&  mvn install -Dmaven.compiler.target=8 -Dmaven.compiler.source=8 && cd ../com-turreta-soademo-clientservice &&  mvn install -Dmaven.compiler.target=8 -Dmaven.compiler.source=8
 
 # jobs:
 #   include:
