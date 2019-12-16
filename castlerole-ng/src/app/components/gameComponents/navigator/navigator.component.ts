@@ -1,8 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {Vector} from "../../models/generic/Vector";
+import {Vector} from "../../../models/generic/Vector";
 import {HttpClient} from "@angular/common/http";
-import {GameServiceService} from "../../services/game/game-service.service";
+import {GameServiceService} from "../../../services/game/game-service.service";
 
 @Component({
   selector: 'app-navigator',
@@ -35,12 +35,9 @@ export class NavigatorComponent implements OnInit {
     this.coordindatesEmitter.emit(this.coordinates)
   }
 
-  get form() { return this.coordinateForm.controls; }
-
   async navigate(){
-    this.coordinates.x = await this.form.x.value;
-    this.coordinates.y = await this.form.y.value;
-    //alert(this.coordinates.x)
+    this.coordinates.x = await this.coordinateForm.controls.x.value;
+    this.coordinates.y = await this.coordinateForm.controls.y.value;
     await this.coordindatesEmitter.emit(JSON.parse(JSON.stringify(this.coordinates)))
   }
 
