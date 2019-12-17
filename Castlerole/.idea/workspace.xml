@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="05cbcf3e-83df-4bce-ba2e-78b2143e1702" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="autoscrollToSource" value="true" />
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1TpdyLLyimSvmc20ufvIg7NVnXg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.Castlerole.service" />
+      <recent name="com.example.Castlerole.controller" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.AdminServiceTest">
+    <configuration name="CastleroleApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.Castlerole.CastleroleApplication" />
+      <module name="Castlerole" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Castlerole.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Castlerole" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Castlerole.Services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Castlerole.Services" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Castlerole.Services.AdminServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JwtAuthenticationControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Castlerole" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Castlerole.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Castlerole.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Castlerole.controller.JwtAuthenticationControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JwtAuthenticationControllerTest.login" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Castlerole" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Castlerole.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Castlerole.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Castlerole.controller.JwtAuthenticationControllerTest" />
+      <option name="METHOD_NAME" value="login" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JwtAuthenticationControllerTest.register" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Castlerole" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Castlerole.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Castlerole.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Castlerole.controller.JwtAuthenticationControllerTest" />
+      <option name="METHOD_NAME" value="register" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CastleroleApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Castlerole" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.Castlerole.CastleroleApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AdminServiceTest" />
+        <item itemvalue="Application.CastleroleApplication" />
+        <item itemvalue="JUnit.JwtAuthenticationControllerTest.register" />
+        <item itemvalue="JUnit.JwtAuthenticationControllerTest.login" />
+        <item itemvalue="JUnit.JwtAuthenticationControllerTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="05cbcf3e-83df-4bce-ba2e-78b2143e1702" name="Default Changelist" comment="" />
+      <created>1574161224718</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574161224718</updated>
+      <workItem from="1574161228756" duration="7500000" />
+      <workItem from="1574170951882" duration="1300000" />
+      <workItem from="1574172753475" duration="3313000" />
+      <workItem from="1574236959179" duration="16825000" />
+      <workItem from="1574327525840" duration="108000" />
+      <workItem from="1574327669152" duration="627000" />
+      <workItem from="1574434281388" duration="5691000" />
+      <workItem from="1574958386238" duration="6733000" />
+      <workItem from="1575015390059" duration="26694000" />
+      <workItem from="1575132404758" duration="5484000" />
+      <workItem from="1575285484078" duration="4396000" />
+      <workItem from="1575638917843" duration="5933000" />
+      <workItem from="1575661579686" duration="183000" />
+      <workItem from="1575707824268" duration="9988000" />
+      <workItem from="1575742700446" duration="170000" />
+      <workItem from="1575881181626" duration="343000" />
+      <workItem from="1575883324879" duration="755000" />
+      <workItem from="1575891683936" duration="2837000" />
+      <workItem from="1576153320813" duration="3795000" />
+      <workItem from="1576227728632" duration="6460000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
