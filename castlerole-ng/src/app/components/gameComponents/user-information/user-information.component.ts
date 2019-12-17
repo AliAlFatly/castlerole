@@ -10,6 +10,8 @@ import { UserDataResponse } from "../../../models/response/userDataResponse";
 export class UserInformationComponent implements OnChanges {
 
   private userData = new UserDataResponse("",-1,-1,-1,-1,-1,-1,-1)
+  // private interval = Interval(1000);
+
 
   constructor(private gameService: GameServiceService) { }
 
@@ -22,9 +24,9 @@ export class UserInformationComponent implements OnChanges {
     await this.updateUserData();
   }
 
-  async ngDoCheck(){
-    await this.updateUserData();
-  }
+  // async ngDoCheck(){
+  //   await this.updateUserData();
+  // }
 
   updateUserData = async () => {
     this.userData = await this.gameService.getUserData().toPromise();

@@ -72,6 +72,8 @@ export class GridComponent implements OnChanges {
     }
   };
 
+  //todo: set private functions for unit tests scope
+  //todo: tests van canvas ->
   initialDraw = async () => {
     if(this.coordinates.x > -1){
       let gridData = await this.gameService.getGrid(this.coordinates).toPromise();
