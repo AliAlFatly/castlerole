@@ -73,8 +73,6 @@ public class JwtUserService implements UserDetailsService {
         return userRepository.save(newUser);
     }
 
-    //todo add comments
-    //todo check if reworked functionality is correct.
     public IntVector getXY() throws Exception {
 
         Integer finalXCoordinate;
