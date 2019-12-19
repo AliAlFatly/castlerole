@@ -6,3 +6,7 @@ export const elementHeight = 100;
 export const elementWidth = 100;
 export const canvasWidth = 1100;
 export const canvasHeight = 1100;
+
+
+export const halfScreenWidth = 5;
+export const halfScreenHeight = 5;

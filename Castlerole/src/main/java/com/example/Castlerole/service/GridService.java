@@ -61,7 +61,7 @@ public class GridService {
         var users = userRepository.getUsersInGrid(left(x), right(x), bottom(y), top(y));
         var nodes = nodeRepository.getNodesInGrid(left(x), right(x), bottom(y), top(y));
 
-        response.add(new GridResponse(left(x), bottom(y), "empty"));
+        //response.add(new GridResponse(left(x), bottom(y), "empty"));
 
         if(!users.isEmpty()){
             for (var user : users.get()) {
