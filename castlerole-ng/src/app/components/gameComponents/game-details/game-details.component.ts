@@ -3,6 +3,7 @@ import {Vector} from "../../../models/generic/Vector";
 import {GameServiceService} from "../../../services/game/game-service.service";
 import {PointDataResponse} from "../../../models/response/pointDataResponse";
 import {AttackResponse} from "../../../models/response/attackResponse";
+import {UserDataResponse} from "../../../models/response/userDataResponse";
 
 @Component({
   selector: 'app-game-details',
