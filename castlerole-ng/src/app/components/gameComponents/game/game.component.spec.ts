@@ -6,6 +6,11 @@ import {GridComponent} from "../grid/grid.component";
 import {UserInformationComponent} from "../user-information/user-information.component";
 import {LogoutComponent} from "../../authenticationComponents/logout/logout.component";
 import {RouterTestingModule} from "@angular/router/testing";
+import {Vector} from "../../../models/generic/Vector";
+import {GameDetailsComponent} from "../game-details/game-details.component";
+import {NavigatorComponent} from "../navigator/navigator.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+
 
 describe('GameComponent', () => {
   let component: GameComponent;
@@ -13,15 +18,23 @@ describe('GameComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule,
-                RouterTestingModule,
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        FormsModule,
+        ReactiveFormsModule
       ],
-      declarations: [ GameComponent,
-        // Add more components other that game.component.ts
+      declarations: [
+        GameComponent,
         GridComponent,
+        GameDetailsComponent,
         UserInformationComponent,
-        LogoutComponent,
-      ]
+        NavigatorComponent,
+        LogoutComponent
+        // Add more components other that game.component.ts
+
+      ],
+      providers: [  ]
     })
     .compileComponents();
   }));
@@ -29,6 +42,7 @@ describe('GameComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GameComponent);
     component = fixture.componentInstance;
+    // component.coordinates = new Vector(25, 25);
     fixture.detectChanges();
   });
 
