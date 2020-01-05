@@ -7,11 +7,15 @@ import {RouterTestingModule} from "@angular/router/testing";
 describe('GridComponent', () => {
   let component: GridComponent;
   let fixture: ComponentFixture<GridComponent>;
+  let componentCanvas: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      declarations: [ GridComponent ]
+      declarations: [
+
+        GridComponent,
+      ]
     })
     .compileComponents();
   }));
@@ -19,10 +23,17 @@ describe('GridComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GridComponent);
     component = fixture.componentInstance;
+    componentCanvas = component.drawCanvas();
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should create Canvas', () => {
+    expect(componentCanvas).toBeTruthy();
+  });
+  it('should ', () => {
+    expect();
   });
 });
