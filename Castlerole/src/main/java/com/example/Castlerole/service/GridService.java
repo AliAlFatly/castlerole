@@ -26,50 +26,77 @@ public class GridService {
     @Autowired
     private UserRepository userRepository;
 
+//    public ArrayList<GridResponse> getGrid(int x, int y){
+//        x = setX(x);
+//        y = setY(y);
+//
+//        ArrayList<GridResponse> response = new ArrayList<>();
+//        //from bottom to top:
+//        for (int yAxis = bottom(y); yAxis <= top(y); yAxis++){
+//            //from left to right:
+//            for (int xAxis = left(x); xAxis <= right(x); xAxis++){
+//                // select picture from
+//                String picture = "empty";
+//                Optional<User> user = userRepository.findByCoordinateXAndCoordinateY(xAxis,yAxis);
+//                if (!user.isEmpty()){
+//                    picture = user.get().getPictureReference();
+//                }
+//                Optional<Node> node = nodeRepository.findByCoordinateXAndCoordinateY(xAxis,yAxis);
+//                if (!node.isEmpty()){
+//                    picture = node.get().getPictureReference();
+//                }
+//                GridResponse currentCoordinatesData = new GridResponse(xAxis, yAxis, picture);
+//                response.add(currentCoordinatesData);
+//            }
+//        }
+//        return response;
+//    }
+
     public ArrayList<GridResponse> getGrid(int x, int y){
         x = setX(x);
         y = setY(y);
 
-        ArrayList<GridResponse> response = new ArrayList<>();
-        //from bottom to top:
-        for (int yAxis = bottom(y); yAxis <= top(y); yAxis++){
-            //from left to right:
-            for (int xAxis = left(x); xAxis <= right(x); xAxis++){
-                // select picture from
-                String picture = "empty";
-                Optional<User> user = userRepository.findByCoordinateXAndCoordinateY(xAxis,yAxis);
-                if (!user.isEmpty()){
-                    picture = user.get().getPictureReference();
-                }
-                Optional<Node> node = nodeRepository.findByCoordinateXAndCoordinateY(xAxis,yAxis);
-                if (!node.isEmpty()){
-                    picture = node.get().getPictureReference();
-                }
-                GridResponse currentCoordinatesData = new GridResponse(xAxis, yAxis, picture);
-                response.add(currentCoordinatesData);
+        var response = new ArrayList<GridResponse>();
+
+        var users = userRepository.getUsersInGrid(left(x), right(x), bottom(y), top(y));
+        var nodes = nodeRepository.getNodesInGrid(left(x), right(x), bottom(y), top(y));
+
+        //response.add(new GridResponse(left(x), bottom(y), "empty"));
+
+        if(!users.isEmpty()){
+            for (var user : users.get()) {
+                response.add(new GridResponse(user.getxCoordinate(), user.getyCoordinate(), user.getPictureReference()));
             }
         }
+        if(!nodes.isEmpty()){
+            for (var node : nodes.get()) {
+                response.add(new GridResponse(node.getxCoordinate(), node.getyCoordinate(), node.getPictureReference()));
+            }
+        }
+
         return response;
     }
 
 
-    public int left(int x){
+
+
+    private int left(int x){
         return x - this.halfScreen();
     }
 
-    public int right(int x){
+    private int right(int x){
         return x + this.halfScreen();
     }
 
-    public int top(int y){
+    private int top(int y){
         return y + this.halfScreen();
     }
 
-    public int bottom(int y){
+    private int bottom(int y){
         return y - this.halfScreen();
     }
 
-    public int setX(int x){
+    private int setX(int x){
         if (x + this.halfScreen() >= gridSize){
             return gridSize-this.halfScreen();
         }
@@ -79,7 +106,7 @@ public class GridService {
         return x;
     }
 
-    public int setY(int y){
+    private int setY(int y){
         if (y + this.halfScreen() >= gridSize){
             return gridSize-this.halfScreen();
         }
@@ -89,7 +116,7 @@ public class GridService {
         return y;
     }
 
-    public int halfScreen(){
+    private int halfScreen(){
         if(screenGridSize < 0){
             screenGridSize = 4;
         }

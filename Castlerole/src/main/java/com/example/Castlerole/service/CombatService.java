@@ -22,7 +22,6 @@ public class CombatService {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
-    //todo: remove some functionalities to private functions
     //add logic against attacking a point outside of grid
     //add superclass for node/user later to lesser if statements
     //kan nog niet handmatig getest worden

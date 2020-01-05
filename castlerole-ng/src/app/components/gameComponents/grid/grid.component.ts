@@ -13,7 +13,7 @@ import {GridResponse} from '../../../models/response/gridResponse';
 import {Vector} from '../../../models/generic/Vector';
 import {HttpClient} from '@angular/common/http';
 import {GameServiceService} from '../../../services/game/game-service.service';
-import {canvasWidth, canvasHeight, elementWidth, elementHeight} from "../../../config";
+import {canvasWidth, canvasHeight, elementWidth, elementHeight, halfScreenHeight, halfScreenWidth} from "../../../config";
 
 @Component({
   selector: 'app-grid',
@@ -67,7 +67,7 @@ export class GridComponent implements OnChanges {
       if (this.grid[i].picture !== "empty") {
         let img = new Image();
         img.src = `assets/${this.grid[i].picture}.png`;
-        await this.ctx.drawImage(img, (this.grid[i].x - this.grid[0].x) * elementWidth, (this.grid[i].y - this.grid[0].y) * elementHeight, elementWidth, elementHeight);
+        await this.ctx.drawImage(img, (this.grid[i].x - (this.coordinates.x - halfScreenWidth)) * elementWidth, (this.grid[i].y - (this.coordinates.y - halfScreenHeight)) * elementHeight, elementWidth, elementHeight);
       }
     }
   };
@@ -110,8 +110,8 @@ export class GridComponent implements OnChanges {
 
   addClickHandle = async () => {
     this.canvasElement = await document.querySelector("canvas");
-    this.zeroX = this.grid[0].x;
-    this.zeroY = this.grid[0].y;
+    this.zeroX = this.coordinates.x - halfScreenWidth; // this.grid[0].x;
+    this.zeroY = this.coordinates.y - halfScreenHeight; // this.grid[0].y;
     this.canvasElement.addEventListener("click", async (event) => {
       // alert(`${this.zeroX} + ${event.pageX} / ${elementWidth}`)
       this.targetCoordinates = new Vector(this.zeroX + Math.floor((event.pageX / elementWidth)),this.zeroY + Math.floor((event.pageY / elementHeight)));
