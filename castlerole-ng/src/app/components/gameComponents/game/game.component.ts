@@ -13,6 +13,7 @@ export class GameComponent implements OnInit {
 
   coordinates: Vector = new Vector(-1,-1);
   clickTargetCoordinates: Vector = new Vector(-1,-1);
+  userCoordinates: Vector = new Vector(-1, -1);
 
   constructor(
     private http: HttpClient,
@@ -27,5 +28,9 @@ export class GameComponent implements OnInit {
 
   async getTargetFromGridClick($event){
     this.clickTargetCoordinates = await $event;
+  }
+
+  async getUserCoordinates($event){
+    this.userCoordinates = await $event;
   }
 }
