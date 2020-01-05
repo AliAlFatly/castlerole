@@ -13,6 +13,7 @@ export class GameComponent implements OnInit {
 
   coordinates: Vector = new Vector(-1,-1);
   clickTargetCoordinates: Vector = new Vector(-1,-1);
+  userCoordinates: Vector = new Vector(-1, -1);
 
   constructor(
     private http: HttpClient,
