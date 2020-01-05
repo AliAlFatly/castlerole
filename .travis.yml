@@ -31,6 +31,7 @@ matrix:
         - sh -e /etc/init.d/xvfb start
       script:
         - npm run build
+        - ng test
 
     - language: java
       jdk: openjdk11
