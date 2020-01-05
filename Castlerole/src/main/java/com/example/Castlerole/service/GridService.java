@@ -80,23 +80,23 @@ public class GridService {
 
 
 
-    private int left(int x){
+    public int left(int x){
         return x - this.halfScreen();
     }
 
-    private int right(int x){
+    public int right(int x){
         return x + this.halfScreen();
     }
 
-    private int top(int y){
+    public int top(int y){
         return y + this.halfScreen();
     }
 
-    private int bottom(int y){
+    public int bottom(int y){
         return y - this.halfScreen();
     }
 
-    private int setX(int x){
+    public int setX(int x){
         if (x + this.halfScreen() >= gridSize){
             return gridSize-this.halfScreen();
         }
@@ -106,7 +106,7 @@ public class GridService {
         return x;
     }
 
-    private int setY(int y){
+    public int setY(int y){
         if (y + this.halfScreen() >= gridSize){
             return gridSize-this.halfScreen();
         }
@@ -116,7 +116,7 @@ public class GridService {
         return y;
     }
 
-    private int halfScreen(){
+    public int halfScreen(){
         if(screenGridSize < 0){
             screenGridSize = 4;
         }
