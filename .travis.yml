@@ -8,6 +8,9 @@ cache:
   directories:
     - ./castlerole-ng/node_modules
 
+before_install:
+ - chmod +x ./Castlerole/mvnw
+
 
 addons:
   apt:
@@ -23,12 +26,12 @@ matrix:
       install:
         - npm install
       before_install:
-        - cd / && cd castlerole-ng
+        - cd castlerole-ng
         - export DISPLAY=:99.0
         - sh -e /etc/init.d/xvfb start
       script:
         - npm run build
-    
+
     - language: java
       jdk: openjdk11
       script:
