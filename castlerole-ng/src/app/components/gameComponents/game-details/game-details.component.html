@@ -2,7 +2,7 @@
   <span *ngIf="targetCoordinates.x > -1 && pointDetails.coordinateX > -1">
     {{pointDetails.coordinateX}}, {{pointDetails.coordinateY}} <br />
     {{pointDetails.type}} <br />
-    <button *ngIf="pointDetails.attackable" (click)="attack()">Attack</button>
+    <button *ngIf="pointDetails.attackable && (pointDetails.coordinateX != receivedUserCoords.coordinateX && pointDetails.coordinateY != receivedUserCoords.coordinateY)" (click)="attack()">Attack</button>
   </span>
   <span *ngIf="attackResponse.x > -1">
     <h2>Attack result:</h2>
