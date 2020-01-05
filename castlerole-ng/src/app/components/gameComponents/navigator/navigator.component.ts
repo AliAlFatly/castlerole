@@ -11,7 +11,7 @@ import {GameServiceService} from "../../../services/game/game-service.service";
 })
 export class NavigatorComponent implements OnInit {
 
-  @Output() coordindatesEmitter = new EventEmitter<Vector>()
+  @Output() coordinatesEmitter = new EventEmitter<Vector>()
 
   coordinateForm: FormGroup = this.formBuilder.group({
     x:0,
@@ -32,13 +32,13 @@ export class NavigatorComponent implements OnInit {
       x: this.coordinates.x,
       y: this.coordinates.y
     });
-    this.coordindatesEmitter.emit(this.coordinates)
+    this.coordinatesEmitter.emit(this.coordinates)
   }
 
   async navigate(){
     this.coordinates.x = await this.coordinateForm.controls.x.value;
     this.coordinates.y = await this.coordinateForm.controls.y.value;
-    await this.coordindatesEmitter.emit(JSON.parse(JSON.stringify(this.coordinates)))
+    await this.coordinatesEmitter.emit(JSON.parse(JSON.stringify(this.coordinates)))
   }
 
 }
