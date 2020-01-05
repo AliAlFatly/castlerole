@@ -33,7 +33,5 @@ describe('GridComponent', () => {
   it('should create Canvas', () => {
     expect(componentCanvas).toBeTruthy();
   });
-  it('should ', () => {
-    expect();
-  });
+
 });
