@@ -13,9 +13,9 @@ describe('NavigatorComponent', () => {
       declarations: [ NavigatorComponent,
 
       ],
-      imports: [ HttpClientTestingModule,
-                  ReactiveFormsModule,
-
+      imports: [
+        HttpClientTestingModule,
+        ReactiveFormsModule
       ]
     })
     .compileComponents();
