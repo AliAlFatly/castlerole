@@ -27,7 +27,7 @@ export class GridComponent implements OnChanges {
   @Input() coordinates: Vector;
   private targetCoordinates: Vector;
   private canvasElement;
-  private ctx: any;
+  private ctx: any  // = (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
   private zeroX: number;
   private zeroY: number;
 
@@ -46,15 +46,16 @@ export class GridComponent implements OnChanges {
   }
 
   async ngOnChanges(changes: SimpleChanges) {
-    await this.clearCanvas();
+    //await this.clearCanvas();
     await this.getGridData();
     this.addClickHandle();
-    this.drawCanvas();
+    await this.drawCanvas();
 
   }
 
   drawCanvas = async () =>{
     this.ctx = (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
+    await this.ctx.clearRect(0,0,canvasWidth,canvasHeight)
     let background = new Image();
     background.src = `assets/empty.png`;
     await this.ctx.drawImage(background, 0, 0, canvasWidth, canvasHeight);
@@ -82,11 +83,12 @@ export class GridComponent implements OnChanges {
     }
     else {
       let response = await this.gameService.getUserCoordinates().toPromise();
-      this.coordinates.x = response.x;
-      this.coordinates.y = response.y;
+      this.coordinates.x = await response.x;
+      this.coordinates.y = await response.y;
+      //this.getGridData();
       let gridData = await this.gameService.getGrid(this.coordinates).toPromise();
-      this.grid = gridData;
-      this.drawCanvas();
+      this.grid = await gridData;
+      await this.drawCanvas();
     }
   };
 
@@ -103,10 +105,10 @@ export class GridComponent implements OnChanges {
     this.canvasElement.style.height = `${canvasHeight}px`;
   }
 
-  clearCanvas = async () => {
-    this.ctx = await (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
-    await this.ctx.clearRect(0,0,canvasWidth,canvasHeight)
-  };
+  // clearCanvas = async () => {
+  //   this.ctx = await (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
+  //   await this.ctx.clearRect(0,0,canvasWidth,canvasHeight)
+  // };
 
   addClickHandle = async () => {
     this.canvasElement = await document.querySelector("canvas");
