@@ -10,6 +10,7 @@ import {GridComponent} from "../grid/grid.component";
 describe('GameDetailsComponent', () => {
   let component: GameDetailsComponent;
   let fixture: ComponentFixture<GameDetailsComponent>;
+  let pointDetails: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -30,6 +31,7 @@ describe('GameDetailsComponent', () => {
     fixture = TestBed.createComponent(GameDetailsComponent);
     component = fixture.componentInstance;
     component.targetCoordinates = new Vector(20, 20);
+    pointDetails = new PointDataResponse(25, 25, 'Player', true);
     fixture.detectChanges();
   });
 

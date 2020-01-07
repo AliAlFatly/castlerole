@@ -32,7 +32,6 @@ describe('GameComponent', () => {
         NavigatorComponent,
         LogoutComponent
         // Add more components other that game.component.ts
-
       ],
       providers: [  ]
     })
@@ -42,11 +41,18 @@ describe('GameComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GameComponent);
     component = fixture.componentInstance;
-    // component.coordinates = new Vector(25, 25);
+    component.coordinates = new Vector(25, 25);
+    component.clickTargetCoordinates = new Vector(20, 20);
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('Should have predetermined coordinates', () => {
+    expect(component.coordinates).toEqual(new Vector(25, 25));
+  });
+  it('clickTarget should be predetermined coordinates', () => {
+    expect(component.clickTargetCoordinates).toEqual(new Vector(20, 20));
   });
 });

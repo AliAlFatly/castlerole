@@ -11,10 +11,12 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule,
+      imports: [
+        ReactiveFormsModule,
         FormsModule,
         HttpClientTestingModule,
-        RouterTestingModule],
+        RouterTestingModule
+      ],
       declarations: [ LoginComponent ]
     })
     .compileComponents();
@@ -24,6 +26,7 @@ describe('LoginComponent', () => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
   });
 
   it('should create', () => {
