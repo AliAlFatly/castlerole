@@ -13,11 +13,11 @@ before_install:
 
 
 addons:
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
+  sonarcloud:
+    organization: "castleroleprojectkey"
+    token:
+      secure: "**************************" # encrypted value of your token
+  
 
 matrix:
   include:
@@ -25,6 +25,7 @@ matrix:
       jdk: openjdk11
       script:
         - ./mvnw test -B -q
+
       before_script:
         - cd Castlerole
 
@@ -39,7 +40,8 @@ matrix:
       script:
         - npm run build
         - ng test --watch=false --code-coverage 
-
+        # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+        - sonar-scanner
 
 
 
