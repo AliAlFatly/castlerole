@@ -29,3 +29,14 @@ CREATE TABLE `node` (
 		`coordinateX` int,
         `coordinateY` int
         );
+
+CREATE TABLE `city` {
+    `id` int not null AUTO_INCREMENT PRIMARY KEY,
+    `user_id` int FOREIGN KEY REFERENCES user(id),
+    `castleLevel` int,
+    `woodworksLevel` int,
+    `mineLevel` int,
+    `forgeryLevel` int,
+    `barrackslevel` int,
+    `ovenLevel` int
+};
