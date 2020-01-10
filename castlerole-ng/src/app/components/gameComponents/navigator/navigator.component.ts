@@ -28,17 +28,17 @@ export class NavigatorComponent implements OnInit {
     this.coordinates.x = response.x;
     this.coordinates.y = response.y;
 
-    this.coordinateForm = await this.formBuilder.group({
+    this.coordinateForm = this.formBuilder.group({
       x: this.coordinates.x,
       y: this.coordinates.y
     });
-    this.coordinatesEmitter.emit(this.coordinates)
+    this.coordinatesEmitter.emit(this.coordinates);
   }
 
   async navigate(){
     this.coordinates.x = await this.coordinateForm.controls.x.value;
     this.coordinates.y = await this.coordinateForm.controls.y.value;
-    await this.coordinatesEmitter.emit(JSON.parse(JSON.stringify(this.coordinates)))
+    this.coordinatesEmitter.emit(JSON.parse(JSON.stringify(this.coordinates)));
   }
 
 }
