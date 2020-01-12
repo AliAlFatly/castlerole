@@ -1,30 +1,16 @@
-package com.example.Castlerole.model;
+package com.example.Castlerole.model.response;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "city")
-public class City {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CityDataResponse {
     private long id;
-    //TODO: LINK THIS TO ID FROM MODEL USER
-    @Column
     private long user_id;
-    @Column
     private int casteLevel;
-    @Column
     private int woodworksLevel;
-    @Column
     private int mineLevel;
-    @Column
     private int forgeryLevel;
-    @Column
     private int barracksLevel;
-    @Column
     private int ovenLevel;
 
-    public City(long id, long user_id, int casteLevel, int woodworksLevel, int mineLevel, int forgeryLevel, int barracksLevel, int ovenLevel){
+    public CityDataResponse(long id, long user_id, int casteLevel, int woodworksLevel, int mineLevel, int forgeryLevel, int barracksLevel, int ovenLevel){
         this.id = id;
         this.user_id = user_id;
         this.casteLevel = casteLevel;
@@ -34,6 +20,7 @@ public class City {
         this.barracksLevel = barracksLevel;
         this.ovenLevel = ovenLevel;
     }
+
 
     //GETTERS AND SETTERS
     //ID
