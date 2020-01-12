@@ -36,14 +36,13 @@ public class JwtAuthenticationServiceTest {
    @Before
    public void setUp() {
       MockitoAnnotations.initMocks(this);
-      UserDTO jwtuserMock = new UserDTO();
-      jwtuserMock.setUsername("jwtUserService");
-      jwtuserMock.setPassword("password");
 
    }
    @Test
    public void Jwtauthenticate_Test() throws Exception {
       UserDTO jwtuserMock = new UserDTO();
+      jwtuserMock.setUsername("jwtUserService");
+      jwtuserMock.setPassword("password");
       try {
          authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(jwtuserMock.getUsername(), jwtuserMock.getPassword()));
       } catch (DisabledException e) {
@@ -57,6 +56,8 @@ public class JwtAuthenticationServiceTest {
    @Test
    public void login_Test() throws Exception{
       UserDTO jwtuserMock = new UserDTO();
+      jwtuserMock.setUsername("jwtUserService");
+      jwtuserMock.setPassword("password");
       UserDetails userDetails = userDetailsService.loadUserByUsername(jwtuserMock.getUsername());
       //generate token based on user claims.
       String token = jwtTokenUtil.generateToken(userDetails);
@@ -67,6 +68,8 @@ public class JwtAuthenticationServiceTest {
    @Test
    public void register_Test() throws Exception{
       UserDTO jwtuserMock = new UserDTO();
+      jwtuserMock.setUsername("jwtUserService");
+      jwtuserMock.setPassword("password");
       boolean exist = userService.UserExist(jwtuserMock.getUsername());
       if (exist){
          //todo: generic excpetion veranderen naar speciek
