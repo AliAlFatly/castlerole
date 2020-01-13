@@ -50,14 +50,14 @@ public class JwtUserServiceTests {
         return "Done";
     }
 
-//    @Test
-//    public String JwtUserService_LoadUserTest() throws Exception {
-//        UserDTO jwtuserMock = new UserDTO();
-//        jwtuserMock.setUsername("jwtUserService");
-//        jwtuserMock.setPassword("password");
-//        jwtUserService.registerNewUser(jwtuserMock);
-//        jwtUserService.loadUserByUsername("jwtUserService");
-//        return "Done";
-//    }
+    @Test
+    public String JwtUserService_LoadUserTest() throws Exception {
+        UserDTO jwtuserMock = new UserDTO();
+        jwtuserMock.setUsername("jwtUserService");
+        jwtuserMock.setPassword("password");
+        jwtUserService.registerNewUser(jwtuserMock);
+        jwtUserService.loadUserByUsername("jwtUserService");
+        return "Done";
+    }
 
 }
