@@ -51,8 +51,9 @@ public class JwtUserServiceTests {
     }
 
     @Test
-    public void JwtUserService_LoadUserTest() {
+    public String JwtUserService_LoadUserTest() {
         jwtUserService.loadUserByUsername("jwtUserService");
+        return "Done";
     }
 
 }
