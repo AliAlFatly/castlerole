@@ -6,7 +6,8 @@ import com.example.Castlerole.model.response.UserDataResponse;
 import com.example.Castlerole.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -17,7 +18,7 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static org.mockito.ArgumentMatchers.any;
 
-public class UserServiceTest {
+public class UserServiceTests {
 
     @Mock
     private UserRepository userRepository;

@@ -6,7 +6,8 @@ import com.example.Castlerole.repository.NodeRepository;
 import com.example.Castlerole.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -16,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
-public class PointServiceTest {
+public class PointServiceTests {
 
     @Mock
     private NodeRepository nodeRepository;

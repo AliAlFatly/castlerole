@@ -3,7 +3,7 @@ package com.example.Castlerole.service;
 import com.example.Castlerole.repository.NodeRepository;
 import com.example.Castlerole.repository.UserRepository;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Arrays;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GridServiceTest {
+public class GridServiceTests {
 
     @Mock
     private NodeRepository nodeRepository;

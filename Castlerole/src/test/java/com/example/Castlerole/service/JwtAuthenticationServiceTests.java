@@ -2,7 +2,7 @@ package com.example.Castlerole.service;
 
 import com.example.Castlerole.config.JwtTokenUtil;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Incubating;
 import org.mockito.InjectMocks;
@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 
 @RunWith(MockitoJUnitRunner.class)
-public class JwtAuthenticationServiceTest {
+public class JwtAuthenticationServiceTests {
 
 
     @Mock
