@@ -15,12 +15,14 @@ import org.junit.runner.RunWith;
 import org.mockito.*;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.apache.maven.surefire.testset.TestRequest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@ExtendWith(SpringExtension.class)
+//@ExtendWith(SpringExtension.class)
 @ActiveProfiles("test")
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
+@SpringBootTest
 public class AdminServiceTests {
 
     @Before
