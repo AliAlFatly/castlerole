@@ -38,14 +38,13 @@ public class GridServiceTests {
     }
 
     @Test
-    public String GridService_Test() {
+    public void GridService_Test() {
 
         var gridreturn = gridService.getGrid(25, 25);
         System.out.println(
                 gridreturn.size() + "\n" +
                         Arrays.toString(gridreturn.toArray()).indexOf(3)
         );
-        return "Done";
     }
 
 }

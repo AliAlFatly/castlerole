@@ -36,16 +36,16 @@ public class AdminServiceTests {
     private JwtUserService userService;
 
     @Test
-    public String whenValid_shouldReturnNodes() throws Exception {
+    public void whenValid_shouldReturnNodes() throws Exception {
         int amount = 10;
         String answer = adminService.generateNodes(1);
         Assert.assertEquals(answer, "done");
         System.out.println(answer);
         //String answer = adminService.generateNodes(amount);
-        return "done";
 
 
-    };
+
+    }
 
 
 }

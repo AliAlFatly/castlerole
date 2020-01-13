@@ -35,29 +35,22 @@ public class JwtUserServiceTests {
     }
 
     @Test
-    public String JwtUserService_getXYTest() throws Exception {
+    public void JwtUserService_getXYTest() throws Exception {
         jwtUserService.getXY();
-        return "Done";
 
     }
 
     @Test
-    public String JwtUserService_RegisterTest() throws Exception {
+    public void JwtUserService_RegisterTest() throws Exception {
         UserDTO jwtuserMock = new UserDTO();
         jwtuserMock.setUsername("jwtUserService");
         jwtuserMock.setPassword("password");
         jwtUserService.registerNewUser(jwtuserMock);
-        return "Done";
     }
 
     @Test
-    public String JwtUserService_LoadUserTest() throws Exception {
-        UserDTO jwtuserMock = new UserDTO();
-        jwtuserMock.setUsername("jwtUserService");
-        jwtuserMock.setPassword("password");
-        jwtUserService.registerNewUser(jwtuserMock);
+    public void JwtUserService_LoadUserTest() {
         jwtUserService.loadUserByUsername("jwtUserService");
-        return "Done";
     }
 
 }

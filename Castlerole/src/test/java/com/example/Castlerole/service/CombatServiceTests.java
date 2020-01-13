@@ -78,7 +78,7 @@ public class CombatServiceTests {
     private CombatService combatService;
 
     @Test
-    public String CombatAttack_UserTest() {
+    public void CombatAttack_UserTest() {
         var Creturn = combatService.attack("attackuser",new Vector(25,25));
         System.out.println(
                 "Wood won: " + Creturn.getWoodWon() + " " + "\n" +
@@ -86,10 +86,9 @@ public class CombatServiceTests {
                 "Iron won: " + Creturn.getIronWon() + " " + "\n" +
                 "Fight won: " + Creturn.isWon()
                 );
-        return "Done";
-    };
+    }
     @Test
-    public String CombatAttack_NodeTest() {
+    public void CombatAttack_NodeTest() {
         var Creturn2 = combatService.attack("attackuser",new Vector(15,15));
         System.out.println(
                 "Wood won: " + Creturn2.getWoodWon() + " " + "\n" +
@@ -97,7 +96,6 @@ public class CombatServiceTests {
                 "Iron won: " + Creturn2.getIronWon() + " " + "\n" +
                 "Fight won: " + Creturn2.isWon()
         );
-        return "Done";
     }
 
 }

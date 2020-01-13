@@ -55,37 +55,33 @@ public class PointServiceTests {
     }
 
     @Test
-    public String PointService_UserTest() {
+    public void PointService_UserTest() {
         var PointResult = pointService.getPointData(25,25);
         Assert.assertEquals(PointResult.getCoordinateX(),25);
         Assert.assertEquals(PointResult.getCoordinateY(), 25);
         Assert.assertEquals(PointResult.getType(), "Player");
-        return "Done";
     }
 
     @Test
-    public String PointService_NodeTest() {
+    public void PointService_NodeTest() {
         var PointResult = pointService.getPointData(15, 15);
         Assert.assertEquals(PointResult.getCoordinateY(),15);
         Assert.assertEquals(PointResult.getCoordinateX(),15);
         Assert.assertEquals(PointResult.getType(), "forest");
-        return "Done";
     }
 
     @Test
-    public String PointService_IsAttackableTest() {
+    public void PointService_IsAttackableTest() {
         var PointResultUser = pointService.getPointData(25, 25);
         var PointResultNode = pointService.getPointData(15, 15);
         Assert.assertEquals(PointResultNode.isAttackable(), TRUE);
         Assert.assertEquals(PointResultUser.isAttackable(), TRUE);
-        return "Done";
     }
 
     @Test
-    public String PointService_IsNotAttackableTest() {
+    public void PointService_IsNotAttackableTest() {
         var PointResultEmpty = pointService.getPointData(10, 10);
         Assert.assertEquals(PointResultEmpty.isAttackable(), FALSE);
-        return "Done";
     }
 
 }
