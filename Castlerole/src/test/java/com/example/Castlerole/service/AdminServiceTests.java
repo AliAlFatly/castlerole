@@ -20,6 +20,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @ActiveProfiles("test")
+@RunWith(MockitoJUnitRunner.class)
 public class AdminServiceTests {
 
     @Before
