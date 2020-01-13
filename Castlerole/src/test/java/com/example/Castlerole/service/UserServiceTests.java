@@ -46,23 +46,26 @@ public class UserServiceTests {
     }
 
     @Test
-    public void UserService_ExistTest() throws Exception {
+    public String UserService_ExistTest() throws Exception {
         var ExistResult = userService.UserExist("UserServiceMock");
         Assert.assertEquals(TRUE,ExistResult);
+        return "Done";
     }
     @Test
-    public void UserService_DoesntExistTest() throws Exception {
+    public String UserService_DoesntExistTest() throws Exception {
         var DoesntResult = userService.UserExist("DoesntExist");
         Assert.assertEquals(FALSE, DoesntResult);
+        return "Done";
     }
     @Test
-    public void UserService_getCoordsTest() throws Exception {
+    public String UserService_getCoordsTest() throws Exception {
         var CoordResult = userService.getUserCoordinates("UserServiceMock");
         Assert.assertEquals(CoordResult.getX(), 25);
         Assert.assertEquals(CoordResult.getY(), 25);
+        return "Done";
     }
     @Test
-    public void UserService_getDataTest() throws Exception {
+    public String UserService_getDataTest() throws Exception {
         var DataResult = userService.getUserData("UserServiceMock");
         var UserServiceMock = new UserDataResponse();
         UserServiceMock.setUsername("UserServiceMock");
@@ -80,6 +83,7 @@ public class UserServiceTests {
         Assert.assertEquals(DataResult.getTroops(),UserServiceMock.getTroops());
         Assert.assertEquals(DataResult.getUsername(),UserServiceMock.getUsername());
         Assert.assertEquals(DataResult.getWood(),UserServiceMock.getWood());
+        return "Done";
     }
 
 
