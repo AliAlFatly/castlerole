@@ -23,7 +23,7 @@ matrix:
         sonarcloud:
           organization: "castleroleprojectkey"
           token:
-            secure: "e492bb0ca7b0b566577a792196646d460a4ebb89" # encrypted value of your token
+            secure: "c61961957613b0bd3a28fb8861dff3ac0ad98c61" # encrypted value of your token
       script:
         - ./mvnw test -B -q 
         - sonar-scanner -Dsonar.projectKey=AliAlFatly_castlerole
