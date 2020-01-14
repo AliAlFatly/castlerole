@@ -27,11 +27,12 @@ public class AdminServiceTests {
 
     @Before
     public void setUp() throws Exception {
+        adminService = new AdminService();
         MockitoAnnotations.initMocks(this);
         Mockito.when(userService.getXY())
                 .thenReturn(new IntVector(25,25));
     }
-    @InjectMocks
+
     private AdminService adminService;
     @Mock
     private NodeRepository nodeRepository;
