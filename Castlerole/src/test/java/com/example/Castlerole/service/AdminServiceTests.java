@@ -20,8 +20,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 //@ExtendWith(SpringExtension.class)
-@ActiveProfiles("test")
-@RunWith(MockitoJUnitRunner.class)
+//@ActiveProfiles("test")
+//@RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 public class AdminServiceTests {
 
