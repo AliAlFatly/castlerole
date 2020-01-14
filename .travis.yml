@@ -25,7 +25,7 @@ matrix:
       jdk: openjdk11
       script:
         - ./mvnw test -B -q 
-        - sonar-scanner -Pcoverage -Dsonar.projectKey=castleroleprojectkey
+        - sonar-scanner #-Pcoverage -Dsonar.projectKey=castleroleprojectkey
 
       before_script:
         - cd Castlerole
