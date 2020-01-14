@@ -26,7 +26,7 @@ matrix:
             secure: "e492bb0ca7b0b566577a792196646d460a4ebb89" # encrypted value of your token
       script:
         - ./mvnw test -B -q 
-        - sonar-scanner -Dsonar.projectKey=castleroleprojectkey
+        - sonar-scanner -Dsonar.projectKey=AliAlFatly_castlerole
         #- sonar-scanner #-Pcoverage 
       before_script:
         - cd Castlerole
