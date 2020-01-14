@@ -24,7 +24,8 @@ matrix:
     - language: java
       jdk: openjdk11
       script:
-        - ./mvnw test -B -q sonar:sonar -Pcoverage 
+        - ./mvnw test -B -q 
+        - sonar:sonar -Pcoverage -Dsonar.projectKey=castleroleprojectkey
 
       before_script:
         - cd Castlerole
@@ -41,7 +42,7 @@ matrix:
         # - npm run build
         - ng test --watch=false --code-coverage 
         # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-        - sonar-scanner -Pcoverage
+        - sonar-scanner -Pcoverage -Dsonar.projectKey=castleroleprojectkey
 
 
 
