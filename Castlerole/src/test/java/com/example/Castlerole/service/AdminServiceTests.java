@@ -21,9 +21,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 //@ExtendWith(SpringExtension.class)
 @ActiveProfiles("test")
-//@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
-public class AdminServiceTests {
+class AdminServiceTests {
 
     @Before
     public void setUp() throws Exception {
