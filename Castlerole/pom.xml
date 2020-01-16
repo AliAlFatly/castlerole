@@ -65,13 +65,21 @@
 			<version>0.9.1</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+<!--		&lt;!&ndash; https://mvnrepository.com/artifact/org.mockito/mockito-core &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>org.mockito</groupId>-->
+<!--			<artifactId>mockito-core</artifactId>-->
+<!--			<version>3.1.0</version>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter -->
 		<dependency>
 			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>3.1.0</version>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<version>3.2.4</version>
 			<scope>test</scope>
 		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core -->
 		<dependency>
