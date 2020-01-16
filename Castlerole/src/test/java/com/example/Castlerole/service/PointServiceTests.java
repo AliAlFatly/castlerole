@@ -51,10 +51,12 @@ public class PointServiceTests {
         NodePoint.setType("forest");
         NodePoint.setYieldMax(300);
         NodePoint.setYieldMin(150);
-        Mockito.when(userRepository.findByCoordinateXAndCoordinateY(25,25))
-                .thenReturn(java.util.Optional.of(PlayerPoint));
-        Mockito.when(nodeRepository.findByCoordinateXAndCoordinateY(15,15))
-                .thenReturn(java.util.Optional.of(NodePoint));
+//        Mockito.when()
+//                .thenReturn();
+//        Mockito.when(nodeRepository.findByCoordinateXAndCoordinateY(15,15))
+//                .thenReturn(java.util.Optional.of(NodePoint));
+        Mockito.doReturn(java.util.Optional.of(PlayerPoint)).when(userRepository.findByCoordinateXAndCoordinateY(25,25));
+        Mockito.doReturn(java.util.Optional.of(NodePoint)).when(nodeRepository.findByCoordinateXAndCoordinateY(15,15));
 
     }
 
