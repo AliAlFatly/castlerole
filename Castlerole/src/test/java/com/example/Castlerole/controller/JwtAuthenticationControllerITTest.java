@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-public class JwtAuthenticationControllerTest extends ControllerTestConfig {
+public class JwtAuthenticationControllerITTest extends ControllerTestConfig {
 
     @Autowired
     JwtAuthenticationService jwtAuthenticationService;

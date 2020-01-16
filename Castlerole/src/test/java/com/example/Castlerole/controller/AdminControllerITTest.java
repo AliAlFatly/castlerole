@@ -19,7 +19,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class AdminControllerTest extends ControllerTestConfig {
+public class AdminControllerITTest extends ControllerTestConfig {
 
     @Autowired
     private NodeRepository nodeRepository;
