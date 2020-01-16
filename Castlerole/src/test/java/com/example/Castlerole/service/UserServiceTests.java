@@ -7,6 +7,7 @@ import com.example.Castlerole.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Before;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -29,7 +30,7 @@ public class UserServiceTests {
     @InjectMocks
     private UserService userService;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         var UserServiceMock = new User();

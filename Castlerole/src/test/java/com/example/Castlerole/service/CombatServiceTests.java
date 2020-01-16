@@ -10,6 +10,7 @@ import com.example.Castlerole.repository.UserRepository;
 
 import org.junit.Before;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -30,7 +31,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 @ActiveProfiles("test")
 public class CombatServiceTests {
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         var attackuser = new User();

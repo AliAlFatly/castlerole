@@ -5,6 +5,7 @@ import com.example.Castlerole.repository.NodeRepository;
 import com.example.Castlerole.repository.UserRepository;
 import org.junit.Before;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -26,7 +27,7 @@ public class JwtUserServiceTests {
     @InjectMocks
     private JwtUserService jwtUserService;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         int gridSize = 500;

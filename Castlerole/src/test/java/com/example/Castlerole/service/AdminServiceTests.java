@@ -8,27 +8,30 @@ import com.example.Castlerole.repository.UserRepository;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
 import org.mockito.*;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.apache.maven.surefire.testset.TestRequest;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.event.annotation.BeforeTestExecution;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@ExtendWith(SpringExtension.class)
+@ExtendWith(MockitoExtension.class)
 //@ActiveProfiles("test")
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith()
 //@SpringBootTest
 public class AdminServiceTests {
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         adminService = new AdminService();
         MockitoAnnotations.initMocks(this);

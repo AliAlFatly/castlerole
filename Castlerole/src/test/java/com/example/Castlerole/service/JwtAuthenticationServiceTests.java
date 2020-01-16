@@ -2,6 +2,7 @@ package com.example.Castlerole.service;
 
 import com.example.Castlerole.config.JwtTokenUtil;
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Incubating;
@@ -27,7 +28,7 @@ public class JwtAuthenticationServiceTests {
     @InjectMocks
     private JwtAuthenticationService jwtAuthenticationService;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
