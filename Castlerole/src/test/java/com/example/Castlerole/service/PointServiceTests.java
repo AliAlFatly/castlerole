@@ -15,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static java.lang.Boolean.FALSE;
@@ -23,10 +24,10 @@ import static java.lang.Boolean.TRUE;
 @ExtendWith(MockitoExtension.class)
 public class PointServiceTests {
 
-    @Mock
+    @MockitoSettings
     private NodeRepository nodeRepository;
 
-    @Mock
+    @MockitoSettings
     private UserRepository userRepository;
 
     @InjectMocks
@@ -55,6 +56,7 @@ public class PointServiceTests {
 //                .thenReturn();
 //        Mockito.when(nodeRepository.findByCoordinateXAndCoordinateY(15,15))
 //                .thenReturn(java.util.Optional.of(NodePoint));
+
         Mockito.doReturn(java.util.Optional.of(PlayerPoint))
                 .when(userRepository)
                         .findByCoordinateXAndCoordinateY(25,25);
