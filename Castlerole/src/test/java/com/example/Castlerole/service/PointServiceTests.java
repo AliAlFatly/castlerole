@@ -55,9 +55,12 @@ public class PointServiceTests {
 //                .thenReturn();
 //        Mockito.when(nodeRepository.findByCoordinateXAndCoordinateY(15,15))
 //                .thenReturn(java.util.Optional.of(NodePoint));
-        Mockito.doReturn(java.util.Optional.of(PlayerPoint)).when(userRepository.findByCoordinateXAndCoordinateY(25,25));
-        Mockito.doReturn(java.util.Optional.of(NodePoint)).when(nodeRepository.findByCoordinateXAndCoordinateY(15,15));
-
+        Mockito.doReturn(java.util.Optional.of(PlayerPoint))
+                .when(userRepository)
+                        .findByCoordinateXAndCoordinateY(25,25);
+        Mockito.doReturn(java.util.Optional.of(NodePoint))
+                .when(nodeRepository)
+                        .findByCoordinateXAndCoordinateY(15,15);
     }
 
     @Test
