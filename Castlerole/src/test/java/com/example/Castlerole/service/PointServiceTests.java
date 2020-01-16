@@ -24,7 +24,7 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 //@ExtendWith(MockitoExtension.class)
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 public class PointServiceTests {
 
     @Mock
