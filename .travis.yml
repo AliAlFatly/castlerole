@@ -25,8 +25,8 @@ matrix:
           token:
             secure: "c61961957613b0bd3a28fb8861dff3ac0ad98c61" # encrypted value of your token
       script:
-        - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=AliAlFatly_castlerole
-        - ./mvnw test -B -q 
+        - mvn clean -B -q org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=AliAlFatly_castlerole
+        #- ./mvnw test -B -q 
 
         #- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent sonar-scanner -Dsonar.projectKey=AliAlFatly_castlerole
         #- sonar-scanner #-Pcoverage 
