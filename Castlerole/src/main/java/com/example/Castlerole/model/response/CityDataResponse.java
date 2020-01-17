@@ -42,7 +42,7 @@ public class CityDataResponse {
     }
 
     //CASTLE
-    public long getCasteLevel() {
+    public int getCasteLevel() {
         return casteLevel;
     }
 
@@ -51,7 +51,7 @@ public class CityDataResponse {
     }
 
     //WOODWORKS
-    public long getWoodworksLevel() {
+    public int getWoodworksLevel() {
         return woodworksLevel;
     }
 
@@ -60,7 +60,7 @@ public class CityDataResponse {
     }
 
     //MINE
-    public long getMineLevel() {
+    public int getMineLevel() {
         return mineLevel;
     }
 
@@ -69,7 +69,7 @@ public class CityDataResponse {
     }
 
     //FORGERY
-    public long getForgeryLevel() {
+    public int getForgeryLevel() {
         return forgeryLevel;
     }
 
@@ -78,7 +78,7 @@ public class CityDataResponse {
     }
 
     //BARRACKS
-    public long getBarracksLevel() {
+    public int getBarracksLevel() {
         return barracksLevel;
     }
 
@@ -87,7 +87,7 @@ public class CityDataResponse {
     }
 
     //OVEN
-    public long getOvenLevel() {
+    public int getOvenLevel() {
         return ovenLevel;
     }
 

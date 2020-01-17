@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 @Repository
 public interface CityRepository extends CrudRepository<City, Integer>{
 
-    City findByUserId(int user_id);
+    City findByUserId(long user_id);
 
     @Transactional
     @Modifying

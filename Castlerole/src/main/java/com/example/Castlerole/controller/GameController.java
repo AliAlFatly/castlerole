@@ -5,10 +5,7 @@ import com.example.Castlerole.model.response.AttackResponse;
 import com.example.Castlerole.model.response.GridResponse;
 import com.example.Castlerole.model.response.PointDataResponse;
 import com.example.Castlerole.model.response.UserDataResponse;
-import com.example.Castlerole.service.CombatService;
-import com.example.Castlerole.service.GridService;
-import com.example.Castlerole.service.PointService;
-import com.example.Castlerole.service.UserService;
+import com.example.Castlerole.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +24,9 @@ public class GameController {
 
     @Autowired
     public UserService userService;
+
+    @Autowired
+    public CityService cityService;
 
     @Autowired
     public CombatService combatService;

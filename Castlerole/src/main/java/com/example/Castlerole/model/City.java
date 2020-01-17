@@ -55,7 +55,7 @@ public class City {
     }
 
     //CASTLE
-    public long getCasteLevel() {
+    public int getCasteLevel() {
         return casteLevel;
     }
 
@@ -64,7 +64,7 @@ public class City {
     }
 
     //WOODWORKS
-    public long getWoodworksLevel() {
+    public int getWoodworksLevel() {
         return woodworksLevel;
     }
 
@@ -73,7 +73,7 @@ public class City {
     }
 
     //MINE
-    public long getMineLevel() {
+    public int getMineLevel() {
         return mineLevel;
     }
 
@@ -82,7 +82,7 @@ public class City {
     }
 
     //FORGERY
-    public long getForgeryLevel() {
+    public int getForgeryLevel() {
         return forgeryLevel;
     }
 
@@ -91,7 +91,7 @@ public class City {
     }
 
     //BARRACKS
-    public long getBarracksLevel() {
+    public int getBarracksLevel() {
         return barracksLevel;
     }
 
@@ -100,7 +100,7 @@ public class City {
     }
 
     //OVEN
-    public long getOvenLevel() {
+    public int getOvenLevel() {
         return ovenLevel;
     }
 
