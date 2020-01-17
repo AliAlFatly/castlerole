@@ -30,44 +30,44 @@ public class JwtAuthenticationControllerITTest extends ControllerTestConfig {
     }
 
 
-    @Test
-    public void login() throws Exception {
-
-        String uri = "/login";
-        UserDTO userRight = super.createDTO("admin3","password");
-        UserDTO userWrong = super.createDTO("admin4","password");
-
-
-        jwtAuthenticationService.register(userRight);
-
-        String inputJsonWrong = super.mapToJson(userWrong);
-        String inputJsonRight = super.mapToJson(userRight);
-
-        MvcResult mvcResultRight = mvc.perform(MockMvcRequestBuilders.post(uri)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(inputJsonRight)
-                .characterEncoding("utf-8")
-                .header("Cache-Control","no-cache, no-store")
-                .accept(MediaType.APPLICATION_JSON)
-        )
-                .andDo(print())
-                .andDo(MockMvcResultHandlers.log())
-                .andExpect(status().isOk())
-                .andReturn();
-
-        MvcResult mvcResultWrong = mvc.perform(MockMvcRequestBuilders.post(uri)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(inputJsonWrong)
-                .characterEncoding("utf-8")
-                .header("Cache-Control","no-cache, no-store")
-                .accept(MediaType.APPLICATION_JSON)
-        )
+//    @Test
+//    public void login() throws Exception {
+//
+//        String uri = "/login";
+//        UserDTO userRight = super.createDTO("admin3","password");
+//        UserDTO userWrong = super.createDTO("admin4","password");
+//
+//
+//        jwtAuthenticationService.register(userRight);
+//
+//        String inputJsonWrong = super.mapToJson(userWrong);
+//        String inputJsonRight = super.mapToJson(userRight);
+//
+//        MvcResult mvcResultRight = mvc.perform(MockMvcRequestBuilders.post(uri)
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(inputJsonRight)
+//                .characterEncoding("utf-8")
+//                .header("Cache-Control","no-cache, no-store")
+//                .accept(MediaType.APPLICATION_JSON)
+//        )
 //                .andDo(print())
 //                .andDo(MockMvcResultHandlers.log())
-                .andExpect(status().is4xxClientError())
-                .andReturn();
-
-    }
+//                .andExpect(status().isOk())
+//                .andReturn();
+//
+//        MvcResult mvcResultWrong = mvc.perform(MockMvcRequestBuilders.post(uri)
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(inputJsonWrong)
+//                .characterEncoding("utf-8")
+//                .header("Cache-Control","no-cache, no-store")
+//                .accept(MediaType.APPLICATION_JSON)
+//        )
+////                .andDo(print())
+////                .andDo(MockMvcResultHandlers.log())
+//                .andExpect(status().is4xxClientError())
+//                .andReturn();
+//
+//    }
     // eindigt it-test(integration) anders normaal
 
     @Test
