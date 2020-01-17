@@ -32,7 +32,7 @@ CREATE TABLE `node` (
 
 CREATE TABLE `city` {
     `id` int not null AUTO_INCREMENT PRIMARY KEY,
-    `user_id` int FOREIGN KEY REFERENCES user(id),
+    `owner` varchar(50) not null FOREIGN KEY REFERENCES user(username),
     `castleLevel` int,
     `woodworksLevel` int,
     `mineLevel` int,

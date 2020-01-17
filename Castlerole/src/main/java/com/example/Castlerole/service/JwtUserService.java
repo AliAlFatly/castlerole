@@ -5,9 +5,12 @@ import java.util.*;
 
 import com.example.Castlerole.model.Node;
 import com.example.Castlerole.model.User;
+import com.example.Castlerole.model.City;
 import com.example.Castlerole.model.dto.UserDTO;
+import com.example.Castlerole.model.dto.CityDTO;
 import com.example.Castlerole.model.helpertypes.IntVector;
 import com.example.Castlerole.model.helpertypes.Vector;
+import com.example.Castlerole.repository.CityRepository;
 import com.example.Castlerole.repository.NodeRepository;
 import com.example.Castlerole.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,9 @@ public class JwtUserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CityRepository cityRepository;
 
     @Autowired
     private NodeRepository nodeRepository;
@@ -69,6 +75,11 @@ public class JwtUserService implements UserDetailsService {
                 300,
                 300
         );
+
+        City newCity = new City(
+                user.getUsername(), 1, 1, 1,1,1,1
+        );
+        cityRepository.save(newCity);
 
         return userRepository.save(newUser);
     }

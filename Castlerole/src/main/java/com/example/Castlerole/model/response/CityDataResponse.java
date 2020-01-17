@@ -2,7 +2,7 @@ package com.example.Castlerole.model.response;
 
 public class CityDataResponse {
     private long id;
-    private long user_id;
+    private String owner;
     private int casteLevel;
     private int woodworksLevel;
     private int mineLevel;
@@ -10,9 +10,8 @@ public class CityDataResponse {
     private int barracksLevel;
     private int ovenLevel;
 
-    public CityDataResponse(long id, long user_id, int casteLevel, int woodworksLevel, int mineLevel, int forgeryLevel, int barracksLevel, int ovenLevel){
-        this.id = id;
-        this.user_id = user_id;
+    public CityDataResponse(String owner, int casteLevel, int woodworksLevel, int mineLevel, int forgeryLevel, int barracksLevel, int ovenLevel){
+        this.owner = owner;
         this.casteLevel = casteLevel;
         this.woodworksLevel = woodworksLevel;
         this.mineLevel = mineLevel;
@@ -32,13 +31,13 @@ public class CityDataResponse {
         this.id = id;
     }
 
-    //USER_ID
-    public long getUser_id() {
-        return user_id;
+    //OWNER
+    public String geOwner() {
+        return owner;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     //CASTLE

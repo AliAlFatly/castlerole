@@ -10,7 +10,7 @@ public class City {
     private long id;
     //TODO: LINK THIS TO ID FROM MODEL USER
     @Column
-    private long user_id;
+    private String owner;
     @Column
     private int casteLevel;
     @Column
@@ -24,9 +24,12 @@ public class City {
     @Column
     private int ovenLevel;
 
-    public City(long id, long user_id, int casteLevel, int woodworksLevel, int mineLevel, int forgeryLevel, int barracksLevel, int ovenLevel){
-        this.id = id;
-        this.user_id = user_id;
+
+    @OneToOne(mappedBy = "city")
+    private User user;
+
+    public City(String owner, int casteLevel, int woodworksLevel, int mineLevel, int forgeryLevel, int barracksLevel, int ovenLevel){
+        this.owner = owner;
         this.casteLevel = casteLevel;
         this.woodworksLevel = woodworksLevel;
         this.mineLevel = mineLevel;
@@ -46,12 +49,12 @@ public class City {
     }
 
     //USER_ID
-    public long getUser_id() {
-        return user_id;
+    public String getOwner() {
+        return owner;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     //CASTLE
@@ -106,5 +109,14 @@ public class City {
 
     public void setOvenLevel(int ovenLevel) {
         this.ovenLevel = ovenLevel;
+    }
+
+    //USER
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

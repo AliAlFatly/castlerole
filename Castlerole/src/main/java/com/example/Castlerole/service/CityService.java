@@ -1,5 +1,6 @@
 package com.example.Castlerole.service;
 
+import com.example.Castlerole.config.JwtTokenUtil;
 import com.example.Castlerole.repository.CityRepository;
 import com.example.Castlerole.model.response.CityDataResponse;
 import com.example.Castlerole.model.City;
@@ -9,29 +10,20 @@ public class CityService {
     @Autowired
     private CityRepository cityRepository;
 
-    //Checks if the city exists using the user_id
-    public boolean CityExists(long user_id) throws Exception{
-        City city = cityRepository.findByUserId(user_id);
-        if(city != null){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
 
-    public CityDataResponse getCityData(long user_id) throws Exception{
+    public CityDataResponse getCityData(String owner) throws Exception{
         City city;
         try{
-            city = cityRepository.findByUserId(user_id);
+            city = cityRepository.findByOwner(owner);
         }
         catch(Exception error){
             throw new Exception("Cannot find a corresponding city!");
         }
 
         return new CityDataResponse(
-                city.getId(),
-                city.getUser_id(),
+                city.getOwner(),
                 city.getCasteLevel(),
                 city.getWoodworksLevel(),
                 city.getMineLevel(),
