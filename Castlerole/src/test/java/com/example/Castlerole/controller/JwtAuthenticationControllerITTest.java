@@ -70,47 +70,47 @@ public class JwtAuthenticationControllerITTest extends ControllerTestConfig {
 //    }
     // eindigt it-test(integration) anders normaal
 
-    @Test
-    public void RegisterUserTest() throws Exception {
-        String uri = "/register";
-        final String token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEyMzQxMzMiLCJleHAiOjE1NzUzMzkxNTEsImlhdCI6MTU3NTMyMTE1MX0.WFjAQ_MekvY6u-loMTjKPe2IGTqeUp3MMKNpI5ZdcEgIsN1BgfNrv0xcxG8Q1uV1fp40pgpGLrqgJLqfND1HDg";
-        UserDTO user = super.createDTO("admin5","password");
-        String inputJson = super.mapToJson(user);
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(inputJson)
-                .characterEncoding("utf-8")
-                .header("Cache-Control","no-cache, no-store")
-                .accept(MediaType.APPLICATION_JSON)
-        )
-                .andDo(print())
-                .andDo(MockMvcResultHandlers.log())
-                .andExpect(status().isOk())
-                .andReturn();
-        String[] content = mvcResult.getResponse().getContentAsString().substring(1).split(":");
-        String contenttoken = content[1].replace("\"","");
-        assertNotEquals(contenttoken, token);
-
-
-    }
-
-    public void RegisterUserTest_already_exists() throws Exception {
-        String uri = "/register";
-        UserDTO userEXISTS = super.createDTO("admin5","password");
-        jwtAuthenticationService.register(userEXISTS);
-        String inputJsonExists = super.mapToJson(userEXISTS);
-        MvcResult mvcResult_User_Exists = mvc.perform(MockMvcRequestBuilders.post(uri)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(inputJsonExists)
-                .characterEncoding("utf-8")
-                .header("Cache-Control","no-cache, no-store")
-                .accept(MediaType.APPLICATION_JSON)
-        )
-                .andDo(print())
-                .andDo(MockMvcResultHandlers.log())
-
-                //.andExpect(status().isOk())
-                .andReturn();
-
-    }
+//    @Test
+//    public void RegisterUserTest() throws Exception {
+//        String uri = "/register";
+//        final String token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEyMzQxMzMiLCJleHAiOjE1NzUzMzkxNTEsImlhdCI6MTU3NTMyMTE1MX0.WFjAQ_MekvY6u-loMTjKPe2IGTqeUp3MMKNpI5ZdcEgIsN1BgfNrv0xcxG8Q1uV1fp40pgpGLrqgJLqfND1HDg";
+//        UserDTO user = super.createDTO("admin5","password");
+//        String inputJson = super.mapToJson(user);
+//        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(inputJson)
+//                .characterEncoding("utf-8")
+//                .header("Cache-Control","no-cache, no-store")
+//                .accept(MediaType.APPLICATION_JSON)
+//        )
+//                .andDo(print())
+//                .andDo(MockMvcResultHandlers.log())
+//                .andExpect(status().isOk())
+//                .andReturn();
+//        String[] content = mvcResult.getResponse().getContentAsString().substring(1).split(":");
+//        String contenttoken = content[1].replace("\"","");
+//        assertNotEquals(contenttoken, token);
+//
+//
+//    }
+//
+//    public void RegisterUserTest_already_exists() throws Exception {
+//        String uri = "/register";
+//        UserDTO userEXISTS = super.createDTO("admin5","password");
+//        jwtAuthenticationService.register(userEXISTS);
+//        String inputJsonExists = super.mapToJson(userEXISTS);
+//        MvcResult mvcResult_User_Exists = mvc.perform(MockMvcRequestBuilders.post(uri)
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(inputJsonExists)
+//                .characterEncoding("utf-8")
+//                .header("Cache-Control","no-cache, no-store")
+//                .accept(MediaType.APPLICATION_JSON)
+//        )
+//                .andDo(print())
+//                .andDo(MockMvcResultHandlers.log())
+//
+//                //.andExpect(status().isOk())
+//                .andReturn();
+//
+//    }
 }
