@@ -94,23 +94,23 @@ public class JwtAuthenticationControllerITTest extends ControllerTestConfig {
 
     }
 
-//    public void RegisterUserTest_already_exists() throws Exception {
-//        String uri = "/register";
-//        UserDTO userEXISTS = super.createDTO("admin5","password");
-//        jwtAuthenticationService.register(userEXISTS);
-//        String inputJsonExists = super.mapToJson(userEXISTS);
-//        MvcResult mvcResult_User_Exists = mvc.perform(MockMvcRequestBuilders.post(uri)
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .content(inputJsonExists)
-//                .characterEncoding("utf-8")
-//                .header("Cache-Control","no-cache, no-store")
-//                .accept(MediaType.APPLICATION_JSON)
-//        )
-//                .andDo(print())
-//                .andDo(MockMvcResultHandlers.log())
-//
-//                //.andExpect(status().isOk())
-//                .andReturn();
-//
-//    }
+    public void RegisterUserTest_already_exists() throws Exception {
+        String uri = "/register";
+        UserDTO userEXISTS = super.createDTO("admin5","password");
+        jwtAuthenticationService.register(userEXISTS);
+        String inputJsonExists = super.mapToJson(userEXISTS);
+        MvcResult mvcResult_User_Exists = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(inputJsonExists)
+                .characterEncoding("utf-8")
+                .header("Cache-Control","no-cache, no-store")
+                .accept(MediaType.APPLICATION_JSON)
+        )
+                .andDo(print())
+                .andDo(MockMvcResultHandlers.log())
+
+                //.andExpect(status().isOk())
+                .andReturn();
+
+    }
 }

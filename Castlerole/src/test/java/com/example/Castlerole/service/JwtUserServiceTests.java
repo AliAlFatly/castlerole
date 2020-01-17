@@ -45,7 +45,7 @@ public class JwtUserServiceTests {
     private UserRepository userRepository;
     @Mock
     private NodeRepository nodeRepository;
-    @Autowired
+    @Mock
     private PasswordEncoder bcryptEncoder;
     @InjectMocks
     private JwtUserService jwtUserService;
