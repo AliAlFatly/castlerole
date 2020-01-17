@@ -3,7 +3,6 @@ package com.example.Castlerole.service;
 import com.example.Castlerole.model.dto.UserDTO;
 import com.example.Castlerole.repository.NodeRepository;
 import com.example.Castlerole.repository.UserRepository;
-import org.junit.Before;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,20 +10,42 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.util.FieldUtils;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.util.ReflectionTestUtils;
 
-//@ExtendWith(MockitoExtension.class)
+//@ExtendWith(SpringExtension.class)
+@ActiveProfiles("test")
+//@RunWith(MockitoJUnitRunner.class)
+//@ContextConfiguration(classes = JwtUserService.class)
+//@ExtendWith(SpringExtension.class)
+//@ContextConfiguration
+@PropertySource("classpath:application-test.properties")
+//@SpringBootTest(properties = "gridSize=500")
+//@SpringJUnitConfig(classes = JwtUserService.class)
 public class JwtUserServiceTests {
 
+    //@Value("${gridSize}") private int gridSize;
     @Mock
     private UserRepository userRepository;
     @Mock
     private NodeRepository nodeRepository;
-    @Mock
+    @Autowired
     private PasswordEncoder bcryptEncoder;
     @InjectMocks
     private JwtUserService jwtUserService;
@@ -32,15 +53,14 @@ public class JwtUserServiceTests {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
+        ReflectionTestUtils.setField(jwtUserService, "gridSize", 500);
+        //ReflectionTestUtils.setField(jwtUserService, "jwt.secret", "secret");
         int gridSize = 500;
-
-
     }
 
     @Test
     public void JwtUserService_getXYTest() throws Exception {
         jwtUserService.getXY();
-
     }
 
     @Test
@@ -51,9 +71,13 @@ public class JwtUserServiceTests {
         jwtUserService.registerNewUser(jwtuserMock);
     }
 
-    @Test
-    public void JwtUserService_LoadUserTest() {
-        jwtUserService.loadUserByUsername("jwtUserService");
-    }
+//    @Test
+//    public void JwtUserService_LoadUserTest() throws Exception {
+//        UserDTO jwtuserMock = new UserDTO();
+//        jwtuserMock.setUsername("jwtUserService");
+//        jwtuserMock.setPassword("password");
+//        jwtUserService.registerNewUser(jwtuserMock);
+//        jwtUserService.loadUserByUsername("jwtUserService");
+//    }
 
 }
