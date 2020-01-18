@@ -8,35 +8,37 @@ import com.example.Castlerole.repository.UserRepository;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
 import org.mockito.*;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.apache.maven.surefire.testset.TestRequest;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.event.annotation.BeforeTestExecution;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import javax.naming.Context;
+//@ExtendWith(MockitoExtension.class)
+//@ActiveProfiles("test")
+//@RunWith()
+//@SpringBootTest
+public class AdminServiceTests {
 
-import java.beans.BeanProperty;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
-
-@RunWith(MockitoJUnitRunner.class)
-public class AdminServiceTest {
-
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
+        adminService = new AdminService();
         MockitoAnnotations.initMocks(this);
         Mockito.when(userService.getXY())
                 .thenReturn(new IntVector(25,25));
     }
+
     @InjectMocks
     private AdminService adminService;
     @Mock

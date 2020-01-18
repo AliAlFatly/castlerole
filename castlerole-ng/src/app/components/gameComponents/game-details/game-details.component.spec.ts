@@ -31,6 +31,7 @@ describe('GameDetailsComponent', () => {
     fixture = TestBed.createComponent(GameDetailsComponent);
     component = fixture.componentInstance;
     component.targetCoordinates = new Vector(20, 20);
+    component.userCoordinate = new Vector(21, 21);
     pointDetails = new PointDataResponse(25, 25, 'Player', true);
     fixture.detectChanges();
   });

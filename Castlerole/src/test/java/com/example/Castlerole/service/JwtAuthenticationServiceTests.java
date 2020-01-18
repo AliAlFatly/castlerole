@@ -5,13 +5,17 @@ import com.example.Castlerole.model.dto.UserDTO;
 import com.example.Castlerole.model.request.JwtRequest;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.Incubating;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -19,8 +23,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 
 
-@RunWith(MockitoJUnitRunner.class)
-public class JwtAuthenticationServiceTest {
+//@ExtendWith(MockitoExtension.class)
+public class JwtAuthenticationServiceTests {
 
    @Mock
    private AuthenticationManager authenticationManager;
@@ -82,6 +86,9 @@ public class JwtAuthenticationServiceTest {
       //return token
       System.out.println(token);
    }
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
 
 
 
