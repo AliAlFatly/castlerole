@@ -77,8 +77,11 @@ public class JwtAuthenticationServiceTest {
       //return token
       System.out.println(token);
    }
+<<<<<<< HEAD:Castlerole/src/test/java/com/example/Castlerole/service/JwtAuthenticationServiceTest.java
 <<<<<<< HEAD:Castlerole/src/test/java/com/example/Castlerole/service/JwtAuthenticationServiceTests.java
 =======
+=======
+>>>>>>> parent of f44dbca... Merge branch 'master' into JWTtest:Castlerole/src/test/java/com/example/Castlerole/service/JwtAuthenticationServiceTest.java
 
 
 >>>>>>> parent of f44dbca... Merge branch 'master' into JWTtest:Castlerole/src/test/java/com/example/Castlerole/service/JwtAuthenticationServiceTest.java
