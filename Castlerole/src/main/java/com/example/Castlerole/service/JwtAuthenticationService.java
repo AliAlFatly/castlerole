@@ -46,6 +46,7 @@ public class JwtAuthenticationService {
         }
         //after registration save new user
         var newUser = userDetailsService.registerNewUser(user);
+        var newCity = userDetailsService.registerNewCity(user);
         //get userDetails
         final UserDetails userDetails = userDetailsService.loadUserByUsername(newUser.getUsername());
         //generate token

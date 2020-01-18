@@ -14,7 +14,7 @@ public interface CityRepository extends CrudRepository<City, Integer>{
 
     City findByOwner(String owner);
 
-    @Transactional
+    /*@Transactional
     @Modifying
     @Query("UPDATE City c SET c.castleLevel = :amount WHERE c.owner = :owner")
     Integer updateCastleLevel(@Param("amount") int amount, @Param("owner") String owner);
@@ -42,6 +42,6 @@ public interface CityRepository extends CrudRepository<City, Integer>{
     @Transactional
     @Modifying
     @Query("UPDATE City c SET c.ovensLevel = :amount WHERE c.owner = :owner")
-    Integer updateOvensLevel(@Param("amount") int amount, @Param("owner") String owner);
+    Integer updateOvensLevel(@Param("amount") int amount, @Param("owner") String owner);*/
 
 }
