@@ -4,7 +4,7 @@
     <list default="true" id="05cbcf3e-83df-4bce-ba2e-78b2143e1702" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/repository/CityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/repository/CityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/CityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/CityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +81,7 @@
       <recent name="C:\Users\Alex_\Documents\GitHub\castlerole\Castlerole\src\main\java\com\example\Castlerole\service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.JwtAuthenticationServiceTest">
+  <component name="RunManager" selected="Spring Boot.CastleroleApplication">
     <configuration name="JwtAuthenticationServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Castlerole" />
       <extension name="coverage">
