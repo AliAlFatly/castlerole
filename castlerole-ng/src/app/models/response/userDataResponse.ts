@@ -1,6 +1,7 @@
-export class UserDataResponse{
+export class UserDataResponse {
 
 
+  // tslint:disable-next-line:max-line-length
   constructor(username: string, coordinateX: number, coordinateY: number, wood: number, iron: number, stone: number, food: number, troops: number) {
     this.username = username;
     this.coordinateX = coordinateX;
@@ -12,7 +13,7 @@ export class UserDataResponse{
     this.troops = troops;
   }
 
-  username: string;
+    username: string;
     coordinateX: number;
     coordinateY: number;
     wood: number;

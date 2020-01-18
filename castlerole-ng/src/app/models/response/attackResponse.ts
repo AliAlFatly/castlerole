@@ -1,6 +1,7 @@
 export class AttackResponse {
 
 
+  // tslint:disable-next-line:max-line-length
   constructor(x: number, y: number, isWon: boolean, enemyTroopCount: number, attackerTroopCount: number, ironWon: number, foodWon: number, stoneWon: number, woodWon: number, attackable: boolean) {
     this.x = x;
     this.y = y;

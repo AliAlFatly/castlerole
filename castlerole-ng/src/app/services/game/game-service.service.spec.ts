@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { GameServiceService } from './game-service.service';
-import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('GameServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({

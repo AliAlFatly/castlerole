@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {AuthenticationService} from "../../../services/authentication/authentication.service";
-import {Router} from "@angular/router";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {AuthenticationService} from '../../../services/authentication/authentication.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
       });
   }
 
-  toLogin(){
+  toLogin() {
     this.router.navigate(['login']);
   }
   // onSumbit(){

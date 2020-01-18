@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
-import {AuthenticationService} from "./authentication.service";
+import {AuthenticationService} from './authentication.service';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { catchError, filter, take, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-//implements HttpInterceptor!
-//when ever a request is made, this class is called?
-//handles token:
-//adds => headers: { 'Authorization' : 'bearer ' + sessionStorage.Token } to xhr calls ?????
-//process every outgoing call by httpClient
+// implements HttpInterceptor!
+// when ever a request is made, this class is called?
+// handles token:
+// adds => headers: { 'Authorization' : 'bearer ' + sessionStorage.Token } to xhr calls ?????
+// process every outgoing call by httpClient
 export class TokenInterceptorService implements HttpInterceptor {
 
 
@@ -19,21 +19,19 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   constructor(public authService: AuthenticationService) { }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler) //: Observable<HttpEvent<any>>
-  {
-    if(this.authService.getJwtToken() != null){
-      let tokenizedReq = request.clone({
-        setHeaders: { 'Authorization': `Bearer ${this.authService.getJwtToken()}` }
+  intercept(request: HttpRequest<any>, next: HttpHandler) {
+    if (this.authService.getJwtToken() != null) {
+      const tokenizedReq = request.clone({
+        setHeaders: { Authorization: `Bearer ${this.authService.getJwtToken()}` }
       });
       return next.handle(tokenizedReq);
-    }
-    else {
+    } else {
       return next.handle(request.clone());
     }
-    //if token is not null, add token to request.
+    // if token is not null, add token to request.
 
 
-    //if no token, return a error handler for handling unauthorized response
+    // if no token, return a error handler for handling unauthorized response
     //   .pipe(catchError(error => {
     //   //pipe error
     //   //if error is a response and is 401
@@ -47,12 +45,12 @@ export class TokenInterceptorService implements HttpInterceptor {
     // }));
   }
 
-  //add token method
+  // add token method
   private addToken(request: HttpRequest<any>, token: string) {
-    //clone request (slice?), change cloned request to request + header {'Authorization' : 'bearer ${token}'}
-    //return new version of request.
+    // clone request (slice?), change cloned request to request + header {'Authorization' : 'bearer ${token}'}
+    // return new version of request.
     return request.clone({
-      setHeaders: { 'Authorization': `Bearer ${token}` }
+      setHeaders: { Authorization: `Bearer ${token}` }
     });
   }
 
