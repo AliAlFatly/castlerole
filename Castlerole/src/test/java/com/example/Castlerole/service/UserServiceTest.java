@@ -6,23 +6,18 @@ import com.example.Castlerole.model.response.UserDataResponse;
 import com.example.Castlerole.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Before;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static org.mockito.ArgumentMatchers.any;
 
-//@ExtendWith(MockitoExtension.class)
-public class UserServiceTests {
+public class UserServiceTest {
 
     @Mock
     private UserRepository userRepository;
@@ -33,7 +28,7 @@ public class UserServiceTests {
     @InjectMocks
     private UserService userService;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         var UserServiceMock = new User();

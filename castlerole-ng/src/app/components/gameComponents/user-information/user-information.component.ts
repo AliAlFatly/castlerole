@@ -34,7 +34,7 @@ export class UserInformationComponent implements OnChanges {
 
   updateUserData = async () => {
     this.userData = await this.gameService.getUserData().toPromise();
-    this.userCoordinatesEmitter.emit(new Vector(this.userData.coordinateX, this.userData.coordinateY));
+    await this.userCoordinatesEmitter.emit(new Vector(this.userData.coordinateX, this.userData.coordinateY))
   }
 
 }

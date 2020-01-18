@@ -3,21 +3,18 @@ package com.example.Castlerole.service;
 import com.example.Castlerole.repository.NodeRepository;
 import com.example.Castlerole.repository.UserRepository;
 import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
 
-//@ExtendWith(MockitoExtension.class)
-public class GridServiceTests {
+@RunWith(MockitoJUnitRunner.class)
+public class GridServiceTest {
 
     @Mock
     private NodeRepository nodeRepository;
@@ -28,7 +25,7 @@ public class GridServiceTests {
     @InjectMocks
     private GridService gridService;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         gridService.setX(50);

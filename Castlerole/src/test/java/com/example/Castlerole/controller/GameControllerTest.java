@@ -21,7 +21,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-public class GameControllerITTest extends ControllerTestConfig {
+public class GameControllerTest extends ControllerTestConfig {
 
     @Autowired
     JwtAuthenticationService jwtAuthenticationService;

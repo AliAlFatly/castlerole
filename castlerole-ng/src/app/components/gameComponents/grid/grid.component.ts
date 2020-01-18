@@ -98,7 +98,7 @@ export class GridComponent implements OnChanges {
   };
 
   setCanvas = async () => {
-    this.canvasElement = document.querySelector("canvas");
+    this.canvasElement = await document.querySelector("canvas");
     this.canvasElement.width = canvasWidth;
     this.canvasElement.height = canvasHeight;
     this.canvasElement.style.width = `${canvasWidth}px`;
@@ -111,13 +111,13 @@ export class GridComponent implements OnChanges {
   // };
 
   addClickHandle = async () => {
-    this.canvasElement = document.querySelector("canvas");
+    this.canvasElement = await document.querySelector("canvas");
     this.zeroX = this.coordinates.x - halfScreenWidth; // this.grid[0].x;
     this.zeroY = this.coordinates.y - halfScreenHeight; // this.grid[0].y;
     this.canvasElement.addEventListener("click", async (event) => {
       // alert(`${this.zeroX} + ${event.pageX} / ${elementWidth}`)
       this.targetCoordinates = new Vector(this.zeroX + Math.floor((event.pageX / elementWidth)),this.zeroY + Math.floor((event.pageY / elementHeight)));
-      this.clickEmitter.emit(this.targetCoordinates)
+      await this.clickEmitter.emit(this.targetCoordinates)
     })
   };
 

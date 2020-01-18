@@ -5,17 +5,13 @@ import com.example.Castlerole.model.dto.UserDTO;
 import com.example.Castlerole.model.request.JwtRequest;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Incubating;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -23,8 +19,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 
 
-//@ExtendWith(MockitoExtension.class)
-public class JwtAuthenticationServiceTests {
+@RunWith(MockitoJUnitRunner.class)
+public class JwtAuthenticationServiceTest {
 
    @Mock
    private AuthenticationManager authenticationManager;
@@ -81,6 +77,11 @@ public class JwtAuthenticationServiceTests {
       //return token
       System.out.println(token);
    }
+<<<<<<< HEAD:Castlerole/src/test/java/com/example/Castlerole/service/JwtAuthenticationServiceTests.java
+=======
+
+
+>>>>>>> parent of f44dbca... Merge branch 'master' into JWTtest:Castlerole/src/test/java/com/example/Castlerole/service/JwtAuthenticationServiceTest.java
 
 //    @BeforeEach
 //    public void setUp() {

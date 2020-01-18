@@ -6,26 +6,17 @@ import com.example.Castlerole.repository.NodeRepository;
 import com.example.Castlerole.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Before;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
+import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.junit.jupiter.MockitoSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
-//@ExtendWith(MockitoExtension.class)
-//@RunWith(MockitoJUnitRunner.class)
-public class PointServiceTests {
+public class PointServiceTest {
 
     @Mock
     private NodeRepository nodeRepository;
@@ -36,7 +27,7 @@ public class PointServiceTests {
     @InjectMocks
     private PointService pointService;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         var PlayerPoint = new User();
@@ -55,17 +46,11 @@ public class PointServiceTests {
         NodePoint.setType("forest");
         NodePoint.setYieldMax(300);
         NodePoint.setYieldMin(150);
-        Mockito.when(userRepository.findByCoordinateXAndCoordinateY(25, 25))
+        Mockito.when(userRepository.findByCoordinateXAndCoordinateY(25,25))
                 .thenReturn(java.util.Optional.of(PlayerPoint));
         Mockito.when(nodeRepository.findByCoordinateXAndCoordinateY(15,15))
                 .thenReturn(java.util.Optional.of(NodePoint));
 
-//        Mockito.doReturn(java.util.Optional.of(PlayerPoint))
-//                .when(userRepository)
-//                        .findByCoordinateXAndCoordinateY(25,25);
-//        Mockito.doReturn(java.util.Optional.of(NodePoint))
-//                .when(nodeRepository)
-//                        .findByCoordinateXAndCoordinateY(15,15);
     }
 
     @Test
