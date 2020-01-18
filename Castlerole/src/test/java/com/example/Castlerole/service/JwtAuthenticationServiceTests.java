@@ -37,11 +37,6 @@ public class JwtAuthenticationServiceTests {
    @InjectMocks
    private JwtAuthenticationService jwtAuthenticationService;
 
-   @Before
-   public void setUp() {
-      MockitoAnnotations.initMocks(this);
-
-   }
    @Test
    public void Jwtauthenticate_Test() throws Exception {
       UserDTO jwtuserMock = new UserDTO();
@@ -86,11 +81,9 @@ public class JwtAuthenticationServiceTests {
       //return token
       System.out.println(token);
    }
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.initMocks(this);
 
-
-
+//    @BeforeEach
+//    public void setUp() {
+//        MockitoAnnotations.initMocks(this);
 
 }
