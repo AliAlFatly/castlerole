@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="05cbcf3e-83df-4bce-ba2e-78b2143e1702" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/Castlerole/service/JwtUserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/Castlerole/service/JwtUserServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/repository/CityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/repository/CityRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/CityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Castlerole/service/CityService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,6 +228,7 @@
       <workItem from="1578850211747" duration="197000" />
       <workItem from="1578855038034" duration="3027000" />
       <workItem from="1578915735496" duration="122000" />
+      <workItem from="1579338810710" duration="3370000" />
     </task>
     <servers />
   </component>
@@ -291,10 +293,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="488" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1578146311357" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1578915851970">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1579338810719">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1578915851970" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1579338810719" />
     <state x="270" y="0" width="738" height="818" maximized="true" key="dock-window-1" timestamp="1578855926484">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -311,19 +313,5 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="801" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1576503168790" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/test/java/com/example/Castlerole/service/JwtAuthenticationServiceTest.java</url>
-          <line>68</line>
-          <properties class="com.example.Castlerole.service.JwtAuthenticationServiceTest" method="register_Test">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

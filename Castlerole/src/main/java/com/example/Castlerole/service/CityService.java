@@ -5,7 +5,9 @@ import com.example.Castlerole.repository.CityRepository;
 import com.example.Castlerole.model.response.CityDataResponse;
 import com.example.Castlerole.model.City;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CityService {
     @Autowired
     private CityRepository cityRepository;
