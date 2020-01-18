@@ -15,7 +15,8 @@ CREATE TABLE `user` (
         `iron` int,
         `stone` int,
         `food` int,
-        `troops` int
+        `troops` int,
+        INDEX(username)
         );
 
 CREATE TABLE `node` (
@@ -30,13 +31,14 @@ CREATE TABLE `node` (
         `coordinateY` int
         );
 
-CREATE TABLE `city` {
-    `id` int not null AUTO_INCREMENT PRIMARY KEY,
-    `owner` varchar(50) not null FOREIGN KEY REFERENCES user(username),
-    `castleLevel` int,
-    `woodworksLevel` int,
-    `mineLevel` int,
-    `forgeryLevel` int,
-    `barrackslevel` int,
-    `ovenLevel` int
-};
+CREATE TABLE `city` (
+		`id` int not null AUTO_INCREMENT PRIMARY KEY,
+        `owner` varchar(50) not null,
+        `castleLevel` int,
+        `woodworksLevel` int,
+        `mineLevel` int,
+		`forgeryLevel` int,
+		`barrackslevel` int,
+		`ovenLevel` int,
+        FOREIGN KEY(owner) REFERENCES user(username) ON DELETE CASCADE
+        );

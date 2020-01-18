@@ -14,7 +14,7 @@ public interface CityRepository extends CrudRepository<City, Integer>{
 
     City findByOwner(String owner);
 
-    @Transactional
+    /*@Transactional
     @Modifying
     @Query("UPDATE City c SET c.casteLevel = :amount WHERE c.owner = :owner")
     Integer updateCastleLevel(@Param("amount") int amount, @Param("owner") String owner);

@@ -76,12 +76,14 @@ public class JwtUserService implements UserDetailsService {
                 300
         );
 
+        return userRepository.save(newUser);
+    }
+
+    public City registerNewCity(UserDTO user) throws Exception{
         City newCity = new City(
                 user.getUsername(), 1, 1, 1,1,1,1
         );
-        cityRepository.save(newCity);
-
-        return userRepository.save(newUser);
+        return cityRepository.save(newCity);
     }
 
     public IntVector getXY() throws Exception {
