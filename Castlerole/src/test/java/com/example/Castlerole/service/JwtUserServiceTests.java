@@ -1,5 +1,7 @@
 package com.example.Castlerole.service;
 
+import com.example.Castlerole.Config.JpaConfig;
+import com.example.Castlerole.model.User;
 import com.example.Castlerole.model.dto.UserDTO;
 import com.example.Castlerole.repository.NodeRepository;
 import com.example.Castlerole.repository.UserRepository;
@@ -29,16 +31,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import static org.mockito.Mockito.mock;
+
 //@ExtendWith(SpringExtension.class)
 @ActiveProfiles("test")
 //@RunWith(MockitoJUnitRunner.class)
-//@ContextConfiguration(classes = JwtUserService.class)
+@ContextConfiguration(classes = JwtUserService.class)
 //@ExtendWith(SpringExtension.class)
 //@ContextConfiguration
-@PropertySource("classpath:application-test.properties")
+@TestPropertySource(properties = {"gridSize=500", "jwt.secret=secret"})
 //@SpringBootTest(properties = "gridSize=500")
 //@SpringJUnitConfig(classes = JwtUserService.class)
-public class JwtUserServiceTests {
+public class JwtUserServiceTests extends JpaConfig {
 
     //@Value("${gridSize}") private int gridSize;
     @Mock
@@ -55,6 +59,7 @@ public class JwtUserServiceTests {
         MockitoAnnotations.initMocks(this);
         ReflectionTestUtils.setField(jwtUserService, "gridSize", 500);
         //ReflectionTestUtils.setField(jwtUserService, "jwt.secret", "secret");
+        Mockito.when(userRepository.findByUsername("jwtUserService")).thenReturn(new User("jwtUserService", "password"));
         int gridSize = 500;
     }
 
@@ -71,13 +76,9 @@ public class JwtUserServiceTests {
         jwtUserService.registerNewUser(jwtuserMock);
     }
 
-//    @Test
-//    public void JwtUserService_LoadUserTest() throws Exception {
-//        UserDTO jwtuserMock = new UserDTO();
-//        jwtuserMock.setUsername("jwtUserService");
-//        jwtuserMock.setPassword("password");
-//        jwtUserService.registerNewUser(jwtuserMock);
-//        jwtUserService.loadUserByUsername("jwtUserService");
-//    }
+    @Test
+    public void JwtUserService_LoadUserTest() throws Exception {
+        jwtUserService.loadUserByUsername("jwtUserService");
+    }
 
 }
