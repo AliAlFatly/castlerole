@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavigatorComponent } from './navigator.component';
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
 
 describe('NavigatorComponent', () => {
   let component: NavigatorComponent;

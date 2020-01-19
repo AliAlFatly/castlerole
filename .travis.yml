@@ -25,8 +25,10 @@ matrix:
           token:
             secure: "c61961957613b0bd3a28fb8861dff3ac0ad98c61" # encrypted value of your token
       script:
-        - mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=AliAlFatly_castlerole
-        - ./mvnw test -B -q
+        - mvn clean verify sonar:sonar -Pcoverage
+
+        # - mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=AliAlFatly_castlerole
+        # - ./mvnw test -B -q
 
         #- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent sonar-scanner -Dsonar.projectKey=AliAlFatly_castlerole
         #- sonar-scanner #-Pcoverage 
@@ -50,9 +52,10 @@ matrix:
         - sh -e /etc/init.d/xvfb start
       script:
         # - npm run build
-        - ng test --watch=false --code-coverage 
+        - ng test --watch=false && ng lint && sonar-scanner
+        #- ng test --watch=false --code-coverage 
         # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-        - sonar-scanner #sonar.javascript.lcov.reportpaths=coverage/lcov.info #-Pcoverage -Dsonar.projectKey=castleroleprojectkey
+        #- sonar-scanner #sonar.javascript.lcov.reportpaths=coverage/lcov.info #-Pcoverage -Dsonar.projectKey=castleroleprojectkey
 
 
 
