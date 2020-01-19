@@ -17,10 +17,10 @@ public interface CityRepository extends CrudRepository<City, Integer>{
 
     City findByOwner(String owner);
 
-//    @Transactional
-//    @Modifying
-//    @Query("select c.casteLevel, c.woodworksLevel, c.mineLevel, c.forgeryLevel, c.barracksLevel, c.ovenLevel from City c, User u where u.coordinateX >= :minX and u.coordinateX <= :maxX and u.coordinateY >= :minY and u.coordinateY <= :maxY")
-//    Optional<ArrayList<User>> getUsersInGrid(@Param("minX") int minX, @Param("maxX") int maxX, @Param("minY") int minY, @Param("maxY") int maxY);
+    @Transactional
+    @Modifying
+    @Query("select c.casteLevel, c.woodworksLevel, c.mineLevel, c.forgeryLevel, c.barracksLevel, c.ovenLevel from City c, User u where u.coordinateX >= :minX and u.coordinateX <= :maxX and u.coordinateY >= :minY and u.coordinateY <= :maxY")
+    Optional<ArrayList<User>> getUsersInGrid(@Param("minX") int minX, @Param("maxX") int maxX, @Param("minY") int minY, @Param("maxY") int maxY);
 
     @Transactional
     @Modifying
