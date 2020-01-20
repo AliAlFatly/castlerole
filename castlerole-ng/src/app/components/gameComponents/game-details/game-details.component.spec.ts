@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GameDetailsComponent } from './game-details.component';
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {Vector} from "../../../models/generic/Vector";
-import {PointDataResponse} from "../../../models/response/pointDataResponse";
-import {AttackResponse} from "../../../models/response/attackResponse";
-import {GridComponent} from "../grid/grid.component";
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {Vector} from '../../../models/generic/Vector';
+import {PointDataResponse} from '../../../models/response/pointDataResponse';
+import {AttackResponse} from '../../../models/response/attackResponse';
+import {GridComponent} from '../grid/grid.component';
 
 describe('GameDetailsComponent', () => {
   let component: GameDetailsComponent;

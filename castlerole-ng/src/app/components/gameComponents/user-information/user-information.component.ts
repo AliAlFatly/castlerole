@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {GameServiceService} from "../../../services/game/game-service.service";
-import { UserDataResponse } from "../../../models/response/userDataResponse";
-import {Vector} from "../../../models/generic/Vector";
+import {GameServiceService} from '../../../services/game/game-service.service';
+import { UserDataResponse } from '../../../models/response/userDataResponse';
+import {Vector} from '../../../models/generic/Vector';
 
 @Component({
   selector: 'app-user-information',
@@ -10,15 +10,16 @@ import {Vector} from "../../../models/generic/Vector";
 })
 export class UserInformationComponent implements OnChanges {
 
-  private userData = new UserDataResponse("",-1,-1,-1,-1,-1,-1,-1)
+  private userData = new UserDataResponse('', -1, -1, -1, -1, -1, -1, -1);
 
-  @Output() userCoordinatesEmitter = new EventEmitter<Vector>()
+  @Output() userCoordinatesEmitter = new EventEmitter<Vector>();
 
   // private interval = Interval(1000);
 
 
   constructor(private gameService: GameServiceService) { }
 
+  // tslint:disable-next-line:use-lifecycle-interface
   async ngOnInit() {
     await this.updateUserData();
 

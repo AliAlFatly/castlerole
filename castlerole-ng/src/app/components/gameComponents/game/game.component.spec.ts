@@ -1,15 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GameComponent } from './game.component';
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {GridComponent} from "../grid/grid.component";
-import {UserInformationComponent} from "../user-information/user-information.component";
-import {LogoutComponent} from "../../authenticationComponents/logout/logout.component";
-import {RouterTestingModule} from "@angular/router/testing";
-import {Vector} from "../../../models/generic/Vector";
-import {GameDetailsComponent} from "../game-details/game-details.component";
-import {NavigatorComponent} from "../navigator/navigator.component";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {GridComponent} from '../grid/grid.component';
+import {UserInformationComponent} from '../user-information/user-information.component';
+import {LogoutComponent} from '../../authenticationComponents/logout/logout.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {Vector} from '../../../models/generic/Vector';
+import {GameDetailsComponent} from '../game-details/game-details.component';
+import {NavigatorComponent} from '../navigator/navigator.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 describe('GameComponent', () => {

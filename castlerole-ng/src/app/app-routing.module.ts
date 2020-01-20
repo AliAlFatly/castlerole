@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {LoginComponent} from "./components/authenticationComponents/login/login.component";
-import {AuthenticationGuardService} from "./guards/authentication-guard.service";
-import {RegisterComponent} from "./components/authenticationComponents/register/register.component";
+import {LoginComponent} from './components/authenticationComponents/login/login.component';
+import {AuthenticationGuardService} from './guards/authentication-guard.service';
+import {RegisterComponent} from './components/authenticationComponents/register/register.component';
 
-import {GameComponent} from "./components/gameComponents/game/game.component";
+import {GameComponent} from './components/gameComponents/game/game.component';
 
 
 const routes: Routes = [
