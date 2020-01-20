@@ -29,6 +29,10 @@ export class GameServiceService {
       return this.http.get(`${config.apiUrl}/userData`);
   }
 
+  getCityData(): Observable<any> {
+    return this.http.get(`${config.apiUrl}/cityData`);
+  }
+
   attack(vector: Vector): Observable<any> {
     return this.http.get(`${config.apiUrl}/attack/${vector.x}/${vector.y}`);
   }

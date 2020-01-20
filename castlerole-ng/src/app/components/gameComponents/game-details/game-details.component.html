@@ -3,6 +3,9 @@
     {{pointDetails.coordinateX}}, {{pointDetails.coordinateY}} <br />
     {{pointDetails.type}} <br />
     <button *ngIf="pointDetails.attackable" (click)="attack()">Attack</button>
+    <span *ngIf="displayUserCity">
+      {{}}
+    </span>
   </span>
   <span *ngIf="attackResponse.x > -1">
     <h2>Attack result:</h2>
