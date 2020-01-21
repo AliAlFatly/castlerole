@@ -38,6 +38,9 @@ public class City {
         this.ovenLevel = ovenLevel;
     }
 
+    public City() {
+    }
+
     //GETTERS AND SETTERS
     //ID
     public long getId() {

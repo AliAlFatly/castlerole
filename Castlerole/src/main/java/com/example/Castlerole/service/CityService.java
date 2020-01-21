@@ -1,9 +1,12 @@
 package com.example.Castlerole.service;
 
 import com.example.Castlerole.config.JwtTokenUtil;
+import com.example.Castlerole.model.User;
+import com.example.Castlerole.model.response.UserDataResponse;
 import com.example.Castlerole.repository.CityRepository;
 import com.example.Castlerole.model.response.CityDataResponse;
 import com.example.Castlerole.model.City;
+import com.example.Castlerole.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +14,6 @@ import org.springframework.stereotype.Service;
 public class CityService {
     @Autowired
     private CityRepository cityRepository;
-
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
 
     public CityDataResponse getCityData(String owner) throws Exception{
         City city;
@@ -34,4 +34,7 @@ public class CityService {
                 city.getOvenLevel()
         );
     }
+
+
+
 }

@@ -46,6 +46,11 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
 	@Transactional
 	@Modifying
+	@Query("UPDATE User u SET u.troops = :amount WHERE u.username = :username")
+	Integer updateTroops(@Param("amount") int amount, @Param("username") String username);
+
+	@Transactional
+	@Modifying
 	@Query("select u from User u where u.coordinateX >= :minX and u.coordinateX <= :maxX and u.coordinateY >= :minY and u.coordinateY <= :maxY")
 	Optional<ArrayList<User>> getUsersInGrid(@Param("minX") int minX, @Param("maxX") int maxX, @Param("minY") int minY, @Param("maxY") int maxY);
 }

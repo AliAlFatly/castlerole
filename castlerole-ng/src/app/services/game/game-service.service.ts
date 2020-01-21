@@ -29,6 +29,10 @@ export class GameServiceService {
       return this.http.get(`${config.apiUrl}/userData`);
   }
 
+  recruit(amount: number): Observable<any> {
+    return this.http.get(`${config.apiUrl}/recruit/${amount}`);
+  }
+
   attack(vector: Vector): Observable<any> {
     return this.http.get(`${config.apiUrl}/attack/${vector.x}/${vector.y}`);
   }

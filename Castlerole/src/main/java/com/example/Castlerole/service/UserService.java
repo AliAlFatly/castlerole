@@ -14,8 +14,10 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
+    private int troopRecruitmentWood = 20;
+    private int troopRecruitmentFood = 20;
+    private int troopRecruitmentIron = 10;
+    private int troopRecruitmentStone = 4;
 
     public boolean UserExist(String username) throws Exception {
         User user = userRepository.findByUsername(username);
@@ -64,4 +66,59 @@ public class UserService {
                 user.getTroops()
         );
     }
+
+    public String recruit(int amount, String username) throws Exception {
+        UserDataResponse userdata = getUserData(username);
+        // Check if the user has enough resources for the given amount, in angular -1 => not enough resources
+        if(foodAfterRecruit(userdata.getFood(), amount) < 0){
+            return "not enough resources";
+        }
+        if(woodAfterRecruit(userdata.getWood(), amount) < 0){
+            return "not enough resources";
+        }
+        if(stoneAfterRecruit(userdata.getStone(), amount) < 0){
+            return "not enough resources";
+        }
+        if(ironAfterRecruit(userdata.getIron(), amount) < 0){
+            return "not enough resources";
+        }
+
+        //recruit
+        int afterFood = foodAfterRecruit(userdata.getFood(), amount);
+        userRepository.updateFood(afterFood, username);
+
+        int afterWood = woodAfterRecruit(userdata.getWood(), amount);
+        userRepository.updateWood(afterWood, username);
+
+        int afterStone = stoneAfterRecruit(userdata.getStone(), amount);
+        userRepository.updateStone(afterStone, username);
+
+        int afterIron = ironAfterRecruit(userdata.getIron(), amount);
+        userRepository.updateIron(afterIron, username);
+
+        int afterTroops = userdata.getTroops() + amount;
+        userRepository.updateTroops(afterTroops, username);
+
+        //response
+        return "success";
+    }
+
+
+    private int foodAfterRecruit(int food, int amount){
+        return food - (amount * troopRecruitmentFood);
+    }
+
+    private int woodAfterRecruit(int wood, int amount){
+        return wood - (amount * troopRecruitmentWood);
+    }
+
+    private int stoneAfterRecruit(int stone, int amount){
+        return stone - (amount * troopRecruitmentStone);
+    }
+
+    private int ironAfterRecruit(int iron, int amount){
+        return iron - (amount * troopRecruitmentIron);
+    }
+
+
 }

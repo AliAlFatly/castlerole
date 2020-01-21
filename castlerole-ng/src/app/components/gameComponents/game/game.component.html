@@ -3,6 +3,7 @@
     <app-navigator (coordinatesEmitter)="getCoordinatesFromNavigator($event)"></app-navigator>
     <app-user-information (userCoordinatesEmitter)="getUserCoordinates($event)"></app-user-information>
     <app-game-details [targetCoordinates]="clickTargetCoordinates" [userCoordinate]="userCoordinates"></app-game-details>
+    <app-city></app-city>
   </div>
   <app-grid [coordinates]="coordinates" (clickEmitter)="getTargetFromGridClick($event)"></app-grid>
 
