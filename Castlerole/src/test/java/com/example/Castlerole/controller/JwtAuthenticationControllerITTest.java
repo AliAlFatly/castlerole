@@ -10,6 +10,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.web.util.NestedServletException;
+
+import javax.validation.ConstraintViolationException;
 
 import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -17,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-public class JwtAuthenticationControllerTest extends ControllerTestConfig {
+public class JwtAuthenticationControllerITTest extends ControllerTestConfig {
 
     @Autowired
     JwtAuthenticationService jwtAuthenticationService;
@@ -30,7 +33,7 @@ public class JwtAuthenticationControllerTest extends ControllerTestConfig {
     }
 
 
-    @Test
+    @Test(expected = NestedServletException.class)
     public void login() throws Exception {
 
         String uri = "/login";

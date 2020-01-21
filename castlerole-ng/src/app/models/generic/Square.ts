@@ -1,4 +1,4 @@
-export class Square{
+export class Square {
   constructor(private ctx: any) {}
 
   draw(x: number, y: number, z: number) {

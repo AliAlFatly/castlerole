@@ -1,5 +1,5 @@
 export class PointDataResponse {
-  constructor(x:number, y:number, type:string, attackable:boolean){
+  constructor(x: number, y: number, type: string, attackable: boolean) {
     this.coordinateX = x;
     this.coordinateY = y;
     this.type = type;

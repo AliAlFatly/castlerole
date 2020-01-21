@@ -14,7 +14,7 @@ import { GameComponent } from './components/gameComponents/game/game.component';
 import { GridComponent } from './components/gameComponents/grid/grid.component';
 import { UserInformationComponent } from './components/gameComponents/user-information/user-information.component';
 import { NavigatorComponent } from './components/gameComponents/navigator/navigator.component';
-import { GameDetailsComponent } from './components/gameComponents/game-details/game-details.component'
+import { GameDetailsComponent } from './components/gameComponents/game-details/game-details.component';
 
 
 @NgModule({
