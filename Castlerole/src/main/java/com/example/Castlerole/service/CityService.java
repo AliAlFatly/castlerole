@@ -23,7 +23,6 @@ public class CityService {
         catch(Exception error){
             throw new Exception("Cannot find a corresponding city!");
         }
-        System.out.println(city.getUser().getUsername());
         return new CityDataResponse(
 
                 city.getUser().getUsername(),
