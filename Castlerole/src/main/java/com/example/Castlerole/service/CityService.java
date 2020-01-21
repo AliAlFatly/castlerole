@@ -18,15 +18,16 @@ public class CityService {
     public CityDataResponse getCityData(String owner) throws Exception{
         City city;
         try{
-            city = cityRepository.findByOwner(owner);
+            city = cityRepository.findByUserUsername(owner);
         }
         catch(Exception error){
             throw new Exception("Cannot find a corresponding city!");
         }
-
+        System.out.println(city.getUser().getUsername());
         return new CityDataResponse(
-                city.getOwner(),
-                city.getCasteLevel(),
+
+                city.getUser().getUsername(),
+                city.getCastleLevel(),
                 city.getWoodworksLevel(),
                 city.getMineLevel(),
                 city.getForgeryLevel(),

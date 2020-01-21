@@ -1,18 +1,17 @@
 package com.example.Castlerole.model.response;
 
 public class CityDataResponse {
-    private long id;
     private String owner;
-    private int casteLevel;
+    private int castleLevel;
     private int woodworksLevel;
     private int mineLevel;
     private int forgeryLevel;
     private int barracksLevel;
     private int ovenLevel;
 
-    public CityDataResponse(String owner, int casteLevel, int woodworksLevel, int mineLevel, int forgeryLevel, int barracksLevel, int ovenLevel){
+    public CityDataResponse(String owner, int castleLevel, int woodworksLevel, int mineLevel, int forgeryLevel, int barracksLevel, int ovenLevel){
         this.owner = owner;
-        this.casteLevel = casteLevel;
+        this.castleLevel = castleLevel;
         this.woodworksLevel = woodworksLevel;
         this.mineLevel = mineLevel;
         this.forgeryLevel = forgeryLevel;
@@ -20,19 +19,8 @@ public class CityDataResponse {
         this.ovenLevel = ovenLevel;
     }
 
-
-    //GETTERS AND SETTERS
-    //ID
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id){
-        this.id = id;
-    }
-
     //OWNER
-    public String geOwner() {
+    public String getOwner() {
         return owner;
     }
 
@@ -41,12 +29,12 @@ public class CityDataResponse {
     }
 
     //CASTLE
-    public int getCasteLevel() {
-        return casteLevel;
+    public int getCastleLevel() {
+        return castleLevel;
     }
 
-    public void setCasteLevel(int casteLevel) {
-        this.casteLevel = casteLevel;
+    public void setCastleLevel(int castleLevel) {
+        this.castleLevel = castleLevel;
     }
 
     //WOODWORKS

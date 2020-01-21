@@ -3,6 +3,7 @@ import {GameServiceService} from '../../../services/game/game-service.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Vector} from '../../../models/generic/Vector';
 import {HttpClient} from '@angular/common/http';
+import {CityData} from '../../../models/response/CityData';
 
 @Component({
   selector: 'app-city',
@@ -11,7 +12,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class CityComponent implements OnInit {
 
-  private cityData: CityData;
+  private cityData = new CityData('', 0, 0, 0, 0, 0, 0);
 
   coordinateForm: FormGroup = this.formBuilder.group({amount: 0});
 
@@ -19,7 +20,9 @@ export class CityComponent implements OnInit {
               private http: HttpClient,
               private gameService: GameServiceService) { }
 
-  async ngOnInit() {}
+  async ngOnInit() {
+    await this.updateCityData();
+  }
 
   async recruit(): Promise<any> {
     let response: any;
@@ -31,6 +34,10 @@ export class CityComponent implements OnInit {
     }
     response = await this.gameService.recruit(amount).toPromise();
     alert(JSON.stringify(response));
+  }
+
+  updateCityData = async () => {
+    this.cityData = await this.gameService.getCityData().toPromise();
   }
 
 }

@@ -8,11 +8,8 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    //TODO: LINK THIS TO ID FROM MODEL USER
     @Column
-    private String owner;
-    @Column
-    private int casteLevel;
+    private int castleLevel;
     @Column
     private int woodworksLevel;
     @Column
@@ -25,17 +22,18 @@ public class City {
     private int ovenLevel;
 
 
-    @OneToOne(mappedBy = "city")
+    @OneToOne()
+    @JoinColumn(name = "username")
     private User user;
 
-    public City(String owner, int casteLevel, int woodworksLevel, int mineLevel, int forgeryLevel, int barracksLevel, int ovenLevel){
-        this.owner = owner;
-        this.casteLevel = casteLevel;
+    public City(int castleLevel, int woodworksLevel, int mineLevel, int forgeryLevel, int barracksLevel, int ovenLevel, User user){
+        this.castleLevel = castleLevel;
         this.woodworksLevel = woodworksLevel;
         this.mineLevel = mineLevel;
         this.forgeryLevel = forgeryLevel;
         this.barracksLevel = barracksLevel;
         this.ovenLevel = ovenLevel;
+        this.user = user;
     }
 
     public City() {
@@ -51,22 +49,13 @@ public class City {
         this.id = id;
     }
 
-    //USER_ID
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
     //CASTLE
-    public int getCasteLevel() {
-        return casteLevel;
+    public int getCastleLevel() {
+        return castleLevel;
     }
 
-    public void setCasteLevel(int casteLevel) {
-        this.casteLevel = casteLevel;
+    public void setCasteLevel(int castleLevel) {
+        this.castleLevel = castleLevel;
     }
 
     //WOODWORKS

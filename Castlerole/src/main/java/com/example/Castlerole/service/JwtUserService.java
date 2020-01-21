@@ -79,9 +79,8 @@ public class JwtUserService implements UserDetailsService {
         return userRepository.save(newUser);
     }
 
-    public City registerNewCity(UserDTO user) throws Exception{
-        City newCity = new City(
-                user.getUsername(), 1, 1, 1,1,1,1
+    public City registerNewCity(User user) throws Exception{
+        City newCity = new City( 1, 1, 1,1,1,1, user
         );
         return cityRepository.save(newCity);
     }

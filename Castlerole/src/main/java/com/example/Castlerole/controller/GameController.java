@@ -1,5 +1,6 @@
 package com.example.Castlerole.controller;
 
+import com.example.Castlerole.model.dto.CityDTO;
 import com.example.Castlerole.model.helpertypes.Vector;
 import com.example.Castlerole.model.response.*;
 import com.example.Castlerole.service.*;

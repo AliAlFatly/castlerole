@@ -1,7 +1,16 @@
-<form [formGroup]="coordinateForm" (ngSubmit)="recruit()" class="border border-dark p-2">
-  <label for="amount">Recruit troops amount:</label>
-  <input type="number" id="amount" placeholder="" formControlName="amount" min="0">
-  <div class="actions d-inline-block">
-    <button class="ml-2 btn btn-sm btn-primary" type="submit">Recruit</button>
-  </div>
-</form>
+<div class="border border-dark">
+  <form [formGroup]="coordinateForm" (ngSubmit)="recruit()" class="border border-dark p-2">
+    <label for="amount">Recruit troops amount:</label>
+    <input type="number" id="amount" placeholder="" formControlName="amount" min="0">
+    <div class="actions d-inline-block">
+      <button class="ml-2 btn btn-sm btn-primary" type="submit">Recruit</button>
+    </div>
+  </form>
+  Castle level: {{cityData.castleLevel}} <br />
+  Barack level: {{cityData.barracksLevel}} <br />
+  Forgery level: {{cityData.forgeryLevel}} <br />
+  Mine level: {{cityData.mineLevel}} <br />
+  Oven level: {{cityData.ovenLevel}} <br />
+  Woodworks level: {{cityData.woodworksLevel}} <br />
+</div>
+
