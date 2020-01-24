@@ -42,7 +42,7 @@ export class CityComponent implements OnInit {
 
   updateBuilding = async (action: string) => {
     await this.gameService.updateBuilding(action).toPromise();
-    //this.cityData = await this.gameService.getCityData().toPromise();
+    // this.cityData = await this.gameService.getCityData().toPromise();
   }
 
 }

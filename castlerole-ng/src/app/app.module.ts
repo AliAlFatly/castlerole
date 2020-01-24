@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
@@ -16,8 +17,9 @@ import { UserInformationComponent } from './components/gameComponents/user-infor
 import { NavigatorComponent } from './components/gameComponents/navigator/navigator.component';
 import { GameDetailsComponent } from './components/gameComponents/game-details/game-details.component';
 import { CityComponent } from './components/gameComponents/city/city.component';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,14 +32,17 @@ import { CityComponent } from './components/gameComponents/city/city.component';
     UserInformationComponent,
     NavigatorComponent,
     GameDetailsComponent,
-    CityComponent,
+    CityComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatTooltipModule,
+    BrowserAnimationsModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,

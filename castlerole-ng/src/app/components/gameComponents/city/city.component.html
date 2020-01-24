@@ -1,16 +1,18 @@
-<div class="border border-dark">
-  <form [formGroup]="coordinateForm" (ngSubmit)="recruit()" class="border border-dark p-2">
-    <label for="amount">Recruit troops amount:</label>
+<div class="border-left border-bottom border-right border-dark pl-1 pb-1 pr-1">
+  Castle ({{cityData.castleLevel}}) <button (click)="updateBuilding('Castle')">+</button>
+  <button matTooltip="test">I</button> <br />
+  Barack ({{cityData.barracksLevel}}) <button (click)="updateBuilding('Barack')">+</button><br />
+  Forgery ({{cityData.forgeryLevel}}) <button (click)="updateBuilding('Forgery')">+</button><br />
+  Mine ({{cityData.mineLevel}}) <button (click)="updateBuilding('Mine')">+</button><br />
+  Oven ({{cityData.ovenLevel}}) <button (click)="updateBuilding('Oven')">+</button><br />
+  Woodworks ({{cityData.woodworksLevel}}) <button (click)="updateBuilding('Woodworks')">+</button><br />
+  <form [formGroup]="coordinateForm" (ngSubmit)="recruit()">
+
     <input type="number" id="amount" placeholder="" formControlName="amount" min="0">
     <div class="actions d-inline-block">
       <button class="ml-2 btn btn-sm btn-primary" type="submit">Recruit</button>
     </div>
   </form>
-  Castle level: {{cityData.castleLevel}} <button (click)="updateBuilding('Castle')">+</button><br />
-  Barack level: {{cityData.barracksLevel}} <button (click)="updateBuilding('Barack')">+</button><br />
-  Forgery level: {{cityData.forgeryLevel}} <button (click)="updateBuilding('Forgery')">+</button><br />
-  Mine level: {{cityData.mineLevel}} <button (click)="updateBuilding('Mine')">+</button><br />
-  Oven level: {{cityData.ovenLevel}} <button (click)="updateBuilding('Oven')">+</button><br />
-  Woodworks level: {{cityData.woodworksLevel}} <button (click)="updateBuilding('Woodworks')">+</button><br />
+  <app-logout></app-logout>
 </div>
 
