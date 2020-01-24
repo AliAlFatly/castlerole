@@ -63,6 +63,12 @@ public class GameController {
         return userService.recruit(amount, username);
     }
 
+    @GetMapping("/update/{action}")
+    public String recruitTroops(@PathVariable("action") String action) throws Exception {
+        var username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return cityService.updateBuilding(username, action);
+    }
+
     @GetMapping("/cityData")
     public CityDataResponse getCityData() throws Exception{
         var owner = SecurityContextHolder.getContext().getAuthentication().getName();

@@ -26,6 +26,11 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
 	@Transactional
 	@Modifying
+	@Query("UPDATE User u SET u.food = :food, u.wood = :wood, u.stone = :stone, u.iron = :iron WHERE u.username = :username")
+	Integer updateResources(@Param("username") String username, @Param("food") int food, @Param("wood") int wood, @Param("stone") int stone, @Param("iron") int iron);
+
+	@Transactional
+	@Modifying
 	@Query("UPDATE User u SET u.wood = :amount WHERE u.username = :username")
 	Integer updateWood(@Param("amount") int amount, @Param("username") String username);
 
