@@ -71,10 +71,10 @@ public class CityService {
         int[] resourcesMultipliersArray = ResourcesConsumptionByActionMapper.get(action);
 
         // Set resources values after the update is complete
-        int afterFood = userdata.getFood() - levelUpConsumptionFormula(resourcesMultipliersArray[1], level);
-        int afterWood = userdata.getWood() - levelUpConsumptionFormula(resourcesMultipliersArray[2], level);
-        int afterStone = userdata.getStone() - levelUpConsumptionFormula(resourcesMultipliersArray[3], level);
-        int afterIron = userdata.getIron() - levelUpConsumptionFormula(resourcesMultipliersArray[4], level);
+        int afterFood = userdata.getFood() - levelUpConsumptionFormula(resourcesMultipliersArray[0], level);
+        int afterWood = userdata.getWood() - levelUpConsumptionFormula(resourcesMultipliersArray[1], level);
+        int afterStone = userdata.getStone() - levelUpConsumptionFormula(resourcesMultipliersArray[2], level);
+        int afterIron = userdata.getIron() - levelUpConsumptionFormula(resourcesMultipliersArray[3], level);
 
         // Check if the resources are below 0, in that case return not enough resources
         if (afterFood < 0 | afterWood < 0 | afterStone < 0 | afterIron < 0){
@@ -89,8 +89,9 @@ public class CityService {
 
     public CityDataResponse getCityData(String username) throws Exception{
         City city;
+        User user = userRepository.findByUsername(username);
         try{
-            city = cityRepository.findByUserUsername(username);
+            city = cityRepository.findByid(user.getId());
         }
         catch(Exception error){
             throw new Exception("Cannot find a corresponding city!");
@@ -108,7 +109,8 @@ public class CityService {
     }
 
     public String updateBuilding(String username, String action) throws Exception {
-        City city = cityRepository.findByUserUsername(username);
+        User user = userRepository.findByUsername(username);
+        City city = cityRepository.findByid(user.getId());
         String response;
         int newLevel;
         switch (action){
@@ -116,42 +118,42 @@ public class CityService {
                 response = consumeResources(username, action, city.getCastleLevel());
                 if (response == success){
                     newLevel = city.getCastleLevel() + 1;
-                    cityRepository.updateCastleLevel(newLevel, username);
+                    cityRepository.updateCastleLevel(newLevel, user.getId());
                 }
                 break;
             case "Barack":
                 response = consumeResources(username, action, city.getBarracksLevel());
                 if (response == success){
                     newLevel = city.getBarracksLevel() + 1;
-                    cityRepository.updateBarracksLevel(newLevel, username);
+                    cityRepository.updateBarracksLevel(newLevel, user.getId());
                 }
                 break;
             case "Forgery":
                 response = consumeResources(username, action, city.getForgeryLevel());
                 if (response == success){
                     newLevel = city.getForgeryLevel() + 1;
-                    cityRepository.updateForgeryLevel(newLevel, username);
+                    cityRepository.updateForgeryLevel(newLevel, user.getId());
                 }
                 break;
             case "Mine":
                 response = consumeResources(username, action, city.getMineLevel());
                 if (response == success){
                     newLevel = city.getMineLevel() + 1;
-                    cityRepository.updateMineLevel(newLevel, username);
+                    cityRepository.updateMineLevel(newLevel, user.getId());
                 }
                 break;
             case "Oven":
                 response = consumeResources(username, action, city.getOvenLevel());
                 if (response == success){
                     newLevel = city.getOvenLevel() + 1;
-                    cityRepository.updateOvensLevel(newLevel, username);
+                    cityRepository.updateOvensLevel(newLevel, user.getId());
                 }
                 break;
             case "Woodworks":
                 response = consumeResources(username, action, city.getWoodworksLevel());
                 if (response == success){
                     newLevel = city.getWoodworksLevel() + 1;
-                    cityRepository.updateWoodworksLevel(newLevel, username);
+                    cityRepository.updateWoodworksLevel(newLevel, user.getId());
                 }
                 break;
             default:

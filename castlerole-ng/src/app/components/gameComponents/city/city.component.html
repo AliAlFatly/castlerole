@@ -6,11 +6,11 @@
       <button class="ml-2 btn btn-sm btn-primary" type="submit">Recruit</button>
     </div>
   </form>
-  Castle level: {{cityData.castleLevel}} <br />
-  Barack level: {{cityData.barracksLevel}} <br />
-  Forgery level: {{cityData.forgeryLevel}} <br />
-  Mine level: {{cityData.mineLevel}} <br />
-  Oven level: {{cityData.ovenLevel}} <br />
-  Woodworks level: {{cityData.woodworksLevel}} <br />
+  Castle level: {{cityData.castleLevel}} <button (click)="updateBuilding('Castle')">+</button><br />
+  Barack level: {{cityData.barracksLevel}} <button (click)="updateBuilding('Barack')">+</button><br />
+  Forgery level: {{cityData.forgeryLevel}} <button (click)="updateBuilding('Forgery')">+</button><br />
+  Mine level: {{cityData.mineLevel}} <button (click)="updateBuilding('Mine')">+</button><br />
+  Oven level: {{cityData.ovenLevel}} <button (click)="updateBuilding('Oven')">+</button><br />
+  Woodworks level: {{cityData.woodworksLevel}} <button (click)="updateBuilding('Woodworks')">+</button><br />
 </div>
 

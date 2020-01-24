@@ -23,7 +23,7 @@ public class City {
 
 
     @OneToOne()
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "user_id")
     private User user;
 
     public City(int castleLevel, int woodworksLevel, int mineLevel, int forgeryLevel, int barracksLevel, int ovenLevel, User user){

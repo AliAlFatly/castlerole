@@ -33,6 +33,10 @@ export class GameServiceService {
     return this.http.get(`${config.apiUrl}/recruit/${amount}`);
   }
 
+  updateBuilding(action: string): Observable<any> {
+    return this.http.get(`${config.apiUrl}/update/${action}`);
+  }
+
   getCityData(): Observable<any> {
     return this.http.get(`${config.apiUrl}/cityData`);
   }
