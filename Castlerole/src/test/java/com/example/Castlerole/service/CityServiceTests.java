@@ -1,6 +1,6 @@
 package com.example.Castlerole.service;
 
-import com.example.Castlerole.Config.JpaConfig;
+
 import com.example.Castlerole.model.City;
 import com.example.Castlerole.model.User;
 import com.example.Castlerole.model.response.CityDataResponse;

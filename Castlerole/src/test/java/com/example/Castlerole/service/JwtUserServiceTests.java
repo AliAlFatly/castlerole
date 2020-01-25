@@ -1,6 +1,5 @@
 package com.example.Castlerole.service;
 
-import com.example.Castlerole.Config.JpaConfig;
 import com.example.Castlerole.model.User;
 import com.example.Castlerole.model.dto.UserDTO;
 import com.example.Castlerole.repository.NodeRepository;
@@ -39,10 +38,10 @@ import static org.mockito.Mockito.mock;
 @ContextConfiguration(classes = JwtUserService.class)
 //@ExtendWith(SpringExtension.class)
 //@ContextConfiguration
-@TestPropertySource(properties = {"gridSize=500", "jwt.secret=secret"})
+//@TestPropertySource(properties = {"gridSize=500", "jwt.secret=secret"})
 //@SpringBootTest(properties = "gridSize=500")
 //@SpringJUnitConfig(classes = JwtUserService.class)
-public class JwtUserServiceTests extends JpaConfig {
+public class JwtUserServiceTests {
 
     //@Value("${gridSize}") private int gridSize;
     @Mock

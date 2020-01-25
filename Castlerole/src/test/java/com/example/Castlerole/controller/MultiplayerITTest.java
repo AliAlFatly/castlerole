@@ -1,6 +1,5 @@
 package com.example.Castlerole.controller;
 
-import com.example.Castlerole.Config.JpaConfig;
 import com.example.Castlerole.model.User;
 import com.example.Castlerole.model.dto.UserDTO;
 import com.example.Castlerole.repository.UserRepository;

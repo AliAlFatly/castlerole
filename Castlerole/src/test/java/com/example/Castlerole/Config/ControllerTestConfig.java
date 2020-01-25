@@ -35,7 +35,7 @@ import static org.junit.Assume.assumeTrue;
 //@RunWith(SpringRunner.class)
 @SpringBootTest
 //@AutoConfigureMockMvc
-@ActiveProfiles("test")
+//@ActiveProfiles("test")
 public class ControllerTestConfig {
 
     protected MockMvc mvc;
