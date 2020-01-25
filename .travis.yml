@@ -11,7 +11,8 @@ cache:
 before_install:
  - chmod +x ./Castlerole/mvnw
 
-
+services:
+ - mysql 
 
   
 
