@@ -7,8 +7,9 @@ import com.example.Castlerole.model.helpertypes.Vector;
 import com.example.Castlerole.model.request.JwtRequest;
 import com.example.Castlerole.service.JwtAuthenticationService;
 import com.example.Castlerole.service.JwtUserService;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -30,7 +31,7 @@ public class GameControllerITTest extends ControllerTestConfig {
     JwtUserService jwtUserService;
 
     @Override
-    @Before
+    @BeforeEach
     public void setUpGameControl() {
         super.setUpGameControl();
 

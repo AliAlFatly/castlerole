@@ -32,7 +32,7 @@ import static junit.framework.TestCase.fail;
 import static org.junit.Assume.assumeTrue;
 
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @SpringBootTest
 //@AutoConfigureMockMvc
 @ActiveProfiles("test")
