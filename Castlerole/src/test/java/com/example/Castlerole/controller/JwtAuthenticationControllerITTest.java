@@ -3,8 +3,9 @@ package com.example.Castlerole.controller;
 import com.example.Castlerole.Config.ControllerTestConfig;
 import com.example.Castlerole.model.dto.UserDTO;
 import com.example.Castlerole.service.JwtAuthenticationService;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
@@ -26,14 +27,14 @@ public class JwtAuthenticationControllerITTest extends ControllerTestConfig {
     JwtAuthenticationService jwtAuthenticationService;
 
     @Override
-    @Before
+    @BeforeEach
     public void setUpJwtAuth() {
         super.setUpJwtAuth();
 
     }
 
 
-    @Test(expected = NestedServletException.class)
+    @Test
     public void login() throws Exception {
 
         String uri = "/login";
@@ -58,17 +59,23 @@ public class JwtAuthenticationControllerITTest extends ControllerTestConfig {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        MvcResult mvcResultWrong = mvc.perform(MockMvcRequestBuilders.post(uri)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(inputJsonWrong)
-                .characterEncoding("utf-8")
-                .header("Cache-Control","no-cache, no-store")
-                .accept(MediaType.APPLICATION_JSON)
-        )
+        try {
+            MvcResult mvcResultWrong = mvc.perform(MockMvcRequestBuilders.post(uri)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(inputJsonWrong)
+                    .characterEncoding("utf-8")
+                    .header("Cache-Control", "no-cache, no-store")
+                    .accept(MediaType.APPLICATION_JSON)
+            )
 //                .andDo(print())
 //                .andDo(MockMvcResultHandlers.log())
-                .andExpect(status().is4xxClientError())
-                .andReturn();
+                    .andExpect(status().is4xxClientError())
+                    .andReturn();
+        } catch (NestedServletException e){
+            assertEquals(
+                    e.getMessage(),
+                    "Request processing failed; nested exception is java.lang.Exception: INVALID_CREDENTIALS");
+        }
 
     }
     // eindigt it-test(integration) anders normaal
