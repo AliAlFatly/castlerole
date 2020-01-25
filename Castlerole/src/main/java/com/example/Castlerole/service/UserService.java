@@ -7,6 +7,7 @@ import com.example.Castlerole.model.response.UserDataResponse;
 import com.example.Castlerole.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.example.Castlerole.model.response.Tooptip;
 
 @Service
 public class UserService {
@@ -103,6 +104,14 @@ public class UserService {
         return "success";
     }
 
+
+    public int getRecruitmentTooltip(String username) throws Exception {
+        UserDataResponse userdata = getUserData(username);
+        var checkOne = Math.min((userdata.getFood() / troopRecruitmentFood), (userdata.getWood() / troopRecruitmentWood));
+        var checkTwo = Math.min((userdata.getStone() / troopRecruitmentStone), (userdata.getIron() / troopRecruitmentIron));
+        var maximumAmount = Math.min(checkOne, checkTwo);
+        return maximumAmount;
+    }
 
     private int foodAfterRecruit(int food, int amount){
         return food - (amount * troopRecruitmentFood);

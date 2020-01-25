@@ -4,7 +4,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Vector} from '../../../models/generic/Vector';
 import {HttpClient} from '@angular/common/http';
 import {CityData} from '../../../models/response/CityData';
-import {BuildingTooltip} from '../../../models/response/BuildingTooltip';
+import {Tooltip} from '../../../models/response/Tooltip';
 
 @Component({
   selector: 'app-city',
@@ -14,9 +14,12 @@ import {BuildingTooltip} from '../../../models/response/BuildingTooltip';
 export class CityComponent implements OnInit {
 
   private cityData = new CityData('', 0, 0, 0, 0, 0, 0);
-  private tooltipData = new BuildingTooltip(0, 0, 0, 0, false);
+  private tooltipData = new Tooltip(0, 0, 0, 0);
   private tooltipText = `empty`;
+  private maximumRecruitableTroops = 0;
   private maxBuildingLevel = 35;
+  private recruitmentTooltip = `You can recruit upto ${this.maximumRecruitableTroops} troops`;
+  private recruitmentAmount = 0;
   coordinateForm: FormGroup = this.formBuilder.group({amount: 0});
 
   constructor(private formBuilder: FormBuilder,
@@ -25,7 +28,9 @@ export class CityComponent implements OnInit {
 
   async ngOnInit() {
     await this.getCityData();
+    await this.getRecruitmentTooltip();
     this.updateCityData();
+    this.updateRecruitmentTooltip();
   }
 
   async recruit(): Promise<any> {
@@ -37,7 +42,6 @@ export class CityComponent implements OnInit {
       amount = this.coordinateForm.controls.amount.value;
     }
     response = await this.gameService.recruit(amount).toPromise();
-    alert(JSON.stringify(response));
   }
 
   updateTooltip = async (action: string) => {
@@ -67,6 +71,10 @@ export class CityComponent implements OnInit {
     }
   }
 
+  updateRecruitmentTooptip = async () => {
+    this.recruitmentTooltip = `You can recruit upto ${this.maximumRecruitableTroops} troops`;
+  }
+
   getCityData = async () => {
     this.cityData = await this.gameService.getInitialCityData().toPromise();
   }
@@ -79,6 +87,18 @@ export class CityComponent implements OnInit {
   updateCityData = async () => {
     this.gameService.getCityData().subscribe(data => this.cityData = data, err => console.log(err));
     // this.cityData = await this.gameService.getCityData().toPromise();
+  }
+
+  getRecruitmentTooltip = async () => {
+    this.maximumRecruitableTroops = await this.gameService.getRecruitmentTooltip().toPromise();
+  }
+
+  updateRecruitmentTooltip = async () => {
+    this.gameService.updateRecruitmentTooltip().subscribe( amount => this.maximumRecruitableTroops = amount, err => console.log(err));
+  }
+
+  setRecruitmentAmount = async () => {
+    this.recruitmentAmount = this.coordinateForm.controls.amount.value;
   }
 
 }

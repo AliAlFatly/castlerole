@@ -6,7 +6,7 @@ import {Tokens} from '../../models/authentication/Tokens';
 import {config} from '../../config';
 import {Vector} from '../../models/generic/Vector';
 import {UserDataResponse} from '../../models/response/userDataResponse';
-import {BuildingTooltip} from "../../models/response/BuildingTooltip";
+import {Tooltip} from "../../models/response/Tooltip";
 import {CityData} from "../../models/response/CityData";
 
 @Injectable({
@@ -61,6 +61,15 @@ export class GameServiceService {
     }));
   }
 
+  getRecruitmentTooltip(): Observable<any> {
+    return this.http.get<number>(`${config.apiUrl}/recruitmentTooltip`);
+  }
+
+  updateRecruitmentTooltip(): Observable<any> {
+    return interval(1000).pipe(flatMap(() => {
+      return this.http.get<number>(`${config.apiUrl}/recruitmentTooltip`);
+    }));
+  }
 
   attack(vector: Vector): Observable<any> {
     return this.http.get(`${config.apiUrl}/attack/${vector.x}/${vector.y}`);

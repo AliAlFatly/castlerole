@@ -6,10 +6,9 @@
   Oven ({{cityData.ovenLevel}}) <button [disabled]="cityData.ovenLevel >= maxBuildingLevel"  (mouseenter)="updateTooltip('Oven')" matTooltip={{tooltipText}} (click)="updateBuilding('Oven')">+</button><br />
   Woodworks ({{cityData.woodworksLevel}}) <button [disabled]="cityData.woodworksLevel >= maxBuildingLevel"  (mouseenter)="updateTooltip('Woodworks')" matTooltip={{tooltipText}} (click)="updateBuilding('Woodworks')">+</button><br />
   <form [formGroup]="coordinateForm" (ngSubmit)="recruit()">
-
-    <input type="number" id="amount" placeholder="" formControlName="amount" min="0">
+    <input type="number" id="amount" (change)="setRecruitmentAmount()" placeholder="" formControlName="amount" min="0">
     <div class="actions d-inline-block">
-      <button class="ml-2 btn btn-sm btn-primary" type="submit">Recruit</button>
+      <button class="ml-2 btn btn-sm btn-primary" [disabled]="recruitmentAmount > maximumRecruitableTroops" (mouseenter)="updateRecruitmentTooptip()" matTooltip={{recruitmentTooltip}} type="submit">Recruit</button>
     </div>
   </form>
   <app-logout></app-logout>

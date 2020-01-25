@@ -10,14 +10,21 @@ import org.springframework.web.bind.annotation.*;
 public class AdminController {
 
     @Autowired
-    public UserService userService;
+    private UserService userService;
 
     @Autowired
-    public AdminService adminService;
+    private AdminService adminService;
 
-    @GetMapping("/addNodes/{amount}")
-    public String addNodes(@PathVariable("amount") int amount) throws Exception {
-        return adminService.generateNodes(amount);
+    private final String secretKey = "secretcodehere";
+
+    @GetMapping("/addNodes/{amount}/{key}")
+    public String addNodes(@PathVariable("amount") int amount, @PathVariable("key") String key) throws Exception {
+        if (key.equals(secretKey)){
+            return adminService.generateNodes(amount);
+        }
+        else{
+            return "Bad Request";
+        }
     }
 
 }

@@ -1,8 +1,7 @@
 package com.example.Castlerole.service;
 
-import com.example.Castlerole.config.JwtTokenUtil;
 import com.example.Castlerole.model.User;
-import com.example.Castlerole.model.response.BuildingTooptip;
+import com.example.Castlerole.model.response.Tooptip;
 import com.example.Castlerole.model.response.UserDataResponse;
 import com.example.Castlerole.repository.CityRepository;
 import com.example.Castlerole.model.response.CityDataResponse;
@@ -11,9 +10,7 @@ import com.example.Castlerole.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.util.HashMap;
-import java.util.HashMap.*;
 
 @Service
 public class CityService {
@@ -164,10 +161,10 @@ public class CityService {
     }
 
 
-    public BuildingTooptip getTooltipData(String username, String action) throws Exception {
+    public Tooptip getTooltipData(String username, String action) throws Exception {
         User user = userRepository.findByUsername(username);
         City city = cityRepository.findByid(user.getId());
-        BuildingTooptip response = new BuildingTooptip();
+        Tooptip response = new Tooptip();
         int level;
         boolean continueBool = false;
         switch (action){
@@ -219,15 +216,11 @@ public class CityService {
             int afterStone = userdata.getStone() - requiredStone;
             int afterIron = userdata.getIron() - requiredIron;
 
-            // Check if the resources are below 0, in that case return not enough resources
-            if (afterFood < 0 | afterWood < 0 | afterStone < 0 | afterIron < 0){
-                upgradeable = false;
-            }
             response.setFood(requiredFood);
             response.setWood(requiredWood);
             response.setStone(requiredStone);
             response.setIron(requiredIron);
-            response.setUpgradeable(upgradeable);
+
 
         }
         return response;

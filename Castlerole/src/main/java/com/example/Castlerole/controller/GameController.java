@@ -1,6 +1,5 @@
 package com.example.Castlerole.controller;
 
-import com.example.Castlerole.model.dto.CityDTO;
 import com.example.Castlerole.model.helpertypes.Vector;
 import com.example.Castlerole.model.response.*;
 import com.example.Castlerole.service.*;
@@ -76,9 +75,15 @@ public class GameController {
     }
 
     @GetMapping("/tooltip/{action}")
-    public BuildingTooptip getToolTip(@PathVariable("action") String action) throws Exception {
+    public Tooptip getToolTip(@PathVariable("action") String action) throws Exception {
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
         return cityService.getTooltipData(username, action);
+    }
+
+    @GetMapping("/recruitmentTooltip")
+    public int getRecruitmentTooltip() throws Exception {
+        var username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userService.getRecruitmentTooltip(username);
     }
 
     @GetMapping("/attack/{x}/{y}")
