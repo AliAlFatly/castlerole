@@ -82,7 +82,7 @@ public class GameController {
     }
 
     @GetMapping("/attack/{x}/{y}")
-    public AttackResponse attackPoint(@PathVariable("x") int x, @PathVariable("y") int y){
+    public AttackResponse attackPoint(@PathVariable("x") int x, @PathVariable("y") int y) throws Exception {
         var attackedPoint = new Vector(x, y);
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
         return combatService.attack(username, attackedPoint);

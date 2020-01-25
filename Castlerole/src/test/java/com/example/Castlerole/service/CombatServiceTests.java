@@ -81,7 +81,7 @@ public class CombatServiceTests {
     private CombatService combatService;
 
     @Test
-    public void CombatAttack_UserTest() {
+    public void CombatAttack_UserTest() throws Exception {
         var Creturn = combatService.attack("attackuser",new Vector(25,25));
         System.out.println(
                 "Wood won: " + Creturn.getWoodWon() + " " + "\n" +
@@ -91,7 +91,7 @@ public class CombatServiceTests {
                 );
     }
     @Test
-    public void CombatAttack_NodeTest() {
+    public void CombatAttack_NodeTest() throws Exception {
         var Creturn2 = combatService.attack("attackuser",new Vector(15,15));
         System.out.println(
                 "Wood won: " + Creturn2.getWoodWon() + " " + "\n" +
