@@ -11,9 +11,6 @@ cache:
 before_install:
  - chmod +x ./Castlerole/mvnw
 
-services:
- - mysql 
-
   
 
 matrix:
@@ -35,7 +32,6 @@ matrix:
         #- sonar-scanner #-Pcoverage 
       before_script:
         - cd Castlerole
-        - echo "USE mysql;\nUPDATE user SET password=PASSWORD('password') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
 
 #----------------------------------------------------------------------------------------------------------------------------------------------
 
