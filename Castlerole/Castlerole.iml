@@ -22,10 +22,30 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resource" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-junit-jupiter:3.2.4" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-devtools:2.2.1.RELEASE" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven.surefire:surefire-booter:2.22.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven.surefire:surefire-api:2.22.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven.surefire:surefire-logger-api:2.22.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven.plugins:maven-surefire-plugin:2.22.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven.surefire:maven-surefire-common:2.22.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven.plugin-tools:maven-plugin-annotations:3.5.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-artifact:2.2.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven:maven-plugin-descriptor:2.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-project:2.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-profile:2.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-artifact-manager:2.2.1" level="project" />
+    <orderEntry type="library" name="Maven: backport-util-concurrent:backport-util-concurrent:3.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-plugin-registry:2.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-model:2.2.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven:maven-toolchain:2.2.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.plexus:plexus-java:0.9.10" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.thoughtworks.qdox:qdox:2.0-M8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:2.2.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.2.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.4" level="project" />
