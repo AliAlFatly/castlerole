@@ -21,7 +21,8 @@ export class UserInformationComponent implements OnChanges {
 
   // tslint:disable-next-line:use-lifecycle-interface
   async ngOnInit() {
-    await this.updateUserData();
+    await this.getInitialData();
+    this.updateUserData();
 
   }
 
@@ -33,9 +34,14 @@ export class UserInformationComponent implements OnChanges {
   //   await this.updateUserData();
   // }
 
-  updateUserData = async () => {
-    this.userData = await this.gameService.getUserData().toPromise();
+  getInitialData = async () => {
+    this.userData = await this.gameService.getInitialUserData().toPromise();
     this.userCoordinatesEmitter.emit(new Vector(this.userData.coordinateX, this.userData.coordinateY));
+  }
+
+  updateUserData = async () => {
+    this.gameService.getUserData().subscribe(data => this.userData = data, err => console.log(err));
+    // this.userCoordinatesEmitter.emit(new Vector(this.userData.coordinateX, this.userData.coordinateY));
   }
 
 }
