@@ -2,6 +2,7 @@ package com.example.Castlerole.service;
 
 import com.example.Castlerole.config.JwtTokenUtil;
 import com.example.Castlerole.model.User;
+import com.example.Castlerole.model.response.BuildingTooptip;
 import com.example.Castlerole.model.response.UserDataResponse;
 import com.example.Castlerole.repository.CityRepository;
 import com.example.Castlerole.model.response.CityDataResponse;
@@ -163,5 +164,73 @@ public class CityService {
     }
 
 
+    public BuildingTooptip getTooltipData(String username, String action) throws Exception {
+        User user = userRepository.findByUsername(username);
+        City city = cityRepository.findByid(user.getId());
+        BuildingTooptip response = new BuildingTooptip();
+        int level;
+        boolean continueBool = false;
+        switch (action){
+            case "Castle":
+                level = city.getCastleLevel();
+                continueBool = true;
+                break;
+            case "Barack":
+                level = city.getBarracksLevel();
+                continueBool = true;
+                break;
+            case "Forgery":
+                level = city.getForgeryLevel();
+                continueBool = true;
+                break;
+            case "Mine":
+                level = city.getMineLevel();
+                continueBool = true;
+                break;
+            case "Oven":
+                level = city.getOvenLevel();
+                continueBool = true;
+                break;
+            case "Woodworks":
+                level = city.getWoodworksLevel();
+                continueBool = true;
+                break;
+            default:
+                level = maxBuildingLevel + 1;
+                break;
+        }
+        if (continueBool){
+            // Get user data
+            UserDataResponse userdata = userService.getUserData(username);
+            // Set base resources for leveling up for each building and save them into the hashmap
+            SetLevelUpResources();
+            // Get the array specifiek for the chosen building
+            int[] resourcesMultipliersArray = ResourcesConsumptionByActionMapper.get(action);
 
+            boolean upgradeable = true;
+
+            int requiredFood = levelUpConsumptionFormula(resourcesMultipliersArray[0], level);
+            int requiredWood = levelUpConsumptionFormula(resourcesMultipliersArray[1], level);
+            int requiredStone = levelUpConsumptionFormula(resourcesMultipliersArray[2], level);
+            int requiredIron = levelUpConsumptionFormula(resourcesMultipliersArray[3], level);
+
+            int afterFood = userdata.getFood() - requiredFood;
+            int afterWood = userdata.getWood() - requiredWood;
+            int afterStone = userdata.getStone() - requiredStone;
+            int afterIron = userdata.getIron() - requiredIron;
+
+            // Check if the resources are below 0, in that case return not enough resources
+            if (afterFood < 0 | afterWood < 0 | afterStone < 0 | afterIron < 0){
+                upgradeable = false;
+            }
+            response.setFood(requiredFood);
+            response.setWood(requiredWood);
+            response.setStone(requiredStone);
+            response.setIron(requiredIron);
+            response.setUpgradeable(upgradeable);
+
+        }
+        return response;
+
+    }
 }

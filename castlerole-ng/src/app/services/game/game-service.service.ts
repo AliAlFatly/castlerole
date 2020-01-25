@@ -37,6 +37,10 @@ export class GameServiceService {
     return this.http.get(`${config.apiUrl}/update/${action}`);
   }
 
+  getTooltip(action: string): Observable<any> {
+    return this.http.get(`${config.apiUrl}/tooltip/${action}`);
+  }
+
   getCityData(): Observable<any> {
     return this.http.get(`${config.apiUrl}/cityData`);
   }

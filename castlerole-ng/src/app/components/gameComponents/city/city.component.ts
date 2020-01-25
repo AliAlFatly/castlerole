@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Vector} from '../../../models/generic/Vector';
 import {HttpClient} from '@angular/common/http';
 import {CityData} from '../../../models/response/CityData';
+import {BuildingTooltip} from "../../../models/response/BuildingTooltip";
 
 @Component({
   selector: 'app-city',
@@ -13,7 +14,8 @@ import {CityData} from '../../../models/response/CityData';
 export class CityComponent implements OnInit {
 
   private cityData = new CityData('', 0, 0, 0, 0, 0, 0);
-
+  private tooltipData = new BuildingTooltip(0, 0, 0, 0, false);
+  private tooltipText = `empty`;
   coordinateForm: FormGroup = this.formBuilder.group({amount: 0});
 
   constructor(private formBuilder: FormBuilder,
@@ -34,6 +36,11 @@ export class CityComponent implements OnInit {
     }
     response = await this.gameService.recruit(amount).toPromise();
     alert(JSON.stringify(response));
+  }
+
+  updateTooltip = async (action: string) => {
+    this.tooltipData = await this.gameService.getTooltip(action).toPromise();
+    this.tooltipText = `${action} + ${this.tooltipData.food}`;
   }
 
   updateCityData = async () => {
