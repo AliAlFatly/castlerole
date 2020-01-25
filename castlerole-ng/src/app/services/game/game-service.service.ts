@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of} from 'rxjs';
-import {catchError, mapTo, tap} from 'rxjs/operators';
+import { Observable, of, interval } from 'rxjs';
+import {catchError, flatMap, map, mapTo, tap} from 'rxjs/operators';
 import {Tokens} from '../../models/authentication/Tokens';
 import {config} from '../../config';
 import {Vector} from '../../models/generic/Vector';
+import {UserDataResponse} from '../../models/response/userDataResponse';
+import {BuildingTooltip} from "../../models/response/BuildingTooltip";
+import {CityData} from "../../models/response/CityData";
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +28,15 @@ export class GameServiceService {
       return this.http.get<Vector>(`${config.apiUrl}/userCoordinates`);
   }
 
-  getUserData(): Observable<any> {
-      return this.http.get(`${config.apiUrl}/userData`);
+  getInitialUserData(): Observable<any>  {
+    return this.http.get<Vector>(`${config.apiUrl}/userData`);
+
+  }
+
+  getUserData() {
+    return interval(1000).pipe(flatMap(() => {
+      return this.http.get<UserDataResponse>(`${config.apiUrl}/userData`);
+    }));
   }
 
   recruit(amount: number): Observable<any> {
@@ -41,8 +51,14 @@ export class GameServiceService {
     return this.http.get(`${config.apiUrl}/tooltip/${action}`);
   }
 
-  getCityData(): Observable<any> {
+  getInitialCityData(): Observable<any> {
     return this.http.get(`${config.apiUrl}/cityData`);
+  }
+
+  getCityData(): Observable<any> {
+    return interval(1000).pipe(flatMap(() => {
+      return this.http.get<CityData>(`${config.apiUrl}/cityData`);
+    }));
   }
 
 
