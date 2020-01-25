@@ -1,6 +1,5 @@
 <div class="border-left border-bottom border-right border-dark pl-1 pb-1 pr-1">
-  Castle ({{cityData.castleLevel}}) <button (click)="updateBuilding('Castle')">+</button>
-  <button matTooltip="test">I</button> <br />
+  Castle ({{cityData.castleLevel}}) <button (mouseenter)="updateTooltip('Castle')" matTooltip={{tooltipText}} (click)="updateBuilding('Castle')">+</button><br />
   Barack ({{cityData.barracksLevel}}) <button (click)="updateBuilding('Barack')">+</button><br />
   Forgery ({{cityData.forgeryLevel}}) <button (click)="updateBuilding('Forgery')">+</button><br />
   Mine ({{cityData.mineLevel}}) <button (click)="updateBuilding('Mine')">+</button><br />

@@ -20,16 +20,21 @@ public class CombatService {
     private UserRepository userRepository;
 
     @Autowired
+    private CityService cityService;
+
+    @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
     //add logic against attacking a point outside of grid
     //add superclass for node/user later to lesser if statements
     //kan nog niet handmatig getest worden
-    public AttackResponse attack(String username, Vector attackedPoint){
+    public AttackResponse attack(String username, Vector attackedPoint) throws Exception {
         //note if the client sends an unauthorized token he shouldn't be able to call this service (webSecurityConfig should block) so no need to set findUser as optional.orElse(null)
         var attacker = userRepository.findByUsername(username);
         var targetIsUser = userRepository.findByCoordinateXAndCoordinateY(attackedPoint.getX(), attackedPoint.getY()).orElse(null);
         var targetIsNode = nodeRepository.findByCoordinateXAndCoordinateY(attackedPoint.getX(), attackedPoint.getY()).orElse(null);
+        var attackerCityData = cityService.getCityData(username);
+
         Random r = new Random();
         //initiate all values with 0, if user won then the value gets set to a correct amount inside the if statement.
         int foodWon = 0;
@@ -51,29 +56,37 @@ public class CombatService {
         attackResponse.setWon(false);
 
         //if attacking user, and if won
-        if (targetIsUser != null && attacker.getTroops() > targetIsUser.getTroops()){
-            attackResponse.setAttackable(true);
+        if (targetIsUser != null){
             attackResponse.setEnemyTroopCount(targetIsUser.getTroops());
-            attackResponse.setWon(true);
+            var targetCityData = cityService.getCityData(targetIsUser.getUsername());
+            var attackIsWon = (attacker.getTroops() +
+                    (attacker.getTroops() * attackerCityData.getCastleLevel()/100) +
+                    (attacker.getTroops() * attackerCityData.getBarracksLevel()/100)) >
+                    (targetIsUser.getTroops() +
+                        (targetIsUser.getTroops() * targetCityData.getCastleLevel()/100) +
+                            (targetIsUser.getTroops() * targetCityData.getBarracksLevel()/100));
 
-            //if enemy user have lower food then 100, get the amount he have, else get 100 (so if enemy have 23 < 100 => get 23, if enemy have 110 > 100 => get 100 remain 10).
-            foodWon = Math.min(targetIsUser.getFood(), 100);
-            userRepository.updateFood(targetIsUser.getFood() - foodWon, targetIsUser.getUsername());
+            if(attackIsWon){
+                attackResponse.setAttackable(true);
+                attackResponse.setWon(true);
 
-            ironWon = Math.min(targetIsUser.getIron(), 100);
-            userRepository.updateIron(targetIsUser.getIron() - ironWon, targetIsUser.getUsername());
+                //if enemy user have lower food then 100, get the amount he have, else get 100 (so if enemy have 23 < 100 => get 23, if enemy have 110 > 100 => get 100 remain 10).
+                foodWon = Math.min(targetIsUser.getFood(), 100);
+                userRepository.updateFood(targetIsUser.getFood() - foodWon, targetIsUser.getUsername());
 
-            stoneWon = Math.min(targetIsUser.getStone(), 100);
-            userRepository.updateStone(targetIsUser.getStone() - stoneWon, targetIsUser.getUsername());
+                ironWon = Math.min(targetIsUser.getIron(), 100);
+                userRepository.updateIron(targetIsUser.getIron() - ironWon, targetIsUser.getUsername());
 
-            woodWon = Math.min(targetIsUser.getWood(), 100);
-            userRepository.updateWood(targetIsUser.getWood() - woodWon, targetIsUser.getUsername());
+                stoneWon = Math.min(targetIsUser.getStone(), 100);
+                userRepository.updateStone(targetIsUser.getStone() - stoneWon, targetIsUser.getUsername());
 
+                woodWon = Math.min(targetIsUser.getWood(), 100);
+                userRepository.updateWood(targetIsUser.getWood() - woodWon, targetIsUser.getUsername());
+            }
         }
         //if attacking node and if won
         if (targetIsNode != null && attacker.getTroops() > targetIsNode.getTroops()){
             attackResponse.setAttackable(true);
-            attackResponse.setEnemyTroopCount(targetIsNode.getTroops());
             attackResponse.setWon(true);
 
             //check what type of node (forest/mine/lake/mountain), not if yieldType was asked then wood,iron,food,stone instead of forest, mine, lake, mountain
@@ -92,6 +105,10 @@ public class CombatService {
                     stoneWon = r.nextInt((targetIsNode.getYieldMax() - targetIsNode.getYieldMin()) + targetIsNode.getYieldMin());
                     break;
             }
+        }
+
+        if (targetIsNode != null){
+            attackResponse.setEnemyTroopCount(targetIsNode.getTroops());
         }
 
         //after knowing how much is won, update attacker with values

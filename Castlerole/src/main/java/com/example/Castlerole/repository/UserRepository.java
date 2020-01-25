@@ -12,6 +12,7 @@ import javax.swing.text.html.Option;
 import javax.transaction.Transactional;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -19,6 +20,8 @@ import java.util.Optional;
 public interface UserRepository extends CrudRepository<User, Integer> {
 
 	User findByUsername(String username);
+
+	List<User> findAll();
 
 	Optional<String> findPictureReferenceByCoordinateXAndCoordinateY(int coordinateX, int coordinateY);
 

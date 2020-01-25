@@ -64,7 +64,7 @@ public class GameController {
     }
 
     @GetMapping("/update/{action}")
-    public String recruitTroops(@PathVariable("action") String action) throws Exception {
+    public String upgradeBuilding(@PathVariable("action") String action) throws Exception {
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
         return cityService.updateBuilding(username, action);
     }
@@ -75,9 +75,14 @@ public class GameController {
         return cityService.getCityData(owner);
     }
 
+    @GetMapping("/tooltip/{action}")
+    public BuildingTooptip getToolTip(@PathVariable("action") String action) throws Exception {
+        var username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return cityService.getTooltipData(username, action);
+    }
 
     @GetMapping("/attack/{x}/{y}")
-    public AttackResponse attackPoint(@PathVariable("x") int x, @PathVariable("y") int y){
+    public AttackResponse attackPoint(@PathVariable("x") int x, @PathVariable("y") int y) throws Exception {
         var attackedPoint = new Vector(x, y);
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
         return combatService.attack(username, attackedPoint);
