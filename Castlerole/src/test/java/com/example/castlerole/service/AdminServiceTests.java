@@ -7,19 +7,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
 
+import static org.mockito.ArgumentMatchers.anyObject;
+import static org.mockito.ArgumentMatchers.anyString;
+
 //@ExtendWith(MockitoExtension.class)
 //@ActiveProfiles("test")
 //@RunWith()
 //@SpringBootTest
 public class AdminServiceTests {
-
-    @BeforeEach
-    public void setUp() throws Exception {
-        adminService = new AdminService();
-        MockitoAnnotations.initMocks(this);
-        Mockito.when(userService.getXY())
-                .thenReturn(new IntVector(25,25));
-    }
 
     @InjectMocks
     private AdminService adminService;
@@ -28,6 +23,14 @@ public class AdminServiceTests {
     @Mock
     private JwtUserService userService;
 
+    @BeforeEach
+    public void setUp() throws Exception {
+        adminService = new AdminService();
+        MockitoAnnotations.initMocks(this);
+        Mockito.when(userService.getXY())
+                .thenReturn(new IntVector(25,25));
+        //Mockito.when(nodeRepository.save()).thenReturn();
+    }
     @Test
     public void whenValid_shouldReturnNodes() throws Exception {
         int amount = 10;
