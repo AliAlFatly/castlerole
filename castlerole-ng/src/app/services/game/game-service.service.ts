@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, interval } from 'rxjs';
-import {catchError, flatMap, map, mapTo, tap} from 'rxjs/operators';
-import {Tokens} from '../../models/authentication/Tokens';
+import {flatMap} from 'rxjs/operators';
 import {config} from '../../config';
 import {Vector} from '../../models/generic/Vector';
 import {UserDataResponse} from '../../models/response/userDataResponse';
-import {Tooltip} from "../../models/response/Tooltip";
-import {CityData} from "../../models/response/CityData";
+import {CityData} from '../../models/response/CityData';
 
 @Injectable({
   providedIn: 'root'

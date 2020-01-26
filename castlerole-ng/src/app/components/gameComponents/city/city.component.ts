@@ -4,7 +4,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Vector} from '../../../models/generic/Vector';
 import {HttpClient} from '@angular/common/http';
 import {CityData} from '../../../models/response/CityData';
-import {Tooltip} from '../../../models/response/Tooltip';
+import {Tooltip} from '../../../models/response/tooltip';
 
 @Component({
   selector: 'app-city',

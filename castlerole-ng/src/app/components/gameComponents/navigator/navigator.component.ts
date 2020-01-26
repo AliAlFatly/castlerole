@@ -25,16 +25,22 @@ export class NavigatorComponent implements OnInit {
               private gameService: GameServiceService) { }
 
   async ngOnInit() {
+    await this.getUserCoordinates();
+    await this.setCoordinatesInsideBoundaries();
+    this.coordinatesEmitter.emit(this.coordinates);
+  }
+
+  getUserCoordinates = async () => {
     const response = await this.gameService.getUserCoordinates().toPromise();
     this.coordinates.x = response.x;
     this.coordinates.y = response.y;
+  }
 
+  setForumCoordinates = () => {
     this.coordinateForm = this.formBuilder.group({
       x: this.coordinates.x,
       y: this.coordinates.y
     });
-    await this.setCoordinatesInsideBoundaries();
-    this.coordinatesEmitter.emit(this.coordinates);
   }
 
   setCoordinatesInsideBoundaries = () => {
@@ -53,7 +59,7 @@ export class NavigatorComponent implements OnInit {
     if (this.coordinates.y > totalGridSize - halfScreenHeight) {
       this.coordinates.y = totalGridSize - halfScreenHeight - 1;
     }
-
+    this.setForumCoordinates();
   }
 
   async navigate() {
