@@ -16,12 +16,12 @@ import static org.mockito.ArgumentMatchers.anyString;
 //@SpringBootTest
 public class AdminServiceTests {
 
-    @InjectMocks
-    private AdminService adminService;
-    @Mock
-    private NodeRepository nodeRepository;
-    @Mock
-    private JwtUserService userService;
+//    @InjectMocks
+//    private AdminService adminService;
+//    @Mock
+//    private NodeRepository nodeRepository;
+//    @Mock
+//    private JwtUserService userService;
 
 //    @BeforeEach
 //    public void setUp() throws Exception {
