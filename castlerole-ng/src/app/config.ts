@@ -4,7 +4,7 @@ export const config = {
 
 export const elementHeight = 100;
 export const elementWidth = 100;
-export const canvasWidth = 1400;
+export const canvasWidth = 1100;
 export const canvasHeight = 1000;
 
 

@@ -8,8 +8,7 @@ import {Tooltip} from '../../../models/response/tooltip';
 
 @Component({
   selector: 'app-city',
-  templateUrl: './city.component.html',
-  styleUrls: ['./city.component.css']
+  templateUrl: './city.component.html'
 })
 export class CityComponent implements OnInit {
 
@@ -34,14 +33,13 @@ export class CityComponent implements OnInit {
   }
 
   async recruit(): Promise<any> {
-    let response: any;
     let amount: number;
     if (this.coordinateForm.controls.amount.value < 0) {
       amount = 0;
     } else {
       amount = this.coordinateForm.controls.amount.value;
     }
-    response = await this.gameService.recruit(amount).toPromise();
+    await this.gameService.recruit(amount).toPromise();
   }
 
   updateTooltip = async (action: string) => {

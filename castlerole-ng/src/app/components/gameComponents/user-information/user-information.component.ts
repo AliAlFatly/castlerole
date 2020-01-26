@@ -5,8 +5,7 @@ import {Vector} from '../../../models/generic/Vector';
 
 @Component({
   selector: 'app-user-information',
-  templateUrl: './user-information.component.html',
-  styleUrls: ['./user-information.component.css']
+  templateUrl: './user-information.component.html'
 })
 export class UserInformationComponent implements OnChanges {
 

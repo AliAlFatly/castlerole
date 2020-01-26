@@ -7,8 +7,7 @@ import {halfScreenHeight, halfScreenWidth, totalGridSize} from '../../../config'
 
 @Component({
   selector: 'app-navigator',
-  templateUrl: './navigator.component.html',
-  styleUrls: ['./navigator.component.css']
+  templateUrl: './navigator.component.html'
 })
 export class NavigatorComponent implements OnInit {
 
@@ -43,7 +42,7 @@ export class NavigatorComponent implements OnInit {
     });
   }
 
-  setCoordinatesInsideBoundaries = () => {
+  setCoordinatesInsideBoundaries = async () => {
     // if x or y are below the middle of screen width set them to screen width.
     if (this.coordinates.x < halfScreenWidth) {
       this.coordinates.x = halfScreenWidth;
@@ -54,7 +53,7 @@ export class NavigatorComponent implements OnInit {
 
     // if x or y are below the maximum grid node - screen width set them to maximum grid node coordinates - screen width
     if (this.coordinates.x > totalGridSize - halfScreenWidth) {
-      this.coordinates.x = totalGridSize - halfScreenWidth + 3;
+      this.coordinates.x = totalGridSize - halfScreenWidth + 6;
     }
     if (this.coordinates.y > totalGridSize - halfScreenHeight) {
       this.coordinates.y = totalGridSize - halfScreenHeight - 1;
