@@ -15,6 +15,8 @@ public class AdminServiceTest extends ControllerTestConfig {
     @Autowired
     private NodeRepository nodeRepository;
 
+    private final String secretKey = "secretcodehere";
+
     @Test
     public void adminServiceTest() throws Exception {
 

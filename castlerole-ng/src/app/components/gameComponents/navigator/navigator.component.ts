@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Vector} from '../../../models/generic/Vector';
 import {HttpClient} from '@angular/common/http';
 import {GameServiceService} from '../../../services/game/game-service.service';
-import {halfScreenHeight, halfScreenWidth, totalGridSize} from "../../../config";
+import {halfScreenHeight, halfScreenWidth, totalGridSize} from '../../../config';
 
 @Component({
   selector: 'app-navigator',

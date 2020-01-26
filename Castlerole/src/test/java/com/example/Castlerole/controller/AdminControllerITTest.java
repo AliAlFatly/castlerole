@@ -27,6 +27,7 @@ public class AdminControllerITTest extends ControllerTestConfig {
     @Rule
     public StopWatchConfig stopwatch = new StopWatchConfig();
 
+    private final String secretKey = "secretcodehere";
 
     @Override
     @Before
@@ -45,7 +46,7 @@ public class AdminControllerITTest extends ControllerTestConfig {
         //Thread.sleep(300l);
         //System.out.println(stopwatch.runtime(TimeUnit.MILLISECONDS));
         long BeginTime = stopwatch.runtime(TimeUnit.MILLISECONDS);
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri + amount)
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri + amount + "/" + secretKey)
                 .contentType(MediaType.APPLICATION_JSON)
 
                 .characterEncoding("utf-8")

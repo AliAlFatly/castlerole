@@ -79,6 +79,8 @@ public class CombatServiceTests {
     private JwtTokenUtil jwtTokenUtil;
     @InjectMocks
     private CombatService combatService;
+    @Mock
+    private CityService cityService;
 
     @Test
     public void CombatAttack_UserTest() throws Exception {
