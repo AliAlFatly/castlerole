@@ -1,9 +1,12 @@
 package com.example.castlerole.service;
 
 import com.example.castlerole.config.JwtTokenUtil;
+import com.example.castlerole.model.City;
 import com.example.castlerole.model.Node;
 import com.example.castlerole.model.User;
 import com.example.castlerole.model.helpertypes.Vector;
+import com.example.castlerole.model.response.CityDataResponse;
+import com.example.castlerole.repository.CityRepository;
 import com.example.castlerole.repository.NodeRepository;
 import com.example.castlerole.repository.UserRepository;
 
@@ -17,31 +20,54 @@ import org.mockito.MockitoAnnotations;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 
 //@ExtendWith(MockitoExtension.class)
 public class CombatServiceTests {
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         var attackuser = new User();
         attackuser.setUsername("attackuser");
         attackuser.setPassword("password");
-        attackuser.setStone(300);
-        attackuser.setWood(300);
-        attackuser.setFood(300);
+        attackuser.setStone(3000);
+        attackuser.setWood(3000);
+        attackuser.setFood(3000);
+        attackuser.setIron(3000);
         attackuser.setCoordinateY(25);
         attackuser.setCoordinateX(25);
         attackuser.setTroops(300);
+        attackuser.setId(1);
+        var attackusercity = new City();
+        attackusercity.setUser(attackuser);
+        attackusercity.setId(1);
+        attackusercity.setBarracksLevel(1);
+        attackusercity.setCasteLevel(1);
+        attackusercity.setForgeryLevel(1);
+        attackusercity.setMineLevel(1);
+        attackusercity.setOvenLevel(1);
+        attackusercity.setWoodworksLevel(1);
         var defenduser = new User();
         defenduser.setUsername("defenduser");
         defenduser.setPassword("password");
         defenduser.setStone(300);
         defenduser.setWood(300);
         defenduser.setFood(300);
+        defenduser.setIron(300);
         defenduser.setCoordinateY(20);
         defenduser.setCoordinateX(20);
-        defenduser.setTroops(600);
+        defenduser.setTroops(6000);
+        defenduser.setId(1);
+        var defendusercity = new City();
+        defendusercity.setUser(defenduser);
+        defendusercity.setId(2);
+        defendusercity.setBarracksLevel(1);
+        defendusercity.setCasteLevel(1);
+        defendusercity.setForgeryLevel(1);
+        defendusercity.setMineLevel(1);
+        defendusercity.setOvenLevel(1);
+        defendusercity.setWoodworksLevel(1);
         var defendnode = new Node();
         defendnode.setYCoordinate(15);
         defendnode.setXCoordinate(15);
@@ -59,6 +85,16 @@ public class CombatServiceTests {
                 defendnode.getxCoordinate(),
                 defendnode.getyCoordinate()))
                 .thenReturn(Optional.of(defendnode));
+        Mockito.when(cityService.getCityData(anyString()))
+                .thenReturn(new CityDataResponse(
+                        "defenduser",
+                        1,
+                        1,
+                        1,
+                        1,
+                        1,
+                        1
+                        ));
     }
     @Mock
     private NodeRepository nodeRepository;
