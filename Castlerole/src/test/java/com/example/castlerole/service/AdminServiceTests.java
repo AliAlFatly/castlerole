@@ -16,32 +16,32 @@ import static org.mockito.ArgumentMatchers.anyString;
 //@SpringBootTest
 public class AdminServiceTests {
 
-//    @InjectMocks
-//    private AdminService adminService;
-//    @Mock
-//    private NodeRepository nodeRepository;
-//    @Mock
-//    private JwtUserService userService;
+    @InjectMocks
+    private AdminService adminService;
+    @Mock
+    private NodeRepository nodeRepository;
+    @Mock
+    private JwtUserService userService;
 
-//    @BeforeEach
-//    public void setUp() throws Exception {
-//        adminService = new AdminService();
-//        MockitoAnnotations.initMocks(this);
-//        Mockito.when(userService.getXY())
-//                .thenReturn(new IntVector(25,25));
-//        //Mockito.when(nodeRepository.save()).thenReturn();
-//    }
-//    @Test
-//    public void whenValid_shouldReturnNodes() throws Exception {
-//        int amount = 10;
-//        String answer = adminService.generateNodes(amount);
-//        Assert.assertEquals(answer, "done");
-//        System.out.println(answer);
-//        //String answer = adminService.generateNodes(amount);
-//
-//
-//
-//    }
+    @BeforeEach
+    public void setUp() throws Exception {
+        adminService = new AdminService();
+        MockitoAnnotations.initMocks(this);
+        Mockito.when(userService.getXY())
+                .thenReturn(new IntVector(25,25));
+        //Mockito.when(nodeRepository.save()).thenReturn();
+    }
+    @Test
+    public void whenValid_shouldReturnNodes() throws Exception {
+        int amount = 10;
+        String answer = adminService.generateNodes(amount);
+        Assert.assertEquals(answer, "done");
+        System.out.println(answer);
+        //String answer = adminService.generateNodes(amount);
+
+
+
+    }
 
 
 }
