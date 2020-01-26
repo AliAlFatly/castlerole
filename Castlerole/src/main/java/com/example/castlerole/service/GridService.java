@@ -46,9 +46,6 @@ public class GridService {
         return response;
     }
 
-
-
-
     public int left(int x){
         return x - this.halfScreen();
     }
@@ -86,9 +83,6 @@ public class GridService {
     }
 
     public int halfScreen(){
-//        if(screenGridSize < 0){
-//            screenGridSize = this.screenGridSize;
-//        }
         if(screenGridSize % 2 != 0){
             screenGridSize += 1;
         }

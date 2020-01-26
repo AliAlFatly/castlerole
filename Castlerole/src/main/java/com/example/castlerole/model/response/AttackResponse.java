@@ -93,10 +93,6 @@ public class AttackResponse {
         return woodWon;
     }
 
-    public boolean isAttackable() {
-        return attackable;
-    }
-
     public void setIronWon(int ironWon) {
         this.ironWon = ironWon;
     }

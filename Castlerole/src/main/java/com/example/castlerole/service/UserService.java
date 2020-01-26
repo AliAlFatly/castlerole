@@ -18,7 +18,7 @@ public class UserService {
     private int troopRecruitmentIron = 10;
     private int troopRecruitmentStone = 4;
 
-    public boolean UserExist(String username) throws Exception {
+    public boolean UserExist(String username) {
         User user = userRepository.findByUsername(username);
         if (user != null) {
             return true;
@@ -27,7 +27,6 @@ public class UserService {
     }
 
     public Vector getUserCoordinates(String username) throws Exception {
-        //String username = jwtTokenUtil.getUsernameFromToken(jwtToken);
         //later make findByUsername return optional<user>, to combat fabricated jwtToken errors.
         User user;
         try{
@@ -41,7 +40,6 @@ public class UserService {
     }
 
     public UserDataResponse getUserData(String username) throws Exception {
-        //String username = jwtTokenUtil.getUsernameFromToken(jwtToken);
         //later make findByUsername return optional<user>, to combat fabricated jwtToken errors.
         User user;
         //todo change try catch to beter error handling

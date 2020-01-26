@@ -36,9 +36,6 @@ public class User {
 	@Column
 	private int troops;
 
-//	@OneToOne(cascade = CascadeType.ALL)
-//	//@JoinColumn(name = "owner")
-//	private City city;
 
 	public User() {
 	}
