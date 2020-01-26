@@ -26,32 +26,6 @@ public class GridService {
     @Autowired
     private UserRepository userRepository;
 
-//    public ArrayList<GridResponse> getGrid(int x, int y){
-//        x = setX(x);
-//        y = setY(y);
-//
-//        ArrayList<GridResponse> response = new ArrayList<>();
-//        //from bottom to top:
-//        for (int yAxis = bottom(y); yAxis <= top(y); yAxis++){
-//            //from left to right:
-//            for (int xAxis = left(x); xAxis <= right(x); xAxis++){
-//                // select picture from
-//                String picture = "empty";
-//                Optional<User> user = userRepository.findByCoordinateXAndCoordinateY(xAxis,yAxis);
-//                if (!user.isEmpty()){
-//                    picture = user.get().getPictureReference();
-//                }
-//                Optional<Node> node = nodeRepository.findByCoordinateXAndCoordinateY(xAxis,yAxis);
-//                if (!node.isEmpty()){
-//                    picture = node.get().getPictureReference();
-//                }
-//                GridResponse currentCoordinatesData = new GridResponse(xAxis, yAxis, picture);
-//                response.add(currentCoordinatesData);
-//            }
-//        }
-//        return response;
-//    }
-
     public ArrayList<GridResponse> getGrid(int x, int y){
         x = setX(x);
         y = setY(y);
@@ -60,8 +34,6 @@ public class GridService {
 
         var users = userRepository.getUsersInGrid(left(x), right(x), bottom(y), top(y));
         var nodes = nodeRepository.getNodesInGrid(left(x), right(x), bottom(y), top(y));
-
-        //response.add(new GridResponse(left(x), bottom(y), "empty"));
 
         if(!users.isEmpty()){
             for (var user : users.get()) {
@@ -117,9 +89,9 @@ public class GridService {
     }
 
     public int halfScreen(){
-        if(screenGridSize < 0){
-            screenGridSize = 4;
-        }
+//        if(screenGridSize < 0){
+//            screenGridSize = this.screenGridSize;
+//        }
         if(screenGridSize % 2 != 0){
             screenGridSize += 1;
         }

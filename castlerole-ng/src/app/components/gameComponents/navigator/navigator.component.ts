@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Vector} from '../../../models/generic/Vector';
 import {HttpClient} from '@angular/common/http';
 import {GameServiceService} from '../../../services/game/game-service.service';
+import {halfScreenHeight, halfScreenWidth, totalGridSize} from "../../../config";
 
 @Component({
   selector: 'app-navigator',
@@ -32,7 +33,24 @@ export class NavigatorComponent implements OnInit {
       x: this.coordinates.x,
       y: this.coordinates.y
     });
+    await this.setCoordinatesInsideBoundaries();
     this.coordinatesEmitter.emit(this.coordinates);
+  }
+
+  setCoordinatesInsideBoundaries = () => {
+    if (this.coordinates.x < halfScreenWidth) {
+      this.coordinates.x = halfScreenWidth;
+    }
+    if (this.coordinates.x > totalGridSize - halfScreenWidth) {
+      this.coordinates.x = totalGridSize - halfScreenWidth;
+    }
+    if (this.coordinates.y < halfScreenHeight) {
+      this.coordinates.y = halfScreenHeight;
+    }
+    if (this.coordinates.y > totalGridSize - halfScreenHeight) {
+      this.coordinates.y = totalGridSize - halfScreenHeight;
+    }
+
   }
 
   async navigate() {

@@ -24,6 +24,7 @@ export class GridComponent implements OnChanges {
 
   @ViewChild('canvas', {static: false}) private canvas: ElementRef;
   @Output() clickEmitter = new EventEmitter<Vector>();
+  // Middle of the screen
   @Input() coordinates: Vector;
   private targetCoordinates: Vector;
   private canvasElement;
@@ -107,11 +108,6 @@ export class GridComponent implements OnChanges {
     this.canvasElement.style.height = `${canvasHeight}px`;
   }
 
-  // clearCanvas = async () => {
-  //   this.ctx = await (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
-  //   await this.ctx.clearRect(0,0,canvasWidth,canvasHeight)
-  // };
-
   addClickHandle = async () => {
     this.canvasElement = document.querySelector('canvas');
     this.zeroX = this.coordinates.x - halfScreenWidth; // this.grid[0].x;
@@ -123,18 +119,4 @@ export class GridComponent implements OnChanges {
       this.clickEmitter.emit(this.targetCoordinates);
     });
   }
-
-
-  // old draw
-  // let img = new Image();
-  // img.src = `assets/${this.grid[i].picture}.png`;
-  //
-  // img.onload = async () => {
-  //    await this.ctx.drawImage(img, (this.grid[i].x - this.grid[0].x)*100, (this.grid[i].y - this.grid[0].y)*100, 100, 100);
-  //    // this.ctx.fillStyle="Black";
-  //    // this.ctx.font = "12px Arial";
-  //    // await this.ctx.fillText(`${this.grid[i].x}, ${this.grid[i].y}`,(this.grid[i].x - this.grid[0].x)
-  //    * (100-10),(this.grid[i].y - this.grid[0].y) * (100-10));
-  // }
-
 }
