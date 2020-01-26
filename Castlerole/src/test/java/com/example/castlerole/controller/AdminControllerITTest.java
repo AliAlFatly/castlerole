@@ -5,7 +5,8 @@ import com.example.castlerole.Config.StopWatchConfig;
 import com.example.castlerole.repository.NodeRepository;
 import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
@@ -24,13 +25,9 @@ public class AdminControllerITTest extends ControllerTestConfig {
     @Autowired
     private NodeRepository nodeRepository;
 
-    @Rule
-    public StopWatchConfig stopwatch = new StopWatchConfig();
-
     private final String secretKey = "secretcodehere";
 
-    @Override
-    @Before
+    @BeforeEach
     public void setUpAdminControl() {
         super.setUpAdminControl();
 
@@ -45,7 +42,7 @@ public class AdminControllerITTest extends ControllerTestConfig {
         //long delta = 30;
         //Thread.sleep(300l);
         //System.out.println(stopwatch.runtime(TimeUnit.MILLISECONDS));
-        long BeginTime = stopwatch.runtime(TimeUnit.MILLISECONDS);
+        //long BeginTime = stopwatch.runtime(TimeUnit.MILLISECONDS);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri + amount + "/" + secretKey)
                 .contentType(MediaType.APPLICATION_JSON)
 
@@ -57,11 +54,11 @@ public class AdminControllerITTest extends ControllerTestConfig {
                 .andDo(MockMvcResultHandlers.log())
                 .andExpect(status().isOk())
                 .andReturn();
-        long EndTime = stopwatch.runtime(TimeUnit.MILLISECONDS);
+        //long EndTime = stopwatch.runtime(TimeUnit.MILLISECONDS);
         //System.out.println(stopwatch.runtime(TimeUnit.MILLISECONDS));
         System.out.println(nodeRepository.count());
-        System.out.println("Application took: " + (EndTime - BeginTime) + " Milliseconds to GET");
-        assertEquals(nodeRepository.count(), 200);
+        //System.out.println("Application took: " + (EndTime - BeginTime) + " Milliseconds to GET");
+        assertEquals(nodeRepository.count(), 100);
 
 
     }

@@ -31,7 +31,7 @@ public class AdminServiceTests {
     @Test
     public void whenValid_shouldReturnNodes() throws Exception {
         int amount = 10;
-        String answer = adminService.generateNodes(1);
+        String answer = adminService.generateNodes(amount);
         Assert.assertEquals(answer, "done");
         System.out.println(answer);
         //String answer = adminService.generateNodes(amount);
