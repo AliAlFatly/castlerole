@@ -38,17 +38,20 @@ export class NavigatorComponent implements OnInit {
   }
 
   setCoordinatesInsideBoundaries = () => {
+    // if x or y are below the middle of screen width set them to screen width.
     if (this.coordinates.x < halfScreenWidth) {
       this.coordinates.x = halfScreenWidth;
-    }
-    if (this.coordinates.x > totalGridSize - halfScreenWidth) {
-      this.coordinates.x = totalGridSize - halfScreenWidth;
     }
     if (this.coordinates.y < halfScreenHeight) {
       this.coordinates.y = halfScreenHeight;
     }
+
+    // if x or y are below the maximum grid node - screen width set them to maximum grid node coordinates - screen width
+    if (this.coordinates.x > totalGridSize - halfScreenWidth) {
+      this.coordinates.x = totalGridSize - halfScreenWidth + 3;
+    }
     if (this.coordinates.y > totalGridSize - halfScreenHeight) {
-      this.coordinates.y = totalGridSize - halfScreenHeight;
+      this.coordinates.y = totalGridSize - halfScreenHeight - 1;
     }
 
   }
@@ -56,6 +59,7 @@ export class NavigatorComponent implements OnInit {
   async navigate() {
     this.coordinates.x = await this.coordinateForm.controls.x.value;
     this.coordinates.y = await this.coordinateForm.controls.y.value;
+    this.setCoordinatesInsideBoundaries();
     this.coordinatesEmitter.emit(JSON.parse(JSON.stringify(this.coordinates)));
   }
 
