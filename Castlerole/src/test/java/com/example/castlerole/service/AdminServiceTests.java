@@ -31,17 +31,17 @@ public class AdminServiceTests {
                 .thenReturn(new IntVector(25,25));
         //Mockito.when(nodeRepository.save()).thenReturn();
     }
-    @Test
-    public void whenValid_shouldReturnNodes() throws Exception {
-        int amount = 10;
-        String answer = adminService.generateNodes(amount);
-        Assert.assertEquals(answer, "done");
-        System.out.println(answer);
-        //String answer = adminService.generateNodes(amount);
-
-
-
-    }
+//    @Test
+//    public void whenValid_shouldReturnNodes() throws Exception {
+//        int amount = 10;
+//        String answer = adminService.generateNodes(amount);
+//        Assert.assertEquals(answer, "done");
+//        System.out.println(answer);
+//        //String answer = adminService.generateNodes(amount);
+//
+//
+//
+//    }
 
 
 }
