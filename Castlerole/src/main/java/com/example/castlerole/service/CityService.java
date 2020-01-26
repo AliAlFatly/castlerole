@@ -24,30 +24,27 @@ public class CityService {
     private UserService userService;
 
     // In array: food, wood, stone, iron
-    private HashMap<String, int[]> ResourcesConsumptionByActionMapper = new HashMap<String, int[]>();
+    private HashMap<String, int[]> resourcesConsumptionByActionMapper = new HashMap<>();
     // Max building level
     private int maxBuildingLevel = 30;
     private String success = "Success";
 
+    private final String castle = "Castle";
+    private final String barrack = "Barrack";
+    private final String forgery = "Forgery";
+    private final String mine = "Mine";
+    private final String oven = "Oven";
+    private final String woodworks = "Woodworks";
 
-    //    private int[] castleLevelUpResources = {1,2,3,1};
-//    private int[] barackLevelUpResources = {1,2,3,1};
-//    private int[] forgeryLevelUpResources = {1,2,3,1};
-//    private int[] mineLevelUpResources = {1,2,3,1};
-//    private int[] ovenLevelUpResources = {1,2,3,1};
-//    private int[] woodworksLevelUpResources = {1,2,3,1};
-
-
-
-    private void SetLevelUpResources(){
+    private void setLevelUpResources(){
         // In array: food, wood, stone, iron
-        ResourcesConsumptionByActionMapper.put("Castle", new int[]{1,1,1,1});
-        ResourcesConsumptionByActionMapper.put("Barack", new int[]{1,1,1,1});
-        ResourcesConsumptionByActionMapper.put("Forgery", new int[]{1,1,1,1});
-        ResourcesConsumptionByActionMapper.put("Mine", new int[]{1,1,1,1});
-        ResourcesConsumptionByActionMapper.put("Oven", new int[]{1,1,1,1});
-        ResourcesConsumptionByActionMapper.put("Woodworks", new int[]{1,1,1,1});
-        ResourcesConsumptionByActionMapper.put("Recruit troops", new int[]{20,20,4,10});
+        resourcesConsumptionByActionMapper.put(castle, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(barrack, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(forgery, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(mine, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(oven, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(woodworks, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put("Recruit troops", new int[]{20,20,4,10});
     }
 
     // Resource consumption formula for buildings upgrade
@@ -64,9 +61,9 @@ public class CityService {
         // Get user data
         UserDataResponse userdata = userService.getUserData(username);
         // Set base resources for leveling up for each building and save them into the hashmap
-        SetLevelUpResources();
+        setLevelUpResources();
         // Get the array specifiek for the chosen building
-        int[] resourcesMultipliersArray = ResourcesConsumptionByActionMapper.get(action);
+        int[] resourcesMultipliersArray = resourcesConsumptionByActionMapper.get(action);
 
         // Set resources values after the update is complete
         int afterFood = userdata.getFood() - levelUpConsumptionFormula(resourcesMultipliersArray[0], level);
@@ -75,7 +72,7 @@ public class CityService {
         int afterIron = userdata.getIron() - levelUpConsumptionFormula(resourcesMultipliersArray[3], level);
 
         // Check if the resources are below 0, in that case return not enough resources
-        if (afterFood < 0 | afterWood < 0 | afterStone < 0 | afterIron < 0){
+        if (afterFood < 0 || afterWood < 0 || afterStone < 0 || afterIron < 0){
             return "Not enough resources";
         }
 
@@ -89,7 +86,7 @@ public class CityService {
         City city;
         User user = userRepository.findByUsername(username);
         try{
-            city = cityRepository.findByid(user.getId());
+            city = cityRepository.findById(user.getId());
         }
         catch(Exception error){
             throw new Exception("Cannot find a corresponding city!");
@@ -108,48 +105,48 @@ public class CityService {
 
     public String updateBuilding(String username, String action) throws Exception {
         User user = userRepository.findByUsername(username);
-        City city = cityRepository.findByid(user.getId());
+        City city = cityRepository.findById(user.getId());
         String response;
         int newLevel;
         switch (action){
-            case "Castle":
+            case castle:
                 response = consumeResources(username, action, city.getCastleLevel());
-                if (response == success){
+                if (response.equals(success)){
                     newLevel = city.getCastleLevel() + 1;
                     cityRepository.updateCastleLevel(newLevel, user.getId());
                 }
                 break;
-            case "Barack":
+            case barrack:
                 response = consumeResources(username, action, city.getBarracksLevel());
-                if (response == success){
+                if (response.equals(success)){
                     newLevel = city.getBarracksLevel() + 1;
                     cityRepository.updateBarracksLevel(newLevel, user.getId());
                 }
                 break;
-            case "Forgery":
+            case forgery:
                 response = consumeResources(username, action, city.getForgeryLevel());
-                if (response == success){
+                if (response.equals(success)){
                     newLevel = city.getForgeryLevel() + 1;
                     cityRepository.updateForgeryLevel(newLevel, user.getId());
                 }
                 break;
-            case "Mine":
+            case mine:
                 response = consumeResources(username, action, city.getMineLevel());
-                if (response == success){
+                if (response.equals(success)){
                     newLevel = city.getMineLevel() + 1;
                     cityRepository.updateMineLevel(newLevel, user.getId());
                 }
                 break;
-            case "Oven":
+            case oven:
                 response = consumeResources(username, action, city.getOvenLevel());
-                if (response == success){
+                if (response.equals(success)){
                     newLevel = city.getOvenLevel() + 1;
                     cityRepository.updateOvensLevel(newLevel, user.getId());
                 }
                 break;
-            case "Woodworks":
+            case woodworks:
                 response = consumeResources(username, action, city.getWoodworksLevel());
-                if (response == success){
+                if (response.equals(success)){
                     newLevel = city.getWoodworksLevel() + 1;
                     cityRepository.updateWoodworksLevel(newLevel, user.getId());
                 }
@@ -163,32 +160,32 @@ public class CityService {
 
     public Tooptip getTooltipData(String username, String action) throws Exception {
         User user = userRepository.findByUsername(username);
-        City city = cityRepository.findByid(user.getId());
+        City city = cityRepository.findById(user.getId());
         Tooptip response = new Tooptip();
         int level;
         boolean continueBool = false;
         switch (action){
-            case "Castle":
+            case castle:
                 level = city.getCastleLevel();
                 continueBool = true;
                 break;
-            case "Barack":
+            case barrack:
                 level = city.getBarracksLevel();
                 continueBool = true;
                 break;
-            case "Forgery":
+            case forgery:
                 level = city.getForgeryLevel();
                 continueBool = true;
                 break;
-            case "Mine":
+            case mine:
                 level = city.getMineLevel();
                 continueBool = true;
                 break;
-            case "Oven":
+            case oven:
                 level = city.getOvenLevel();
                 continueBool = true;
                 break;
-            case "Woodworks":
+            case woodworks:
                 level = city.getWoodworksLevel();
                 continueBool = true;
                 break;
@@ -200,21 +197,14 @@ public class CityService {
             // Get user data
             UserDataResponse userdata = userService.getUserData(username);
             // Set base resources for leveling up for each building and save them into the hashmap
-            SetLevelUpResources();
+            setLevelUpResources();
             // Get the array specifiek for the chosen building
-            int[] resourcesMultipliersArray = ResourcesConsumptionByActionMapper.get(action);
-
-            boolean upgradeable = true;
+            int[] resourcesMultipliersArray = resourcesConsumptionByActionMapper.get(action);
 
             int requiredFood = levelUpConsumptionFormula(resourcesMultipliersArray[0], level);
             int requiredWood = levelUpConsumptionFormula(resourcesMultipliersArray[1], level);
             int requiredStone = levelUpConsumptionFormula(resourcesMultipliersArray[2], level);
             int requiredIron = levelUpConsumptionFormula(resourcesMultipliersArray[3], level);
-
-            int afterFood = userdata.getFood() - requiredFood;
-            int afterWood = userdata.getWood() - requiredWood;
-            int afterStone = userdata.getStone() - requiredStone;
-            int afterIron = userdata.getIron() - requiredIron;
 
             response.setFood(requiredFood);
             response.setWood(requiredWood);

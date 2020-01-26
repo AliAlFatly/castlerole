@@ -111,7 +111,7 @@ public class JwtUserService implements UserDetailsService {
             vectorArrayList.add(new Vector(node.getxCoordinate(), node.getyCoordinate()));
         }
         //sort the list => x then y
-        VectorSorting(vectorArrayList);
+        vectorSorting(vectorArrayList);
 
         //loop over every possible x/y coordinate
         for (int x = 0; x < gridSize; x++){
@@ -152,7 +152,7 @@ public class JwtUserService implements UserDetailsService {
     }
 
 
-    public static void VectorSorting(ArrayList<Vector> arrayList){
+    public static void vectorSorting(ArrayList<Vector> arrayList){
         //sort X
         for (int i = 0; i < arrayList.size();i++){
             var key = arrayList.get(i);
@@ -175,19 +175,6 @@ public class JwtUserService implements UserDetailsService {
                 j--;
             }
             arrayList.set(j+1,key);
-        }
-    }
-
-    //todo: remove????
-    public static void InsertionSorting(ArrayList<Integer> arrayList) {
-        for (int i = 0; i < arrayList.size(); i++){
-            var key = arrayList.get(i);
-            var j = i - 1;
-            while( j > -1 && arrayList.get(j) > key){
-                arrayList.set(j+1, arrayList.get(j));
-                j--;
-            }
-            arrayList.set(j+1, key);
         }
     }
 }

@@ -27,32 +27,28 @@ public class JwtAuthenticationService {
     private UserService userService;
 
     public String login(JwtRequest authenticationRequest) throws Exception {
-        //check if user is disabled or if credentials are invalid. if true => return error. break function when returned.
+        // Check if user is disabled or if credentials are invalid. if true => return error. break function when returned.
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-        //get user from database, if user not found throw exception and break function when returned.
+        // Get user from database, if user not found throw exception and break function when returned.
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-        //generate token based on user claims.
-        final String token = jwtTokenUtil.generateToken(userDetails);
-        //return token.
-        return token;
+        // Generate token based on user claims.
+        return jwtTokenUtil.generateToken(userDetails);
     }
 
     public String register(UserDTO user) throws Exception {
-        //if user exist throw exception
-        boolean exist = userService.UserExist(user.getUsername());
+        // If user exist throw exception
+        boolean exist = userService.userExist(user.getUsername());
         if (exist){
             //todo: generic excpetion veranderen naar speciek
             throw new Exception("User with the username {" + user.getUsername() + "} already exists");
         }
-        //after registration save new user
+        // After registration save new user
         var newUser = userDetailsService.registerNewUser(user);
         userDetailsService.registerNewCity(newUser);
-        //get userDetails
+        // Get userDetails
         final UserDetails userDetails = userDetailsService.loadUserByUsername(newUser.getUsername());
-        //generate token
-        final String token = jwtTokenUtil.generateToken(userDetails);
-        //return token
-        return token;
+        // Generate token
+        return jwtTokenUtil.generateToken(userDetails);
     }
 
     private void authenticate(String username, String password) throws Exception {

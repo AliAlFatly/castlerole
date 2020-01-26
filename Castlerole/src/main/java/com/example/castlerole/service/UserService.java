@@ -17,13 +17,11 @@ public class UserService {
     private int troopRecruitmentFood = 20;
     private int troopRecruitmentIron = 10;
     private int troopRecruitmentStone = 4;
+    private final String notEnoughResources = "not enough resources";
 
-    public boolean UserExist(String username) {
+    public boolean userExist(String username) {
         User user = userRepository.findByUsername(username);
-        if (user != null) {
-            return true;
-        }
-        return false;
+        return user != null;
     }
 
     public Vector getUserCoordinates(String username) throws Exception {
@@ -40,9 +38,9 @@ public class UserService {
     }
 
     public UserDataResponse getUserData(String username) throws Exception {
-        //later make findByUsername return optional<user>, to combat fabricated jwtToken errors.
+        // todo: later make findByUsername return optional<user>, to combat fabricated jwtToken errors.
         User user;
-        //todo change try catch to beter error handling
+        // todo: change try catch to beter error handling
         try{
             user = userRepository.findByUsername(username);
         }
@@ -51,7 +49,7 @@ public class UserService {
             throw new Exception("Something went wrong, this has been logged");
         }
         //fill in what must be filled
-        //todo add transformer for this functionality
+        // todo: add transformer for this functionality
         return new UserDataResponse(
                 user.getUsername(),
                 user.getxCoordinate(),
@@ -68,16 +66,16 @@ public class UserService {
         UserDataResponse userdata = getUserData(username);
         // Check if the user has enough resources for the given amount, in angular -1 => not enough resources
         if(foodAfterRecruit(userdata.getFood(), amount) < 0){
-            return "not enough resources";
+            return notEnoughResources;
         }
         if(woodAfterRecruit(userdata.getWood(), amount) < 0){
-            return "not enough resources";
+            return notEnoughResources;
         }
         if(stoneAfterRecruit(userdata.getStone(), amount) < 0){
-            return "not enough resources";
+            return notEnoughResources;
         }
         if(ironAfterRecruit(userdata.getIron(), amount) < 0){
-            return "not enough resources";
+            return notEnoughResources;
         }
 
         //recruit
@@ -105,8 +103,7 @@ public class UserService {
         UserDataResponse userdata = getUserData(username);
         var checkOne = Math.min((userdata.getFood() / troopRecruitmentFood), (userdata.getWood() / troopRecruitmentWood));
         var checkTwo = Math.min((userdata.getStone() / troopRecruitmentStone), (userdata.getIron() / troopRecruitmentIron));
-        var maximumAmount = Math.min(checkOne, checkTwo);
-        return maximumAmount;
+        return Math.min(checkOne, checkTwo);
     }
 
     private int foodAfterRecruit(int food, int amount){

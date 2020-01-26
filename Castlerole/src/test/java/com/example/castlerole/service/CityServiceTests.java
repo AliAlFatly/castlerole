@@ -72,7 +72,7 @@ public class CityServiceTests {
         CityServiceCityMock.setWoodworksLevel(1);
 
         Mockito.when(userRepository.findByUsername("CityServiceUserMock")).thenReturn(CityServiceUserMock);
-        Mockito.when(cityRepository.findByid(CityServiceUserMock.getId())).thenReturn(CityServiceCityMock);
+        Mockito.when(cityRepository.findById(CityServiceUserMock.getId())).thenReturn(CityServiceCityMock);
         Mockito.when(userService.getUserData("CityServiceUserMock")).thenReturn(CityServiceUserDataMock);
 
 

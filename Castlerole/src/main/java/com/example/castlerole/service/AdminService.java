@@ -23,6 +23,7 @@ public class AdminService {
     private Random r = SecureRandom.getInstanceStrong();
 
     public AdminService() throws NoSuchAlgorithmException {
+        // This method is empty because a constructor with throws NoSuchAlgorithmException is needed in order to use SecureRandom.getInstanceStrong().
     }
 
 

@@ -30,12 +30,12 @@ public class ResourcesUpdatingService {
 
         for (User user: users
              ) {
-            City city = cityRepository.findByid(user.getId());
+            City city = cityRepository.findById(user.getId());
 
             var newFood = user.getFood() + ((1 + city.getOvenLevel()/20 ) * addFood);
-            var newWood = user.getWood() + ((1 + city.getWoodworksLevel()/20 ) * addWood);;
-            var newStone = user.getStone() + ((1 + city.getMineLevel()/20 ) * addStone);;
-            var newIron = user.getIron() + ((1 + city.getForgeryLevel()/20 ) * addIron);;
+            var newWood = user.getWood() + ((1 + city.getWoodworksLevel()/20 ) * addWood);
+            var newStone = user.getStone() + ((1 + city.getMineLevel()/20 ) * addStone);
+            var newIron = user.getIron() + ((1 + city.getForgeryLevel()/20 ) * addIron);
 
             userRepository.updateResources(user.getUsername(), newFood, newWood, newStone, newIron);
         }

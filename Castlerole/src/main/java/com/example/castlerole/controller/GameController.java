@@ -29,7 +29,7 @@ public class GameController {
     public CombatService combatService;
 
     @GetMapping("/grid/{x}/{y}")
-    public ArrayList<GridResponse> GetGrid(@PathVariable("x") int x, @PathVariable("y") int y){
+    public ArrayList<GridResponse> getGrid(@PathVariable("x") int x, @PathVariable("y") int y){
         return gridService.getGrid(x, y);
     }
 

@@ -30,6 +30,7 @@ public class CombatService {
     private Random r = SecureRandom.getInstanceStrong();
 
     public CombatService() throws NoSuchAlgorithmException {
+        // This method is empty because a constructor with throws NoSuchAlgorithmException is needed in order to use SecureRandom.getInstanceStrong().
     }
 
     //add logic against attacking a point outside of grid
@@ -109,6 +110,9 @@ public class CombatService {
                     break;
                 case "mountain":
                     stoneWon = r.nextInt((targetIsNode.getYieldMax() - targetIsNode.getYieldMin()) + targetIsNode.getYieldMin());
+                    break;
+                default:
+                    foodWon = r.nextInt((targetIsNode.getYieldMax() - targetIsNode.getYieldMin()) + targetIsNode.getYieldMin());
                     break;
             }
         }

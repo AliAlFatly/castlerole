@@ -47,12 +47,12 @@ public class UserServiceTests {
 
     @Test
     public void UserService_ExistTest() throws Exception {
-        var ExistResult = userService.UserExist("UserServiceMock");
+        var ExistResult = userService.userExist("UserServiceMock");
         Assert.assertEquals(TRUE,ExistResult);
     }
     @Test
     public void UserService_DoesntExistTest() throws Exception {
-        var DoesntResult = userService.UserExist("DoesntExist");
+        var DoesntResult = userService.userExist("DoesntExist");
         Assert.assertEquals(FALSE, DoesntResult);
     }
     @Test
