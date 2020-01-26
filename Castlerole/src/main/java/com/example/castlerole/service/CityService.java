@@ -29,12 +29,12 @@ public class CityService {
     private int maxBuildingLevel = 30;
     private String success = "Success";
 
-    private final String castle = "Castle";
-    private final String barrack = "Barrack";
-    private final String forgery = "Forgery";
-    private final String mine = "Mine";
-    private final String oven = "Oven";
-    private final String woodworks = "Woodworks";
+    private final static String castle = "Castle";
+    private final static String barrack = "Barrack";
+    private final static String forgery = "Forgery";
+    private final static String mine = "Mine";
+    private final static String oven = "Oven";
+    private final static String woodworks = "Woodworks";
 
     private void setLevelUpResources(){
         // In array: food, wood, stone, iron
@@ -81,7 +81,6 @@ public class CityService {
         return success;
     }
 
-
     public CityDataResponse getCityData(String username) throws Exception{
         City city;
         User user = userRepository.findByUsername(username);
@@ -92,7 +91,6 @@ public class CityService {
             throw new Exception("Cannot find a corresponding city!");
         }
         return new CityDataResponse(
-
                 city.getUser().getUsername(),
                 city.getCastleLevel(),
                 city.getWoodworksLevel(),
@@ -194,8 +192,6 @@ public class CityService {
                 break;
         }
         if (continueBool){
-            // Get user data
-            UserDataResponse userdata = userService.getUserData(username);
             // Set base resources for leveling up for each building and save them into the hashmap
             setLevelUpResources();
             // Get the array specifiek for the chosen building
