@@ -23,14 +23,14 @@ public class AdminServiceTests {
     @Mock
     private JwtUserService userService;
 
-    @BeforeEach
-    public void setUp() throws Exception {
-        adminService = new AdminService();
-        MockitoAnnotations.initMocks(this);
-        Mockito.when(userService.getXY())
-                .thenReturn(new IntVector(25,25));
-        //Mockito.when(nodeRepository.save()).thenReturn();
-    }
+//    @BeforeEach
+//    public void setUp() throws Exception {
+//        adminService = new AdminService();
+//        MockitoAnnotations.initMocks(this);
+//        Mockito.when(userService.getXY())
+//                .thenReturn(new IntVector(25,25));
+//        //Mockito.when(nodeRepository.save()).thenReturn();
+//    }
 //    @Test
 //    public void whenValid_shouldReturnNodes() throws Exception {
 //        int amount = 10;
