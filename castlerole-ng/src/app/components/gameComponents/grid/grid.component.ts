@@ -17,8 +17,7 @@ import {canvasWidth, canvasHeight, elementWidth, elementHeight, halfScreenHeight
 
 @Component({
   selector: 'app-grid',
-  templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.css']
+  templateUrl: './grid.component.html'
 })
 export class GridComponent implements OnChanges {
 
