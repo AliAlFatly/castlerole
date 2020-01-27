@@ -10,6 +10,8 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import javax.persistence.EntityExistsException;
+import javax.persistence.EntityNotFoundException;
 
 @Service
 public class JwtAuthenticationService {
@@ -39,8 +41,7 @@ public class JwtAuthenticationService {
         // If user exist throw exception
         boolean exist = userService.userExist(user.getUsername());
         if (exist){
-            //todo: generic excpetion veranderen naar speciek
-            throw new Exception("User with the username {" + user.getUsername() + "} already exists");
+            throw new EntityExistsException("User with the username {" + user.getUsername() + "} already exists");
         }
         // After registration save new user
         var newUser = userDetailsService.registerNewUser(user);
@@ -51,13 +52,11 @@ public class JwtAuthenticationService {
         return jwtTokenUtil.generateToken(userDetails);
     }
 
-    private void authenticate(String username, String password) throws Exception {
+    private void authenticate(String username, String password) throws EntityNotFoundException {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-        } catch (DisabledException e) {
-            throw new Exception("USER_DISABLED", e);
         } catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
+            throw new EntityNotFoundException("INVALID_CREDENTIALS");
         }
     }
 

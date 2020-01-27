@@ -48,18 +48,18 @@ public class UserServiceTests {
     @Test
     public void UserService_ExistTest() throws Exception {
         var ExistResult = userService.userExist("UserServiceMock");
-        Assert.assertEquals(TRUE,ExistResult);
+        Assert.assertEquals(ExistResult,TRUE);
     }
     @Test
     public void UserService_DoesntExistTest() throws Exception {
         var DoesntResult = userService.userExist("DoesntExist");
-        Assert.assertEquals(FALSE, DoesntResult);
+        Assert.assertEquals(DoesntResult, FALSE);
     }
     @Test
     public void UserService_getCoordsTest() throws Exception {
         var CoordResult = userService.getUserCoordinates("UserServiceMock");
-        Assert.assertEquals(CoordResult.getX(), 25);
-        Assert.assertEquals(CoordResult.getY(), 25);
+        Assert.assertEquals(25, CoordResult.getX());
+        Assert.assertEquals(25, CoordResult.getY());
     }
     @Test
     public void UserService_getDataTest() throws Exception {

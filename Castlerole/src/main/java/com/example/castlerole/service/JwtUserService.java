@@ -45,24 +45,22 @@ public class JwtUserService implements UserDetailsService {
     private int gridSize;
 
     public JwtUserService() throws NoSuchAlgorithmException {
+        // This method is empty because a constructor with throws NoSuchAlgorithmException is needed in order to use SecureRandom.getInstanceStrong().
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) {
         User user = userRepository.findByUsername(username);
         if (user == null) {
-            throw new UsernameNotFoundException("User not found with username: " + username);
+            throw new UsernameNotFoundException("User not found");
         }
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
                 new ArrayList<>());
     }
 
     public User registerNewUser(UserDTO user) throws Exception {
-        //get UserDTO
-        //initialize new empty user(to save in the database)
-
+        // Initialize new empty user(to save in the database)
         IntVector initialCoordinates = this.getXY();
-
         User newUser = new User(
                 user.getUsername(),
                 //NOTE => when using password encryption set password length way more in database since encrypting increases the size of the string.
@@ -84,7 +82,7 @@ public class JwtUserService implements UserDetailsService {
         return userRepository.save(newUser);
     }
 
-    public City registerNewCity(User user) throws Exception{
+    public City registerNewCity(User user) {
         City newCity = new City( 1, 1, 1,1,1,1, user
         );
         return cityRepository.save(newCity);

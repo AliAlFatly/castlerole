@@ -155,12 +155,4 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-//	public City getCity() {
-//		return city;
-//	}
-//
-//	public void setCity(City city) {
-//		this.city = city;
-//	}
 }

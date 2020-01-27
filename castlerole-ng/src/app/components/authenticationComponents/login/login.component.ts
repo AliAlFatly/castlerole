@@ -38,48 +38,10 @@ export class LoginComponent implements OnInit {
         if (success) {
           this.router.navigate(['/game']);
         }
-      });
+      },
+        error => {
+          alert('Username or password is incorrect');
+          console.log(error);
+        });
   }
-  // onSumbit(){
-  //   console.log(this.form);
-  //   this.loginInfo = new LoginInfoService(
-  //     this.form.username,
-  //     this.form.password);
-  //
-  //   this.auth.attemptAuthentication(this.loginInfo).subscribe(
-  //     data => {
-  //       this.token.saveToken(data.accessToken);
-  //       //this.token.saveUsername(data.username);
-  //
-  //       this.isLoginFailed = false;
-  //       this.isLoggedIn = true;
-  //       this.reloadPage();
-  //     },
-  //     error => {
-  //       console.log(error);
-  //       this.errorMessage = error.message;
-  //       this.isLoginFailed = true;
-  //     }
-  //   );
-  // }
-  //
-  // reloadPage(){
-  //   window.location.reload();
-  // }
-  //
-  // checkLogin() {
-  //   (this.loginservice.authenticate(this.username, this.password).subscribe(
-  //       data => {
-  //         this.router.navigate([''])
-  //         this.invalidLogin = false
-  //       },
-  //       error => {
-  //         this.invalidLogin = true
-  //
-  //       }
-  //     )
-  //   );
-  //
-  // }
-
 }

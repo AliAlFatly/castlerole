@@ -34,13 +34,8 @@ public class GameController {
     }
 
     @GetMapping("/pointData/{x}/{y}")
-    public PointDataResponse getPointData(@PathVariable("x") int x, @PathVariable("y") int y) throws Exception {
-        try{
+    public PointDataResponse getPointData(@PathVariable("x") int x, @PathVariable("y") int y) {
             return pointService.getPointData(x, y);
-        }
-        catch (Exception err){
-            throw new Exception("Something went wrong");
-        }
     }
 
     //todo: get token from context

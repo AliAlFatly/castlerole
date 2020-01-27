@@ -64,11 +64,11 @@ export class GridComponent implements OnChanges {
   }
 
   getCanvas = async () => {
-    this.ctx = await (this.canvas.nativeElement as HTMLCanvasElement).getContext('2d');
+    this.ctx = (this.canvas.nativeElement as HTMLCanvasElement).getContext('2d');
   }
 
   setCanvas = async () => {
-    this.canvasElement = await document.querySelector('canvas');
+    this.canvasElement = document.querySelector('canvas');
     this.canvasElement.width = canvasWidth;
     this.canvasElement.height = canvasHeight;
     this.canvasElement.style.width = `${canvasWidth}px`;

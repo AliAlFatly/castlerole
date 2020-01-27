@@ -35,30 +35,15 @@ export class RegisterComponent implements OnInit {
         if (success) {
           this.router.navigate(['/game']);
         }
-      });
+      },
+        error => {
+          alert('Selected username already exist');
+          console.log(error);
+        });
   }
 
   toLogin() {
     this.router.navigate(['login']);
   }
-  // onSumbit(){
-  //   console.log(this.form);
-  //   this.signupInfo = new SignupInfoService(
-  //     //this.form.name,
-  //     this.form.username,
-  //     //this.form.email,
-  //     this.form.password);
-  //   this.auth.signUp(this.signupInfo).subscribe(
-  //     data => {
-  //       console.log(data);
-  //       this.isSignedUp = true;
-  //       this.isSignUpFailed = false;
-  //     },
-  //     error => {
-  //       console.log(error);
-  //       this.errorMessage = error.message;
-  //       this.isSignUpFailed = true;
-  //     }
-  //   );
-  // }
+
 }

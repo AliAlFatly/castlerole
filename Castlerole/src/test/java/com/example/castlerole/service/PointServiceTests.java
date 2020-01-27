@@ -64,31 +64,31 @@ public class PointServiceTests {
     @Test
     public void PointService_UserTest() {
         var PointResult = pointService.getPointData(25,25);
-        Assert.assertEquals(PointResult.getCoordinateX(),25);
-        Assert.assertEquals(PointResult.getCoordinateY(), 25);
-        Assert.assertEquals(PointResult.getType(), "Player");
+        Assert.assertEquals(25,PointResult.getCoordinateX());
+        Assert.assertEquals(25, PointResult.getCoordinateY());
+        Assert.assertEquals("Player", PointResult.getType());
     }
 
     @Test
     public void PointService_NodeTest() {
         var PointResult = pointService.getPointData(15, 15);
-        Assert.assertEquals(PointResult.getCoordinateY(),15);
-        Assert.assertEquals(PointResult.getCoordinateX(),15);
-        Assert.assertEquals(PointResult.getType(), "forest");
+        Assert.assertEquals(15,PointResult.getCoordinateY());
+        Assert.assertEquals(15,PointResult.getCoordinateX());
+        Assert.assertEquals("forest", PointResult.getType() );
     }
 
     @Test
     public void PointService_IsAttackableTest() {
         var PointResultUser = pointService.getPointData(25, 25);
         var PointResultNode = pointService.getPointData(15, 15);
-        Assert.assertEquals(PointResultNode.isAttackable(), TRUE);
-        Assert.assertEquals(PointResultUser.isAttackable(), TRUE);
+        Assert.assertEquals(TRUE, PointResultNode.isAttackable());
+        Assert.assertEquals(TRUE, PointResultUser.isAttackable());
     }
 
     @Test
     public void PointService_IsNotAttackableTest() {
         var PointResultEmpty = pointService.getPointData(10, 10);
-        Assert.assertEquals(PointResultEmpty.isAttackable(), FALSE);
+        Assert.assertEquals(FALSE, PointResultEmpty.isAttackable());
     }
 
 }

@@ -15,7 +15,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import io.jsonwebtoken.ExpiredJwtException;
 //when ever a request is made, filter is used to validate it based on encoded token. it is used in webSecurityConfig
 //note, must extends a matched class to be used by webSecurityConfig httpSecurity field. in this case OncePerRequestFilter is a matched class.
 @Component

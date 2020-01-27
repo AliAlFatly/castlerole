@@ -29,21 +29,21 @@ public class CityService {
     private int maxBuildingLevel = 30;
     private String success = "Success";
 
-    private final static String castle = "Castle";
-    private final static String barrack = "Barrack";
-    private final static String forgery = "Forgery";
-    private final static String mine = "Mine";
-    private final static String oven = "Oven";
-    private final static String woodworks = "Woodworks";
+    private static final String CASTLE = "Castle";
+    private static final String BARRACK = "Barrack";
+    private static final String FORGERY = "Forgery";
+    private static final String MINE = "Mine";
+    private static final String OVEN = "Oven";
+    private static final String WOODWORK = "Woodwork";
 
     private void setLevelUpResources(){
         // In array: food, wood, stone, iron
-        resourcesConsumptionByActionMapper.put(castle, new int[]{1,1,1,1});
-        resourcesConsumptionByActionMapper.put(barrack, new int[]{1,1,1,1});
-        resourcesConsumptionByActionMapper.put(forgery, new int[]{1,1,1,1});
-        resourcesConsumptionByActionMapper.put(mine, new int[]{1,1,1,1});
-        resourcesConsumptionByActionMapper.put(oven, new int[]{1,1,1,1});
-        resourcesConsumptionByActionMapper.put(woodworks, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(CASTLE, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(BARRACK, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(FORGERY, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(MINE, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(OVEN, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(WOODWORK, new int[]{1,1,1,1});
         resourcesConsumptionByActionMapper.put("Recruit troops", new int[]{20,20,4,10});
     }
 
@@ -53,7 +53,7 @@ public class CityService {
     }
 
     // Resources consumption function
-    private String consumeResources(String username, String action, int level) throws Exception {
+    private String consumeResources(String username, String action, int level) {
         // Check if building level is already max
         if (level >= maxBuildingLevel){
             return "Building is already max level";
@@ -81,15 +81,11 @@ public class CityService {
         return success;
     }
 
-    public CityDataResponse getCityData(String username) throws Exception{
+    public CityDataResponse getCityData(String username){
         City city;
         User user = userRepository.findByUsername(username);
-        try{
-            city = cityRepository.findById(user.getId());
-        }
-        catch(Exception error){
-            throw new Exception("Cannot find a corresponding city!");
-        }
+        city = cityRepository.findById(user.getId());
+
         return new CityDataResponse(
                 city.getUser().getUsername(),
                 city.getCastleLevel(),
@@ -101,48 +97,48 @@ public class CityService {
         );
     }
 
-    public String updateBuilding(String username, String action) throws Exception {
+    public String updateBuilding(String username, String action) {
         User user = userRepository.findByUsername(username);
         City city = cityRepository.findById(user.getId());
         String response;
         int newLevel;
         switch (action){
-            case castle:
+            case CASTLE:
                 response = consumeResources(username, action, city.getCastleLevel());
                 if (response.equals(success)){
                     newLevel = city.getCastleLevel() + 1;
                     cityRepository.updateCastleLevel(newLevel, user.getId());
                 }
                 break;
-            case barrack:
+            case BARRACK:
                 response = consumeResources(username, action, city.getBarracksLevel());
                 if (response.equals(success)){
                     newLevel = city.getBarracksLevel() + 1;
                     cityRepository.updateBarracksLevel(newLevel, user.getId());
                 }
                 break;
-            case forgery:
+            case FORGERY:
                 response = consumeResources(username, action, city.getForgeryLevel());
                 if (response.equals(success)){
                     newLevel = city.getForgeryLevel() + 1;
                     cityRepository.updateForgeryLevel(newLevel, user.getId());
                 }
                 break;
-            case mine:
+            case MINE:
                 response = consumeResources(username, action, city.getMineLevel());
                 if (response.equals(success)){
                     newLevel = city.getMineLevel() + 1;
                     cityRepository.updateMineLevel(newLevel, user.getId());
                 }
                 break;
-            case oven:
+            case OVEN:
                 response = consumeResources(username, action, city.getOvenLevel());
                 if (response.equals(success)){
                     newLevel = city.getOvenLevel() + 1;
                     cityRepository.updateOvensLevel(newLevel, user.getId());
                 }
                 break;
-            case woodworks:
+            case WOODWORK:
                 response = consumeResources(username, action, city.getWoodworksLevel());
                 if (response.equals(success)){
                     newLevel = city.getWoodworksLevel() + 1;
@@ -156,34 +152,34 @@ public class CityService {
     }
 
 
-    public Tooptip getTooltipData(String username, String action) throws Exception {
+    public Tooptip getTooltipData(String username, String action) {
         User user = userRepository.findByUsername(username);
         City city = cityRepository.findById(user.getId());
         Tooptip response = new Tooptip();
         int level;
         boolean continueBool = false;
         switch (action){
-            case castle:
+            case CASTLE:
                 level = city.getCastleLevel();
                 continueBool = true;
                 break;
-            case barrack:
+            case BARRACK:
                 level = city.getBarracksLevel();
                 continueBool = true;
                 break;
-            case forgery:
+            case FORGERY:
                 level = city.getForgeryLevel();
                 continueBool = true;
                 break;
-            case mine:
+            case MINE:
                 level = city.getMineLevel();
                 continueBool = true;
                 break;
-            case oven:
+            case OVEN:
                 level = city.getOvenLevel();
                 continueBool = true;
                 break;
-            case woodworks:
+            case WOODWORK:
                 level = city.getWoodworksLevel();
                 continueBool = true;
                 break;

@@ -69,9 +69,8 @@ public class JwtAuthenticationControllerITTest extends ControllerTestConfig {
                     .andExpect(status().is4xxClientError())
                     .andReturn();
         } catch (NestedServletException e){
-            assertEquals(
-                    e.getMessage(),
-                    "Request processing failed; nested exception is java.lang.Exception: INVALID_CREDENTIALS");
+            assertEquals("Request processing failed; nested exception is java.lang.Exception: INVALID_CREDENTIALS",
+                    e.getMessage());
         }
 
     }

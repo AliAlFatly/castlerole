@@ -4,7 +4,7 @@
   Forgery ({{cityData.forgery}}) <button [disabled]="cityData.forgery >= maxBuildingLevel" (mouseenter)="updateTooltip('Forgery')" matTooltip={{tooltipText}} (click)="updateBuilding('Forgery')">+</button><br />
   Mine ({{cityData.mine}}) <button [disabled]="cityData.mine >= maxBuildingLevel" (mouseenter)="updateTooltip('Mine')" matTooltip={{tooltipText}} (click)="updateBuilding('Mine')">+</button><br />
   Oven ({{cityData.oven}}) <button [disabled]="cityData.oven >= maxBuildingLevel" (mouseenter)="updateTooltip('Oven')" matTooltip={{tooltipText}} (click)="updateBuilding('Oven')">+</button><br />
-  Woodworks ({{cityData.woodwork}}) <button [disabled]="cityData.woodwork >= maxBuildingLevel" (mouseenter)="updateTooltip('Woodworks')" matTooltip={{tooltipText}} (click)="updateBuilding('Woodworks')">+</button><br />
+  Woodworks ({{cityData.woodwork}}) <button [disabled]="cityData.woodwork >= maxBuildingLevel" (mouseenter)="updateTooltip('Woodwork')" matTooltip={{tooltipText}} (click)="updateBuilding('Woodwork')">+</button><br />
   <form [formGroup]="coordinateForm" (ngSubmit)="recruit()">
     <input type="number" id="amount" (change)="setRecruitmentAmount()" placeholder="" formControlName="amount" min="0">
     <div class="actions d-inline-block">

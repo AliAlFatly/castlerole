@@ -37,7 +37,6 @@ export class AuthenticationService {
         // so: try{return observable<true>} catch { alert(error) return false}
         mapTo(true),
         catchError(error => {
-          alert(error.message);
           return of(false);
         }));
   }
@@ -58,7 +57,6 @@ export class AuthenticationService {
         // so: try{return observable<true>} catch { alert(error) return false}
         mapTo(true),
         catchError(error => {
-          alert(error.message);
           return of(false);
         }));
   }
@@ -67,33 +65,11 @@ export class AuthenticationService {
     this.doLogoutUser();
   }
 
-  // refresh token logout, might be useful later???
-  // logout() {
-  //   return this.http.post<any>(`${config.apiUrl}/logout`, {
-  //     'refreshToken': this.getRefreshToken()
-  //   }).pipe(
-  //     tap(() => this.doLogoutUser()),
-  //     mapTo(true),
-  //     catchError(error => {
-  //       alert(error.error);
-  //       return of(false);
-  //     }));
-  // }
-
   isLoggedIn() {
     return !!this.getJwtToken();
   }
 
-  // refreshToken() {
-  //   return this.http.post<any>(`${config.apiUrl}/refresh`, {
-  //     'refreshToken': this.getRefreshToken()
-  //   }).pipe(tap((tokens: Tokens) => {
-  //     this.storeJwtToken(tokens.jwt);
-  //   }));
-  // }
-
   getJwtToken() {
-    // return localStorage.getItem(this.JWT_TOKEN);
     return localStorage.getItem('JWT_TOKEN');
   }
 
@@ -107,21 +83,15 @@ export class AuthenticationService {
     this.removeTokens();
   }
 
-  // private getRefreshToken() {
-  //   return localStorage.getItem(this.REFRESH_TOKEN);
-  // }
-
   private storeJwtToken(jwt: string) {
     localStorage.setItem(this.JWT_TOKEN, jwt);
   }
 
   private storeTokens(tokens: Tokens) {
     localStorage.setItem(this.JWT_TOKEN, tokens.token);
-    // localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
   }
 
   private removeTokens() {
     localStorage.removeItem(this.JWT_TOKEN);
-    // localStorage.removeItem(this.REFRESH_TOKEN);
   }
 }

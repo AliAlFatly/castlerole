@@ -58,7 +58,7 @@ public class AdminControllerITTest extends ControllerTestConfig {
         //System.out.println(stopwatch.runtime(TimeUnit.MILLISECONDS));
         System.out.println(nodeRepository.count());
         //System.out.println("Application took: " + (EndTime - BeginTime) + " Milliseconds to GET");
-        assertEquals(nodeRepository.count(), 100);
+        assertEquals(100, nodeRepository.count());
 
 
     }

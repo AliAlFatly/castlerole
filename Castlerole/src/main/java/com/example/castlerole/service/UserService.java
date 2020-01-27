@@ -17,38 +17,20 @@ public class UserService {
     private int troopRecruitmentFood = 20;
     private int troopRecruitmentIron = 10;
     private int troopRecruitmentStone = 4;
-    private final String notEnoughResources = "not enough resources";
+    private static final String notEnoughResources = "not enough resources";
 
     public boolean userExist(String username) {
         User user = userRepository.findByUsername(username);
         return user != null;
     }
 
-    public Vector getUserCoordinates(String username) throws Exception {
-        //later make findByUsername return optional<user>, to combat fabricated jwtToken errors.
-        User user;
-        try{
-            user = userRepository.findByUsername(username);
-        }
-        catch(Exception error){
-            //log error
-            throw new Exception("Something went wrong, this has been logged");
-        }
+    public Vector getUserCoordinates(String username) {
+        User user = userRepository.findByUsername(username);
         return new Vector(user.getxCoordinate(), user.getyCoordinate());
     }
 
-    public UserDataResponse getUserData(String username) throws Exception {
-        // todo: later make findByUsername return optional<user>, to combat fabricated jwtToken errors.
-        User user;
-        // todo: change try catch to beter error handling
-        try{
-            user = userRepository.findByUsername(username);
-        }
-        catch(Exception error){
-            //log error
-            throw new Exception("Something went wrong, this has been logged");
-        }
-        //fill in what must be filled
+    public UserDataResponse getUserData(String username) {
+        User user = userRepository.findByUsername(username);
         // todo: add transformer for this functionality
         return new UserDataResponse(
                 user.getUsername(),
@@ -62,7 +44,7 @@ public class UserService {
         );
     }
 
-    public String recruit(int amount, String username) throws Exception {
+    public String recruit(int amount, String username) {
         UserDataResponse userdata = getUserData(username);
         // Check if the user has enough resources for the given amount, in angular -1 => not enough resources
         if(foodAfterRecruit(userdata.getFood(), amount) < 0){
@@ -99,7 +81,7 @@ public class UserService {
     }
 
 
-    public int getRecruitmentTooltip(String username) throws Exception {
+    public int getRecruitmentTooltip(String username) {
         UserDataResponse userdata = getUserData(username);
         var checkOne = Math.min((userdata.getFood() / troopRecruitmentFood), (userdata.getWood() / troopRecruitmentWood));
         var checkTwo = Math.min((userdata.getStone() / troopRecruitmentStone), (userdata.getIron() / troopRecruitmentIron));
