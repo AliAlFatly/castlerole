@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -19,7 +20,7 @@ import {canvasWidth, canvasHeight, elementWidth, elementHeight, halfScreenHeight
   selector: 'app-grid',
   templateUrl: './grid.component.html'
 })
-export class GridComponent implements OnChanges {
+export class GridComponent implements OnInit, OnChanges {
 
   @ViewChild('canvas', {static: false}) private canvas: ElementRef;
   @Output() clickEmitter = new EventEmitter<Vector>();
@@ -40,14 +41,14 @@ export class GridComponent implements OnChanges {
     private http: HttpClient,
     private gameService: GameServiceService
   ) {}
-  // tslint:disable-next-line:use-lifecycle-interface
+
   async ngOnInit() {
     await this.getUserCoordinates();
     await this.getFields();
   }
 
   async ngOnChanges(changes: SimpleChanges) {
-    if (this.coordinates.x !== -1){
+    if (this.coordinates.x !== -1) {
       await this.getFields();
       this.addClickHandle();
       await this.drawCanvas();
