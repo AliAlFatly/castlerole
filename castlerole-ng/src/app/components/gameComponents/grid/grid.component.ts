@@ -26,6 +26,7 @@ export class GridComponent implements OnChanges {
   // Middle of the screen
   @Input() coordinates: Vector;
   private targetCoordinates: Vector;
+  private backgroundImage = new Image();
   private canvasElement;
   private ctx: any;  // = (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
   private zeroX: number;
@@ -42,8 +43,16 @@ export class GridComponent implements OnChanges {
 
   // tslint:disable-next-line:use-lifecycle-interface
   async ngOnInit() {
-    this.initialDraw();
+    // set user coordinates
+    await this.getUserCoordinates();
+    // set background image
+    await this.setBackgroundImage();
+    // set the canvas height/width variables
     await this.setCanvas();
+    // set the html canvas element
+    await this.getCanvas();
+    // draw
+    await this.initialDraw();
   }
 
   async ngOnChanges(changes: SimpleChanges) {
@@ -54,17 +63,28 @@ export class GridComponent implements OnChanges {
 
   }
 
-  drawCanvas = async () => {
-    this.ctx = (this.canvas.nativeElement as HTMLCanvasElement).getContext('2d');
+  getCanvas = async () => {
+    this.ctx = await (this.canvas.nativeElement as HTMLCanvasElement).getContext('2d');
+  }
+
+  setCanvas = async () => {
+    this.canvasElement = await document.querySelector('canvas');
+    this.canvasElement.width = canvasWidth;
+    this.canvasElement.height = canvasHeight;
+    this.canvasElement.style.width = `${canvasWidth}px`;
+    this.canvasElement.style.height = `${canvasHeight}px`;
+  }
+
+  setBackgroundImage = async () => {
+    this.backgroundImage.src = `assets/empty.png`;
+  }
+
+  drawBackground = async () => {
     await this.ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-    const background = new Image();
-    background.src = `assets/empty.png`;
-    await this.ctx.drawImage(background, 0, 0, canvasWidth, canvasHeight);
-    // for (let j = 0; j < 11; j++){
-    //   let img = new Image();
-    //   img.src = `assets/player.png`;
-    //   await this.ctx.drawImage(img, (j*100), 0 , 10, 100 )
-    // }
+    await this.ctx.drawImage(this.backgroundImage, 0, 0, canvasWidth, canvasHeight);
+  }
+
+  drawContent = async () => {
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.grid.length; i++) {
       if (this.grid[i].picture !== 'empty') {
@@ -76,43 +96,30 @@ export class GridComponent implements OnChanges {
     }
   }
 
-  // todo: set private functions for unit tests scope
-  // todo: tests van canvas ->
+  drawCanvas = async () => {
+    await this.drawBackground();
+    await this.drawContent();
+  }
+
+  getUserCoordinates = async () => {
+    const response = await this.gameService.getUserCoordinates().toPromise();
+    this.coordinates.x = response.x;
+    this.coordinates.y = response.y;
+  }
+
   initialDraw = async () => {
-    if (this.coordinates.x > -1) {
-      const gridData = await this.gameService.getGrid(this.coordinates).toPromise();
-      this.grid = gridData;
-      this.drawCanvas();
-    } else {
-      const response = await this.gameService.getUserCoordinates().toPromise();
-      this.coordinates.x = await response.x;
-      this.coordinates.y = await response.y;
-      // this.getGridData();
-      const gridData = await this.gameService.getGrid(this.coordinates).toPromise();
-      this.grid = await gridData;
-      await this.drawCanvas();
-    }
+    this.grid = await this.gameService.getGrid(this.coordinates).toPromise();
+    await this.drawCanvas();
   }
 
   getGridData = async () => {
-    const gridData = await this.gameService.getGrid(this.coordinates).toPromise();
-    this.grid = gridData;
-  }
-
-  setCanvas = async () => {
-    this.canvasElement = document.querySelector('canvas');
-    this.canvasElement.width = canvasWidth;
-    this.canvasElement.height = canvasHeight;
-    this.canvasElement.style.width = `${canvasWidth}px`;
-    this.canvasElement.style.height = `${canvasHeight}px`;
+    this.grid = await this.gameService.getGrid(this.coordinates).toPromise();
   }
 
   addClickHandle = async () => {
-    this.canvasElement = document.querySelector('canvas');
     this.zeroX = this.coordinates.x - halfScreenWidth; // this.grid[0].x;
     this.zeroY = this.coordinates.y - halfScreenHeight; // this.grid[0].y;
     this.canvasElement.addEventListener('click', async (event) => {
-      // alert(`${this.zeroX} + ${event.pageX} / ${elementWidth}`)
       this.targetCoordinates = new Vector(this.zeroX + Math.floor((event.pageX / elementWidth)),
         this.zeroY + Math.floor((event.pageY / elementHeight)));
       this.clickEmitter.emit(this.targetCoordinates);

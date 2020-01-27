@@ -2,10 +2,10 @@ export class UserDataResponse {
 
 
   // tslint:disable-next-line:max-line-length
-  constructor(username: string, coordinateX: number, coordinateY: number, wood: number, iron: number, stone: number, food: number, troops: number) {
+  constructor(username: string, x: number, y: number, wood: number, iron: number, stone: number, food: number, troops: number) {
     this.username = username;
-    this.coordinateX = coordinateX;
-    this.coordinateY = coordinateY;
+    this.x = x;
+    this.y = y;
     this.wood = wood;
     this.iron = iron;
     this.stone = stone;
@@ -14,8 +14,8 @@ export class UserDataResponse {
   }
 
     username: string;
-    coordinateX: number;
-    coordinateY: number;
+    x: number;
+    y: number;
     wood: number;
     iron: number;
     stone: number;
