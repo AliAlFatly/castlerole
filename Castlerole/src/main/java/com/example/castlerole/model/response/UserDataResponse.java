@@ -2,8 +2,8 @@ package com.example.castlerole.model.response;
 
 public class UserDataResponse {
     private String username;
-    private int coordinateX;
-    private int coordinateY;
+    private int x;
+    private int y;
     private int wood;
     private int iron;
     private int stone;
@@ -13,10 +13,10 @@ public class UserDataResponse {
     public UserDataResponse() {
     }
 
-    public UserDataResponse(String username, int coordinateX, int coordinateY, int wood, int iron, int stone, int food, int troops) {
+    public UserDataResponse(String username, int x, int y, int wood, int iron, int stone, int food, int troops) {
         this.username = username;
-        this.coordinateX = coordinateX;
-        this.coordinateY = coordinateY;
+        this.x = x;
+        this.y = y;
         this.wood = wood;
         this.iron = iron;
         this.stone = stone;
@@ -28,12 +28,12 @@ public class UserDataResponse {
         return username;
     }
 
-    public int getCoordinateX() {
-        return coordinateX;
+    public int getX() {
+        return x;
     }
 
-    public int getCoordinateY() {
-        return coordinateY;
+    public int getY() {
+        return y;
     }
 
     public int getWood() {
@@ -60,12 +60,12 @@ public class UserDataResponse {
         this.username = username;
     }
 
-    public void setCoordinateX(int coordinateX) {
-        this.coordinateX = coordinateX;
+    public void setX(int x) {
+        this.x = x;
     }
 
-    public void setCoordinateY(int coordinateY) {
-        this.coordinateY = coordinateY;
+    public void setY(int y) {
+        this.y = y;
     }
 
     public void setWood(int wood) {

@@ -52,8 +52,8 @@ public class CityServiceTests {
         CityServiceUserMock.setTroops(300);
 
         var CityServiceUserDataMock = new UserDataResponse();
-        CityServiceUserDataMock.setCoordinateX(CityServiceUserMock.getxCoordinate());
-        CityServiceUserDataMock.setCoordinateY(CityServiceUserMock.getyCoordinate());
+        CityServiceUserDataMock.setX(CityServiceUserMock.getxCoordinate());
+        CityServiceUserDataMock.setY(CityServiceUserMock.getyCoordinate());
         CityServiceUserDataMock.setFood(CityServiceUserMock.getFood());
         CityServiceUserDataMock.setStone(CityServiceUserMock.getStone());
         CityServiceUserDataMock.setTroops(CityServiceUserMock.getTroops());

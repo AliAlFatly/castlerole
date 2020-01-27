@@ -2,21 +2,21 @@ package com.example.castlerole.model.response;
 
 public class CityDataResponse {
     private String owner;
-    private int castleLevel;
-    private int woodworksLevel;
-    private int mineLevel;
-    private int forgeryLevel;
-    private int barracksLevel;
-    private int ovenLevel;
+    private int castle;
+    private int woodwork;
+    private int mine;
+    private int forgery;
+    private int barrack;
+    private int oven;
 
-    public CityDataResponse(String owner, int castleLevel, int woodworksLevel, int mineLevel, int forgeryLevel, int barracksLevel, int ovenLevel){
+    public CityDataResponse(String owner, int castle, int woodwork, int mine, int forgery, int barrack, int oven){
         this.owner = owner;
-        this.castleLevel = castleLevel;
-        this.woodworksLevel = woodworksLevel;
-        this.mineLevel = mineLevel;
-        this.forgeryLevel = forgeryLevel;
-        this.barracksLevel = barracksLevel;
-        this.ovenLevel = ovenLevel;
+        this.castle = castle;
+        this.woodwork = woodwork;
+        this.mine = mine;
+        this.forgery = forgery;
+        this.barrack = barrack;
+        this.oven = oven;
     }
 
     //OWNER
@@ -29,56 +29,56 @@ public class CityDataResponse {
     }
 
     //CASTLE
-    public int getCastleLevel() {
-        return castleLevel;
+    public int getCastle() {
+        return castle;
     }
 
-    public void setCastleLevel(int castleLevel) {
-        this.castleLevel = castleLevel;
+    public void setCastle(int castle) {
+        this.castle = castle;
     }
 
     //WOODWORKS
-    public int getWoodworksLevel() {
-        return woodworksLevel;
+    public int getWoodwork() {
+        return woodwork;
     }
 
-    public void setWoodworksLevel(int woodworksLevel) {
-        this.woodworksLevel = woodworksLevel;
+    public void setWoodwork(int woodwork) {
+        this.woodwork = woodwork;
     }
 
     //MINE
-    public int getMineLevel() {
-        return mineLevel;
+    public int getMine() {
+        return mine;
     }
 
-    public void setMineLevel(int mineLevel) {
-        this.mineLevel = mineLevel;
+    public void setMine(int mine) {
+        this.mine = mine;
     }
 
     //FORGERY
-    public int getForgeryLevel() {
-        return forgeryLevel;
+    public int getForgery() {
+        return forgery;
     }
 
-    public void setForgeryLevel(int forgeryLevel) {
-        this.forgeryLevel = forgeryLevel;
+    public void setForgery(int forgery) {
+        this.forgery = forgery;
     }
 
     //BARRACKS
-    public int getBarracksLevel() {
-        return barracksLevel;
+    public int getBarrack() {
+        return barrack;
     }
 
-    public void setBarracksLevel(int barracksLevel) {
-        this.barracksLevel = barracksLevel;
+    public void setBarrack(int barrack) {
+        this.barrack = barrack;
     }
 
     //OVEN
-    public int getOvenLevel() {
-        return ovenLevel;
+    public int getOven() {
+        return oven;
     }
 
-    public void setOvenLevel(int ovenLevel) {
-        this.ovenLevel = ovenLevel;
+    public void setOven(int oven) {
+        this.oven = oven;
     }
 }

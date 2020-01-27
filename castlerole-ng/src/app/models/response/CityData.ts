@@ -1,23 +1,23 @@
 export class CityData {
 
 
-  constructor(owner: string, castleLevel: number, woodworksLevel: number, mineLevel: number,
-              forgeryLevel: number, barracksLevel: number, ovenLevel: number) {
+  constructor(owner: string, castle: number, woodwork: number, mine: number,
+              forgery: number, barrack: number, oven: number) {
     this.owner = owner;
-    this.castleLevel = castleLevel;
-    this.woodworksLevel = woodworksLevel;
-    this.mineLevel = mineLevel;
-    this.forgeryLevel = forgeryLevel;
-    this.barracksLevel = barracksLevel;
-    this.ovenLevel = ovenLevel;
+    this.castle = castle;
+    this.woodwork = woodwork;
+    this.mine = mine;
+    this.forgery = forgery;
+    this.barrack = barrack;
+    this.oven = oven;
   }
 
   owner: string;
-  castleLevel: number;
-  woodworksLevel: number;
-  mineLevel: number;
-  forgeryLevel: number;
-  barracksLevel: number;
-  ovenLevel: number;
+  castle: number;
+  woodwork: number;
+  mine: number;
+  forgery: number;
+  barrack: number;
+  oven: number;
 
 }

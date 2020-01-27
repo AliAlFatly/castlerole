@@ -1,10 +1,10 @@
 <div class="border-left border-bottom border-right border-dark pl-1 pb-1 pr-1">
-  Castle ({{cityData.castleLevel}}) <button [disabled]="cityData.castleLevel >= maxBuildingLevel" (mouseenter)="updateTooltip('Castle')" matTooltip={{tooltipText}} (click)="updateBuilding('Castle')">+</button><br />
-  Barack ({{cityData.barracksLevel}}) <button [disabled]="cityData.barracksLevel >= maxBuildingLevel"  (mouseenter)="updateTooltip('Barrack')" matTooltip={{tooltipText}} (click)="updateBuilding('Barack')">+</button><br />
-  Forgery ({{cityData.forgeryLevel}}) <button [disabled]="cityData.forgeryLevel >= maxBuildingLevel"  (mouseenter)="updateTooltip('Forgery')" matTooltip={{tooltipText}} (click)="updateBuilding('Forgery')">+</button><br />
-  Mine ({{cityData.mineLevel}}) <button [disabled]="cityData.mineLevel >= maxBuildingLevel"  (mouseenter)="updateTooltip('Mine')" matTooltip={{tooltipText}} (click)="updateBuilding('Mine')">+</button><br />
-  Oven ({{cityData.ovenLevel}}) <button [disabled]="cityData.ovenLevel >= maxBuildingLevel"  (mouseenter)="updateTooltip('Oven')" matTooltip={{tooltipText}} (click)="updateBuilding('Oven')">+</button><br />
-  Woodworks ({{cityData.woodworksLevel}}) <button [disabled]="cityData.woodworksLevel >= maxBuildingLevel"  (mouseenter)="updateTooltip('Woodworks')" matTooltip={{tooltipText}} (click)="updateBuilding('Woodworks')">+</button><br />
+  Castle ({{cityData.castle}}) <button [disabled]="cityData.castle >= maxBuildingLevel" (mouseenter)="updateTooltip('Castle')" matTooltip={{tooltipText}} (click)="updateBuilding('Castle')">+</button><br />
+  Barack ({{cityData.barrack}}) <button [disabled]="cityData.barrack >= maxBuildingLevel" (mouseenter)="updateTooltip('Barrack')" matTooltip={{tooltipText}} (click)="updateBuilding('Barrack')">+</button><br />
+  Forgery ({{cityData.forgery}}) <button [disabled]="cityData.forgery >= maxBuildingLevel" (mouseenter)="updateTooltip('Forgery')" matTooltip={{tooltipText}} (click)="updateBuilding('Forgery')">+</button><br />
+  Mine ({{cityData.mine}}) <button [disabled]="cityData.mine >= maxBuildingLevel" (mouseenter)="updateTooltip('Mine')" matTooltip={{tooltipText}} (click)="updateBuilding('Mine')">+</button><br />
+  Oven ({{cityData.oven}}) <button [disabled]="cityData.oven >= maxBuildingLevel" (mouseenter)="updateTooltip('Oven')" matTooltip={{tooltipText}} (click)="updateBuilding('Oven')">+</button><br />
+  Woodworks ({{cityData.woodwork}}) <button [disabled]="cityData.woodwork >= maxBuildingLevel" (mouseenter)="updateTooltip('Woodworks')" matTooltip={{tooltipText}} (click)="updateBuilding('Woodworks')">+</button><br />
   <form [formGroup]="coordinateForm" (ngSubmit)="recruit()">
     <input type="number" id="amount" (change)="setRecruitmentAmount()" placeholder="" formControlName="amount" min="0">
     <div class="actions d-inline-block">

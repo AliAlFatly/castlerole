@@ -67,11 +67,11 @@ public class CombatService {
             attackResponse.setEnemyTroopCount(targetIsUser.getTroops());
             var targetCityData = cityService.getCityData(targetIsUser.getUsername());
             var attackIsWon = (attacker.getTroops() +
-                    (attacker.getTroops() * attackerCityData.getCastleLevel()/100) +
-                    (attacker.getTroops() * attackerCityData.getBarracksLevel()/100)) >
+                    (attacker.getTroops() * attackerCityData.getCastle()/100) +
+                    (attacker.getTroops() * attackerCityData.getBarrack()/100)) >
                     (targetIsUser.getTroops() +
-                        (targetIsUser.getTroops() * targetCityData.getCastleLevel()/100) +
-                            (targetIsUser.getTroops() * targetCityData.getBarracksLevel()/100));
+                        (targetIsUser.getTroops() * targetCityData.getCastle()/100) +
+                            (targetIsUser.getTroops() * targetCityData.getBarrack()/100));
 
             if(attackIsWon){
                 attackResponse.setAttackable(true);

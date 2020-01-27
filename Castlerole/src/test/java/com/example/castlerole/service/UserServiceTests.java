@@ -69,11 +69,11 @@ public class UserServiceTests {
         UserServiceMock.setStone(300);
         UserServiceMock.setWood(300);
         UserServiceMock.setFood(300);
-        UserServiceMock.setCoordinateY(25);
-        UserServiceMock.setCoordinateX(25);
+        UserServiceMock.setY(25);
+        UserServiceMock.setX(25);
         UserServiceMock.setTroops(300);
-        Assert.assertEquals(DataResult.getCoordinateX(),UserServiceMock.getCoordinateX());
-        Assert.assertEquals(DataResult.getCoordinateY(),UserServiceMock.getCoordinateY());
+        Assert.assertEquals(DataResult.getX(),UserServiceMock.getX());
+        Assert.assertEquals(DataResult.getY(),UserServiceMock.getY());
         Assert.assertEquals(DataResult.getFood(),UserServiceMock.getFood());
         Assert.assertEquals(DataResult.getIron(),UserServiceMock.getIron());
         Assert.assertEquals(DataResult.getStone(),UserServiceMock.getStone());
