@@ -16,7 +16,7 @@ import org.springframework.web.util.NestedServletException;
 import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
+import javax.persistence.EntityNotFoundException;
 
 public class JwtAuthenticationControllerITTest extends ControllerTestConfig {
 
@@ -69,7 +69,7 @@ public class JwtAuthenticationControllerITTest extends ControllerTestConfig {
                     .andExpect(status().is4xxClientError())
                     .andReturn();
         } catch (NestedServletException e){
-            assertEquals("Request processing failed; nested exception is java.lang.Exception: INVALID_CREDENTIALS",
+            assertEquals("Request processing failed; nested exception is javax.persistence.EntityNotFoundException: INVALID_CREDENTIALS",
                     e.getMessage());
         }
 
