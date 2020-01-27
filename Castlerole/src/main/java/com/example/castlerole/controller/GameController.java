@@ -38,51 +38,50 @@ public class GameController {
             return pointService.getPointData(x, y);
     }
 
-    //todo: get token from context
     @GetMapping("/userCoordinates")
-    public Vector getUserCoordinates() throws Exception {
+    public Vector getUserCoordinates() {
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
         return userService.getUserCoordinates(username);
     }
 
     @GetMapping("/userData")
-    public UserDataResponse getUserData() throws Exception {
+    public UserDataResponse getUserData() {
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
         return userService.getUserData(username);
     }
 
     @GetMapping("/recruit/{amount}")
-    public String recruitTroops(@PathVariable("amount") int amount) throws Exception {
+    public String recruitTroops(@PathVariable("amount") int amount) {
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
         return userService.recruit(amount, username);
     }
 
     @GetMapping("/update/{action}")
-    public String upgradeBuilding(@PathVariable("action") String action) throws Exception {
+    public String upgradeBuilding(@PathVariable("action") String action){
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
         return cityService.updateBuilding(username, action);
     }
 
     @GetMapping("/cityData")
-    public CityDataResponse getCityData() throws Exception{
+    public CityDataResponse getCityData(){
         var owner = SecurityContextHolder.getContext().getAuthentication().getName();
         return cityService.getCityData(owner);
     }
 
     @GetMapping("/tooltip/{action}")
-    public Tooptip getToolTip(@PathVariable("action") String action) throws Exception {
+    public Tooptip getToolTip(@PathVariable("action") String action){
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
         return cityService.getTooltipData(username, action);
     }
 
     @GetMapping("/recruitmentTooltip")
-    public int getRecruitmentTooltip() throws Exception {
+    public int getRecruitmentTooltip(){
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
         return userService.getRecruitmentTooltip(username);
     }
 
     @GetMapping("/attack/{x}/{y}")
-    public AttackResponse attackPoint(@PathVariable("x") int x, @PathVariable("y") int y) throws Exception {
+    public AttackResponse attackPoint(@PathVariable("x") int x, @PathVariable("y") int y){
         var attackedPoint = new Vector(x, y);
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
         return combatService.attack(username, attackedPoint);

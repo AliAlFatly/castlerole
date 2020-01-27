@@ -6,7 +6,6 @@ import com.example.castlerole.model.request.JwtRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -28,7 +27,7 @@ public class JwtAuthenticationService {
     @Autowired
     private UserService userService;
 
-    public String login(JwtRequest authenticationRequest) throws Exception {
+    public String login(JwtRequest authenticationRequest) throws EntityNotFoundException {
         // Check if user is disabled or if credentials are invalid. if true => return error. break function when returned.
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
         // Get user from database, if user not found throw exception and break function when returned.

@@ -22,8 +22,6 @@ public class PointService {
     private UserRepository userRepository;
 
     public PointDataResponse getPointData(int x, int y){
-
-        //TODO:add x y point validation
         PointDataResponse point = new PointDataResponse();
 
         point.setCoordinateX(x);

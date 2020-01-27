@@ -17,7 +17,7 @@ public class UserService {
     private int troopRecruitmentFood = 20;
     private int troopRecruitmentIron = 10;
     private int troopRecruitmentStone = 4;
-    private static final String notEnoughResources = "not enough resources";
+    private static final String NOT_ENOUGH_RESOURCES = "not enough resources";
 
     public boolean userExist(String username) {
         User user = userRepository.findByUsername(username);
@@ -31,7 +31,6 @@ public class UserService {
 
     public UserDataResponse getUserData(String username) {
         User user = userRepository.findByUsername(username);
-        // todo: add transformer for this functionality
         return new UserDataResponse(
                 user.getUsername(),
                 user.getxCoordinate(),
@@ -48,16 +47,16 @@ public class UserService {
         UserDataResponse userdata = getUserData(username);
         // Check if the user has enough resources for the given amount, in angular -1 => not enough resources
         if(foodAfterRecruit(userdata.getFood(), amount) < 0){
-            return notEnoughResources;
+            return NOT_ENOUGH_RESOURCES;
         }
         if(woodAfterRecruit(userdata.getWood(), amount) < 0){
-            return notEnoughResources;
+            return NOT_ENOUGH_RESOURCES;
         }
         if(stoneAfterRecruit(userdata.getStone(), amount) < 0){
-            return notEnoughResources;
+            return NOT_ENOUGH_RESOURCES;
         }
         if(ironAfterRecruit(userdata.getIron(), amount) < 0){
-            return notEnoughResources;
+            return NOT_ENOUGH_RESOURCES;
         }
 
         //recruit

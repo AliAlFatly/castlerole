@@ -15,6 +15,9 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 //when ever a request is made, filter is used to validate it based on encoded token. it is used in webSecurityConfig
 //note, must extends a matched class to be used by webSecurityConfig httpSecurity field. in this case OncePerRequestFilter is a matched class.
 @Component
@@ -38,7 +41,7 @@ public class JwtFilter extends OncePerRequestFilter {
             try {
                 username = jwtTokenUtil.getUsernameFromToken(jwtToken);
             } catch (IllegalArgumentException e) {
-                System.out.println(e);
+                Logger.getLogger(JwtFilter.class.getName()).log(Level.INFO, "Exception occur", e);
             }
         }
 // Once we get the token validate it.

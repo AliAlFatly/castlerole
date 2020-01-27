@@ -1,6 +1,5 @@
 package com.example.castlerole.model.response;
 
-//todo: rename to domain model
 public class AttackResponse {
     private int x;
     private int y;
