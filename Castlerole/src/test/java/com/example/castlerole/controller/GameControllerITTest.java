@@ -5,6 +5,7 @@ import com.example.castlerole.model.User;
 import com.example.castlerole.model.dto.UserDTO;
 import com.example.castlerole.model.helpertypes.Vector;
 import com.example.castlerole.model.request.JwtRequest;
+import com.example.castlerole.model.response.UserDataResponse;
 import com.example.castlerole.service.JwtAuthenticationService;
 import com.example.castlerole.service.JwtUserService;
 
@@ -111,10 +112,10 @@ public class GameControllerITTest extends ControllerTestConfig {
                 .andReturn();
 
 
-        var newRegistredUser = mapFromJson(mvcResult.getResponse().getContentAsString(),User.class);
+        var newRegistredUser = mapFromJson(mvcResult.getResponse().getContentAsString(), UserDataResponse.class);
 
-        int x = newRegistredUser.getxCoordinate();
-        int y = newRegistredUser.getyCoordinate();
+        int x = newRegistredUser.getX();
+        int y = newRegistredUser.getY();
 
         System.out.println(x + " " + y);
 
