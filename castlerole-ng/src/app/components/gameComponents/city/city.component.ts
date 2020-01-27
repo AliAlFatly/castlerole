@@ -50,7 +50,7 @@ export class CityComponent implements OnInit {
         // tslint:disable-next-line:max-line-length
         this.tooltipText = `Each level of the ${action} increases troop dameg by 1% up to a maximum of 35 levels (35% more dameg!)` + levelingRequirements;
         break;
-      case 'Barack':
+      case 'Barrack':
         // tslint:disable-next-line:max-line-length
         this.tooltipText = `Each level of the ${action} increases troop dameg by 1% up to a maximum of 35 levels (35% more dameg!)` + levelingRequirements;
         break;
@@ -63,7 +63,7 @@ export class CityComponent implements OnInit {
       case 'Oven':
         this.tooltipText = `Each level of the ${action} increases the food production by 5%` + levelingRequirements;
         break;
-      case 'Woodworks':
+      case 'Woodwork':
         this.tooltipText = `Each level of the ${action} increases the wood production by 5%` + levelingRequirements;
         break;
     }
