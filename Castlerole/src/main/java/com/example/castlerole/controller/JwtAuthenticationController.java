@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
+
 
 @RestController
 @CrossOrigin()
@@ -17,7 +19,7 @@ public class JwtAuthenticationController {
     public JwtAuthenticationService jwtAuthenticationService;
 
     @PostMapping(value = "/login")
-    public ResponseEntity login(@RequestBody JwtRequest authenticationRequest) throws Exception {
+    public ResponseEntity login(@RequestBody JwtRequest authenticationRequest) throws EntityNotFoundException {
         final String token = jwtAuthenticationService.login(authenticationRequest);
         return ResponseEntity.ok(new JwtResponse(token));
     }

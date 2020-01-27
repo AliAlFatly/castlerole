@@ -37,11 +37,12 @@ export class LoginComponent implements OnInit {
       .subscribe(success => {
         if (success) {
           this.router.navigate(['/game']);
+        } else {
+          alert('Username or password is incorrect');
         }
       },
         error => {
           alert('Username or password is incorrect');
-          console.log(error);
         });
   }
 }

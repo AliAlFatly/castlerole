@@ -9,7 +9,7 @@ import {Vector} from '../../../models/generic/Vector';
 })
 export class UserInformationComponent implements OnChanges {
 
-  private userData = new UserDataResponse('', -1, -1, -1, -1, -1, -1, -1);
+  private userData =  new UserDataResponse('', -1, -1, -1, -1, -1, -1, -1);
 
   @Output() userCoordinatesEmitter = new EventEmitter<Vector>();
 

@@ -28,7 +28,8 @@ export class GridComponent implements OnChanges {
   private targetCoordinates: Vector;
   private backgroundImage = new Image();
   private canvasElement;
-  private ctx: any;  // = (<HTMLCanvasElement>this.canvas.nativeElement).getContext("2d");
+  // tslint:disable-next-line:max-line-length
+  private ctx: any;
   private zeroX: number;
   private zeroY: number;
 
@@ -39,44 +40,37 @@ export class GridComponent implements OnChanges {
     private http: HttpClient,
     private gameService: GameServiceService
   ) {}
-
-
   // tslint:disable-next-line:use-lifecycle-interface
   async ngOnInit() {
-    // set user coordinates
     await this.getUserCoordinates();
-    // set background image
-    await this.setBackgroundImage();
-    // set the canvas height/width variables
-    await this.setCanvas();
-    // set the html canvas element
-    await this.getCanvas();
-    // draw
-    await this.initialDraw();
+    await this.getFields();
   }
 
   async ngOnChanges(changes: SimpleChanges) {
-    // await this.clearCanvas();
-    await this.getGridData();
-    this.addClickHandle();
-    await this.drawCanvas();
-
-  }
-
-  getCanvas = async () => {
-    this.ctx = (this.canvas.nativeElement as HTMLCanvasElement).getContext('2d');
+    if (this.coordinates.x !== -1){
+      await this.getFields();
+      this.addClickHandle();
+      await this.drawCanvas();
+    }
   }
 
   setCanvas = async () => {
-    this.canvasElement = document.querySelector('canvas');
+    this.canvasElement = await document.querySelector('canvas');
     this.canvasElement.width = canvasWidth;
     this.canvasElement.height = canvasHeight;
     this.canvasElement.style.width = `${canvasWidth}px`;
     this.canvasElement.style.height = `${canvasHeight}px`;
   }
 
-  setBackgroundImage = async () => {
+  getGridData = async () => {
+    this.grid = await this.gameService.getGrid(this.coordinates).toPromise();
+  }
+
+  getFields = async () => {
+    await this.setCanvas();
+    this.ctx = (this.canvas.nativeElement as HTMLCanvasElement).getContext('2d');
     this.backgroundImage.src = `assets/empty.png`;
+    await this.getGridData();
   }
 
   drawBackground = async () => {
@@ -105,15 +99,6 @@ export class GridComponent implements OnChanges {
     const response = await this.gameService.getUserCoordinates().toPromise();
     this.coordinates.x = response.x;
     this.coordinates.y = response.y;
-  }
-
-  initialDraw = async () => {
-    this.grid = await this.gameService.getGrid(this.coordinates).toPromise();
-    await this.drawCanvas();
-  }
-
-  getGridData = async () => {
-    this.grid = await this.gameService.getGrid(this.coordinates).toPromise();
   }
 
   addClickHandle = async () => {

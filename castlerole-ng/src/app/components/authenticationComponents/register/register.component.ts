@@ -34,6 +34,8 @@ export class RegisterComponent implements OnInit {
       .subscribe(success => {
         if (success) {
           this.router.navigate(['/game']);
+        } else {
+          alert('Selected username already exist');
         }
       },
         error => {
