@@ -70,9 +70,12 @@ export class GridComponent implements OnInit, OnChanges {
     this.backgroundImage.src = 'assets/empty.png';
   }
 
+  selectCanvas = async () => {
+    this.canvasElement = await document.querySelector('canvas');
+  }
 
   setCanvas = async () => {
-    this.canvasElement = await document.querySelector('canvas');
+    await this.selectCanvas();
     this.canvasElement.width = canvasWidth;
     this.canvasElement.height = canvasHeight;
     this.canvasElement.style.width = `${canvasWidth}px`;
