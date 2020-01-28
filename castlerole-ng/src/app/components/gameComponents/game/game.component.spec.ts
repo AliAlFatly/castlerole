@@ -10,19 +10,35 @@ import {Vector} from '../../../models/generic/Vector';
 import {GameDetailsComponent} from '../game-details/game-details.component';
 import {NavigatorComponent} from '../navigator/navigator.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CityComponent} from "../city/city.component";
+import {CityData} from "../../../models/response/CityData";
+import {Tooltip} from "../../../models/response/tooltip";
+import {MatButton} from "@angular/material/button";
+
+import {GameServiceService} from "../../../services/game/game-service.service";
+import {Component, CUSTOM_ELEMENTS_SCHEMA, InjectionToken} from "@angular/core";
+import {MatToolbar} from "@angular/material/toolbar";
+import {MAT_TOOLTIP_SCROLL_STRATEGY, MatTooltip} from "@angular/material/tooltip";
+import {MatRippleModule} from "@angular/material/core";
+import {FullscreenOverlayContainer, Overlay, OverlayContainer, OverlayModule} from "@angular/cdk/overlay";
+import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
+import {TokenInterceptorService} from "../../../services/authentication/token-interceptor.service";
 
 
 describe('GameComponent', () => {
   let component: GameComponent;
   let fixture: ComponentFixture<GameComponent>;
-
+  let tool: GameServiceService;
+  let city: CityData;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
         RouterTestingModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatDialogModule,
+        OverlayModule,
       ],
       declarations: [
         GameComponent,
@@ -30,29 +46,46 @@ describe('GameComponent', () => {
         GameDetailsComponent,
         UserInformationComponent,
         NavigatorComponent,
-        LogoutComponent
-        // Add more components other that game.component.ts
+        LogoutComponent,
+        MatTooltip,
+        CityComponent,
       ],
-      providers: [  ]
+      providers: [
+        {
+          provide: MAT_TOOLTIP_SCROLL_STRATEGY,
+          deps: [ Overlay ],
+          useFactory(overlay) { return () => overlay.scrollStrategies.close(); }
+        }
+      ],
+      schemas: [
+
+      ]
+
     })
     .compileComponents();
   }));
 
-  beforeEach(() => {
+  beforeEach(async () => {
     fixture = TestBed.createComponent(GameComponent);
+    const template: HTMLElement[] = fixture.nativeElement.querySelectorAll('matTooltip');
     component = fixture.componentInstance;
     component.coordinates = new Vector(25, 25);
-    component.clickTargetCoordinates = new Vector(20, 20);
-    fixture.detectChanges();
+    fixture.autoDetectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
-  xit('Should have predetermined coordinates', () => {
-    expect(component.coordinates).toEqual(new Vector(25, 25));
+  it('Should get target from grid click coordinates', async () => {
+    await component.getTargetFromGridClick(new Vector(25, 25));
+    expect(component.clickTargetCoordinates).toEqual(new Vector(25, 25));
   });
-  xit('clickTarget should be predetermined coordinates', () => {
-    expect(component.clickTargetCoordinates).toEqual(new Vector(20, 20));
+  it('should get usercoordinates', async () => {
+    await component.getUserCoordinates(new Vector(20, 20));
+    expect(component.userCoordinates).toEqual(new Vector(20, 20));
+  });
+  it('should get coordinates from navigator', async () => {
+    await component.getCoordinatesFromNavigator(new Vector(15, 15));
+    expect(component.coordinates).toEqual(new Vector(15, 15));
   });
 });
