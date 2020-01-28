@@ -59,7 +59,7 @@ describe('GameComponent', () => {
     fixture.autoDetectChanges();
   });
 
-  it('should create', () => {
+  it('should be create', () => {
     expect(component).toBeTruthy();
   });
   it('Should get target from grid click coordinates', async () => {

@@ -4,7 +4,7 @@ import { GameServiceService } from './game-service.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('GameServiceService', () => {
-  beforeEach(() => TestBed.configureTestingModule({
+  beforeEach(async () => TestBed.configureTestingModule({
     imports: [HttpClientTestingModule],
   }));
 
