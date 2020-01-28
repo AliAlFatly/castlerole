@@ -27,15 +27,21 @@ export class GridComponent implements OnInit, OnChanges {
   // Middle of the screen
   @Input() coordinates: Vector;
   private targetCoordinates: Vector;
-  private backgroundImage = new Image();
   private canvasElement;
   // tslint:disable-next-line:max-line-length
   private ctx: any;
   private zeroX: number;
   private zeroY: number;
 
-
   private grid: Array<GridResponse> = new Array<GridResponse>();
+
+  // Assets initialization:
+  private backgroundImage = new Image();
+  private player = new Image();
+  private mountain = new Image();
+  private mine = new Image();
+  private lake = new Image();
+  private forest = new Image();
 
   constructor(
     private http: HttpClient,
@@ -55,6 +61,16 @@ export class GridComponent implements OnInit, OnChanges {
     }
   }
 
+  setAssets = () => {
+    this.player.src = 'assets/player.png';
+    this.mountain.src = 'assets/mountain.png';
+    this.mine.src = 'assets/mine.png';
+    this.lake.src = 'assets/lake.png';
+    this.forest.src = 'assets/forest.png';
+    this.backgroundImage.src = 'assets/empty.png';
+  }
+
+
   setCanvas = async () => {
     this.canvasElement = await document.querySelector('canvas');
     this.canvasElement.width = canvasWidth;
@@ -70,7 +86,7 @@ export class GridComponent implements OnInit, OnChanges {
   getFields = async () => {
     await this.setCanvas();
     this.ctx = (this.canvas.nativeElement as HTMLCanvasElement).getContext('2d');
-    this.backgroundImage.src = `assets/empty.png`;
+    this.setAssets();
     await this.getGridData();
   }
 
@@ -79,21 +95,42 @@ export class GridComponent implements OnInit, OnChanges {
     await this.ctx.drawImage(this.backgroundImage, 0, 0, canvasWidth, canvasHeight);
   }
 
-  drawContent = async () => {
+  drawGridContent = async () => {
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.grid.length; i++) {
-      if (this.grid[i].picture !== 'empty') {
-        const img = new Image();
-        img.src = `assets/${this.grid[i].picture}.png`;
-        await this.ctx.drawImage(img, (this.grid[i].x - (this.coordinates.x - halfScreenWidth)) * elementWidth,
-          (this.grid[i].y - (this.coordinates.y - halfScreenHeight)) * elementHeight, elementWidth, elementHeight);
+      const currentGridIndex = this.grid[i];
+      switch (currentGridIndex.picture) {
+        case 'player':
+          await this.ctx.drawImage(this.player, (this.grid[i].x - (this.coordinates.x - halfScreenWidth)) * elementWidth,
+            (this.grid[i].y - (this.coordinates.y - halfScreenHeight)) * elementHeight, elementWidth, elementHeight);
+          break;
+        case 'mountain':
+          await this.ctx.drawImage(this.mountain, (this.grid[i].x - (this.coordinates.x - halfScreenWidth)) * elementWidth,
+            (this.grid[i].y - (this.coordinates.y - halfScreenHeight)) * elementHeight, elementWidth, elementHeight);
+          break;
+        case 'mine':
+          await this.ctx.drawImage(this.mine, (this.grid[i].x - (this.coordinates.x - halfScreenWidth)) * elementWidth,
+            (this.grid[i].y - (this.coordinates.y - halfScreenHeight)) * elementHeight, elementWidth, elementHeight);
+          break;
+        case 'lake':
+          await this.ctx.drawImage(this.lake, (this.grid[i].x - (this.coordinates.x - halfScreenWidth)) * elementWidth,
+            (this.grid[i].y - (this.coordinates.y - halfScreenHeight)) * elementHeight, elementWidth, elementHeight);
+          break;
+        case 'forest':
+          await this.ctx.drawImage(this.forest, (this.grid[i].x - (this.coordinates.x - halfScreenWidth)) * elementWidth,
+            (this.grid[i].y - (this.coordinates.y - halfScreenHeight)) * elementHeight, elementWidth, elementHeight);
+          break;
+        default:
+          break;
       }
     }
   }
 
+
   drawCanvas = async () => {
     await this.drawBackground();
-    await this.drawContent();
+    await this.drawGridContent();
+    // await this.drawContent();
   }
 
   getUserCoordinates = async () => {

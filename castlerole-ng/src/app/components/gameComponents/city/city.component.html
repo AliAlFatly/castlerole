@@ -8,7 +8,7 @@
   <form [formGroup]="coordinateForm" (ngSubmit)="recruit()">
     <input type="number" id="amount" (change)="setRecruitmentAmount()" placeholder="" formControlName="amount" min="0">
     <div class="actions d-inline-block">
-      <button class="ml-2 btn btn-sm btn-primary" [disabled]="recruitmentAmount > maximumRecruitableTroops" (mouseenter)="updateRecruitmentTooptip()" matTooltip={{recruitmentTooltip}} type="submit">Recruit</button>
+      <button class="ml-2 btn btn-sm btn-primary" [disabled]="recruitmentAmount > maximumRecruitableTroops" (mouseenter)="getRecruitmentTooltip()" matTooltip={{recruitmentTooltip}} type="submit">Recruit</button>
     </div>
   </form>
   <app-logout></app-logout>

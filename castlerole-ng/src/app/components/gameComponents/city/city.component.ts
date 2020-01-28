@@ -27,7 +27,7 @@ export class CityComponent implements OnInit {
 
   async ngOnInit() {
     await this.getCityData();
-    await this.getRecruitmentTooltip();
+    await this.getMaximumRecruitmentTooltip();
     this.updateCityData();
     this.updateRecruitmentTooltip();
   }
@@ -69,7 +69,7 @@ export class CityComponent implements OnInit {
     }
   }
 
-  updateRecruitmentTooptip = async () => {
+  getRecruitmentTooltip = async () => {
     this.recruitmentTooltip = `You can recruit upto ${this.maximumRecruitableTroops} troops`;
   }
 
@@ -87,7 +87,7 @@ export class CityComponent implements OnInit {
     // this.cityData = await this.gameService.getCityData().toPromise();
   }
 
-  getRecruitmentTooltip = async () => {
+  getMaximumRecruitmentTooltip = async () => {
     this.maximumRecruitableTroops = await this.gameService.getRecruitmentTooltip().toPromise();
   }
 
