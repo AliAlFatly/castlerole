@@ -8,7 +8,7 @@ describe('GameServiceService', () => {
     imports: [HttpClientTestingModule],
   }));
 
-  it('should be created', () => {
+  it('should be4 created', () => {
     const service: GameServiceService = TestBed.get(GameServiceService);
     expect(service).toBeTruthy();
   });
