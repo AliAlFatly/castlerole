@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { GameComponent } from './game.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {GridComponent} from '../grid/grid.component';
@@ -11,25 +10,13 @@ import {GameDetailsComponent} from '../game-details/game-details.component';
 import {NavigatorComponent} from '../navigator/navigator.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CityComponent} from "../city/city.component";
-import {CityData} from "../../../models/response/CityData";
-import {Tooltip} from "../../../models/response/tooltip";
-import {MatButton} from "@angular/material/button";
-
-import {GameServiceService} from "../../../services/game/game-service.service";
-import {Component, CUSTOM_ELEMENTS_SCHEMA, InjectionToken} from "@angular/core";
-import {MatToolbar} from "@angular/material/toolbar";
 import {MAT_TOOLTIP_SCROLL_STRATEGY, MatTooltip} from "@angular/material/tooltip";
-import {MatRippleModule} from "@angular/material/core";
-import {FullscreenOverlayContainer, Overlay, OverlayContainer, OverlayModule} from "@angular/cdk/overlay";
-import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
-import {TokenInterceptorService} from "../../../services/authentication/token-interceptor.service";
-
+import { Overlay, OverlayModule} from "@angular/cdk/overlay";
+import {MatDialogModule} from "@angular/material/dialog";
 
 describe('GameComponent', () => {
   let component: GameComponent;
   let fixture: ComponentFixture<GameComponent>;
-  let tool: GameServiceService;
-  let city: CityData;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -67,7 +54,6 @@ describe('GameComponent', () => {
 
   beforeEach(async () => {
     fixture = TestBed.createComponent(GameComponent);
-    const template: HTMLElement[] = fixture.nativeElement.querySelectorAll('matTooltip');
     component = fixture.componentInstance;
     component.coordinates = new Vector(25, 25);
     fixture.autoDetectChanges();
