@@ -14,7 +14,7 @@ import {MAT_TOOLTIP_SCROLL_STRATEGY, MatTooltip} from "@angular/material/tooltip
 import { Overlay, OverlayModule} from "@angular/cdk/overlay";
 import {MatDialogModule} from "@angular/material/dialog";
 
-describe('GameComponent', () => {
+xdescribe('GameComponent', () => {
   let component: GameComponent;
   let fixture: ComponentFixture<GameComponent>;
   beforeEach(async(() => {
