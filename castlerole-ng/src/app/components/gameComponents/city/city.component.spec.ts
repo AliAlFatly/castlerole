@@ -8,7 +8,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {Overlay, OverlayModule} from '@angular/cdk/overlay';
 import {RouterTestingModule} from '@angular/router/testing';
 
-xdescribe('CityComponent', () => {
+describe('CityComponent', () => {
   let component: CityComponent;
   let fixture: ComponentFixture<CityComponent>;
 
@@ -43,7 +43,7 @@ xdescribe('CityComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should be create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
