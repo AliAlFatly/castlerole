@@ -8,7 +8,6 @@ import {RouterTestingModule} from '@angular/router/testing';
 xdescribe('GridComponent', () => {
   let component: GridComponent;
   let fixture: ComponentFixture<GridComponent>;
-  let componentCanvas: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -33,7 +32,7 @@ xdescribe('GridComponent', () => {
   });
   xit('should create Canvas', async () => {
     await component.drawCanvas().then();
-    expect(componentCanvas).toBeTruthy();
+    expect(component.drawCanvas).toBeTruthy();
   });
 
 });
