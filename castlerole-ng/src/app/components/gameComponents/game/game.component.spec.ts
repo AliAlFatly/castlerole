@@ -1,20 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { GameComponent } from './game.component';
+import {GameComponent} from './game.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {GridComponent} from '../grid/grid.component';
-import {UserInformationComponent} from '../user-information/user-information.component';
-import {LogoutComponent} from '../../authenticationComponents/logout/logout.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import {Vector} from '../../../models/generic/Vector';
-import {GameDetailsComponent} from '../game-details/game-details.component';
-import {NavigatorComponent} from '../navigator/navigator.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CityComponent} from "../city/city.component";
-import {MAT_TOOLTIP_SCROLL_STRATEGY, MatTooltip} from "@angular/material/tooltip";
-import { Overlay, OverlayModule} from "@angular/cdk/overlay";
-import {MatDialogModule} from "@angular/material/dialog";
+import {MatDialogModule} from '@angular/material/dialog';
+import {Overlay, OverlayModule} from '@angular/cdk/overlay';
+import {GridComponent} from '../grid/grid.component';
+import {GameDetailsComponent} from '../game-details/game-details.component';
+import {UserInformationComponent} from '../user-information/user-information.component';
+import {NavigatorComponent} from '../navigator/navigator.component';
+import {LogoutComponent} from '../../authenticationComponents/logout/logout.component';
+import {MAT_TOOLTIP_SCROLL_STRATEGY, MatTooltip} from '@angular/material/tooltip';
+import {CityComponent} from '../city/city.component';
+import {Vector} from '../../../models/generic/Vector';
 
-xdescribe('GameComponent', () => {
+describe('GameComponent', () => {
   let component: GameComponent;
   let fixture: ComponentFixture<GameComponent>;
   beforeEach(async(() => {

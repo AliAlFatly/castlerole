@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CityComponent } from './city.component';
-import {MAT_TOOLTIP_SCROLL_STRATEGY, MatTooltip} from "@angular/material/tooltip";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {LogoutComponent} from "../../authenticationComponents/logout/logout.component";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {Overlay, OverlayModule} from "@angular/cdk/overlay";
-import {RouterTestingModule} from "@angular/router/testing";
+import {MAT_TOOLTIP_SCROLL_STRATEGY, MatTooltip} from '@angular/material/tooltip';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {LogoutComponent} from '../../authenticationComponents/logout/logout.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {Overlay, OverlayModule} from '@angular/cdk/overlay';
+import {RouterTestingModule} from '@angular/router/testing';
 
 xdescribe('CityComponent', () => {
   let component: CityComponent;
