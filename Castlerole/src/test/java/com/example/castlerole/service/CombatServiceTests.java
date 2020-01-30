@@ -118,10 +118,10 @@ public class CombatServiceTests {
                 "Iron won: " + Creturn.getIronWon() + " " + "\n" +
                 "Fight won: " + Creturn.isWon()
                 );
-        Assert.assertEquals(Creturn.getFoodWon(), 100);
-        Assert.assertEquals(Creturn.getIronWon(), 100);
-        Assert.assertEquals(Creturn.getWoodWon(), 100);
-        Assert.assertEquals(Creturn.getStoneWon(), 100);
+        Assert.assertEquals(100, Creturn.getFoodWon());
+        Assert.assertEquals(100, Creturn.getIronWon());
+        Assert.assertEquals(100, Creturn.getWoodWon());
+        Assert.assertEquals(100, Creturn.getStoneWon());
     }
     @Test
     public void CombatAttack_NodeTest() throws Exception {
@@ -133,10 +133,10 @@ public class CombatServiceTests {
                 "Iron won: " + Creturn2.getIronWon() + " " + "\n" +
                 "Fight won: " + Creturn2.isWon()
         );
-        Assert.assertEquals(Creturn2.getStoneWon(), 0);
+        Assert.assertEquals(0, Creturn2.getStoneWon());
         //Assert.assertEquals(Creturn2.getWoodWon(), 0);
-        Assert.assertEquals(Creturn2.getIronWon(), 0);
-        Assert.assertEquals(Creturn2.getFoodWon(), 0);
+        Assert.assertEquals(0, Creturn2.getIronWon());
+        Assert.assertEquals(0, Creturn2.getFoodWon());
     }
 
 }
