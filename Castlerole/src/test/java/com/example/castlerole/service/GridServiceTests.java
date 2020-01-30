@@ -93,9 +93,9 @@ public class GridServiceTests {
     public void GridService_Test() {
 
         List<GridResponse> gridreturn = gridService.getGrid(25, 25);
-        Assert.assertEquals(gridreturn.iterator().next().getPicture(),"player");
-        Assert.assertEquals(gridreturn.iterator().next().getX(),5);
-        Assert.assertEquals(gridreturn.iterator().next().getY(),5);
+        Assert.assertEquals("player", gridreturn.iterator().next().getPicture());
+        Assert.assertEquals(5, gridreturn.iterator().next().getX());
+        Assert.assertEquals(5, gridreturn.iterator().next().getY());
 
 
     }
