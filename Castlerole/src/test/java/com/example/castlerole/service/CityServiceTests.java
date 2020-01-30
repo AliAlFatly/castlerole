@@ -8,6 +8,7 @@ import com.example.castlerole.model.response.UserDataResponse;
 import com.example.castlerole.repository.CityRepository;
 import com.example.castlerole.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -152,5 +153,39 @@ public class CityServiceTests {
         //var data2 = cityRepository.findByid(1);
 
         //System.out.println(data2.getCastleLevel());
+    }
+
+    @Test
+    public void getToopTipTest() {
+        var cityC = cityServiceMock.getTooltipData("CityServiceUserMock", "Castle");
+        Assert.assertEquals(16, cityC.getWood());
+        Assert.assertEquals(16, cityC.getStone());
+        Assert.assertEquals(16, cityC.getIron());
+        Assert.assertEquals(16, cityC.getFood());
+        var cityO = cityServiceMock.getTooltipData("CityServiceUserMock", "Oven");
+        Assert.assertEquals(16, cityO.getWood());
+        Assert.assertEquals(16, cityO.getStone());
+        Assert.assertEquals(16, cityO.getIron());
+        Assert.assertEquals(16, cityO.getFood());
+        var cityM = cityServiceMock.getTooltipData("CityServiceUserMock", "Mine");
+        Assert.assertEquals(16, cityM.getWood());
+        Assert.assertEquals(16, cityM.getStone());
+        Assert.assertEquals(16, cityM.getIron());
+        Assert.assertEquals(16, cityM.getFood());
+        var cityB = cityServiceMock.getTooltipData("CityServiceUserMock", "Barrack");
+        Assert.assertEquals(16, cityB.getWood());
+        Assert.assertEquals(16, cityB.getStone());
+        Assert.assertEquals(16, cityB.getIron());
+        Assert.assertEquals(16, cityB.getFood());
+        var cityW = cityServiceMock.getTooltipData("CityServiceUserMock", "Woodwork");
+        Assert.assertEquals(16, cityW.getWood());
+        Assert.assertEquals(16, cityW.getStone());
+        Assert.assertEquals(16, cityW.getIron());
+        Assert.assertEquals(16, cityW.getFood());
+        var cityF = cityServiceMock.getTooltipData("CityServiceUserMock", "Forgery");
+        Assert.assertEquals(16, cityF.getWood());
+        Assert.assertEquals(16, cityF.getStone());
+        Assert.assertEquals(16, cityF.getIron());
+        Assert.assertEquals(16, cityF.getFood());
     }
 }

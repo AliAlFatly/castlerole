@@ -9,6 +9,10 @@ public class CityDataResponse {
     private int barrack;
     private int oven;
 
+    public CityDataResponse() {
+
+    }
+
     public CityDataResponse(String owner, int castle, int woodwork, int mine, int forgery, int barrack, int oven){
         this.owner = owner;
         this.castle = castle;

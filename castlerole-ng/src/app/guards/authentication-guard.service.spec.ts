@@ -11,7 +11,7 @@ describe('AuthenticationGuardService', () => {
     ],
   }));
 
-  it('should be created', () => {
+  it('should create', () => {
     const service: AuthenticationGuardService = TestBed.get(AuthenticationGuardService);
     expect(service).toBeTruthy();
   });

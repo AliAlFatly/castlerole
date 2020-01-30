@@ -4,11 +4,11 @@ import { GameServiceService } from './game-service.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('GameServiceService', () => {
-  beforeEach(() => TestBed.configureTestingModule({
+  beforeEach(async () => TestBed.configureTestingModule({
     imports: [HttpClientTestingModule],
   }));
 
-  it('should be created', () => {
+  it('should create', () => {
     const service: GameServiceService = TestBed.get(GameServiceService);
     expect(service).toBeTruthy();
   });

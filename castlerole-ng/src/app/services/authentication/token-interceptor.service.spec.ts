@@ -8,7 +8,7 @@ describe('TokenInterceptorService', () => {
     imports: [HttpClientTestingModule],
   }));
 
-  it('should be created', () => {
+  it('should create', () => {
     const service: TokenInterceptorService = TestBed.get(TokenInterceptorService);
     expect(service).toBeTruthy();
   });
