@@ -38,7 +38,7 @@ public class CityService {
 
     private void setLevelUpResources(){
         // In array: food, wood, stone, iron
-        resourcesConsumptionByActionMapper.put(CASTLE, new int[]{1,1,20,20});
+        resourcesConsumptionByActionMapper.put(CASTLE, new int[]{20,20,20,20});
         resourcesConsumptionByActionMapper.put(BARRACK, new int[]{20,15,20,15});
         resourcesConsumptionByActionMapper.put(FORGERY, new int[]{10,5,16,20});
         resourcesConsumptionByActionMapper.put(MINE, new int[]{11,16,4,25});
