@@ -16,6 +16,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
@@ -227,21 +228,21 @@ public class MultiplayerITTest {
         UserDataResponse newUserAfternodeAttack = mapFromJson(UseroneAttacknodeData.getResponse().getContentAsString(), UserDataResponse.class);
         System.out.println(
                 "\n" + "User1 Data before Node Attack: " + "\n" +
-                        "Username: " + newUser.getUsername() + "\n" +
-                        "Food: " + newUser.getFood() + "\n" +
-                        "Iron: " + newUser.getIron() + "\n" +
-                        "Stone: " + newUser.getStone() + "\n" +
-                        "Wood: " + newUser.getWood() + "\n" +
-                        "Troops: " + newUser.getTroops() + "\n" +
-                        "X: " + newUser.getX() + "\n" +
-                        "Y: " + newUser.getY() + "\n" + "\n" +
+                "Username: " + newUser.getUsername() + "\n" +
+                "Food: " + newUser.getFood() + "\n" +
+                "Iron: " + newUser.getIron() + "\n" +
+                "Stone: " + newUser.getStone() + "\n" +
+                "Wood: " + newUser.getWood() + "\n" +
+                "Troops: " + newUser.getTroops() + "\n" +
+                "X: " + newUser.getX() + "\n" +
+                "Y: " + newUser.getY() + "\n" + "\n" +
 
                 "Attacking 250*4 Nodes: " + " " + "\n" +
                 "Wood won: " + (newUserAfternodeAttack.getWood() - 300) + " " + "\n" +
                 "Food won: " + (newUserAfternodeAttack.getFood() - 300) + " " + "\n" +
                 "Iron won: " + (newUserAfternodeAttack.getIron() - 300) + " " + "\n" +
                 "Stone won: " + (newUserAfternodeAttack.getStone() - 300) + " " + "\n" + "\n" +
-                        
+
                 "User1 Data after Node Attack: " + "\n" +
                 "Username: " + newUserAfternodeAttack.getUsername() + "\n" +
                 "Food: " + newUserAfternodeAttack.getFood() + "\n" +
@@ -313,6 +314,7 @@ public class MultiplayerITTest {
                 "Mine level: " + CityDataAfterUpgrade.getMine() + "\n" +
                 "Oven level: " + CityDataAfterUpgrade.getOven() + "\n" +
                 "Woodwork level: " + CityDataAfterUpgrade.getWoodwork() + "\n" + "\n" +
+
                 "User1 Data after upgrade: " + "\n" +
                 "Username: " + userDataAfterUpgrade.getUsername() + "\n" +
                 "Food: " + userDataAfterUpgrade.getFood() + "\n" +
@@ -386,7 +388,17 @@ public class MultiplayerITTest {
                 .andDo(MockMvcResultHandlers.log())
                 .andExpect(status().isOk())
                 .andReturn();
+        // Assert food, iron, stone, wood won is equal to 100
         UserDataResponse user2afterattack = mapFromJson(userTwoLostResources.getResponse().getContentAsString(), UserDataResponse.class);
+        UserDataResponse assertequal = new UserDataResponse();
+        assertequal.setFood(200);
+        assertequal.setStone(200);
+        assertequal.setWood(200);
+        assertequal.setIron(200);
+        Assert.assertEquals(user2afterattack.getFood(),assertequal.getFood() );
+        Assert.assertEquals(user2afterattack.getIron(),assertequal.getIron() );
+        Assert.assertEquals(user2afterattack.getWood(),assertequal.getWood() );
+        Assert.assertEquals(user2afterattack.getStone(),assertequal.getStone() );
 
         System.out.println(
                 "User2 Data after User1 attack: " + "\n" +
@@ -420,22 +432,6 @@ public class MultiplayerITTest {
 
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(json, clazz);
-    }
-
-    private static RequestPostProcessor sessionUser(final UserDetails userDetails) {
-        return new RequestPostProcessor() {
-            @Override
-            public MockHttpServletRequest postProcessRequest(final MockHttpServletRequest request) {
-                final SecurityContext securityContext = new SecurityContextImpl();
-                securityContext.setAuthentication(
-                        new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities())
-                );
-                request.getSession().setAttribute(
-                        HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext
-                );
-                return request;
-            }
-        };
     }
 
 }
