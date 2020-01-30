@@ -38,12 +38,12 @@ public class CityService {
 
     private void setLevelUpResources(){
         // In array: food, wood, stone, iron
-        resourcesConsumptionByActionMapper.put(CASTLE, new int[]{1,1,20,20});
-        resourcesConsumptionByActionMapper.put(BARRACK, new int[]{20,15,20,15});
-        resourcesConsumptionByActionMapper.put(FORGERY, new int[]{10,5,16,20});
-        resourcesConsumptionByActionMapper.put(MINE, new int[]{11,16,4,25});
-        resourcesConsumptionByActionMapper.put(OVEN, new int[]{10,15,12,6});
-        resourcesConsumptionByActionMapper.put(WOODWORK, new int[]{20,9,10,15});
+        resourcesConsumptionByActionMapper.put(CASTLE, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(BARRACK, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(FORGERY, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(MINE, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(OVEN, new int[]{1,1,1,1});
+        resourcesConsumptionByActionMapper.put(WOODWORK, new int[]{1,1,1,1});
         resourcesConsumptionByActionMapper.put("Recruit troops", new int[]{20,20,4,10});
     }
 
