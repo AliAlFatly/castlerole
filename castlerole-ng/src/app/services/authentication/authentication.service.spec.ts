@@ -8,7 +8,7 @@ describe('AuthenticationService', () => {
     imports: [HttpClientTestingModule],
   }));
 
-  it('should be2 created', () => {
+  it('should create', () => {
     const service: AuthenticationService = TestBed.get(AuthenticationService);
     expect(service).toBeTruthy();
   });
