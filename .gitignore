@@ -2,3 +2,5 @@
 castlerole-ng/.idea
 Castlerole/.idea
 Castlerole/src/main/resources/application.properties
+castlerole-ng/package-lock.json
+castlerole-ng/package.json
