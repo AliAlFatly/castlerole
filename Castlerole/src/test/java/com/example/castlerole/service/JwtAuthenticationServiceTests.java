@@ -3,6 +3,7 @@ package com.example.castlerole.service;
 import com.example.castlerole.config.JwtTokenUtil;
 import com.example.castlerole.model.City;
 import com.example.castlerole.model.User;
+import com.example.castlerole.model.dto.CityDTO;
 import com.example.castlerole.model.dto.UserDTO;
 import com.example.castlerole.model.response.Tooptip;
 import com.example.castlerole.repository.CityRepository;
@@ -74,6 +75,9 @@ public class JwtAuthenticationServiceTests {
         mocktoop.setIron(200);
         mocktoop.setStone(200);
         mocktoop.setWood(200);
+        CityDTO mockCity = new CityDTO();
+        mockCity.setOwner("User1");
+        Assert.assertEquals("User1", mockCity.getOwner());
         Assert.assertEquals(200, mocktoop.getFood());
         Assert.assertEquals(200, mocktoop.getIron());
         Assert.assertEquals(200, mocktoop.getStone());
@@ -81,7 +85,7 @@ public class JwtAuthenticationServiceTests {
 
 
     }
-    
+
 
     @Test
     public void Register_Test() throws Exception {
