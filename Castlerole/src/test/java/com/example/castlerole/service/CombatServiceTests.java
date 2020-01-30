@@ -10,6 +10,7 @@ import com.example.castlerole.repository.CityRepository;
 import com.example.castlerole.repository.NodeRepository;
 import com.example.castlerole.repository.UserRepository;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -71,7 +72,7 @@ public class CombatServiceTests {
         var defendnode = new Node();
         defendnode.setYCoordinate(15);
         defendnode.setXCoordinate(15);
-        defendnode.setTroops(300);
+        defendnode.setTroops(100);
         defendnode.setType("forest");
         defendnode.setYieldMax(300);
         defendnode.setYieldMin(150);
@@ -111,21 +112,31 @@ public class CombatServiceTests {
     public void CombatAttack_UserTest() throws Exception {
         var Creturn = combatService.attack("attackuser",new Vector(25,25));
         System.out.println(
+                "CombatAttack User Test: " + "\n" +
                 "Wood won: " + Creturn.getWoodWon() + " " + "\n" +
                 "Food won: " + Creturn.getFoodWon() + " " + "\n" +
                 "Iron won: " + Creturn.getIronWon() + " " + "\n" +
                 "Fight won: " + Creturn.isWon()
                 );
+        Assert.assertEquals(Creturn.getFoodWon(), 100);
+        Assert.assertEquals(Creturn.getIronWon(), 100);
+        Assert.assertEquals(Creturn.getWoodWon(), 100);
+        Assert.assertEquals(Creturn.getStoneWon(), 100);
     }
     @Test
     public void CombatAttack_NodeTest() throws Exception {
         var Creturn2 = combatService.attack("attackuser",new Vector(15,15));
         System.out.println(
+                "CombatAttack Node Test: " + "\n" +
                 "Wood won: " + Creturn2.getWoodWon() + " " + "\n" +
                 "Food won: " + Creturn2.getFoodWon() + " " + "\n" +
                 "Iron won: " + Creturn2.getIronWon() + " " + "\n" +
                 "Fight won: " + Creturn2.isWon()
         );
+        Assert.assertEquals(Creturn2.getStoneWon(), 0);
+        //Assert.assertEquals(Creturn2.getWoodWon(), 0);
+        Assert.assertEquals(Creturn2.getIronWon(), 0);
+        Assert.assertEquals(Creturn2.getFoodWon(), 0);
     }
 
 }
