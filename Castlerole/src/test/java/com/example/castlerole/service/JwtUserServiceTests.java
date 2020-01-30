@@ -71,11 +71,11 @@ public class JwtUserServiceTests {
             var user1 = new ObjectMapper();
             user1.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             User newUser = user1.convertValue(args,User.class);
-            Assert.assertEquals(newUser.getUsername(), "jwtUserService");
-            Assert.assertEquals(newUser.getTroops(),300);
-            Assert.assertEquals(newUser.getFood(),300);
-            Assert.assertEquals(newUser.getIron(),300);
-            Assert.assertEquals(newUser.getPictureReference(),"player");
+            Assert.assertEquals("jwtUserService",newUser.getUsername());
+            Assert.assertEquals(300, newUser.getTroops());
+            Assert.assertEquals(300, newUser.getFood());
+            Assert.assertEquals(300, newUser.getIron());
+            Assert.assertEquals("player", newUser.getPictureReference());
             return (User) args;
         });
         jwtUserService.registerNewUser(jwtuserMock);
@@ -85,8 +85,8 @@ public class JwtUserServiceTests {
     @Test
     public void JwtUserService_LoadUserTest() throws Exception {
         var user = jwtUserService.loadUserByUsername("jwtUserService");
-        Assert.assertEquals(user.getUsername(), "jwtUserService");
-        Assert.assertEquals(user.getPassword(), "password");
+        Assert.assertEquals("jwtUserService", user.getUsername());
+        Assert.assertEquals("password", user.getPassword());
     }
 
 }
